@@ -1,0 +1,117 @@
+STEP08 / FRCNN-R50FPN-VAL-001 / original test23
+Prepared 2026-10-12. User runs test inference/evaluation; no training is started.
+
+正式训练验收
+训练目录：D:\小论文\model_projects\Faster R-CNN\workspace\runs\FRCNN-R50FPN-VAL-001\step07_235_27043
+训练日志：D:\小论文\model_projects\Faster R-CNN\workspace\logs\step07_235_27043
+验收记录：D:\小论文\model_projects\Faster R-CNN\workspace\audit\step07_review\acceptance.json
+已核对 100 轮、5400 次更新、100 条按轮验证记录；5400 个总损失和各项损失均有限。
+前 100 次平均损失 0.356646，后 100 次 0.013572；训练能运行，验证泛化表现仍较差。
+启动流程共 2207.07 秒（约 36 分 47 秒），含准备、训练、验证、保存和汇总。
+累积 CUDA tensor 显存峰值约 3769.94 MiB；不等同于 reserved memory 或系统显卡占用。
+按训练前固定的原生三位小数 val coco/bbox_mAP 选出 epoch66，同值取最早轮次。
+原生选择结果和实际 best 文件一致，选定权重 SHA256 已重新核对。
+
+选定权重验证集成绩（百分数）
+总体：mAP50=3.773949%，mAP50-95=1.273413%，AR100=4.384921%。
+broken：AP50=1.697313%，AP50-95=0.848656%。
+loose：AP50=5.850585%，AP50-95=1.698170%。
+以上只属于原 val23，不能视为 test 成绩，不能和 8 图训练拟合指标直接比较。
+官方 COCO classwise 表中的 broken 小目标 AP=nan 表示该尺寸分组无 GT，
+与训练 loss 出现 NaN 是不同情况；本次训练 loss 已逐项核对为有限值。
+
+本阶段目的和停止条件
+只评估已经选定的 epoch66 checkpoint，完成原 test23 的一次固定方案评价。
+不比较多个 checkpoint 的 test 分数，不调整 score/NMS/Resize/anchor，不继续训练。
+测试完成后读取结果并整理，再准备预定的 MERGE130 实验。
+本次工作仍是原计划阶段二的最终测试，没有新增调参实验。
+
+文件路径
+测试配置：D:\小论文\model_projects\Faster R-CNN\workspace\configs\frcnn_r50fpn_val001_test.py
+测试脚本：D:\小论文\model_projects\Faster R-CNN\workspace\scripts\step08_test_val_baseline.py
+cmd 入口：D:\小论文\model_projects\Faster R-CNN\workspace\scripts\run_step08_test_val_baseline.cmd
+独立 Python：D:\小论文\model_projects\Faster R-CNN\.venv\Scripts\python.exe
+权重：D:\小论文\model_projects\Faster R-CNN\workspace\runs\FRCNN-R50FPN-VAL-001\step07_235_27043\best_coco_bbox_mAP_epoch_66.pth
+权重 SHA256：7d80317d4f291fd8f7954423123af8e8154ad2dd4dad366353b05123ba326b39
+选择依据：D:\小论文\model_projects\Faster R-CNN\workspace\runs\FRCNN-R50FPN-VAL-001\step07_235_27043\selected_checkpoint.json
+测试标注：D:\小论文\conductor_defect_dataset\03_coco_dataset\annotations\instances_test.json
+测试图片：D:\小论文\conductor_defect_dataset\03_coco_dataset\images\test
+23 张图片、36 个框（broken8，loose28），沿用原图片级划分。
+测试 JSON SHA256：42081faac0bb2fd36adec5e41669239e9e8fb39226b40bdf85a1822fe2ac9baa
+
+配置与运行方式
+继承本次训练目录的实际 resolved_val_001.py，完整 model 配置逐项要求相同。
+将 train/val loop 和 dataloader 禁用，测试数据显式指向原 test。
+调用官方 MODELS 构建 R50-FPN，严格加载本次两类 checkpoint 的全部 348 个张量。
+这次应为 0 个缺失、0 个尺寸变化；不能再忽略 COCO80->2 的四项尺寸警告。
+模型 eval()，seed42、deterministic=True、cudnn_benchmark=False、FP32，单 GPU 逐张推理。
+调用 MMDetection 官方 inference_detector / model.test_step，图像输入只有像素，没有 GT 框。
+Windows 中文路径采用 PIL RGB 读取 -> 连续 BGR 数组，保持与 MMDetection 色彩处理一致。
+Resize=(1333,800)、keep_ratio=True、归一化和补边沿用验证配置。
+原图标注仅供评价函数读取，不提供给模型预测，也不用于重新选择参数。
+
+评价口径固定
+score_thr=0.001，RCNN NMS IoU=0.5，max_per_img=100，COCO maxDets=[1,10,100]。
+画框阈值单独为 score>0.30；所有模型返回框用于 AP 并写入 JSON。
+无可见框时仍打印 returned 和 visible 两个数量，不能把无画框视为无低分预测。
+原生 CocoMetric bbox、classwise=True，与验证相同。
+用已保存的测试预测补充精确 mAP50、mAP50-95、每类 AP50/AP50-95、AR100，并与原生 AP 核对。
+空预测时 AP 为 0；没有真实目标的尺寸分组为未定义，不伪造预测或修正标注。
+AR100 是 IoU 0.50~0.95 的 COCO 平均召回，不能直接解释为某一置信度下的 Recall。
+
+PyTorch checkpoint 读取兼容问题及实际修复
+已实际尝试 weights_only=True，默认读取拒绝本次 checkpoint 的 HistoryBuffer/NumPy 元数据。
+该 checkpoint 是本实验本地训练生成的文件，路径和 SHA256 已限定到选定权重。
+脚本在局部 torch.serialization.safe_globals 上下文中只允许已知 MMEngine/NumPy 元数据类型，
+继续使用 weights_only=True；读取完成后确认永久 allowlist 未改变。
+有额外未识别元数据类型时停止，不自动改为 weights_only=False，不改变全局 torch.load。
+已在 CPU 实际验证读取与模型加载：348 项全部一致，0 缺失，0 形状不匹配。
+准备检查不运行检测模型前向，不执行 test，不创建优化器，不启动训练。
+官方依据：https://docs.pytorch.org/docs/2.7/notes/serialization.html#torch-load-with-weights-only-true
+
+用户在普通 Windows cmd 执行（测试推理和评价，无训练）
+cd /d "D:\小论文\model_projects\Faster R-CNN"
+call "D:\小论文\model_projects\Faster R-CNN\workspace\scripts\run_step08_test_val_baseline.cmd"
+
+预期输出
+STEP08_PREPARATION_PASS: selected_epoch=66 test_images=23 boxes=36
+SELECTED_CHECKPOINT_FULL_LOAD_PASS: matched=348 missing=0 unexpected=0
+TEST_IMAGE=1/23 ... returned=... visible_above_0.3=...
+... -> TEST_IMAGE=23/23 ...
+TEST_mAP50=... TEST_mAP50_95=... TEST_AR100=...
+RETURNED_PREDICTIONS=...
+VISIBLE_PREDICTIONS_ABOVE_0.3=...
+STEP08_TEST_EVAL_PASS
+STEP08_RECORDS_PASS; CSV, Excel and notes updated. Send output for result review.
+STEP08_EXIT_CODE=0
+这些 PASS 标记表示评价流程完成，实际模型效果由指标和预测图判断。
+
+自动输出
+结果根：D:\小论文\model_projects\Faster R-CNN\workspace\runs\FRCNN-R50FPN-VAL-001\step07_235_27043\test_selected_epoch66\step08_<随机编号>
+日志根：D:\小论文\model_projects\Faster R-CNN\workspace\logs\step08_<同一随机编号>
+终端打印完整 RESULT_DIR / LOG_DIR。
+结果包含：
+- pretest_record.json、code/、resolved_test_config.py：本次设置和输入文件副本/哈希。
+- selected_checkpoint_load_audit.json：348 个张量实际严格加载检查。
+- predicted_images/：原分辨率测试预测图，共23张，类别及置信度。
+- predictions.bbox.json：原生 COCO 格式预测结果。
+- predictions_details.json、predictions_details.jsonl：图片ID、原图坐标、类别、置信度及显示/返回数量。
+- native_coco_metrics.json、test_metrics.json、test_coco_eval.txt：原生与精确评价结果。
+- test_summary.json：选定权重、完整哈希、test 指标、耗时、显存、阈值、没有参与选 epoch 的声明。
+日志含 step08_console.txt、step08_manifest.json。
+测试完成后立即刷新统一 CSV、总 Excel、教师汇总和本实验说明，不等 MERGE130 完成。
+统一 CSV：D:\小论文\model_projects\baseline_analysis\10_all_experiments_metrics.csv
+总 Excel：D:\小论文\model_projects\baseline_analysis\outputs\模型实验结果总表.xlsx
+教师汇总：D:\小论文\model_projects\baseline_analysis\11_all_experiments_summary_for_teacher.md
+本实验说明：D:\小论文\model_projects\Faster R-CNN\workspace\notes\FRCNN-R50FPN-VAL-001.md
+保存 test_evidence_manifest.json（指标/预测/图片文件哈希）和实际运行命令。
+运行前关闭上述总 Excel，避免 Windows 文件占用导致登记写入失败。
+评价成功但登记失败时退出码为2，原始测试结果仍保存。发输出给我，不要重跑test。
+仅整理恢复命令与完整登记规则：D:\小论文\model_projects\Faster R-CNN\workspace\notes\EXPERIMENT_RECORDING_RULES.md
+成功测试报告已存在时脚本停止，避免不必要的重复测试；错误时保留部分预测和日志。
+不覆盖训练结果、旧测试结果或原始数据，不自动重试。
+
+用户反馈
+完成后发最后约40行，包含测试指标、RETURNED/VISIBLE、RESULT_DIR、LOG_DIR 和退出码。
+报错时发完整错误和 LOG_DIR，先不要重跑或改参数。
+收到后核查测试预测与指标，再推进合并130张的固定轮数训练。

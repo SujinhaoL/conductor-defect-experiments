@@ -1,0 +1,50 @@
+STEP16：补齐 Faster R-CNN 1280 anchor4 第15轮最终test
+准备日期：2026-10-14
+当前状态：用户已于2026-10-14完成test，运行step16_27428_3464；正常退出码0，原始结果、独立保存预测复算、可视化均已核查，CSV/Excel/总报告已登记。不要再次运行本阶段测试。
+精确test mAP50=0.019089244127215983、mAP50-95=0.004246304645777617、COCO AR100=0.08660714285714285（0到1底值）。2135个低阈值预测，27个score>0.30显示框；显示阈值诊断TP0/FP27不替代AP或普通P/R。
+验收：D:\小论文\model_projects\Faster R-CNN\workspace\audit\step16_review\acceptance.json。下文保留准备时说明，运行时冻结版本另存结果目录code；下一项为STEP17的1600默认anchor第12轮。
+准备检查已PASS：选定权重元数据epoch15、iter810、348项；环境/代码、冻结配置、23张test图与标注哈希一致。使用已有第15轮val预测复算，复现原生val AP50-95=0.012、AP50=0.055；这些是val结果，不是test成绩。
+证据：D:\小论文\model_projects\Faster R-CNN\workspace\audit\step16_preflight；助手无模型创建、无前向、无训练。
+
+目的：用户指定的五项固定权重补测中的第二项。评价已经按val选出的第15轮在原test23图/36框上的表现，完成一次评价、核查并登记后结束；不重新训练或按test改选epoch/阈值。
+第一项STEP15原模型已完成评价，末尾归档错误仅用保存预测恢复，原FAIL日志保留，无重跑推理。
+
+固定训练运行：D:\小论文\model_projects\Faster R-CNN\workspace\runs\FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001\step13_27622_23378
+固定权重：上述目录\best_coco_bbox_mAP_epoch_15.pth
+SHA256：080c27214809847dce4e2d1b5e760a3e8b868bdb0d0f2941e5e43f219ffb548a
+选择依据：原生val coco/bbox_mAP最大、同值首次；选定epoch15，不根据test重选。
+冻结训练配置：上述目录\resolved_scale1280_anchor4_val_001.py
+本次配置直接继承该冻结配置，模型结构、anchor和预测设置与选定val一致；只把评价集合改为原test。
+Resize=(2133,1280)、keep_ratio=True；anchor scales=[4]；FP32单图。
+预测过滤score_thr=0.001、ROI NMS IoU=0.5、max_per_img=100；COCO maxDets=[1,10,100]。
+画图仅显示score>0.30，AP使用保留的全部低阈值预测；画图无框不能当作无预测。
+test：23图36框，broken8、loose28，固定原划分。
+标注：D:\小论文\conductor_defect_dataset\03_coco_dataset\annotations\instances_test.json
+图片：D:\小论文\conductor_defect_dataset\03_coco_dataset\images\test
+类别：COCO1/2→内部0/1，对应broken/loose。test标注只进入评价器，不传给模型。
+专用解释器：D:\小论文\model_projects\Faster R-CNN\.venv\Scripts\python.exe
+
+配置：D:\小论文\model_projects\Faster R-CNN\workspace\configs\frcnn_r50fpn_anchor4_test.py
+程序：D:\小论文\model_projects\Faster R-CNN\workspace\scripts\step16_test_anchor4.py
+cmd：D:\小论文\model_projects\Faster R-CNN\workspace\scripts\run_step16_test_anchor4.cmd
+程序沿用已运行的STEP15评价实现，并修正最终sha(Path(...))归档错误。
+运行前检查选模记录/已验收哈希、专用环境/代码commit、23图哈希/标注、类别、管线与评价口径以及受限CPU权重元数据。
+助手只运行 --check-preparation 和已保存val预测复算，无模型构建或前向。
+
+用户cmd命令：
+cd /d "D:\小论文\model_projects\Faster R-CNN"
+call "D:\小论文\model_projects\Faster R-CNN\workspace\scripts\run_step16_test_anchor4.cmd"
+
+正常标志：STEP16_PREPARATION_PASS、SELECTED_CHECKPOINT_FULL_LOAD_PASS: matched=348、TEST_IMAGE=23/23、STEP16_TEST_EVAL_PASS、STEP16_EXIT_CODE=0。
+分数低或真实0如实登记，PASS只表示流程完成。
+用户反馈完整终端输出，尤其LOG_DIR、RESULT_DIR和退出码。报错先检查，不直接重复运行；已有test目录会阻止覆盖。
+
+原始结果：上述训练目录\test_selected_epoch15\step16_<唯一编号>
+日志：D:\小论文\model_projects\Faster R-CNN\workspace\logs\step16_<同一编号>
+保存test_summary.json、原生native_coco_metrics.json、精确test_metrics.json/test_coco_eval.txt、全部低阈值predictions.bbox.json及详细数组、23张predicted_images、配置/命令/版本/数据哈希、348项加载核查、证据manifest；不重复复制大型权重。可视化复用同一次模型预测。
+助手收到输出后先核查原始结果与保存预测复算/图片，再登记CSV、现有总Excel和总报告，更新单次说明与交接状态，然后准备第三项；不等待五项全部跑完。
+统一CSV：D:\小论文\model_projects\baseline_analysis\10_all_experiments_metrics.csv
+现有总Excel：D:\小论文\model_projects\baseline_analysis\outputs\模型实验结果总表.xlsx
+总报告：D:\小论文\model_projects\baseline_analysis\11_all_experiments_summary_for_teacher.md
+
+比较限制：val/test分开；原生舍入与精确保存预测复算分开；AR100不是普通Recall。该anchor对照是已约定的消融，不由本次test分数决定下一轮参数；旧test此前已被查看，不能称新盲测集。下一项仍是1600默认anchor第12轮，不改顺序。

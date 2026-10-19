@@ -1,0 +1,84 @@
+STEP02A：微软 C++ 编译工具安装准备（不训练）
+日期：2026-10-11，Asia/Shanghai
+
+STEP01 已验收
+用户报告：D:\小论文\model_projects\Faster R-CNN\workspace\logs\step01_2841_750
+已读取该目录 cuda_check.json 和 requirements_freeze.txt。
+Python 3.10.20、torch 2.7.1+cu128、torchvision 0.22.1+cu128、NumPy 1.26.4 正确。
+实际解释器为本项目 .venv\Scripts\python.exe；包路径也在本环境中。
+RTX 5070 Ti，compute capability 12.0，torch.get_arch_list() 包含 sm_120。
+CUDA 张量、矩阵乘法、卷积，以及 torchvision CUDA NMS、RoIAlign 全部通过。
+pip check 正常。Pillow 下载的一次超时已重试恢复，不是安装失败。
+STEP01_CUDA_PASS / STEP01_BASE_ENV_PASS / STEP01_EXIT_CODE=0。
+这些结果不替代 MMCV CUDA 算子的验收。
+
+本阶段范围
+仅准备安装 Microsoft Visual Studio Build Tools 2022 的 C++ 编译工具。
+CUDA Toolkit 和 MMCV 留到本阶段结果确认后，不同时推进。
+选择 MSVC v142 14.29，即 cl 19.29；匹配 torch 构建信息中的 MSVC 1929 系列，且 NVIDIA CUDA 12.8 支持 MSVC 192x。
+不更改 GPU 驱动，不向 YOLO/RT-DETR 环境安装包，不运行训练。
+Build Tools 是系统级开发工具；微软安装程序也可能安装其必需的共享组件。
+
+官方资料核实
+https://docs.nvidia.com/cuda/archive/12.8.1/cuda-installation-guide-microsoft-windows/index.html
+https://learn.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-build-tools?view=vs-2022
+https://learn.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio?view=vs-2022
+https://learn.microsoft.com/en-us/cpp/build/building-on-the-command-line?view=msvc-170
+微软表中的 v142 组件组 ID 是 Microsoft.VisualStudio.ComponentGroup.VC.Tools.142.x86.x64。
+使用当前文档确认的组件组 ID，不使用未经当前表确认的旧 ID。
+所需 Windows SDK ID：Microsoft.VisualStudio.Component.Windows10SDK.19041。
+cmd 命令 --wait 是 bootstrapper 参数；--passive 显示进度；--norestart 禁止自动重启。
+
+MMCV 预编译索引
+2026-10-11 直连 https://download.openmmlab.com/mmcv/dist/cu128/torch2.7.0/index.html 返回 HTTP 404。
+这证明该具体索引当前不可用，不断言互联网上不存在其他包。
+后续采用官方源码构建路线，源码 commit、构建日志和算子检查仍需记录。
+
+已下载并核验文件（未执行安装）
+D:\小论文\model_projects\Faster R-CNN\workspace\installers\vs_buildtools_2022.exe
+D:\小论文\model_projects\Faster R-CNN\workspace\installers\vs_buildtools_2022.manifest.json
+来源：https://aka.ms/vs/17/release/vs_buildtools.exe
+最终 URL：https://download.visualstudio.microsoft.com/download/pr/bc92e2cb-33de-4a0c-995d-efa817f16b16/985969f472caad75d993a5cb4c35a6a4271460cc12b343e2433b994d173aa990/vs_BuildTools.exe
+文件版本：17.14.37710.0；ProductVersion 字段为 Visual Studio 2022。
+文件大小：4,478,032 字节。
+SHA256：985969f472caad75d993a5cb4c35a6a4271460cc12b343e2433b994d173aa990
+Authenticode：Valid，Microsoft Corporation。
+PowerShell 仅用于 Get-AuthenticodeSignature/Get-Item 只读核验；安装和环境选择入口为 cmd。
+下载时 C 盘可用空间约 198.26 GiB。
+此 EXE 是网络引导程序；运行时还需要下载所选编译组件。
+
+本轮新增脚本
+D:\小论文\model_projects\Faster R-CNN\workspace\scripts\step02a_prepare_msvc.py
+D:\小论文\model_projects\Faster R-CNN\workspace\scripts\run_step02a_install_msvc.cmd
+D:\小论文\model_projects\Faster R-CNN\workspace\scripts\step02a_msvc_probe.cpp
+脚本计划预览与 Python 语法已验证。签名及保存的文件哈希复核通过。
+安装动作和 C++ 编译测试尚未执行，等待用户运行。
+
+安装目标
+C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools
+SDK 使用微软默认共享目录（Windows Kits）。
+安装组件：Microsoft.VisualStudio.Workload.VCTools 的必需组件、v142 14.29 组件组、Windows SDK 10.0.19041.0。
+不使用 includeRecommended，避免额外选入不需要的推荐组件。
+附带英文工具输出支持，便于 PyTorch 解析编译器输出。
+安装程序运行后记录实际版本，bootstrapper 版本不等于全部组件版本。
+
+用户命令：用管理员身份打开 Windows 命令提示符 cmd
+cd /d "D:\小论文\model_projects\Faster R-CNN"
+call "D:\小论文\model_projects\Faster R-CNN\workspace\scripts\run_step02a_install_msvc.cmd"
+安装程序显示进度但不需用户逐个勾选组件；不会自动重启。
+日志写入 workspace\logs\step02a_<编号>，终端显示 LOG_DIR。
+后续训练仍在普通 VS Code cmd 中运行。
+
+安装后自动验收
+vcvarsall x64 10.0.19041.0 -vcvars_ver=14.29 只作用于当前脚本环境。
+检查 VCToolsVersion=14.29...、WindowsSDKVersion=10.0.19041.0\。
+实际编译、链接并运行包含 Windows API 的小型 C++ 程序。
+静态断言 _MSC_VER=1929、64 位目标；验证不是只有 cl.exe 文件存在。
+成功输出 STEP02A_CPP_COMPILE_RUN_PASS、STEP02A_MSVC_PASS、STEP02A_EXIT_CODE=0。
+此验收不是训练，也不运行 Python 模型。
+
+若微软安装程序返回 3010
+脚本显示 STEP02A_REBOOT_REQUIRED，不强制重启。
+用户保存工作并重启 Windows 后执行同一命令加 --verify-only，仅验收、不重复安装。
+若其他失败，先保留完整输出和 LOG_DIR，不继续安装 CUDA Toolkit。
+用户回传结果后再进入下一步。

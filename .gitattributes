@@ -1,0 +1,2 @@
+# Preserve existing file bytes and recorded hashes; do not normalize LF/CRLF.
+* -text

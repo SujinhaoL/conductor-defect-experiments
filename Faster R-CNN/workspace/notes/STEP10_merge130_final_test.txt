@@ -1,0 +1,68 @@
+STEP10 / FRCNN-R50FPN-MERGE130-001 / fixed last epoch100 test
+Prepared2026-10-12. User runs test; agent checks/loads CPU only, no training or test inference.
+
+目的及固定规则
+MERGE130已按预先确定方案完成100epoch/6500更新，无独立val。
+只测试epoch_100.pth，不能按test比较epoch90/100，不调整模型、Resize、阈值、NMS或maxDet。
+测试原23图片/36框（broken8、loose28）。原val已合并训练，不能作为独立验证成绩。
+沿用STEP08已验证的官方MMDetection模型构建、inference_detector/model.test_step与CocoMetric流程。
+继承本次保存的resolved_merge130_001.py；模型配置与训练逐项一致。
+strict加载已训练两类checkpoint348个张量，应该0 missing/0 unexpected/0尺寸变化。
+本次不是重新加载COCO80类初始权重，不能再忽略类别输出层尺寸警告。
+受限weights_only读取仅在本地已核对哈希的checkpoint临时允许已知元数据类型，不改变永久allowlist。
+CPU准备检查无forward，不创建optimizer，不运行训练或test。
+
+输入与评价
+PIL读取中文路径RGB→连续BGR数组，官方Resize边界(1333,800)、keep_ratio=True，原归一化与补边。
+模型看到图片像素，不看到GT框。GT只由评价函数读取。
+seed42、deterministic=True、FP32、cudnn_benchmark=False；单GPU逐张test。
+AP预测过滤score_thr=0.001，ROI NMS0.5，max_per_img100，COCO maxDets1/10/100。
+显示框采用score>0.30，所有返回低分候选仍保存到JSON并用于AP。
+原生MMDetection指标三位小数保留，保存预测另行精确COCO复算，分别登记。
+记录总体mAP50/mAP50-95、每类AP50/AP50-95、COCO AR100；普通P/R未计算留空，AR100不能替代普通Recall。
+空预测按真实结果记录0；未定义的指标保持未定义，不伪造预测。
+
+完整路径
+配置：D:\小论文\model_projects\Faster R-CNN\workspace\configs\frcnn_r50fpn_merge130_test.py
+脚本：D:\小论文\model_projects\Faster R-CNN\workspace\scripts\step10_test_merge130.py
+入口：D:\小论文\model_projects\Faster R-CNN\workspace\scripts\run_step10_test_merge130.cmd
+独立Python：D:\小论文\model_projects\Faster R-CNN\.venv\Scripts\python.exe
+权重：D:\小论文\model_projects\Faster R-CNN\workspace\runs\FRCNN-R50FPN-MERGE130-001\step09_109_20338\epoch_100.pth
+SHA256：fccdc599d1e2bf2603b319d7f990f6e795dc8a24eef726e9a415723a409fd15a
+选择规则：D:\小论文\model_projects\Faster R-CNN\workspace\runs\FRCNN-R50FPN-MERGE130-001\step09_109_20338\selected_checkpoint.json
+训练核查：D:\小论文\model_projects\Faster R-CNN\workspace\audit\step09_review\acceptance.json
+原test标注：D:\小论文\conductor_defect_dataset\03_coco_dataset\annotations\instances_test.json
+原test图片：D:\小论文\conductor_defect_dataset\03_coco_dataset\images\test
+结果：D:\小论文\model_projects\Faster R-CNN\workspace\runs\FRCNN-R50FPN-MERGE130-001\step09_109_20338\test_selected_epoch100\step10_<随机运行编号>
+日志：D:\小论文\model_projects\Faster R-CNN\workspace\logs\step10_<同一编号>
+
+保存
+pretest_record.json（版本、命令、设置、输入/选择/数据哈希）、code/、resolved_test_config.py、selected_checkpoint_load_audit.json。
+23张原分辨率预测图predicted_images/；predictions.bbox.json、predictions_details.json/jsonl（原图坐标、类别、分数、返回/显示数量）。
+native_coco_metrics.json、test_metrics.json、test_coco_eval.txt、test_summary.json；test_evidence_manifest.json保存输出文件哈希。
+step10_console.txt和step10_manifest.json保存日志与状态，包括失败/中断。
+测试完成后自动更新统一CSV/总Excel/教师汇总/本实验说明，标注train130与无独立val，等待用户反馈后的结果核查。
+原生与精确复算分别记录；不改变选定epoch100。已有权重/大图直接引用，不为整理重复复制。
+测试已完成时禁止重复执行；不自动重试或resume。
+
+用户cmd命令（先关闭模型实验结果总表.xlsx）
+cd /d "D:\小论文\model_projects\Faster R-CNN"
+call "D:\小论文\model_projects\Faster R-CNN\workspace\scripts\run_step10_test_merge130.cmd"
+
+正常输出
+STEP10_PREPARATION_PASS: selected_epoch=100 test_images=23 boxes=36
+SELECTED_CHECKPOINT_FULL_LOAD_PASS: matched=348 missing=0 unexpected=0
+TEST_IMAGE=1/23 ... -> TEST_IMAGE=23/23 ...
+TEST_mAP50=... TEST_mAP50_95=... TEST_AR100=...
+RETURNED_PREDICTIONS=...
+VISIBLE_PREDICTIONS_ABOVE_0.3=...
+STEP10_TEST_EVAL_PASS
+STEP10_RECORDS_PASS
+STEP10_EXIT_CODE=0
+PASS表示流程完成，效果以实际指标和保存预测判断，不提前宣称性能改善。
+
+反馈
+用户发最后约40行，包括指标、返回/显示数量、RESULT_DIR、LOG_DIR和退出码。
+错误时发完整错误，先不要重跑或改参数。
+评价成功但登记失败时原始test已保存、退出码2；只需整理恢复，不能重跑test。
+收到后核查原始预测/指标/哈希与可视化，更新最终报告。不会为了补齐表格自行训练或推理。

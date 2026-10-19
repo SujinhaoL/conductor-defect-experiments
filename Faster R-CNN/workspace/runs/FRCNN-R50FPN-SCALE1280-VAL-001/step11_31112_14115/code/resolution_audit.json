@@ -1,0 +1,263 @@
+{
+  "status": "PASS",
+  "annotation_hashes": {
+    "train": "c2d34925a87a7720d822a8c816c0da467a2c0d7081a8c654c2fdb69673deb665",
+    "val": "5c524ebdcf7de3099ef34cab1825323db34a7729e5aac2199b4ab1aa0a6a8c01"
+  },
+  "source_dimensions": {
+    "train": {
+      "5472x3648": 32,
+      "5472x3078": 21,
+      "6000x4000": 7,
+      "4000x3000": 8,
+      "2683x1047": 1,
+      "2000x1500": 1,
+      "4240x2832": 1,
+      "4288x2848": 8,
+      "5760x3840": 12,
+      "5184x3456": 8,
+      "4608x2592": 4,
+      "4000x2250": 1,
+      "4608x3456": 1,
+      "5184x3888": 1,
+      "3840x2160": 1
+    },
+    "val": {
+      "5472x3078": 2,
+      "5184x3456": 4,
+      "5760x3840": 2,
+      "5472x3648": 8,
+      "4608x2592": 1,
+      "6000x4000": 3,
+      "4288x2848": 3
+    }
+  },
+  "scales": [
+    [
+      1333,
+      800
+    ],
+    [
+      2133,
+      1280
+    ],
+    [
+      2666,
+      1600
+    ]
+  ],
+  "statistics": {
+    "train_800": {
+      "all": {
+        "boxes": 168,
+        "median_short_edge": 12.50571945,
+        "p10_short_edge": 5.647345636,
+        "min_short_edge": 2.12535744,
+        "short_edge_lt_2": 0,
+        "short_edge_lt_4": 7,
+        "short_edge_lt_8": 44,
+        "short_edge_lt_16": 112
+      },
+      "broken": {
+        "boxes": 39,
+        "median_short_edge": 19.12411548,
+        "p10_short_edge": 9.220477599999999,
+        "min_short_edge": 6.3559322400000005,
+        "short_edge_lt_2": 0,
+        "short_edge_lt_4": 0,
+        "short_edge_lt_8": 2,
+        "short_edge_lt_16": 16
+      },
+      "loose": {
+        "boxes": 129,
+        "median_short_edge": 11.56359976,
+        "p10_short_edge": 5.122066653099999,
+        "min_short_edge": 2.12535744,
+        "short_edge_lt_2": 0,
+        "short_edge_lt_4": 7,
+        "short_edge_lt_8": 42,
+        "short_edge_lt_16": 96
+      }
+    },
+    "train_1280": {
+      "all": {
+        "boxes": 168,
+        "median_short_edge": 20.00915112,
+        "p10_short_edge": 9.0357530176,
+        "min_short_edge": 3.4005719039999995,
+        "short_edge_lt_2": 0,
+        "short_edge_lt_4": 2,
+        "short_edge_lt_8": 12,
+        "short_edge_lt_16": 61
+      },
+      "broken": {
+        "boxes": 39,
+        "median_short_edge": 30.598584768000006,
+        "p10_short_edge": 14.75276416,
+        "min_short_edge": 10.169491584000001,
+        "short_edge_lt_2": 0,
+        "short_edge_lt_4": 0,
+        "short_edge_lt_8": 0,
+        "short_edge_lt_16": 6
+      },
+      "loose": {
+        "boxes": 129,
+        "median_short_edge": 18.501759616,
+        "p10_short_edge": 8.1954578499,
+        "min_short_edge": 3.4005719039999995,
+        "short_edge_lt_2": 0,
+        "short_edge_lt_4": 2,
+        "short_edge_lt_8": 12,
+        "short_edge_lt_16": 55
+      }
+    },
+    "train_1600": {
+      "all": {
+        "boxes": 168,
+        "median_short_edge": 25.0114389,
+        "p10_short_edge": 11.294691272,
+        "min_short_edge": 4.25071488,
+        "short_edge_lt_2": 0,
+        "short_edge_lt_4": 0,
+        "short_edge_lt_8": 7,
+        "short_edge_lt_16": 44
+      },
+      "broken": {
+        "boxes": 39,
+        "median_short_edge": 38.24823096,
+        "p10_short_edge": 18.440955199999998,
+        "min_short_edge": 12.711864480000001,
+        "short_edge_lt_2": 0,
+        "short_edge_lt_4": 0,
+        "short_edge_lt_8": 0,
+        "short_edge_lt_16": 2
+      },
+      "loose": {
+        "boxes": 129,
+        "median_short_edge": 23.12719952,
+        "p10_short_edge": 10.244133306199998,
+        "min_short_edge": 4.25071488,
+        "short_edge_lt_2": 0,
+        "short_edge_lt_4": 0,
+        "short_edge_lt_8": 7,
+        "short_edge_lt_16": 42
+      }
+    },
+    "val_800": {
+      "all": {
+        "boxes": 37,
+        "median_short_edge": 13.738692299999999,
+        "p10_short_edge": 6.013970496,
+        "min_short_edge": 4.487658960000001,
+        "short_edge_lt_2": 0,
+        "short_edge_lt_4": 0,
+        "short_edge_lt_8": 8,
+        "short_edge_lt_16": 22
+      },
+      "broken": {
+        "boxes": 9,
+        "median_short_edge": 14.350143520000001,
+        "p10_short_edge": 9.877378208,
+        "min_short_edge": 5.4308472,
+        "short_edge_lt_2": 0,
+        "short_edge_lt_4": 0,
+        "short_edge_lt_8": 1,
+        "short_edge_lt_16": 5
+      },
+      "loose": {
+        "boxes": 28,
+        "median_short_edge": 12.90699634305,
+        "p10_short_edge": 6.022025112,
+        "min_short_edge": 4.487658960000001,
+        "short_edge_lt_2": 0,
+        "short_edge_lt_4": 0,
+        "short_edge_lt_8": 7,
+        "short_edge_lt_16": 17
+      }
+    },
+    "val_1280": {
+      "all": {
+        "boxes": 37,
+        "median_short_edge": 21.981907680000003,
+        "p10_short_edge": 9.622352793600001,
+        "min_short_edge": 7.180254336,
+        "short_edge_lt_2": 0,
+        "short_edge_lt_4": 0,
+        "short_edge_lt_8": 1,
+        "short_edge_lt_16": 10
+      },
+      "broken": {
+        "boxes": 9,
+        "median_short_edge": 22.960229632,
+        "p10_short_edge": 15.803805132799999,
+        "min_short_edge": 8.68935552,
+        "short_edge_lt_2": 0,
+        "short_edge_lt_4": 0,
+        "short_edge_lt_8": 0,
+        "short_edge_lt_16": 1
+      },
+      "loose": {
+        "boxes": 28,
+        "median_short_edge": 20.652158655050002,
+        "p10_short_edge": 9.6352401792,
+        "min_short_edge": 7.180254336,
+        "short_edge_lt_2": 0,
+        "short_edge_lt_4": 0,
+        "short_edge_lt_8": 1,
+        "short_edge_lt_16": 9
+      }
+    },
+    "val_1600": {
+      "all": {
+        "boxes": 37,
+        "median_short_edge": 27.477384599999997,
+        "p10_short_edge": 12.027940992,
+        "min_short_edge": 8.975317920000002,
+        "short_edge_lt_2": 0,
+        "short_edge_lt_4": 0,
+        "short_edge_lt_8": 0,
+        "short_edge_lt_16": 8
+      },
+      "broken": {
+        "boxes": 9,
+        "median_short_edge": 28.700287040000003,
+        "p10_short_edge": 19.754756416,
+        "min_short_edge": 10.8616944,
+        "short_edge_lt_2": 0,
+        "short_edge_lt_4": 0,
+        "short_edge_lt_8": 0,
+        "short_edge_lt_16": 1
+      },
+      "loose": {
+        "boxes": 28,
+        "median_short_edge": 25.8139926861,
+        "p10_short_edge": 12.044050224,
+        "min_short_edge": 8.975317920000002,
+        "short_edge_lt_2": 0,
+        "short_edge_lt_4": 0,
+        "short_edge_lt_8": 0,
+        "short_edge_lt_16": 7
+      }
+    }
+  },
+  "debug8_zero_positive_gt": {
+    "800": 8,
+    "1280": 4,
+    "1600": 4
+  },
+  "debug8_boxes": 15,
+  "selected_experiment_scale": [
+    2133,
+    1280
+  ],
+  "future_1600_is_diagnostic_size_only_not_an_authorized_training_batch": true,
+  "training_started": false,
+  "model_created": false,
+  "detector_forward_performed": false,
+  "test_images_or_scores_used": false,
+  "notes": [
+    "Anchor counts are for fixed train8 and fixed nonflipped pairs before sampling, not all train or ROI proposal recall.",
+    "GT short-edge thresholds 2/4/8/16 are descriptive; they are not universal detection success thresholds.",
+    "Scale statistics alone cannot establish the cause of low AP."
+  ]
+}

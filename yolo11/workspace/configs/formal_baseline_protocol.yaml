@@ -1,0 +1,45 @@
+# Single-run FormalBaseline; unspecified hyperparameters come from locked official defaults.
+protocol_version: 2
+parameter_source: Locked Ultralytics 8.4.152 defaults plus explicit user settings;
+  no DIAG template
+experiments:
+  Y11-BASE-001-R1: 42
+environment:
+  git_commit: 9aa41d679d121afb8b4cc512d7a162f4f36886c3
+  ultralytics: 8.4.152
+  python: 3.12.13
+  torch: 2.8.0+cu128
+  cuda: '12.8'
+  gpu: NVIDIA GeForce RTX 5070 Ti
+weights:
+  path: D:\小论文\model_projects\yolo11\workspace\weights\yolo11s.pt
+  sha256: 85a76fe86dd8afe384648546b56a7a78580c7cb7b404fc595f97969322d502d5
+evidence:
+  registry_schema_sha256: 6b4a408626a258757ba22c1872ca085394cd5fe3530ede31624462e3c4bf3cbb
+  snapshot_sha256: d6cd424d54dd63aa9c07e6fca96d1a59af8027fbdc9f352b325eb9320e8a52c4
+  data_yaml_sha256: 58d0484354a893ba4de25078e4dcaa5561163089fa7738733144bbbede23b48a
+  defaults_sha256: d547b6b72895261228b42d2a203abc4fc40e875fc807d57fed6ed27efc1843f3
+  central_data_yaml_sha256: 1e996a73b0e0b44ca978915c52ce3c21b40b9dacf34054a6682ee77fd04bf39e
+  failed_attempt_id: Y11-BASE-001
+  failed_attempt_run_directory: D:\小论文\model_projects\yolo11\workspace\runs\Y11-BASE-001_20260917_201125_320591
+  failed_attempt_args_path: D:\小论文\model_projects\yolo11\workspace\runs\Y11-BASE-001_20260917_201125_320591\args.yaml
+  failed_attempt_args_sha256: 971434b1a199a581dfe49afd1db67c6b8554c1f9acc740ec6cbd379a6cc17964
+training_overrides:
+  model: D:\小论文\model_projects\yolo11\workspace\weights\yolo11s.pt
+  data: D:\小论文\model_projects\yolo11\workspace\configs\conductor_bl_v1.yaml
+  epochs: 100
+  imgsz: 1280
+  batch: 4
+  workers: 0
+  device: '0'
+  seed: 42
+  deterministic: true
+  pretrained: true
+  cache: false
+  plots: true
+evaluation_overrides:
+  data: D:\小论文\model_projects\yolo11\workspace\configs\conductor_bl_v1.yaml
+  imgsz: 1280
+  device: '0'
+test_policy: Exactly one final test after 100 epochs, fixed best.pt and persisted
+  val metrics. No retry or selection from test.

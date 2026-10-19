@@ -1,0 +1,49 @@
+STEP18：补齐 YOLO11s 1600，第54轮best.pt最终test
+准备日期：2026-10-14
+状态：已准备并通过CPU环境、文件、数据和保存预测接口核查，尚未运行test；助手没有模型构建或前向。
+
+目的：用户指定五项已有权重补测的第四项。只评价已固定第54轮best.pt在原test23图36框上的表现，保存证据并验收登记后结束。前3项Faster补测已完成并登记，不重跑训练或验证，不按test改选epoch/参数。
+训练运行：D:\小论文\model_projects\yolo11\workspace\runs\Y11-SENS-IMGSZ1600-001
+权重：上述目录\weights\best.pt
+SHA256：2cc998a09da3eb36d717df79dfa28adf2a41cebb1121ecd43d984ff32ea4c92e
+第54轮依据原results.csv的val mAP50-95和已冻结清单核对；best.pt可能已由框架剥离优化器元数据，不能把其中epoch=-1解释为未训练。
+专用解释器：D:\小论文\model_projects\yolo11\.venv\Scripts\python.exe
+Python3.12.13，torch2.8.0+cu128，torchvision0.23.0+cu128，ultralytics8.4.152，numpy2.5.2，pillow12.3.0，pyyaml6.0.3。
+官方源码：D:\小论文\model_projects\yolo11\ultralytics_src
+commit：9aa41d679d121afb8b4cc512d7a162f4f36886c3；检查无tracked修改。原文件保持原样。
+
+数据：D:\小论文\conductor_defect_dataset\02_yolo11_dataset
+YAML：D:\小论文\model_projects\yolo11\workspace\configs\conductor_bl_v1.yaml
+test固定23图36框（broken断股8、loose松股28）；内部类别0=broken、1=loose。
+读取原YOLO图片/标签，核对既有COCO转换audit/source_inventory的原文件哈希及类别框数。COCO仅用作保存预测的ID映射，不改变本次原生评价，也不新建/重划数据集。
+图像尺寸1600，等比例缩放和LetterBox（补边），rect=True（矩形验证）；batch4、workers0。
+quantize=16（FP16半精度），与原1600训练结束时CUDA AMP验证器的实际精度一致；旧YOLO1280独立验证/测试使用官方默认FP32，须说明精度差异，不能宣称完全统一评价配置。
+预测过滤conf0.001，NMS IoU0.7，max_det300；不增强、不只保留一类、不更改阈值。
+保持save_json=False，避免当前8.4.152在自定义数据集开启JSON时自动调用COCO评价并替换原生AP。项目侧导出完整精度预测和原生匹配数组，不改预测或原生指标计算。
+原生Precision/Recall在IoU0.50、平滑平均F1最大处报告，本次保存该原生置信度阈值；不将这个test统计阈值用于之后训练或部署选择。
+画图只显示score>0.30，与AP过滤0.001和原生P/R统计阈值分开；无显示框不等于无预测。
+原始数据只读。复用已有readonly_dataset缓存适配，把标签缓存写到YOLO workspace/cache，不写原数据、不修改官方源码。
+
+配置：D:\小论文\model_projects\yolo11\workspace\configs\step18_yolo1600_test.yaml
+程序：D:\小论文\model_projects\yolo11\workspace\scripts\step18_test_yolo1600.py
+预测保存适配：D:\小论文\model_projects\yolo11\workspace\scripts\step18_yolo1600_evidence.py
+cmd：D:\小论文\model_projects\yolo11\workspace\scripts\run_step18_test_yolo1600.cmd
+CPU核查：workspace/audit/step18_preflight/preparation_check.json、export_api_check.json；合成坐标/指标接口检查没有使用模型或test预测。
+
+用户cmd命令：
+cd /d "D:\小论文\model_projects\yolo11"
+call "D:\小论文\model_projects\yolo11\workspace\scripts\run_step18_test_yolo1600.cmd"
+
+正常标志：STEP18_PREPARATION_PASS、SELECTED_CHECKPOINT_NATIVE_LOAD_PASS、TEST_IMAGE=23/23、STEP18_TEST_EVAL_PASS、STEP18_EXIT_CODE=0。
+结果：原训练目录\test_selected_epoch54\step18_<唯一编号>
+日志：D:\小论文\model_projects\yolo11\workspace\logs\step18_<同一编号>
+框架内部exist_ok=True用于写入预先原子预留的全新唯一目录；脚本对已有test目录会停止，不覆盖、重新编号重测或自动改设置。
+保存test_summary/native_metrics、完整低阈值COCO格式预测（仅导出格式）、详细坐标/类别/分数、23张可视化、native_match_stats.npz原生匹配统计、P/R阈值、实际运行参数、配置/环境/数据/权重哈希和完整日志；不重复复制大权重。画图复用同次预测。
+如OOM或异常，保留目录和日志并停止，不自动重试、更改batch/精度或尺寸。
+反馈完整终端输出，保留LOG_DIR、RESULT_DIR和退出码。助手收到后先核查保存文件和原生统计复算，再扩展登记读取器、更新详细总表/CSV/总报告及教师简表，完成后进入RT-DETR-L1600第42轮。
+
+给老师主文件：D:\小论文\model_projects\baseline_analysis\outputs\模型实验简表_教师讨论版.xlsx
+说明报告：D:\小论文\model_projects\baseline_analysis\11_all_experiments_summary_for_teacher.md
+详细证据：D:\小论文\model_projects\baseline_analysis\outputs\模型实验结果总表.xlsx
+数字依据：D:\小论文\model_projects\baseline_analysis\10_all_experiments_metrics.csv
+val/test分开；未完成值留空，真实0才填0；单种子、小样本、输入/后处理/评价/精度不同及旧test已被查看的限制保留。此次定案模型补测不用于进一步挑参数。

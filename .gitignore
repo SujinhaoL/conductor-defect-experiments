@@ -1,0 +1,274 @@
+# Root allowlist: code, documentation and explicitly retained small evidence.
+# Images, weights, environments and full run outputs stay local.
+/*
+!/.gitattributes
+!/.gitignore
+!/AGENTS.md
+!/baseline_analysis/
+/baseline_analysis/*
+!/baseline_analysis/01_baseline_comparison_report.md
+!/baseline_analysis/02_baseline_metrics_comparison.csv
+!/baseline_analysis/03_bbox_size_summary.md
+!/baseline_analysis/07_environment_summary.md
+!/baseline_analysis/08_teacher_package_file_list.md
+!/baseline_analysis/09_four_experiments_summary_for_teacher.md
+!/baseline_analysis/10_all_experiments_metrics.csv
+!/baseline_analysis/11_all_experiments_summary_for_teacher.md
+!/baseline_analysis/audit/
+/baseline_analysis/audit/*
+!/baseline_analysis/audit/registration_acceptance.json
+!/baseline_analysis/audit/run_status_index.json
+!/baseline_analysis/audit/test_completion_review_20261014/
+/baseline_analysis/audit/test_completion_review_20261014/*
+!/baseline_analysis/audit/test_completion_review_20261014/fixed_test_queue.json
+!/baseline_analysis/audit/test_completion_review_20261014/test_completion_progress.json
+!/baseline_analysis/audit/test_usage_review_20261017/
+/baseline_analysis/audit/test_usage_review_20261017/*
+!/baseline_analysis/audit/test_usage_review_20261017/verified_status.json
+!/baseline_analysis/scripts/
+!/docs/
+!/Faster R-CNN/
+/Faster R-CNN/*
+!/Faster R-CNN/workspace/
+/Faster R-CNN/workspace/*
+!/Faster R-CNN/workspace/audit/
+/Faster R-CNN/workspace/audit/*
+!/Faster R-CNN/workspace/audit/FRCNN-DIAG-SAVED1280-001/
+/Faster R-CNN/workspace/audit/FRCNN-DIAG-SAVED1280-001/*
+!/Faster R-CNN/workspace/audit/FRCNN-DIAG-SAVED1280-001/diag01_20261019_010031_868401/
+/Faster R-CNN/workspace/audit/FRCNN-DIAG-SAVED1280-001/diag01_20261019_010031_868401/*
+!/Faster R-CNN/workspace/audit/FRCNN-DIAG-SAVED1280-001/diag01_20261019_010031_868401/manifest.json
+!/Faster R-CNN/workspace/audit/FRCNN-DIAG-SAVED1280-001/diag01_20261019_010031_868401/review/
+/Faster R-CNN/workspace/audit/FRCNN-DIAG-SAVED1280-001/diag01_20261019_010031_868401/review/*
+!/Faster R-CNN/workspace/audit/FRCNN-DIAG-SAVED1280-001/diag01_20261019_010031_868401/review/acceptance.json
+!/Faster R-CNN/workspace/audit/FRCNN-DIAG-SAVED1280-001/diag01_20261019_010031_868401/review/user_acceptance_20261019.json
+!/Faster R-CNN/workspace/audit/FRCNN-DIAG-SAVED1280-001/diag01_20261019_010031_868401/review/visual_review.md
+!/Faster R-CNN/workspace/audit/FRCNN-DIAG-SAVED1280-001/diag01_20261019_010031_868401/summary.json
+!/Faster R-CNN/workspace/configs/
+!/Faster R-CNN/workspace/notes/
+!/Faster R-CNN/workspace/runs/
+/Faster R-CNN/workspace/runs/*
+!/Faster R-CNN/workspace/runs/FRCNN-DEBUG-OVERFIT-8/
+/Faster R-CNN/workspace/runs/FRCNN-DEBUG-OVERFIT-8/*
+!/Faster R-CNN/workspace/runs/FRCNN-DEBUG-OVERFIT-8/step06_24506_3904/
+/Faster R-CNN/workspace/runs/FRCNN-DEBUG-OVERFIT-8/step06_24506_3904/*
+!/Faster R-CNN/workspace/runs/FRCNN-DEBUG-OVERFIT-8/step06_24506_3904/code/
+/Faster R-CNN/workspace/runs/FRCNN-DEBUG-OVERFIT-8/step06_24506_3904/code/*
+!/Faster R-CNN/workspace/runs/FRCNN-DEBUG-OVERFIT-8/step06_24506_3904/code/frcnn_debug_hooks.py
+!/Faster R-CNN/workspace/runs/FRCNN-DEBUG-OVERFIT-8/step06_24506_3904/code/frcnn_debug_overfit8.py
+!/Faster R-CNN/workspace/runs/FRCNN-DEBUG-OVERFIT-8/step06_24506_3904/code/frcnn_debug8_pipeline_check.py
+!/Faster R-CNN/workspace/runs/FRCNN-DEBUG-OVERFIT-8/step06_24506_3904/code/frcnn_debug8_selection.json
+!/Faster R-CNN/workspace/runs/FRCNN-DEBUG-OVERFIT-8/step06_24506_3904/code/instances_debug8.json
+!/Faster R-CNN/workspace/runs/FRCNN-DEBUG-OVERFIT-8/step06_24506_3904/code/run_step06_train_debug8.cmd
+!/Faster R-CNN/workspace/runs/FRCNN-DEBUG-OVERFIT-8/step06_24506_3904/code/step06_run_debug8.py
+!/Faster R-CNN/workspace/runs/FRCNN-DEBUG-OVERFIT-8/step06_24506_3904/pretraining_record.json
+!/Faster R-CNN/workspace/runs/FRCNN-DEBUG-OVERFIT-8/step06_24506_3904/requirements_freeze.txt
+!/Faster R-CNN/workspace/runs/FRCNN-DEBUG-OVERFIT-8/step06_24506_3904/resolved_debug8.py
+!/Faster R-CNN/workspace/runs/FRCNN-DIAG-RPNROI-TRAIN8/
+/Faster R-CNN/workspace/runs/FRCNN-DIAG-RPNROI-TRAIN8/*
+!/Faster R-CNN/workspace/runs/FRCNN-DIAG-RPNROI-TRAIN8/step12_24867_6686/
+/Faster R-CNN/workspace/runs/FRCNN-DIAG-RPNROI-TRAIN8/step12_24867_6686/*
+!/Faster R-CNN/workspace/runs/FRCNN-DIAG-RPNROI-TRAIN8/step12_24867_6686/code/
+/Faster R-CNN/workspace/runs/FRCNN-DIAG-RPNROI-TRAIN8/step12_24867_6686/code/*
+!/Faster R-CNN/workspace/runs/FRCNN-DIAG-RPNROI-TRAIN8/step12_24867_6686/code/instances_debug8.json
+!/Faster R-CNN/workspace/runs/FRCNN-DIAG-RPNROI-TRAIN8/step12_24867_6686/code/run_step12_diagnose_rpn_roi.cmd
+!/Faster R-CNN/workspace/runs/FRCNN-DIAG-RPNROI-TRAIN8/step12_24867_6686/code/step12_diagnose_rpn_roi.py
+!/Faster R-CNN/workspace/runs/FRCNN-DIAG-RPNROI-TRAIN8/step12_24867_6686/code/STEP12_rpn_roi_diagnostic_plan.md
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-MERGE130-001/
+/Faster R-CNN/workspace/runs/FRCNN-R50FPN-MERGE130-001/*
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-MERGE130-001/step09_109_20338/
+/Faster R-CNN/workspace/runs/FRCNN-R50FPN-MERGE130-001/step09_109_20338/*
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-MERGE130-001/step09_109_20338/code/
+/Faster R-CNN/workspace/runs/FRCNN-R50FPN-MERGE130-001/step09_109_20338/code/*
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-MERGE130-001/step09_109_20338/code/build_experiment_workbook.mjs
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-MERGE130-001/step09_109_20338/code/EXPERIMENT_RECORDING_RULES.md
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-MERGE130-001/step09_109_20338/code/frcnn_debug_hooks.py
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-MERGE130-001/step09_109_20338/code/frcnn_merge130_hooks.py
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-MERGE130-001/step09_109_20338/code/frcnn_r50fpn_merge130_001.py
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-MERGE130-001/step09_109_20338/code/instances_debug8.json
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-MERGE130-001/step09_109_20338/code/instances_trainval.json
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-MERGE130-001/step09_109_20338/code/pretraining_record.json
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-MERGE130-001/step09_109_20338/code/refresh_experiment_records.py
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-MERGE130-001/step09_109_20338/code/resolved_val_001.py
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-MERGE130-001/step09_109_20338/code/run_step09_train_merge130.cmd
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-MERGE130-001/step09_109_20338/code/STEP09_merge130_training.txt
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-MERGE130-001/step09_109_20338/code/step09_run_merge130.py
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-MERGE130-001/step09_109_20338/pretraining_record.json
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-MERGE130-001/step09_109_20338/requirements_freeze.txt
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-MERGE130-001/step09_109_20338/resolved_merge130_001.py
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-MERGE130-001/step09_109_20338/selected_checkpoint.json
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/
+/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/*
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/step13_27622_23378/
+/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/step13_27622_23378/*
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/step13_27622_23378/code/
+/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/step13_27622_23378/code/*
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/step13_27622_23378/code/acceptance.json
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/step13_27622_23378/code/AGENTS.md
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/step13_27622_23378/code/anchor_geometry.json
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/step13_27622_23378/code/frcnn_debug_hooks.py
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/step13_27622_23378/code/frcnn_debug8_selection.json
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/step13_27622_23378/code/frcnn_formal_hooks.py
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/step13_27622_23378/code/frcnn_r50fpn_scale1280_anchor4_val_001.py
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/step13_27622_23378/code/instances_debug8.json
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/step13_27622_23378/code/instances_train.json
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/step13_27622_23378/code/instances_val.json
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/step13_27622_23378/code/run_step13_train_anchor4.cmd
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/step13_27622_23378/code/step13_anchor_geometry_audit.py
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/step13_27622_23378/code/STEP13_anchor4_plan.md
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/step13_27622_23378/code/step13_run_anchor4.py
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/step13_27622_23378/pretraining_record.json
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/step13_27622_23378/requirements_freeze.txt
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/step13_27622_23378/resolved_scale1280_anchor4_val_001.py
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/step13_27622_23378/selected_checkpoint.json
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/
+/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/*
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/
+/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/*
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/code/
+/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/code/*
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/code/AGENTS.md
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/code/frcnn_debug_hooks.py
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/code/frcnn_debug8_selection.json
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/code/frcnn_formal_hooks.py
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/code/frcnn_r50fpn_scale1280_val_001.py
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/code/instances_debug8.json
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/code/instances_train.json
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/code/instances_val.json
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/code/resolution_audit.json
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/code/run_step11_train_scale1280.cmd
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/code/STEP11_resolution1280_plan.md
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/code/step11_run_scale1280.py
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/pretraining_record.json
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/requirements_freeze.txt
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/resolved_scale1280_val_001.py
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/selected_checkpoint.json
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/
+/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/*
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/step14_3575_9657/
+/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/step14_3575_9657/*
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/step14_3575_9657/code/
+/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/step14_3575_9657/code/*
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/step14_3575_9657/code/AGENTS.md
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/step14_3575_9657/code/frcnn_debug_hooks.py
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/step14_3575_9657/code/frcnn_debug8_selection.json
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/step14_3575_9657/code/frcnn_formal_hooks.py
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/step14_3575_9657/code/frcnn_r50fpn_scale1600_val_001.py
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/step14_3575_9657/code/instances_debug8.json
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/step14_3575_9657/code/instances_train.json
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/step14_3575_9657/code/instances_val.json
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/step14_3575_9657/code/resolution_audit.json
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/step14_3575_9657/code/resolved_scale1280_val_001.py
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/step14_3575_9657/code/run_step14_train_scale1600.cmd
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/step14_3575_9657/code/step14_resolution_audit.py
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/step14_3575_9657/code/STEP14_resolution1600_plan.md
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/step14_3575_9657/code/step14_run_scale1600.py
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/step14_3575_9657/pretraining_record.json
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/step14_3575_9657/requirements_freeze.txt
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/step14_3575_9657/resolved_scale1600_val_001.py
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/step14_3575_9657/selected_checkpoint.json
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-VAL-001/
+/Faster R-CNN/workspace/runs/FRCNN-R50FPN-VAL-001/*
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-VAL-001/step07_235_27043/
+/Faster R-CNN/workspace/runs/FRCNN-R50FPN-VAL-001/step07_235_27043/*
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-VAL-001/step07_235_27043/code/
+/Faster R-CNN/workspace/runs/FRCNN-R50FPN-VAL-001/step07_235_27043/code/*
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-VAL-001/step07_235_27043/code/frcnn_debug_hooks.py
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-VAL-001/step07_235_27043/code/frcnn_debug8_selection.json
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-VAL-001/step07_235_27043/code/frcnn_formal_hooks.py
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-VAL-001/step07_235_27043/code/frcnn_r50fpn_val_001.py
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-VAL-001/step07_235_27043/code/instances_debug8.json
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-VAL-001/step07_235_27043/code/instances_train.json
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-VAL-001/step07_235_27043/code/instances_val.json
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-VAL-001/step07_235_27043/code/run_step07_train_val_baseline.cmd
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-VAL-001/step07_235_27043/code/STEP07_formal_val_baseline.txt
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-VAL-001/step07_235_27043/code/step07_run_val_baseline.py
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-VAL-001/step07_235_27043/pretraining_record.json
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-VAL-001/step07_235_27043/requirements_freeze.txt
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-VAL-001/step07_235_27043/resolved_val_001.py
+!/Faster R-CNN/workspace/runs/FRCNN-R50FPN-VAL-001/step07_235_27043/selected_checkpoint.json
+!/Faster R-CNN/workspace/scripts/
+!/provenance/
+!/README.md
+!/RT-DETR/
+/RT-DETR/*
+!/RT-DETR/workspace/
+/RT-DETR/workspace/*
+!/RT-DETR/workspace/configs/
+!/RT-DETR/workspace/notes/
+!/RT-DETR/workspace/runs/
+/RT-DETR/workspace/runs/*
+!/RT-DETR/workspace/runs/RTD-BASE-001-R1_20260918_172120/
+/RT-DETR/workspace/runs/RTD-BASE-001-R1_20260918_172120/*
+!/RT-DETR/workspace/runs/RTD-BASE-001-R1_20260918_172120/args.yaml
+!/RT-DETR/workspace/runs/RTD-BASE-001-R1_20260918_172120/formal_test_metrics.json
+!/RT-DETR/workspace/runs/RTD-BASE-001-R1_20260918_172120/formal_val_metrics.json
+!/RT-DETR/workspace/runs/RTD-BASE-001-R1_20260918_172120/results.csv
+!/RT-DETR/workspace/runs/RTD-SENS-IMGSZ1600-001/
+/RT-DETR/workspace/runs/RTD-SENS-IMGSZ1600-001/*
+!/RT-DETR/workspace/runs/RTD-SENS-IMGSZ1600-001/args.yaml
+!/RT-DETR/workspace/runs/RTD-SENS-IMGSZ1600-001/results.csv
+!/RT-DETR/workspace/scripts/
+!/yolo11/
+/yolo11/*
+!/yolo11/workspace/
+/yolo11/workspace/*
+!/yolo11/workspace/configs/
+!/yolo11/workspace/notes/
+!/yolo11/workspace/runs/
+/yolo11/workspace/runs/*
+!/yolo11/workspace/runs/Y11-BASE-001-R1_20260917_203044_883451/
+/yolo11/workspace/runs/Y11-BASE-001-R1_20260917_203044_883451/*
+!/yolo11/workspace/runs/Y11-BASE-001-R1_20260917_203044_883451/args.yaml
+!/yolo11/workspace/runs/Y11-BASE-001-R1_20260917_203044_883451/explicit_training_overrides.yaml
+!/yolo11/workspace/runs/Y11-BASE-001-R1_20260917_203044_883451/resolved_protocol_diff.txt
+!/yolo11/workspace/runs/Y11-BASE-001-R1_20260917_203044_883451/results.csv
+!/yolo11/workspace/runs/Y11-SENS-IMGSZ1600-001/
+/yolo11/workspace/runs/Y11-SENS-IMGSZ1600-001/*
+!/yolo11/workspace/runs/Y11-SENS-IMGSZ1600-001/args.yaml
+!/yolo11/workspace/runs/Y11-SENS-IMGSZ1600-001/results.csv
+!/yolo11/workspace/scripts/
+
+# Global exclusions apply even within allowed source folders.
+**/__pycache__/
+**/.venv/
+**/node_modules/
+**/.pytest_cache/
+**/.ipynb_checkpoints/
+**/.env
+**/.env.*
+*.pyc
+*.pyo
+*.pth
+*.pt
+*.ckpt
+*.onnx
+*.pkl
+*.pickle
+*.npy
+*.npz
+*.safetensors
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.webp
+*.bmp
+*.tif
+*.tiff
+*.mp4
+*.pdf
+*.xlsx
+*.xls
+*.exe
+*.dll
+*.whl
+*.zip
+*.7z
+*.pem
+*.key
+
+# Tool-generated runtime settings and downloaded fonts are not experiment config.
+/yolo11/workspace/configs/ultralytics_settings/
+*.ttf
+*.otf

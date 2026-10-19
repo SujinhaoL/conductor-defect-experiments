@@ -1,0 +1,41 @@
+{
+  "recorded": "2026-10-19",
+  "scope": "Source inventory and existing evidence pointers; not a fresh runtime validation or full backup.",
+  "repository": "https://github.com/SujinhaoL/conductor-defect-experiments",
+  "official_sources": [
+    {
+      "path": "Faster R-CNN/mmdetection",
+      "url": "https://github.com/open-mmlab/mmdetection.git",
+      "commit": "44ebd17b145c2372c4b700bfb9cb20dbd28ab64a",
+      "tracked_tree_clean": true
+    },
+    {
+      "path": "yolo11/ultralytics_src",
+      "url": "https://github.com/ultralytics/ultralytics.git",
+      "commit": "9aa41d679d121afb8b4cc512d7a162f4f36886c3",
+      "tracked_tree_clean": true
+    }
+  ],
+  "faster_python": "D:/小论文/model_projects/Faster R-CNN/.venv/Scripts/python.exe",
+  "faster_environment_record": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/requirements_freeze.txt",
+  "official_coco_checkpoint_record": {
+    "path": "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\weights\\faster_rcnn_r50_fpn_1x_coco_20200130-047c8118.pth",
+    "url": "https://download.openmmlab.com/mmdetection/v2.0/faster_rcnn/faster_rcnn_r50_fpn_1x_coco/faster_rcnn_r50_fpn_1x_coco_20200130-047c8118.pth",
+    "sha256": "047c8118fc5ca88ba5ae1fab72f2cd6b070501fe3af2f3cba5cfa9a89b44b03e",
+    "size_bytes": 167287506,
+    "published_filename_sha256_prefix_match": true
+  },
+  "checkpoint_hash_source": "Faster R-CNN/workspace/configs/step03_preparation.json",
+  "checkpoint_not_rehashed_this_stage": true,
+  "data": {
+    "yolo_root": "D:/小论文/conductor_defect_dataset/02_yolo11_dataset",
+    "coco_root": "D:/小论文/conductor_defect_dataset/03_coco_dataset",
+    "split_counts": {
+      "train": 107,
+      "val": 23,
+      "test": 23
+    },
+    "conversion_record": "Faster R-CNN/workspace/configs/step04_conversion_plan.json"
+  },
+  "restore_note": "Data, weights, environments, official source clones and complete run outputs remain local. Historical absolute paths are not portable. Do not automatically rerun installation/training."
+}

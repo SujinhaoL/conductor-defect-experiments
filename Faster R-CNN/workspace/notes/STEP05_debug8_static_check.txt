@@ -1,0 +1,96 @@
+STEP05：FRCNN-DEBUG-OVERFIT-8 的训练前静态检查
+准备日期：2026-10-12
+
+STEP04已验收
+  用户日志：D:\小论文\model_projects\Faster R-CNN\workspace\logs\step04_4515_25417
+  已读取实际conversion_report.json、四份JSON并重新核对153个图片副本SHA256。
+  四份JSON文件哈希与转换报告一致，train/val/test图片ID和标注ID互不交叉。
+  trainval的images和annotations恰好等于原train与val合并，未包含test。
+  MMDetection回读坐标误差0；未删除、裁剪或修复框；已生成153张画框核查图。
+  已查看train总览及cond_000013、cond_000108、cond_000143原始尺寸标注图，
+  这些抽查图片的标注位置与画面中的缺陷位置对应，未发现坐标转换错位。
+  独立验收记录：D:\小论文\model_projects\Faster R-CNN\workspace\audit\step04_independent_acceptance.json
+
+固定8张图片，仅来自原train
+  cond_000006.jpg：broken1
+  cond_000008.jpg：broken1，loose1
+  cond_000013.jpg：broken1
+  cond_000016.jpg：broken1，loose1
+  cond_000019.jpg：broken1
+  cond_000087.jpg：loose3
+  cond_000108.jpg：loose3
+  cond_000143.jpg：loose2
+  合计8张，15框，其中broken5、loose10。
+  固定种子42，按2张双类、3张broken-only、3张loose-only抽取，已有split_group_id不重复。
+  这只是诊断子集，原107/23/23划分及原四份JSON都保持不变。
+  不用这个子集的结果报告泛化性能，也不从val或test选择诊断样本。
+
+本阶段配置及脚本
+  D:\小论文\model_projects\Faster R-CNN\workspace\configs\frcnn_debug8_selection.json
+  D:\小论文\model_projects\Faster R-CNN\workspace\configs\frcnn_debug8_pipeline_check.py
+  D:\小论文\model_projects\Faster R-CNN\workspace\scripts\run_step05_check_debug8.cmd
+  D:\小论文\model_projects\Faster R-CNN\workspace\scripts\step05_check_debug8.py
+  准备脚本step05_prepare_debug8.py与step05_validate_preparation.py也保存在同一scripts目录。
+  继承官方Faster R-CNN R50-FPN，仅改两类、数据源和诊断管线。
+  train_cfg=None：该静态检查配置不启动训练；后续训练配置再继承并明确训练参数。
+
+用户在普通cmd执行
+  cd /d "D:\小论文\model_projects\Faster R-CNN"
+  call "D:\小论文\model_projects\Faster R-CNN\workspace\scripts\run_step05_check_debug8.cmd"
+  使用本实验.venv；不安装新依赖，不调用训练、损失或反向传播，不创建优化器。
+
+本命令实际做什么
+  1. 检查固定样本、原四份COCO JSON及官方checkpoint哈希。
+  2. 生成D:\小论文\conductor_defect_dataset\03_coco_dataset\annotations\instances_debug8.json。
+     直接引用images/train，不复制图片；保留原图片ID、标注ID。已有内容相同则复用，不同则停止。
+  3. 用真实CocoDataset和训练输入管线读取8张图：
+     LoadImageFromFile -> LoadAnnotations -> Resize -> PackDetInputs。
+     scale=(1333,800)、keep_ratio=True，无随机翻转、裁剪、多尺度或其他随机图像增强。
+     每张读取两次，检查像素和框完全一致；逐框检查缩放误差小于0.001像素。
+  4. 在CPU上使用官方DetDataPreprocessor，按固定顺序每批2张，workers=0。
+     BGR转RGB，mean=[123.675,116.28,103.53]、std=[58.395,57.12,57.375]。
+     右侧/底部补边，使批张量的宽高为32的倍数。补边不平移、缩放或裁剪框。
+     归一化像素再反变换与处理前像素比较，误差阈值0.0001。
+     画框图展示反归一化后的可见RGB图；黄色外框标出Resize后有效图像边界。
+     normalized pad_value=0，反归一化后显示为mean对应的灰褐色，不表示原图被改色。
+  5. 创建两类模型并初始化，然后加载同一官方COCO checkpoint，逐张量核对；
+     不运行检测器前向推理，不计算loss，不更新任何参数，不保存训练checkpoint。
+
+80类改两类的4项预期尺寸变化
+  roi_head.bbox_head.fc_cls.weight： [81,1024] -> [3,1024]
+  roi_head.bbox_head.fc_cls.bias：   [81] -> [3]
+  roi_head.bbox_head.fc_reg.weight： [320,1024] -> [8,1024]
+  roi_head.bbox_head.fc_reg.bias：   [320] -> [8]
+  分类输出3项表示broken、loose和内部背景；配置num_classes始终为2。
+  框回归8项为2个目标类别×4个框坐标。
+  以上4项保留两类输出层的新初始化，不能把COCO类别输出直接当导线类别使用。
+  其余344项全部应与官方checkpoint一致：backbone318、FPN16、RPN6、ROI共享层4。
+  加载器会打印四条size mismatch，这是本阶段预期情况；不是所有不匹配都可忽略。
+  脚本要求不匹配集合恰好等于上述4项，否则停止；也检查344项实际加载后的数值。
+  官方源码与checkpoint不修改，不关闭安全的weights_only读取，不下载ImageNet骨干权重。
+
+准备时已实际验证（不是训练）
+  选择清单和配置检查通过；两张图片的实际CPU Resize/归一化/补边验证通过。
+  实际两类模型加载核对通过：344项一致，仅上述4项尺寸变化，新输出未被旧输出覆盖。
+  结果目录：D:\小论文\model_projects\Faster R-CNN\workspace\audit\step05_preflight
+  用户命令仍需完成8张图的全部可视化和正式检查报告。
+
+用户命令输出
+  日志：D:\小论文\model_projects\Faster R-CNN\workspace\logs\step05_<随机数>_<随机数>
+  核查图及报告：D:\小论文\conductor_defect_dataset\03_coco_dataset\audit\debug8\step05_<随机数>_<随机数>
+  终端会显示精确LOG_DIR和AUDIT_DIR。
+  audit目录包含original/、resized/、padded/各8张画框图，pipeline_contact_sheet.jpg，
+  pipeline_report.json、selection.json、two_class_checkpoint_audit.json、
+  model_initialization_and_load.log、step05_summary.json。
+  日志目录包含step05_console.txt、resolved_pipeline_config.py和step05_summary.json。
+
+通过标志
+  DEBUG8_SUBSET_PASS: images=8 broken=5 loose=10 boxes=15
+  DEBUG8_RESIZE_BOXES_PASS
+  DEBUG8_NORMALIZE_AND_PADDING_PASS
+  TWO_CLASS_OFFICIAL_CHECKPOINT_LOAD_PASS: matched=344 expected_new_output_tensors=4
+  STEP05_DEBUG8_STATIC_PASS
+  STEP05_EXIT_CODE=0
+
+用户反馈最后约40行及LOG_DIR、AUDIT_DIR；失败时反馈完整报错。
+收到后核对8张变换图与报告，再准备由用户运行的小样本过拟合训练命令。

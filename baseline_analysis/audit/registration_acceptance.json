@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "updated_utc": "2026-10-14T11:11:37.558343+00:00",
+  "evaluation_rows": 26,
+  "unique_evaluation_ids": 26,
+  "verified_exported_cells": 1448,
+  "csv_sha256": "ff192ba870910b83a455a9d648f384144f2a9af6bcf2cf00896846b4e9f4f657",
+  "excel_sha256": "c6500c62ab1bf6fb2b3e846bd3c1b23a0afef95b27894c3bf847d0955a31f7a7",
+  "report_sha256": "763d1c18127e5fd9080b366270b7505f2687cfab31668425f9521669257a7d81",
+  "ratios_stored_0_to_1": true,
+  "percent_display_checked": true,
+  "blanks_not_replaced_by_zero": true,
+  "historical_sources_preserved": true,
+  "training_started": false,
+  "model_inference_performed": false,
+  "pending": [
+    "YOLO11s1600 epoch54 and RT-DETR-L1600 epoch42 fixed best.pt test pending",
+    "Cross-framework unified evaluation not performed",
+    "Legacy raw predictions / actual optimizer update counts not saved"
+  ]
+}

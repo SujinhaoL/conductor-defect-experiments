@@ -1,0 +1,12 @@
+{
+  "status": "SELECTED_LAST_EPOCH_TEST_PENDING",
+  "selected_epoch": 100,
+  "checkpoint": "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\runs\\FRCNN-R50FPN-MERGE130-001\\step09_109_20338\\epoch_100.pth",
+  "checkpoint_sha256": "fccdc599d1e2bf2603b319d7f990f6e795dc8a24eef726e9a415723a409fd15a",
+  "selection_rule": "fixed last epoch100; no val/test-based selection",
+  "train_images": 130,
+  "independent_validation": false,
+  "test_evaluated": false,
+  "fresh_official_coco_initialization": true,
+  "initial_checkpoint_sha256": "047c8118fc5ca88ba5ae1fab72f2cd6b070501fe3af2f3cba5cfa9a89b44b03e"
+}

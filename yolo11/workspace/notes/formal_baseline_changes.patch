@@ -1,0 +1,1448 @@
+diff --git a/workspace/configs/formal_baseline_protocol.yaml b/workspace/configs/formal_baseline_protocol.yaml
+new file mode 100644
+--- /dev/null
++++ b/workspace/configs/formal_baseline_protocol.yaml
+@@ -0,0 +1,162 @@
++# Derived from the existing Y11-DIAG-001 args.yaml; no manual training overrides.
++# Only the whitelisted experiment seed may change. Paths/name are output metadata.
++protocol_version: 1
++reference:
++  experiment_id: Y11-DIAG-001
++  run_directory: D:\小论文\model_projects\yolo11\workspace\runs\yolo11s_diag_1280_e30_20260916_104603
++  args_path: D:\小论文\model_projects\yolo11\workspace\runs\yolo11s_diag_1280_e30_20260916_104603\args.yaml
++  args_sha256: 1e5ab8721ab9de426a2fd32ff3f4a44f3acc6ac3565ec63b1b3acfcad87328b4
++  results_sha256: 82f6f59ae92daf5d1475f183bfb33a1d338231117c69d9df3442cdbd12e88e75
++  status_path: D:\小论文\model_projects\yolo11\workspace\logs\yolo11s_diag_1280_e30_20260916_104603_status.json
++  status_sha256: f9a07112172cf1b1313a8311199b74b8cae49f180ebb2d1494896b08e093e181
++  data_yaml_sha256: 58d0484354a893ba4de25078e4dcaa5561163089fa7738733144bbbede23b48a
++  snapshot_sha256: d6cd424d54dd63aa9c07e6fca96d1a59af8027fbdc9f352b325eb9320e8a52c4
++  registry_schema_sha256: 6b4a408626a258757ba22c1872ca085394cd5fe3530ede31624462e3c4bf3cbb
++environment:
++  git_commit: 9aa41d679d121afb8b4cc512d7a162f4f36886c3
++  ultralytics: 8.4.152
++  python: 3.12.13
++  torch: 2.8.0+cu128
++  cuda: '12.8'
++  gpu: NVIDIA GeForce RTX 5070 Ti
++weights:
++  path: D:\小论文\model_projects\yolo11\workspace\weights\yolo11s.pt
++  sha256: 85a76fe86dd8afe384648546b56a7a78580c7cb7b404fc595f97969322d502d5
++experiments:
++  Y11-BASE-001-S42: 42
++  Y11-BASE-002-S3407: 3407
++  Y11-BASE-003-S2026: 2026
++excluded_output_fields:
++- project
++- name
++- save_dir
++training_args:
++  task: detect
++  mode: train
++  model: yolo11s.pt
++  data: D:\小论文\model_projects\yolo11\workspace\configs\conductor_bl_v1.yaml
++  epochs: 30
++  time: null
++  patience: 0
++  batch: 4
++  imgsz: 1280
++  save: true
++  save_period: 10
++  cache: false
++  device: '0'
++  workers: 0
++  exist_ok: false
++  pretrained: true
++  cls_remap: true
++  optimizer: auto
++  verbose: true
++  seed: 42
++  deterministic: true
++  single_cls: false
++  rect: false
++  cos_lr: false
++  close_mosaic: 10
++  resume: false
++  amp: true
++  fraction: 1.0
++  profile: false
++  freeze: null
++  multi_scale: 0.0
++  compile: false
++  channels_last: null
++  overlap_mask: true
++  mask_ratio: 4
++  dropout: 0.0
++  val: true
++  split: val
++  save_json: false
++  conf: null
++  iou: 0.7
++  max_det: 300
++  quantize: null
++  dnn: false
++  plots: true
++  nms: null
++  source: null
++  vid_stride: 1
++  stream_buffer: false
++  visualize: false
++  augment: false
++  agnostic_nms: false
++  classes: null
++  retina_masks: false
++  embed: null
++  show: false
++  save_frames: false
++  save_txt: false
++  save_conf: false
++  save_crop: false
++  show_labels: true
++  show_conf: true
++  show_boxes: true
++  line_width: null
++  format: torchscript
++  keras: false
++  optimize: false
++  dynamic: false
++  simplify: true
++  opset: null
++  workspace: null
++  lr0: 0.01
++  lrf: 0.01
++  momentum: 0.937
++  weight_decay: 0.0005
++  warmup_epochs: 3.0
++  warmup_momentum: 0.8
++  warmup_bias_lr: 0.1
++  distill_model: null
++  dis: 6.0
++  box: 7.5
++  cls: 0.5
++  cls_pw: 0.0
++  dfl: 1.5
++  pose: 12.0
++  kobj: 1.0
++  rle: 1.0
++  angle: 1.0
++  dlog: 1.0
++  dgrad: 0.5
++  dlam: 1.0
++  nbs: 64
++  hsv_h: 0.015
++  hsv_s: 0.7
++  hsv_v: 0.4
++  degrees: 0.0
++  translate: 0.1
++  scale: 0.5
++  shear: 0.0
++  perspective: 0.0
++  flipud: 0.0
++  fliplr: 0.5
++  bgr: 0.0
++  mosaic: 1.0
++  mixup: 0.0
++  cutmix: 0.0
++  copy_paste: 0.0
++  copy_paste_mode: flip
++  auto_augment: randaugment
++  erasing: 0.4
++  cfg: null
++  tracker: tracktrack.yaml
++validation_args:
++  data: D:\小论文\model_projects\yolo11\workspace\configs\conductor_bl_v1.yaml
++  split: val
++  imgsz: 1280
++  batch: 8
++  workers: 0
++  device: '0'
++  rect: false
++  half: true
++  conf: 0.001
++  iou: 0.7
++  max_det: 300
++  augment: false
++  plots: false
++  save_json: false
++  save_txt: false
++  verbose: true
+diff --git a/workspace/scripts/run_formal_baseline.py b/workspace/scripts/run_formal_baseline.py
+new file mode 100644
+--- /dev/null
++++ b/workspace/scripts/run_formal_baseline.py
+@@ -0,0 +1,673 @@
++r"""One fixed official YOLO11s run. --dry-run never constructs/trains a model.
++
++Usage: .venv\Scripts\python.exe -B workspace\scripts\run_formal_baseline.py
++       --experiment-id Y11-BASE-001-S42 [--dry-run]
++There are no seed/hyperparameter/override/resume CLI options.
++"""
++from __future__ import annotations
++
++import sys
++sys.dont_write_bytecode = True
++
++import argparse
++from collections import Counter, defaultdict
++from contextlib import contextmanager, redirect_stdout, redirect_stderr
++from copy import deepcopy
++import csv
++from datetime import datetime
++import importlib.metadata
++import json
++import math
++import os
++from pathlib import Path
++import platform
++import subprocess
++import time
++import traceback
++import yaml
++
++from check_dataset import snapshot
++from readonly_dataset import (
++    BLOCKED_WRITES, DATASET, PROJECT, PROTECTED_ROOT, WORKSPACE,
++    install_write_guard, redirect_label_caches,
++)
++from formal_baseline_registry import (
++    sha256, exclusive_lock, read_registry, check_csv_pair, update_registry,
++)
++
++EXPERIMENTS = {'Y11-BASE-001-S42': 42, 'Y11-BASE-002-S3407': 3407, 'Y11-BASE-003-S2026': 2026}
++COMMIT = '9aa41d679d121afb8b4cc512d7a162f4f36886c3'
++REFERENCE_ID = 'Y11-DIAG-001'
++SOURCE = PROJECT / 'ultralytics_src'
++REGISTRY = WORKSPACE / 'experiment_tracking/experiment_registry.xlsx'
++PROTOCOL = WORKSPACE / 'configs/formal_baseline_protocol.yaml'
++RUNS = WORKSPACE / 'runs'
++RUN_LOCK = WORKSPACE / 'experiment_tracking/.formal_baseline.lock'
++OUTPUT_FIELDS = {'project', 'name', 'save_dir'}
++EXPECTED_COUNTS = {'train': 107, 'val': 23, 'test': 23}
++EXPECTED_NAMES = {0: 'broken', 1: 'loose'}
++METRICS = {
++    'precision_at_best_epoch': 'metrics/precision(B)',
++    'recall_at_best_epoch': 'metrics/recall(B)',
++    'map50_at_best_epoch': 'metrics/mAP50(B)',
++    'map50_95_at_best_epoch': 'metrics/mAP50-95(B)',
++}
++_test_model_reads_forbidden = False
++_extra_guard_installed = False
++
++
++def require(condition, message):
++    if not condition:
++        raise RuntimeError(message)
++
++
++def dump_json(path, data):
++    # The caller exclusively owns its new audit directory; never a historical file.
++    temporary = path.with_suffix('.pending.json')
++    with temporary.open('x', encoding='utf-8') as stream:
++        json.dump(data, stream, ensure_ascii=False, indent=2, allow_nan=False)
++    os.replace(temporary, path)
++
++
++def install_guards():
++    global _extra_guard_installed
++    install_write_guard()  # Existing protection of the ENTIRE central data project.
++    if _extra_guard_installed:
++        return
++
++    def audit(event, args):
++        paths, writing = [], False
++        if event == 'open':
++            path, mode, flags = args
++            paths = [path]
++            writing = (isinstance(mode, str) and any(c in mode for c in 'wax+')) or (
++                isinstance(flags, int) and flags & (os.O_WRONLY | os.O_RDWR | os.O_CREAT | os.O_TRUNC | os.O_APPEND))
++        elif event in {'os.remove', 'os.rmdir', 'os.mkdir', 'os.chmod', 'os.utime', 'os.truncate'}:
++            paths, writing = [args[0]], True
++        elif event in {'os.rename', 'os.link', 'os.symlink'}:
++            paths, writing = list(args[:2]), True
++        for raw in paths:
++            if not isinstance(raw, (str, bytes, os.PathLike)):
++                continue
++            path = Path(os.fsdecode(raw)).resolve()
++            if writing and path.is_relative_to(SOURCE.resolve()):
++                raise PermissionError(f'禁止写入官方源码：{path}')
++            if event == 'open' and _test_model_reads_forbidden and any(
++                path.is_relative_to((DATASET / kind / 'test').resolve()) for kind in ('images', 'labels')
++            ):
++                raise PermissionError(f'模型阶段禁止读取 test 文件：{path}')
++    sys.addaudithook(audit)
++    _extra_guard_installed = True
++
++
++@contextmanager
++def forbid_test_model_reads():
++    global _test_model_reads_forbidden
++    previous = _test_model_reads_forbidden
++    _test_model_reads_forbidden = True
++    try:
++        yield
++    finally:
++        _test_model_reads_forbidden = previous
++
++
++def git_state():
++    def git(*args):
++        return subprocess.check_output(
++            ['git', '--no-optional-locks', '-C', str(SOURCE), *args],
++            encoding='utf-8', errors='strict').strip()
++    commit, status = git('rev-parse', 'HEAD'), git('status', '--porcelain=v1', '--untracked-files=all')
++    require(commit == COMMIT, f'源码 commit 不匹配：{commit}')
++    require(not status, f'官方源码不是 clean：\n{status}')
++    return {'commit': commit, 'status': status}
++
++
++def parameter_diff(reference, actual):
++    return {key: {'reference': reference.get(key), 'actual': actual.get(key)}
++            for key in sorted((set(reference) | set(actual)) - OUTPUT_FIELDS)
++            if key not in reference or key not in actual or reference[key] != actual[key]}
++
++
++def assert_protocol_diff(reference, actual, experiment_id):
++    require(experiment_id in EXPERIMENTS, f'实验 ID 不在白名单：{experiment_id}')
++    require(reference.get('seed') == 42, '母版 seed 必须为 42。')
++    differences = parameter_diff(reference, actual)
++    expected = {} if EXPERIMENTS[experiment_id] == 42 else {
++        'seed': {'reference': 42, 'actual': EXPERIMENTS[experiment_id]}}
++    require(differences == expected, '训练参数发生未经授权的漂移：\n' + json.dumps(differences, ensure_ascii=False, indent=2))
++    return differences
++
++
++def assert_effective_training_args(reference, actual, experiment_id):
++    # The locked official build_optimizer(auto) sets warmup_bias_lr to 0.0
++    # (trainer.py:1146). It does this in DIAG-001 too, AFTER args.yaml is saved.
++    # Keep the caller/protocol value 0.1 untouched; audit this derived runtime
++    # state separately. This is not permission for caller-side parameter drift.
++    require(reference['optimizer'] == 'auto', '母版 optimizer 必须为 auto。')
++    expected_runtime = deepcopy(reference)
++    expected_runtime['warmup_bias_lr'] = 0.0
++    assert_protocol_diff(expected_runtime, actual, experiment_id)
++    return {'warmup_bias_lr': {'frozen_input': reference['warmup_bias_lr'], 'official_runtime': 0.0,
++                              'source': 'ultralytics/engine/trainer.py:1146; build_optimizer(auto)'}}
++
++
++def read_results(path, expected_epochs=None):
++    with path.open(encoding='utf-8-sig', newline='') as stream:
++        rows = [{k.strip(): float(v) for k, v in raw.items()} for raw in csv.DictReader(stream)]
++    require(bool(rows), f'结果 CSV 为空：{path}')
++    require([r['epoch'] for r in rows] == list(range(1, len(rows) + 1)), 'epoch 必须连续且从 1 开始。')
++    if expected_epochs is not None:
++        require(len(rows) == expected_epochs, f'未完成约定轮数：{len(rows)}/{expected_epochs}')
++    for row in rows:
++        require(all(math.isfinite(row[key]) for key in METRICS.values()), 'P/R/AP 存在非有限值，不能选 best。')
++    return rows
++
++
++def result_summary(rows):
++    best = max(rows, key=lambda r: (r['metrics/mAP50-95(B)'], r['metrics/mAP50(B)'], -r['epoch']))
++    result = {'best_epoch': int(best['epoch']), 'epochs_completed': len(rows)}
++    result.update({field: best[key] for field, key in METRICS.items()})
++    for label in ('precision', 'recall'):
++        key = f'metrics/{label}(B)'
++        peak = max(rows, key=lambda r: (r[key], -r['epoch']))
++        result[f'max_{label}_any_epoch'] = peak[key]
++        result[f'epoch_of_max_{label}'] = int(peak['epoch'])
++    return result
++
++
++def load_reference(protocol, registry=REGISTRY):
++    wb, header_row, headers, records, setup, schema = read_registry(registry)
++    wb.close()
++    require(schema == protocol['reference']['registry_schema_sha256'], 'Runs/FieldDefinitions 与冻结 schema 不一致。')
++    check_csv_pair(registry.with_suffix('.csv'), headers, records)
++    refs = [r for _, r in records if r['experiment_id'] == REFERENCE_ID]
++    require(len(refs) == 1, '无法唯一定位 Y11-DIAG-001。')
++    reference = refs[0]
++    run = Path(reference['run_directory']).resolve()
++    require(run.is_relative_to(RUNS.resolve()), '参考 run 不在本项目 runs 内。')
++    evidence = protocol['reference']
++    require(evidence['experiment_id'] == REFERENCE_ID and Path(evidence['run_directory']).resolve() == run,
++            '协议与登记表的参考运行路径不一致。')
++    files = {'args_sha256': run / 'args.yaml', 'results_sha256': run / 'results.csv',
++             'status_sha256': WORKSPACE / 'logs' / f'{run.name}_status.json',
++             'snapshot_sha256': WORKSPACE / 'logs/dataset_snapshot_before.json'}
++    require(Path(evidence['args_path']).resolve() == files['args_sha256'], '参考 args 路径被更换。')
++    require(Path(evidence['status_path']).resolve() == files['status_sha256'].resolve(), '参考 status 路径被更换。')
++    for key, path in files.items():
++        require(sha256(path) == evidence[key], f'冻结证据文件发生变化：{path}')
++    args = yaml.safe_load(files['args_sha256'].read_text(encoding='utf-8-sig'))
++    status = json.loads(files['status_sha256'].read_text(encoding='utf-8'))
++    require(status['success'] is True and reference['status'] == 'Completed', '母版运行不完整。')
++    summary = result_summary(read_results(files['results_sha256'], int(args['epochs'])))
++    for field, value in summary.items():
++        require(reference[field] == value, f'母版登记和 CSV 不一致：{field}')
++    for field in ('imgsz', 'batch', 'nbs', 'workers', 'seed', 'deterministic', 'mosaic', 'close_mosaic',
++                  'patience', 'amp', 'warmup_epochs', 'mixup', 'cutmix', 'fliplr', 'translate', 'scale'):
++        require(reference[field] == args[field], f'母版登记和 args 不一致：{field}')
++    require(reference['epochs_planned'] == args['epochs'], '母版 epochs 不一致。')
++    protocol_drift = parameter_diff(args, protocol['training_args'])
++    require(not protocol_drift and not (set(protocol['training_args']) & OUTPUT_FIELDS),
++            'formal_baseline_protocol.yaml 与母版不一致，拒绝自动修复：\n'
++            + json.dumps(protocol_drift, ensure_ascii=False, indent=2))
++    require(set(protocol['excluded_output_fields']) == OUTPUT_FIELDS, '输出字段豁免清单被扩大。')
++    require(protocol['experiments'] == EXPERIMENTS, '协议实验 ID/seed 白名单被修改。')
++    require(args['model'] == 'yolo11s.pt' and reference['model'] == 'YOLO11s', '母版不是官方 YOLO11s。')
++    require(args['split'] == 'val' and args['val'] is True and args['resume'] is False, '验证 split 或 resume 不合法。')
++    require(args['pretrained'] is True and args['exist_ok'] is False, '预训练或禁止覆盖配置不合法。')
++    require(protocol['weights']['sha256'] == status['pretrained_sha256'], '预训练权重 SHA256 与母版不一致。')
++    return args, reference, headers, records, setup
++
++
++def final_arguments(protocol, experiment_id, run):
++    require(experiment_id in EXPERIMENTS, f'非法 experiment_id：{experiment_id}')
++    params = deepcopy(protocol['training_args'])
++    params['seed'] = EXPERIMENTS[experiment_id]
++    params.update(project=str(RUNS), name=run.name, save_dir=str(run))
++    return params
++
++
++def environment_check(protocol, setup):
++    import torch
++    import ultralytics
++    require(Path(sys.prefix).resolve() == (PROJECT / '.venv').resolve(), '必须使用项目 .venv 的 Python。')
++    require(Path(ultralytics.__file__).resolve() == SOURCE / 'ultralytics/__init__.py', 'Ultralytics 导入路径错误。')
++    direct = json.loads(importlib.metadata.distribution('ultralytics').read_text('direct_url.json') or '{}')
++    require(direct.get('dir_info', {}).get('editable') is True, 'Ultralytics 不是 editable 安装。')
++    require(torch.cuda.is_available(), 'CUDA 不可用，禁止改用 CPU。')
++    actual = {'git_commit': git_state()['commit'], 'ultralytics': ultralytics.__version__,
++              'python': platform.python_version(), 'torch': torch.__version__, 'cuda': torch.version.cuda,
++              'gpu': torch.cuda.get_device_name(0)}
++    mapping = {'git_commit': 'Ultralytics commit', 'ultralytics': 'Ultralytics version', 'python': 'Python',
++               'torch': 'PyTorch', 'cuda': 'CUDA runtime', 'gpu': 'GPU'}
++    require(actual == protocol['environment'], f'运行环境与冻结协议不一致：{actual}')
++    require(all(str(actual[k]) == str(setup[v]) for k, v in mapping.items()), '运行环境与 ProjectSetup 不一致。')
++    gpu = subprocess.check_output(['nvidia-smi', '--query-gpu=name,memory.total,driver_version', '--format=csv,noheader'], text=True).strip()
++    return {**actual, 'cuda_available': True, 'python_executable': sys.executable,
++            'ultralytics_file': ultralytics.__file__, 'editable': True, 'nvidia_smi': gpu,
++            'openpyxl': importlib.metadata.version('openpyxl')}
++
++
++def verify_integrity():
++    historical_path = WORKSPACE / 'logs/dataset_snapshot_before.json'
++    baseline = json.loads(historical_path.read_text(encoding='utf-8'))
++    current = snapshot()  # Existing function: metadata across central root, hashes in dataset.
++    changes = [k for k in sorted(set(baseline) | set(current)) if baseline.get(k) != current.get(k)]
++    require(not changes, f'中央数据与历史快照不一致，禁止训练：{changes[:20]}')
++    return current, {'unchanged': True, 'changed_paths': [], 'entries_checked': len(current),
++                     'sha256_scope': str(DATASET), 'metadata_scope': str(PROTECTED_ROOT),
++                     'snapshot_reference_sha256': sha256(historical_path)}
++
++
++def dataset_check(protocol, args):
++    data_path = Path(args['data'])
++    require(sha256(data_path) == protocol['reference']['data_yaml_sha256'], '原 data 配置内容发生变化。')
++    data = yaml.safe_load(data_path.read_text(encoding='utf-8-sig'))
++    require(Path(data['path']).resolve() == DATASET.resolve(), 'data.path 未指向固定中央数据集。')
++    require(data['names'] == EXPECTED_NAMES, '类别必须只有 0=broken、1=loose。')
++    require(all(data[s] == f'images/{s}' for s in EXPECTED_COUNTS), 'split 路径发生变化。')
++    current, integrity = verify_integrity()
++    with (DATASET / 'split_manifest.csv').open(encoding='utf-8-sig', newline='') as stream:
++        manifest = list(csv.DictReader(stream))
++    require(dict(Counter(r['split'] for r in manifest)) == EXPECTED_COUNTS, 'manifest 的 split 数量不匹配。')
++    keys, groups, hashes = set(), defaultdict(set), defaultdict(set)
++    counts = {}
++    for row in manifest:
++        key = (row['split'], row['final_name'])
++        require(key not in keys, 'manifest 存在重复图片。')
++        keys.add(key)
++        groups[row['split_group_id']].add(row['split'])
++        hashes[row['sha256']].add(row['split'])
++        image = DATASET / 'images' / row['split'] / row['final_name']
++        require(image.resolve().is_relative_to((DATASET / 'images' / row['split']).resolve()), 'manifest 路径越界。')
++        entry = current.get(image.relative_to(PROTECTED_ROOT).as_posix(), {})
++        require(entry.get('sha256') == row['sha256'], f'manifest 图片哈希不匹配：{image.name}')
++    require(all(len(s) == 1 for s in groups.values()), '发现跨 split 同组。')
++    require(all(len(s) == 1 for s in hashes.values()), '发现跨 split 同图。')
++    for split, count in EXPECTED_COUNTS.items():
++        images = {p.name for p in (DATASET / 'images' / split).iterdir() if p.is_file()}
++        labels = {p.stem for p in (DATASET / 'labels' / split).glob('*.txt')}
++        require(images == {name for s, name in keys if s == split}, f'{split} 文件列表与 manifest 不同。')
++        require(len(images) == count and labels == {Path(n).stem for n in images}, f'{split} 图片/标签数量不正确。')
++        counts[split] = len(images)
++    return {**integrity, 'split_counts': counts, 'names': data['names'],
++            'manifest_sha256': sha256(DATASET / 'split_manifest.csv'),
++            'test_access': 'file metadata and SHA256 only; no decode/model inference/evaluation'}
++
++
++def check_new_identity(experiment_id, run, records):
++    require(not any(r['experiment_id'] == experiment_id for _, r in records), f'实验 ID 已登记，禁止重跑：{experiment_id}')
++    require(not run.exists(), f'输出目录已存在，禁止覆盖：{run}')
++    leftovers = list(RUNS.glob(experiment_id + '_*'))
++    require(not leftovers, f'该实验有历史/中断 run 目录，禁止再次运行：{leftovers}')
++
++
++def write_diff(path, reference, actual, experiment_id):
++    diff = parameter_diff(reference, actual)
++    lines = [f'Experiment: {experiment_id}', f'Reference: {REFERENCE_ID}',
++             'Ignored output fields ONLY: project, name, save_dir',
++             'Training differences:', json.dumps(diff, ensure_ascii=False, indent=2)]
++    try:
++        assert_protocol_diff(reference, actual, experiment_id)
++        lines.append('PASS: exactly the allowed seed difference; no other drift.')
++    except RuntimeError:
++        lines.append('FAIL: unauthorized training difference. Training must not start.')
++        path.write_text('\n'.join(lines) + '\n', encoding='utf-8')
++        raise
++    path.write_text('\n'.join(lines) + '\n', encoding='utf-8')
++    return diff
++
++
++def preflight(experiment_id, run, audit_dir):
++    require(experiment_id in EXPERIMENTS, '实验 ID 不在白名单。')
++    protocol = yaml.safe_load(PROTOCOL.read_text(encoding='utf-8-sig'))
++    require(protocol['protocol_version'] == 1, '不支持的协议版本。')
++    print('Preflight: registry, source evidence and all frozen parameters...', flush=True)
++    reference_args, reference_row, headers, records, setup = load_reference(protocol)
++    check_new_identity(experiment_id, run, records)
++    actual = final_arguments(protocol, experiment_id, run)
++    diff = write_diff(audit_dir / 'frozen_protocol_diff.txt', reference_args, actual, experiment_id)
++    require(protocol['validation_args']['split'] == 'val', '复验 split 必须为 val。')
++    expected_val = {'data': reference_args['data'], 'split': 'val', 'imgsz': 1280, 'batch': 8,
++                    'workers': 0, 'device': '0', 'rect': False, 'half': True, 'conf': 0.001,
++                    'iou': reference_args['iou'], 'max_det': reference_args['max_det'], 'augment': False,
++                    'plots': False, 'save_json': False, 'save_txt': False, 'verbose': True}
++    require(protocol['validation_args'] == expected_val, '固定 val 复验协议发生变化。')
++    environment = environment_check(protocol, setup)
++    from ultralytics.cfg import get_cfg
++    # Resolve defaults through the official config parser, but NEVER create a trainer.
++    resolved = vars(get_cfg(overrides=actual))
++    write_diff(audit_dir / 'resolved_protocol_diff.txt', reference_args, resolved, experiment_id)
++    actual = resolved
++    weights = Path(protocol['weights']['path']).resolve()
++    require(weights == (WORKSPACE / 'weights/yolo11s.pt').resolve() and weights.is_file(), '官方预训练权重缺失或路径错误。')
++    weight_hash = sha256(weights)
++    require(weight_hash == protocol['weights']['sha256'], '预训练权重 SHA256 与 DIAG-001 不匹配。')
++    print('Preflight: read-only dataset snapshot / manifest / split counts...', flush=True)
++    integrity = dataset_check(protocol, actual)
++    report = {'passed': True, 'experiment_id': experiment_id, 'seed': EXPERIMENTS[experiment_id],
++              'reference_run': reference_row['run_directory'], 'reference_args': protocol['reference']['args_path'],
++              'training_diff': diff, 'final_training_args': actual, 'environment': environment,
++              'pretrained_path': str(weights), 'pretrained_sha256': weight_hash,
++              'dataset_integrity': integrity, 'git': git_state(), 'run_directory': str(run),
++              'protocol_sha256': sha256(PROTOCOL), 'test_used': False, 'model_train_called': False,
++              'model_constructed': False, 'registry_modified': False, 'registered_experiments': len(records),
++              'execution_code_sha256': {name: sha256(WORKSPACE / 'scripts' / name) for name in
++                                        ('run_formal_baseline.py', 'formal_baseline_registry.py', 'summarize_formal_baseline.py')},
++              'official_auto_runtime_note': 'Frozen caller warmup_bias_lr=0.1; locked official build_optimizer(auto) derives runtime 0.0. No caller parameter is changed.'}
++    dump_json(audit_dir / 'preflight.json', report)
++    (audit_dir / 'final_training_args.yaml').write_text(yaml.safe_dump(actual, allow_unicode=True, sort_keys=False), encoding='utf-8')
++    print('PREFLIGHT PASS: ' + json.dumps(diff, ensure_ascii=False), flush=True)
++    return protocol, reference_args, reference_row, headers, report
++
++
++def initial_record(experiment_id, run, reference_row, headers, params):
++    record = {key: 'NA' for key in headers}
++    for key in ('dataset_version', 'dataset_path', 'train_images', 'val_images', 'test_images', 'classes',
++                'git_commit', 'ultralytics_version'):
++        record[key] = reference_row[key]
++    for key in ('imgsz', 'batch', 'nbs', 'workers', 'seed', 'deterministic', 'warmup_epochs', 'mosaic',
++                'close_mosaic', 'mixup', 'cutmix', 'fliplr', 'translate', 'scale', 'patience', 'amp'):
++        record[key] = params[key]
++    seed = EXPERIMENTS[experiment_id]
++    record.update(
++        experiment_id=experiment_id, date=datetime.now().replace(hour=0, minute=0, second=0, microsecond=0),
++        stage='FormalBaseline', status='Running', purpose='按 Y11-DIAG-001 冻结协议正式重跑；三 seed 共同汇总。',
++        parent_experiment=REFERENCE_ID,
++        changed_variable=('NA (formal rerun; frozen training protocol unchanged)' if seed == 42 else f'seed: 42 -> {seed}'),
++        model='YOLO11s', pretrained_weights='yolo11s.pt', epochs_planned=params['epochs'],
++        epochs_completed=0, device='cuda:0', run_directory=str(run), best_pt=str(run / 'weights/best.pt'),
++        results_csv=str(run / 'results.csv'), test_used=False, include_in_paper='Candidate',
++        decision='待三 seed 完整后汇总；不选取最好 seed 代替总体成绩。',
++        notes='当前 run 正在执行。失败/中断也保留该 ID；不自动重跑。',
++    )
++    return record
++
++
++def validate_trainer_start(trainer, reference, experiment_id, run):
++    assert_effective_training_args(reference, vars(trainer.args), experiment_id)
++    require(Path(trainer.save_dir).resolve() == run.resolve(), '实际输出目录与本次预留目录不同。')
++    require(trainer.device.type == 'cuda' and trainer.batch_size == 4, '设备或 batch 被自动改变。')
++    require(trainer.data['names'] == EXPECTED_NAMES, 'Trainer 类别不正确。')
++    require(bool(trainer.amp), 'AMP 自检禁用了 AMP；停止，不自动改变冻结协议。')
++    for loader, split in ((trainer.train_loader, 'train'), (trainer.test_loader, 'val')):
++        require(len(loader.dataset) == EXPECTED_COUNTS[split], f'Trainer {split} 数量不正确。')
++        require(all(Path(p).resolve().is_relative_to((DATASET / 'images' / split).resolve())
++                    for p in loader.dataset.im_files), f'Trainer {split} 加载路径越界。')
++    head = trainer.model.model[-1]
++    require(type(head).__name__ == 'Detect' and head.nl == 3 and head.nc == 2
++            and [int(x) for x in head.stride] == [8, 16, 32], '不是官方标准 P3/P4/P5 Detect。')
++    official = yaml.safe_load((SOURCE / 'ultralytics/cfg/models/11/yolo11.yaml').read_text(encoding='utf-8'))
++    require(all(trainer.model.yaml[k] == official[k] for k in ('backbone', 'head')), '模型 backbone/head 不等于官方 YAML。')
++    require(trainer.model.yaml.get('scale') == 's', '模型规模不是 YOLO11s。')
++
++
++def execute_training(experiment_id, run, audit_dir, prepared, status):
++    """Called only from the non-dry-run branch, never by preparation or summary."""
++    import torch
++    from ultralytics import YOLO
++    from ultralytics.utils.torch_utils import model_info
++
++    protocol, reference, reference_row, headers, pre = prepared
++    params = deepcopy(pre['final_training_args'])
++    status_path = audit_dir / 'status.json'
++    # Recheck files after preflight and before reserving a new run/registry row.
++    require(sha256(PROTOCOL) == pre['protocol_sha256'], 'Preflight 后协议文件变化。')
++    _, _, _, records, _ = load_reference(protocol)
++    check_new_identity(experiment_id, run, records)
++    run.mkdir(exist_ok=False)  # Atomically reserve an entirely new directory.
++    (run / 'frozen_protocol_diff.txt').write_bytes((audit_dir / 'frozen_protocol_diff.txt').read_bytes())
++    record = initial_record(experiment_id, run, reference_row, headers, params)
++    registered = False
++    started = time.monotonic()
++    warm_accumulates = set()
++    status.update(state='Running', training_completed=False, test_used=False, batches_checked=0,
++                  all_batch_losses_finite=True, audit_directory=str(audit_dir), run_directory=str(run),
++                  preflight=pre, optimizer_actual=None, steady_accumulate='NA')
++    dump_json(status_path, status)
++    try:
++        status['registry_backups_start'] = update_registry(
++            REGISTRY, record, append=True, expected_schema=protocol['reference']['registry_schema_sha256'])
++        registered = True
++        dump_json(status_path, status)
++        redirect_label_caches()  # Reuse the existing adapter, only after data protection is installed.
++        os.chdir(WORKSPACE / 'weights')  # Same resolution of model=yolo11s.pt as the reference run.
++        require(sha256(Path('yolo11s.pt')) == pre['pretrained_sha256'], '进入模型阶段前权重发生变化。')
++        with forbid_test_model_reads():
++            model = YOLO('yolo11s.pt')
++            require(model.task == 'detect' and len(model.names) == 80, '必须从原始官方 COCO 80 类权重开始。')
++
++            def verify_before_dataset(trainer):
++                assert_protocol_diff(reference, vars(trainer.args), experiment_id)
++                require(Path(trainer.save_dir).resolve() == run.resolve(), 'Trainer 输出路径漂移。')
++                require(trainer.args.split == 'val', 'Trainer split 必须为 val。')
++
++            def on_start(trainer):
++                validate_trainer_start(trainer, reference, experiment_id, run)
++                status['official_runtime_adjustments'] = assert_effective_training_args(reference, vars(trainer.args), experiment_id)
++                defaults = trainer.optimizer.defaults
++                groups = [{
++                    'initial_lr': float(g.get('initial_lr', g['lr'])),
++                    'momentum': float(g['betas'][0] if 'betas' in g else g.get('momentum', 0.0)),
++                    'weight_decay': float(g.get('weight_decay', 0.0)),
++                } for g in trainer.optimizer.param_groups]
++                lrs = {g['initial_lr'] for g in groups}
++                momenta = {g['momentum'] for g in groups}
++                decays = {g['weight_decay'] for g in groups if g['weight_decay'] != 0}
++                status['optimizer_actual'] = {
++                    'name': type(trainer.optimizer).__name__, 'parameter_groups': groups,
++                    'lr0': next(iter(lrs)) if len(lrs) == 1 else 'NA',
++                    'momentum': next(iter(momenta)) if len(momenta) == 1 else 'NA',
++                    'weight_decay': next(iter(decays)) if len(decays) == 1 else ('NA' if decays else 0.0),
++                    'betas': list(defaults['betas']) if 'betas' in defaults else None,
++                }
++                require(status['optimizer_actual']['name'] == 'AdamW'
++                        and status['optimizer_actual']['lr0'] == reference_row['lr0_actual']
++                        and status['optimizer_actual']['momentum'] == reference_row['momentum_actual']
++                        and status['optimizer_actual']['weight_decay'] == reference_row['weight_decay_actual'],
++                        '官方 auto 实际优化器与母版可核验值不同；停止，不改参数。')
++                status['model_parameters'] = sum(p.numel() for p in trainer.model.parameters())
++                status['actual_training_args'] = vars(trainer.args).copy()
++                status['train_images_loaded'] = len(trainer.train_loader.dataset)
++                status['val_images_loaded'] = len(trainer.test_loader.dataset)
++                dump_json(status_path, status)
++
++            def on_epoch_start(trainer):
++                # Same project-side fail-on-OOM guard as DIAG-001. No trainer source edits.
++                trainer._oom_retries = 3
++                require(trainer.batch_size == 4 and trainer.args.batch == 4, 'batch 不允许自动下调。')
++
++            def on_batch(trainer):
++                require(trainer.batch_size == 4 and trainer.args.batch == 4, 'batch 发生变化。')
++                values = {k: float(v.detach().float().cpu()) for k, v in trainer.loss_items.items()}
++                finite = all(math.isfinite(v) for v in values.values()) and bool(torch.isfinite(trainer.loss).all())
++                status['batches_checked'] += 1
++                status['all_batch_losses_finite'] &= finite
++                ni = status['batches_checked'] - 1
++                if ni >= trainer._get_warmup_iterations(len(trainer.train_loader)):
++                    warm_accumulates.add(int(trainer.accumulate))
++                entry = {'epoch': trainer.epoch + 1, 'batch_index': status['batches_checked'],
++                         'batch': trainer.batch_size, 'accumulate': int(trainer.accumulate),
++                         'loss': {k: v if math.isfinite(v) else None for k, v in values.items()}, 'finite': finite}
++                with (audit_dir / 'batches.jsonl').open('a', encoding='utf-8') as stream:
++                    stream.write(json.dumps(entry, allow_nan=False) + '\n')
++                require(finite, '训练 batch 出现 NaN/Inf，停止，不自动修改协议。')
++
++            def on_val_start(validator):
++                require(validator.args.split == 'val', '禁止非 val 验证。')
++                require(all(Path(p).resolve().is_relative_to((DATASET / 'images/val').resolve())
++                            for p in validator.dataloader.dataset.im_files), '验证数据不是固定 val。')
++
++            def on_epoch_end(trainer):
++                status['last_finished_epoch'] = trainer.epoch + 1
++                dump_json(status_path, status)
++
++            model.add_callback('on_pretrain_routine_start', verify_before_dataset)
++            model.add_callback('on_train_start', on_start)
++            model.add_callback('on_train_epoch_start', on_epoch_start)
++            model.add_callback('on_train_batch_end', on_batch)
++            model.add_callback('on_val_start', on_val_start)
++            model.add_callback('on_fit_epoch_end', on_epoch_end)
++            # Final diff is of the exact dictionary passed to model.train(), not a shortlist.
++            write_diff(run / 'frozen_protocol_diff.txt', reference, params, experiment_id)
++            torch.cuda.reset_peak_memory_stats(0)
++            train_started = time.monotonic()
++            status['model_train_called'] = True
++            dump_json(status_path, status)
++            model.train(**params)
++            status['training_runtime_seconds'] = round(time.monotonic() - train_started, 4)
++            status['peak_vram_mib'] = round(torch.cuda.max_memory_allocated(0) / 2**20, 2)
++            status['peak_reserved_mib'] = round(torch.cuda.max_memory_reserved(0) / 2**20, 2)
++            status['training_completed'] = True
++            for name in ('weights/best.pt', 'weights/last.pt', 'results.csv', 'args.yaml', 'results.png', 'confusion_matrix.png'):
++                require((run / name).is_file(), f'训练产物缺失：{name}')
++            saved_args = yaml.safe_load((run / 'args.yaml').read_text(encoding='utf-8-sig'))
++            assert_protocol_diff(reference, saved_args, experiment_id)
++            rows = read_results(run / 'results.csv', int(params['epochs']))
++            metrics = result_summary(rows)
++            status['best_epoch_metrics'] = metrics
++            status['nonfinite_val_losses'] = [
++                {'epoch': int(r['epoch']), 'fields': [k for k, v in r.items() if k.startswith('val/') and not math.isfinite(v)]}
++                for r in rows if any(not math.isfinite(v) for k, v in r.items() if k.startswith('val/'))]
++            status['steady_accumulate'] = next(iter(warm_accumulates)) if len(warm_accumulates) == 1 else 'NA'
++            status['steady_accumulate_observed_values'] = sorted(warm_accumulates)
++            best = YOLO(str(run / 'weights/best.pt'))
++            require(best.names == EXPECTED_NAMES and [int(x) for x in best.model.stride] == [8, 16, 32], 'best.pt 结构或类别错误。')
++            status['model_parameters'] = sum(p.numel() for p in best.model.parameters())
++            # FLOPs is descriptive only and may legitimately be NA; no fabricated fallback.
++            try:
++                info = model_info(best.model, verbose=True, imgsz=1280)
++                flops = float(info[3]) if info is not None else float('nan')
++                status['gflops_1280'] = flops if math.isfinite(flops) and flops > 0 else 'NA'
++            except Exception as exc:
++                status['gflops_1280'] = 'NA'
++                status['gflops_note'] = str(exc)
++            val_args = deepcopy(protocol['validation_args'])
++            val_args.update(project=str(run), name='best_val_revalidation', exist_ok=False)
++            require(not (run / 'best_val_revalidation').exists(), 'val 复验输出目录已存在。')
++            best.add_callback('on_val_start', on_val_start)
++            validation = best.val(**val_args)
++            per_class = {row['Class']: row for row in validation.summary(decimals=10) if row['Class'] != 'all'}
++            require(set(per_class) == {'broken', 'loose'}, '逐类别 AP 不完整，不能记为 Completed。')
++            class_metrics = {}
++            for cls in ('broken', 'loose'):
++                for suffix, source_key in (('map50', 'mAP50'), ('map50_95', 'mAP50-95')):
++                    value = float(per_class[cls][source_key])
++                    require(math.isfinite(value), f'{cls} AP 非有限。')
++                    class_metrics[f'{cls}_{suffix}'] = value
++            status['per_class_metrics'] = class_metrics
++            status['validation_args'] = val_args
++            status['best_pt_val_metrics'] = {k: float(v) for k, v in validation.results_dict.items()}
++            status['artifact_sha256'] = {name: sha256(run / name) for name in
++                                         ('args.yaml', 'results.csv', 'weights/best.pt', 'weights/last.pt')}
++        status['state'] = 'Completed'
++        record.update(metrics, **class_metrics, model_parameters=status['model_parameters'],
++                      gflops_1280=status['gflops_1280'], steady_accumulate=status['steady_accumulate'],
++                      peak_vram_mib=status['peak_vram_mib'])
++    except BaseException as exc:
++        status.update(state='Failed', error=traceback.format_exc(), interrupted=isinstance(exc, KeyboardInterrupt))
++        print(status['error'], flush=True)
++    finally:
++        # Always recheck, including exceptions/KeyboardInterrupt; never erase artifacts.
++        try:
++            _, status['dataset_integrity_after'] = verify_integrity()
++            status['git_after'] = git_state()
++            require(not BLOCKED_WRITES, f'曾发生受保护目录写入尝试：{BLOCKED_WRITES}')
++        except BaseException:
++            status['state'] = 'Failed'
++            status['postflight_error'] = traceback.format_exc()
++        status['blocked_dataset_writes'] = list(BLOCKED_WRITES)
++        status['runtime_seconds'] = round(time.monotonic() - started, 4)
++        if torch.cuda.is_available():
++            status.setdefault('peak_vram_mib', round(torch.cuda.max_memory_allocated(0) / 2**20, 2))
++        optimizer = status.get('optimizer_actual') or {}
++        record.update(status=status['state'], runtime_seconds=status['runtime_seconds'],
++                      optimizer=(optimizer.get('name', 'NA') + ' (optimizer=auto)' if optimizer else 'NA'),
++                      lr0_actual=optimizer.get('lr0', 'NA'), momentum_actual=optimizer.get('momentum', 'NA'),
++                      weight_decay_actual=optimizer.get('weight_decay', 'NA'),
++                      peak_vram_mib=status.get('peak_vram_mib', 'NA'),
++                      notes=f'status={status_path}; runtime includes postprocessing; test not used; '
++                            + ('Interrupted; recorded as Failed.' if status.get('interrupted') else status['state']))
++        if status['state'] != 'Completed':
++            record['epochs_completed'] = status.get('last_finished_epoch', 0)
++            record['decision'] = '运行或后处理未完整完成；保留 ID 和产物，禁止自动重试。详见 status JSON。'
++        status['success'] = False
++        dump_json(status_path, status)
++        if registered:
++            try:
++                status['registry_backups_finish'] = update_registry(
++                    REGISTRY, record, append=False, expected_schema=protocol['reference']['registry_schema_sha256'])
++                status['registry_synchronized'] = True
++            except BaseException:
++                status['registry_synchronized'] = False
++                status['registry_error'] = traceback.format_exc()
++                status['state'] = 'Failed'
++        status['success'] = status['state'] == 'Completed' and status.get('registry_synchronized', False)
++        dump_json(status_path, status)
++    require(status['success'], f'实验未完整成功：{status_path}。不自动重跑或改变协议。')
++
++
++class Tee:
++    def __init__(self, original, log):
++        self.original, self.log = original, log
++    def write(self, value):
++        self.log.write(value)
++        self.log.flush()
++        self.original.write(value)
++        return len(value)
++    def flush(self):
++        self.log.flush()
++        self.original.flush()
++    def isatty(self):
++        return False
++
++
++def configure_process():
++    if hasattr(sys.stdout, 'reconfigure'):
++        sys.stdout.reconfigure(encoding='utf-8')
++        sys.stderr.reconfigure(encoding='utf-8')
++    os.environ['PYTHONDONTWRITEBYTECODE'] = '1'
++    os.environ['YOLO_CONFIG_DIR'] = str(WORKSPACE / 'configs/ultralytics_settings')
++    os.environ['MPLCONFIGDIR'] = str(WORKSPACE / 'cache/matplotlib')
++    os.environ['TORCH_HOME'] = str(WORKSPACE / 'cache/torch')
++    os.environ['YOLO_AUTOINSTALL'] = 'false'
++    install_guards()
++
++
++def main(argv=None):
++    parser = argparse.ArgumentParser(description='官方 YOLO11s 固定协议；每次只运行一个白名单实验。')
++    parser.add_argument('--experiment-id', required=True, choices=list(EXPERIMENTS))
++    parser.add_argument('--dry-run', action='store_true', help='只进行 preflight；不创建模型、不训练、不写登记表。')
++    args = parser.parse_args(argv)
++    configure_process()
++    stamp = datetime.now().strftime('%Y%m%d_%H%M%S_%f')
++    run_name = f'{args.experiment_id}_{stamp}'
++    run = RUNS / run_name
++    audit_root = WORKSPACE / 'logs' / ('formal_baseline_preflight' if args.dry_run else '')
++    audit_dir = audit_root / run_name
++    audit_dir.mkdir(parents=True, exist_ok=False)
++    status = {'experiment_id': args.experiment_id, 'seed': EXPERIMENTS[args.experiment_id],
++              'dry_run': args.dry_run, 'state': 'Preflight', 'success': False,
++              'model_train_called': False, 'test_used': False}
++    status_path = audit_dir / 'status.json'
++    with (audit_dir / f'{run_name}_console.log').open('x', encoding='utf-8') as log:
++        with redirect_stdout(Tee(sys.stdout, log)), redirect_stderr(Tee(sys.stderr, log)):
++            try:
++                with exclusive_lock(RUN_LOCK, {'experiment_id': args.experiment_id, 'dry_run': args.dry_run}):
++                    prepared = preflight(args.experiment_id, run, audit_dir)
++                    status['preflight'] = prepared[-1]
++                    if args.dry_run:
++                        status.update(state='PreflightPassed', success=True, registry_modified=False)
++                        dump_json(status_path, status)
++                        print(f'DRY-RUN ONLY: no model.train(), no model/val/predict. Report: {status_path}')
++                    else:
++                        execute_training(args.experiment_id, run, audit_dir, prepared, status)
++                return 0
++            except BaseException as exc:
++                status.update(success=False, state='Failed', error=traceback.format_exc())
++                dump_json(status_path, status)
++                print(f'停止：{exc}\n状态文件：{status_path}', file=sys.stderr)
++                return 130 if isinstance(exc, KeyboardInterrupt) else 1
++
++
++if __name__ == '__main__':
++    raise SystemExit(main())
+diff --git a/workspace/scripts/formal_baseline_registry.py b/workspace/scripts/formal_baseline_registry.py
+new file mode 100644
+--- /dev/null
++++ b/workspace/scripts/formal_baseline_registry.py
+@@ -0,0 +1,219 @@
++"""Append/update only the current FormalBaseline row in the existing workbook.
++
++No workbook is rebuilt. Every mutation backs up XLSX and CSV, stages both files,
++checks historical cells/styles, and then replaces the pair (rollback on error).
++"""
++from __future__ import annotations
++
++from contextlib import contextmanager
++from copy import copy
++import csv
++from datetime import date, datetime
++import hashlib
++import json
++import os
++from pathlib import Path
++import shutil
++import uuid
++
++from openpyxl import load_workbook
++from openpyxl.utils.cell import range_boundaries, get_column_letter
++
++
++def sha256(path: Path) -> str:
++    with path.open('rb') as stream:
++        return hashlib.file_digest(stream, 'sha256').hexdigest()
++
++
++@contextmanager
++def exclusive_lock(path: Path, owner: dict):
++    try:
++        stream = path.open('x', encoding='utf-8')
++    except FileExistsError as exc:
++        raise RuntimeError(f'锁文件已存在，拒绝并发或自动重跑：{path}；请先检查对应运行状态。') from exc
++    try:
++        with stream:
++            json.dump({'pid': os.getpid(), **owner}, stream, ensure_ascii=False, indent=2)
++        yield
++    finally:
++        path.unlink()  # Only this process's newly-created lock, never a pre-existing one.
++
++
++def read_registry(path: Path):
++    wb = load_workbook(path)
++    try:
++        if wb.sheetnames != ['Runs', 'ProjectSetup', 'FieldDefinitions']:
++            raise RuntimeError(f'登记表工作表结构发生变化：{wb.sheetnames}')
++        ws = wb['Runs']
++        candidates = [r[0].row for r in ws.iter_rows() if r[0].value == 'experiment_id']
++        if len(candidates) != 1:
++            raise RuntimeError('无法唯一定位 Runs 列名行。')
++        header_row = candidates[0]
++        headers = [c.value for c in ws[header_row]]
++        if None in headers or len(set(headers)) != len(headers):
++            raise RuntimeError('Runs 列名缺失或重复，停止。')
++        records = []
++        for row in ws.iter_rows(min_row=header_row + 1):
++            if row[0].value is None:
++                if any(c.value is not None for c in row):
++                    raise RuntimeError('Runs 存在没有 experiment_id 的非空行。')
++                continue
++            records.append((row[0].row, dict(zip(headers, [c.value for c in row]))))
++        ids = [r['experiment_id'] for _, r in records]
++        if len(set(ids)) != len(ids):
++            raise RuntimeError('登记表有重复 experiment_id，停止。')
++        setup = {r[0].value: r[1].value for r in wb['ProjectSetup'].iter_rows(min_row=2) if r[0].value}
++        definitions = [[c.value for c in row] for row in wb['FieldDefinitions'].iter_rows()]
++        schema = hashlib.sha256(json.dumps(
++            {'headers': headers, 'definitions': definitions}, ensure_ascii=False, sort_keys=True
++        ).encode()).hexdigest()
++        return wb, header_row, headers, records, setup, schema
++    except BaseException:
++        wb.close()
++        raise
++
++
++def csv_value(value):
++    if value is None:
++        return ''
++    if isinstance(value, (date, datetime)):
++        return value.strftime('%Y-%m-%d')
++    return str(value)
++
++
++def csv_matches(value, text):
++    if isinstance(value, bool):
++        return text.lower() == str(value).lower()
++    if isinstance(value, (int, float)):
++        try:
++            return float(text) == value
++        except ValueError:
++            return False
++    if isinstance(value, (date, datetime)):
++        return text in (value.strftime('%Y-%m-%d'), str(value), value.isoformat())
++    return csv_value(value) == text
++
++
++def check_csv_pair(path: Path, headers, records):
++    with path.open(encoding='utf-8-sig', newline='') as stream:
++        reader = csv.DictReader(stream)
++        if reader.fieldnames != headers:
++            raise RuntimeError(f'CSV 列名与 Runs 不一致：{path}')
++        rows = list(reader)
++    if len(rows) != len(records):
++        raise RuntimeError(f'XLSX/CSV 行数不一致：{len(records)}/{len(rows)}')
++    for (_, expected), actual in zip(records, rows):
++        for key in headers:
++            if not csv_matches(expected[key], actual.get(key, '')):
++                raise RuntimeError(f'XLSX/CSV 不一致：{expected["experiment_id"]}.{key}')
++
++
++def cell_snapshot(wb, exclude_run_row=None):
++    """Semantic and cell-format preservation check, including blank styled cells."""
++    result = {}
++    for ws in wb.worksheets:
++        for row in ws.iter_rows():
++            if ws.title == 'Runs' and row[0].row == exclude_run_row:
++                continue
++            for c in row:
++                result[(ws.title, c.coordinate)] = (
++                    c.value, c.data_type, tuple(c._style) if c.has_style else None,
++                    c.hyperlink.target if c.hyperlink else None,
++                    (c.comment.text, c.comment.author) if c.comment else None,
++                )
++    return result
++
++
++def update_registry(path: Path, record: dict, *, append: bool, expected_schema: str):
++    csv_path = path.with_suffix('.csv')
++    lock = path.with_name('.experiment_registry.lock')
++    with exclusive_lock(lock, {'experiment_id': record['experiment_id']}):
++        old_xlsx_hash, old_csv_hash = sha256(path), sha256(csv_path)
++        wb, header_row, headers, records, _, schema = read_registry(path)
++        try:
++            if schema != expected_schema or set(record) != set(headers):
++                raise RuntimeError('登记表 schema 或当前 run 字段不匹配，禁止写入。')
++            check_csv_pair(csv_path, headers, records)
++            matches = [(n, r) for n, r in records if r['experiment_id'] == record['experiment_id']]
++            if append:
++                if matches:
++                    raise RuntimeError(f'实验 ID 已存在，拒绝覆盖：{record["experiment_id"]}')
++                target = max([header_row] + [n for n, _ in records]) + 1
++            else:
++                if len(matches) != 1:
++                    raise RuntimeError('找不到唯一的当前 run 行，禁止更新。')
++                target, old = matches[0]
++                if (old['stage'] != 'FormalBaseline' or old['status'] != 'Running'
++                        or old['run_directory'] != record['run_directory']):
++                    raise RuntimeError('只允许更新当前同一路径的 Running 行，不得改历史结果。')
++            if record['stage'] != 'FormalBaseline' or record['test_used'] is not False:
++                raise RuntimeError('登记阶段或 test_used 不合法。')
++            if record['include_in_paper'] != 'Candidate':
++                raise RuntimeError('FormalBaseline include_in_paper 必须为 Candidate。')
++            if record['status'] not in ('Running', 'Completed', 'Failed'):
++                raise RuntimeError('不支持的运行状态；中断使用 Failed 并在 notes 说明。')
++            # The chosen empty append row can already be present as a blank row in
++            # the XLSX dimensions. Only this one row is authorized to change.
++            before = cell_snapshot(wb, target)
++            ws = wb['Runs']
++            if append:
++                for col in range(1, len(headers) + 1):
++                    ws.cell(target, col)._style = copy(ws.cell(target - 1, col)._style)
++                ws.row_dimensions[target].height = ws.row_dimensions[target - 1].height
++            for col, key in enumerate(headers, 1):
++                ws.cell(target, col).value = record[key]
++            if append:
++                for table in ws.tables.values():
++                    c1, r1, c2, r2 = range_boundaries(table.ref)
++                    if r1 == header_row and c1 == 1 and c2 == len(headers) and r2 == target - 1:
++                        table.ref = f'A{header_row}:{get_column_letter(c2)}{target}'
++                        if table.autoFilter:
++                            table.autoFilter.ref = table.ref
++                if ws.auto_filter.ref:
++                    ws.auto_filter.ref = f'A{header_row}:{get_column_letter(len(headers))}{target}'
++            token = datetime.now().strftime('%Y%m%d_%H%M%S_%f') + '_' + uuid.uuid4().hex[:8]
++            backup_dir = path.parent / 'backups'
++            backup_dir.mkdir(exist_ok=True)
++            backups = []
++            for original in (path, csv_path):
++                backup = backup_dir / f'{original.stem}_{token}{original.suffix}'
++                with original.open('rb') as src, backup.open('xb') as dst:
++                    shutil.copyfileobj(src, dst)
++                backups.append(backup)
++            staged_xlsx = path.with_name(f'.registry_{token}.xlsx')
++            staged_csv = path.with_name(f'.registry_{token}.csv')
++            try:
++                wb.save(staged_xlsx)
++                check_wb, _, check_headers, check_rows, _, check_schema = read_registry(staged_xlsx)
++                try:
++                    after = cell_snapshot(check_wb, target)
++                    changed = [(key, value, after.get(key)) for key, value in before.items() if after.get(key) != value]
++                    if changed:
++                        raise RuntimeError(f'暂存工作簿改变了历史单元格/格式，拒绝替换：{changed[:3]}')
++                    if check_schema != schema:
++                        raise RuntimeError('暂存工作簿改变了字段定义。')
++                    with staged_csv.open('x', encoding='utf-8-sig', newline='') as stream:
++                        writer = csv.writer(stream)
++                        writer.writerow(check_headers)
++                        for _, row in check_rows:
++                            writer.writerow([csv_value(row[key]) for key in check_headers])
++                    check_csv_pair(staged_csv, check_headers, check_rows)
++                finally:
++                    check_wb.close()
++                if sha256(path) != old_xlsx_hash or sha256(csv_path) != old_csv_hash:
++                    raise RuntimeError('登记表在写入期间被其他程序改动，停止。')
++                os.replace(staged_xlsx, path)
++                try:
++                    os.replace(staged_csv, csv_path)
++                except BaseException:
++                    # XLSX has changed but CSV has not: restore the exact original bytes.
++                    rollback = path.with_name(f'.rollback_{token}.xlsx')
++                    shutil.copyfile(backups[0], rollback)
++                    os.replace(rollback, path)
++                    raise
++            finally:
++                staged_xlsx.unlink(missing_ok=True)
++                staged_csv.unlink(missing_ok=True)
++            return [str(p) for p in backups]
++        finally:
++            wb.close()
+diff --git a/workspace/scripts/summarize_formal_baseline.py b/workspace/scripts/summarize_formal_baseline.py
+new file mode 100644
+--- /dev/null
++++ b/workspace/scripts/summarize_formal_baseline.py
+@@ -0,0 +1,146 @@
++"""Summarize all three completed seeds without loading a model or using test."""
++from __future__ import annotations
++import sys
++sys.dont_write_bytecode = True
++
++import csv
++import io
++import json
++import math
++from pathlib import Path
++import statistics
++import yaml
++
++from run_formal_baseline import (
++    EXPERIMENTS, PROTOCOL, REGISTRY, RUNS, RUN_LOCK, WORKSPACE,
++    configure_process, load_reference, require, assert_protocol_diff,
++    read_results, result_summary, sha256, exclusive_lock,
++)
++
++FIELDS = [
++    'precision_at_best_epoch', 'recall_at_best_epoch', 'map50_at_best_epoch', 'map50_95_at_best_epoch',
++    'broken_map50', 'broken_map50_95', 'loose_map50', 'loose_map50_95',
++    'best_epoch', 'runtime_seconds', 'peak_vram_mib',
++]
++
++
++def calculate_statistics(individual):
++    require(len(individual) == 3, '必须恰有三个 individual runs。')
++    require({r['experiment_id']: r['seed'] for r in individual} == EXPERIMENTS, '三 seed 白名单不完整或重复。')
++    stats = {}
++    for field in FIELDS:
++        values = [r[field] for r in individual]
++        require(all(isinstance(v, (int, float)) and not isinstance(v, bool) and math.isfinite(v)
++                    for v in values), f'{field} 缺少可靠数值；不忽略缺失 seed，不用零代替 NA。')
++        mean, std = statistics.mean(values), statistics.stdev(values)  # sample SD, ddof=1
++        stats[field] = {'n': 3, 'mean': mean, 'sample_std_ddof1': std, 'mean_plus_minus_std': f'{mean:.6f} ± {std:.6f}'}
++    return stats
++
++
++def collect_completed(protocol):
++    reference, _, _, records, _ = load_reference(protocol)
++    by_id = {r['experiment_id']: r for _, r in records}
++    missing = [key for key in EXPERIMENTS if key not in by_id or by_id[key]['status'] != 'Completed']
++    require(not missing, f'正式汇总尚不可生成；以下实验缺失或未 Completed：{missing}')
++    individual = []
++    for experiment_id, seed in EXPERIMENTS.items():
++        row = by_id[experiment_id]
++        require(row['stage'] == 'FormalBaseline' and row['seed'] == seed and row['test_used'] is False
++                and row['include_in_paper'] == 'Candidate', f'登记身份不一致：{experiment_id}')
++        run = Path(row['run_directory']).resolve()
++        require(run.parent == RUNS.resolve() and run.name.startswith(experiment_id + '_'), 'run 路径不是本实验的新目录。')
++        status_path = WORKSPACE / 'logs' / run.name / 'status.json'
++        status = json.loads(status_path.read_text(encoding='utf-8'))
++        require(status['experiment_id'] == experiment_id and status['seed'] == seed
++                and status['success'] is True and status['state'] == 'Completed'
++                and status['training_completed'] is True and status['registry_synchronized'] is True
++                and status['test_used'] is False and status['dry_run'] is False, f'运行 status 不完整：{experiment_id}')
++        require(status['preflight']['protocol_sha256'] == sha256(PROTOCOL), '运行使用的协议与当前冻结协议不同。')
++        require(status['preflight']['pretrained_sha256'] == protocol['weights']['sha256'], '预训练权重不同。')
++        require(status['preflight']['dataset_integrity']['unchanged'] is True
++                and status['dataset_integrity_after']['unchanged'] is True
++                and not status['blocked_dataset_writes'], '数据完整性检查未完整通过。')
++        require(status['git_after']['commit'] == protocol['environment']['git_commit'] and not status['git_after']['status'],
++                '训练后源码不符合协议。')
++        for name in ('args.yaml', 'results.csv', 'weights/best.pt', 'weights/last.pt'):
++            require(sha256(run / name) == status['artifact_sha256'][name], f'训练后产物发生变化：{run / name}')
++        saved_args = yaml.safe_load((run / 'args.yaml').read_text(encoding='utf-8-sig'))
++        assert_protocol_diff(reference, saved_args, experiment_id)
++        calculated = result_summary(read_results(run / 'results.csv', reference['epochs']))
++        for key, value in calculated.items():
++            require(row[key] == value and status['best_epoch_metrics'][key] == value, f'登记/状态/CSV 不一致：{experiment_id}.{key}')
++        for key in FIELDS:
++            if key in calculated:
++                continue
++            evidence = status['per_class_metrics'].get(key, status.get(key))
++            require(row[key] == evidence, f'登记/状态不一致：{experiment_id}.{key}')
++        individual.append({'experiment_id': experiment_id, 'seed': seed,
++                           **{key: row[key] for key in FIELDS}, 'run_directory': str(run), 'status_json': str(status_path)})
++    return individual
++
++
++def render_outputs(individual, stats, protocol):
++    columns = ['row_type', 'experiment_id', 'seed', *FIELDS]
++    stream = io.StringIO(newline='')
++    writer = csv.DictWriter(stream, fieldnames=columns)
++    writer.writeheader()
++    for row in individual:
++        writer.writerow({'row_type': 'individual', **{k: row[k] for k in columns[1:]}})
++    for kind, stat_key in [('mean', 'mean'), ('sample_std_ddof1', 'sample_std_ddof1'), ('mean_plus_minus_std', 'mean_plus_minus_std')]:
++        writer.writerow({'row_type': kind, **{k: stats[k][stat_key] for k in FIELDS}})
++    payload = {'protocol_sha256': sha256(PROTOCOL), 'reference_experiment': 'Y11-DIAG-001',
++               'stage': 'FormalBaseline', 'test_used': False, 'n': 3, 'ddof': 1,
++               'metric_basis': 'overall P/R/AP from same best epoch; class AP from separate fixed val revalidation',
++               'runtime_basis': 'new-run setup, training, val revalidation and dataset postflight; seconds',
++               'peak_vram_basis': 'PyTorch allocated peak during model.train(); MiB, excludes separate val revalidation',
++               'individual_runs': individual, 'statistics': stats}
++    lines = ['# 官方 YOLO11s FormalBaseline 三 seed 汇总', '',
++             '三个 individual runs 全部保留；总体成绩使用 mean ± sample standard deviation（ddof=1）。',
++             '不选择最高 seed 替代正式基线成绩。test 未用于模型评价。', '',
++             '| experiment ID | seed | best epoch | P | R | mAP50 | mAP50-95 | runtime (s) | peak VRAM (MiB) |',
++             '|---|---:|---:|---:|---:|---:|---:|---:|---:|']
++    for row in individual:
++        lines.append(f"| {row['experiment_id']} | {row['seed']} | {row['best_epoch']} | "
++                     + ' | '.join(f'{row[k]:.6f}' for k in FIELDS[:4])
++                     + f" | {row['runtime_seconds']:.2f} | {row['peak_vram_mib']:.2f} |")
++    lines += ['', '| metric | seed 42 | seed 3407 | seed 2026 | mean ± sample std |', '|---|---:|---:|---:|---|']
++    for field in FIELDS:
++        lines.append('| ' + field + ' | ' + ' | '.join(f'{r[field]:.6f}' for r in individual)
++                     + ' | ' + stats[field]['mean_plus_minus_std'] + ' |')
++    lines += ['', '整体 P/R/AP 取每个 run 的同一 best epoch；best 先按 mAP50-95、并列再按 mAP50，完全并列取最早轮次。',
++              'broken/loose AP 来自该 run 的 best.pt 固定 val 复验，不能与训练期间整体 AP 混作同一次测量。',
++              'runtime_seconds 包含新 run 设置、训练、val 复验与数据完整性后检查；peak VRAM 为 model.train() 阶段 PyTorch allocated 峰值。',
++              'best epoch、runtime 和 VRAM 的 mean/std 仅为描述统计。所有 AP 值范围为 0–1。', '', '证据：']
++    for row in individual:
++        lines.append(f"- {row['experiment_id']}: `{row['run_directory']}`；status: `{row['status_json']}`")
++    return stream.getvalue(), json.dumps(payload, ensure_ascii=False, indent=2, allow_nan=False) + '\n', '\n'.join(lines) + '\n'
++
++
++def main():
++    configure_process()
++    try:
++        with exclusive_lock(RUN_LOCK, {'operation': 'summary; no model calls'}):
++            protocol = yaml.safe_load(PROTOCOL.read_text(encoding='utf-8-sig'))
++            individual = collect_completed(protocol)
++            stats = calculate_statistics(individual)
++            outputs = render_outputs(individual, stats, protocol)
++            paths = [WORKSPACE / 'analysis/formal_baseline_3seed_summary.csv',
++                     WORKSPACE / 'analysis/formal_baseline_3seed_metrics.json',
++                     WORKSPACE / 'notes/formal_baseline_3seed_report.md']
++            # Validate every existing destination before writing any new output.
++            for path, content in zip(paths, outputs):
++                if path.exists():
++                    require(path.read_text(encoding='utf-8-sig') == content, f'已有汇总内容不同，拒绝覆盖：{path}')
++            for path, content in zip(paths, outputs):
++                if not path.exists():
++                    with path.open('x', encoding='utf-8-sig' if path.suffix == '.csv' else 'utf-8', newline='') as stream:
++                        stream.write(content)
++                print(path)
++        return 0
++    except (RuntimeError, OSError, KeyError, ValueError) as exc:
++        print(f'停止汇总：{exc}', file=sys.stderr)
++        return 1
++
++
++if __name__ == '__main__':
++    raise SystemExit(main())
+diff --git a/workspace/scripts/test_formal_baseline.py b/workspace/scripts/test_formal_baseline.py
+new file mode 100644
+--- /dev/null
++++ b/workspace/scripts/test_formal_baseline.py
+@@ -0,0 +1,223 @@
++"""Safety tests: temporary workbook copies / synthetic audit events, no training."""
++from __future__ import annotations
++import sys
++sys.dont_write_bytecode = True
++from copy import deepcopy
++import os
++from pathlib import Path
++import shutil
++import tempfile
++import unittest
++from unittest.mock import patch
++import yaml
++
++import run_formal_baseline as runner
++import formal_baseline_registry as registry
++import summarize_formal_baseline as summary
++
++
++class FormalBaselineSafetyTests(unittest.TestCase):
++    @classmethod
++    def setUpClass(cls):
++        cls.protocol = yaml.safe_load(runner.PROTOCOL.read_text(encoding='utf-8'))
++        cls.reference, cls.row, cls.headers, cls.records, _ = runner.load_reference(cls.protocol)
++
++    def test_exact_seed_only_differences(self):
++        for key, seed in runner.EXPERIMENTS.items():
++            args = runner.final_arguments(self.protocol, key, runner.RUNS / f'{key}_TEST')
++            diff = runner.assert_protocol_diff(self.reference, args, key)
++            self.assertEqual(set(diff), set() if seed == 42 else {'seed'})
++
++    def test_training_drift_is_rejected_without_repair(self):
++        for field, value in [('epochs', 100), ('nbs', 16), ('mosaic', 0), ('model', 'yolo11s_p2.yaml'),
++                             ('optimizer', 'SGD'), ('imgsz', 640), ('lr0', 0.02), ('cls', 1.0), ('split', 'test')]:
++            with self.subTest(field=field):
++                args = deepcopy(self.reference)
++                args[field] = value
++                with self.assertRaises(RuntimeError):
++                    runner.assert_protocol_diff(self.reference, args, 'Y11-BASE-001-S42')
++                self.assertEqual(args[field], value)
++
++    def test_missing_extra_and_wrong_seed_are_rejected(self):
++        for mutate in (lambda a: a.pop('translate'), lambda a: a.update(extra_training_knob=1), lambda a: a.update(seed=1)):
++            args = deepcopy(self.reference)
++            mutate(args)
++            with self.assertRaises(RuntimeError):
++                runner.assert_protocol_diff(self.reference, args, 'Y11-BASE-001-S42')
++        with self.assertRaises(RuntimeError):
++            runner.final_arguments(self.protocol, 'Y11-BASE-004-S7', runner.RUNS / 'unused')
++
++    def test_official_auto_runtime_adjustment_is_separate_from_frozen_input(self):
++        actual = deepcopy(self.reference)
++        actual['warmup_bias_lr'] = 0.0
++        # Never accept it as a change to the caller's frozen protocol.
++        with self.assertRaises(RuntimeError):
++            runner.assert_protocol_diff(self.reference, actual, 'Y11-BASE-001-S42')
++        derived = runner.assert_effective_training_args(self.reference, actual, 'Y11-BASE-001-S42')
++        self.assertEqual(derived['warmup_bias_lr']['official_runtime'], 0.0)
++        self.assertEqual(self.reference['warmup_bias_lr'], .1)
++        actual['mosaic'] = 0.0
++        with self.assertRaises(RuntimeError):
++            runner.assert_effective_training_args(self.reference, actual, 'Y11-BASE-001-S42')
++
++    def test_existing_id_and_directory_are_rejected(self):
++        with tempfile.TemporaryDirectory(prefix='formal-baseline-identity-') as tmp:
++            root = Path(tmp)
++            key = 'Y11-BASE-001-S42'
++            with patch.object(runner, 'RUNS', root):
++                with self.assertRaises(RuntimeError):
++                    runner.check_new_identity(key, root / 'new', [(1, {'experiment_id': key})])
++                (root / f'{key}_old').mkdir()
++                with self.assertRaises(RuntimeError):
++                    runner.check_new_identity(key, root / 'new', [])
++                with self.assertRaises(RuntimeError):
++                    runner.check_new_identity(key, root / f'{key}_old', [])
++
++    def test_best_epoch_tie_break_and_independent_peaks(self):
++        rows = []
++        for epoch, p, r, ap50, ap in [(1, .9, .1, .2, .1), (2, .2, .9, .3, .1), (3, .1, .2, .3, .1)]:
++            rows.append({'epoch': epoch, 'metrics/precision(B)': p, 'metrics/recall(B)': r,
++                         'metrics/mAP50(B)': ap50, 'metrics/mAP50-95(B)': ap})
++        result = runner.result_summary(rows)
++        self.assertEqual(result['best_epoch'], 2)
++        self.assertEqual(result['precision_at_best_epoch'], .2)
++        self.assertEqual(result['recall_at_best_epoch'], .9)
++        self.assertEqual(result['epoch_of_max_precision'], 1)
++        self.assertEqual(result['max_precision_any_epoch'], .9)
++
++    def test_history_and_sheets_preserved_in_copy(self):
++        with tempfile.TemporaryDirectory(prefix='formal-baseline-xlsx-') as tmp:
++            path = Path(tmp) / 'experiment_registry.xlsx'
++            shutil.copyfile(runner.REGISTRY, path)
++            shutil.copyfile(runner.REGISTRY.with_suffix('.csv'), path.with_suffix('.csv'))
++            old_hash = registry.sha256(path)
++            wb, _, headers, old_rows, _, schema = registry.read_registry(path)
++            target = max(n for n, _ in old_rows) + 1
++            old_cells = registry.cell_snapshot(wb, target)
++            old_tables = {name: wb['Runs'].tables[name].ref for name in wb['Runs'].tables}
++            old_views = {ws.title: (ws.freeze_panes, str(ws.views), str(ws.sheet_format), str(ws.merged_cells)) for ws in wb}
++            wb.close()
++            key = 'Y11-BASE-001-S42'
++            args = runner.final_arguments(self.protocol, key, Path(tmp) / key)
++            record = runner.initial_record(key, Path(tmp) / key, self.row, headers, args)
++            backups = registry.update_registry(path, record, append=True, expected_schema=schema)
++            self.assertEqual(registry.sha256(Path(backups[0])), old_hash)
++            self.assertEqual(len(backups), 2)
++            wb, _, headers, records, _, _ = registry.read_registry(path)
++            self.assertEqual(len(records), len(old_rows) + 1)
++            after = registry.cell_snapshot(wb)
++            for coord, value in old_cells.items():
++                self.assertEqual(after[coord], value, coord)
++            for ws in wb:
++                self.assertEqual(old_views[ws.title], (ws.freeze_panes, str(ws.views), str(ws.sheet_format), str(ws.merged_cells)))
++            self.assertEqual(wb['Runs'].tables['RunsTable'].ref, old_tables['RunsTable'].replace('10', '11'))
++            registry.check_csv_pair(path.with_suffix('.csv'), headers, records)
++            wb.close()
++            record.update(status='Completed', epochs_completed=30, best_epoch=28,
++                          precision_at_best_epoch=.00731, recall_at_best_epoch=.03571,
++                          map50_at_best_epoch=.02141, map50_95_at_best_epoch=.00964)
++            registry.update_registry(path, record, append=False, expected_schema=schema)
++            wb, _, headers, records, _, _ = registry.read_registry(path)
++            self.assertEqual(records[-1][1]['status'], 'Completed')
++            self.assertEqual(len(records), len(old_rows) + 1)
++            final_cells = registry.cell_snapshot(wb)
++            self.assertTrue(all(final_cells[k] == v for k, v in old_cells.items()))
++            registry.check_csv_pair(path.with_suffix('.csv'), headers, records)
++            wb.close()
++            with self.assertRaises(RuntimeError):
++                registry.update_registry(path, record, append=True, expected_schema=schema)
++            with self.assertRaises(RuntimeError):
++                registry.update_registry(path, record, append=False, expected_schema=schema)
++
++    def test_historical_row_update_is_refused(self):
++        with tempfile.TemporaryDirectory(prefix='formal-baseline-history-') as tmp:
++            path = Path(tmp) / 'experiment_registry.xlsx'
++            shutil.copyfile(runner.REGISTRY, path)
++            shutil.copyfile(runner.REGISTRY.with_suffix('.csv'), path.with_suffix('.csv'))
++            before = registry.sha256(path)
++            with self.assertRaises(RuntimeError):
++                registry.update_registry(path, dict(self.row), append=False,
++                                         expected_schema=self.protocol['reference']['registry_schema_sha256'])
++            self.assertEqual(registry.sha256(path), before)
++
++    def test_pair_rolls_back_if_csv_replace_fails(self):
++        with tempfile.TemporaryDirectory(prefix='formal-baseline-rollback-') as tmp:
++            path = Path(tmp) / 'experiment_registry.xlsx'
++            shutil.copyfile(runner.REGISTRY, path)
++            shutil.copyfile(runner.REGISTRY.with_suffix('.csv'), path.with_suffix('.csv'))
++            original = (registry.sha256(path), registry.sha256(path.with_suffix('.csv')))
++            record = runner.initial_record('Y11-BASE-001-S42', Path(tmp) / 'run', self.row, self.headers, self.reference)
++            replace = os.replace
++            def fail_csv(src, dst):
++                if Path(src).suffix == '.csv':
++                    raise PermissionError('simulated locked CSV')
++                return replace(src, dst)
++            with patch.object(registry.os, 'replace', side_effect=fail_csv):
++                with self.assertRaises(PermissionError):
++                    registry.update_registry(path, record, append=True,
++                                             expected_schema=self.protocol['reference']['registry_schema_sha256'])
++            self.assertEqual((registry.sha256(path), registry.sha256(path.with_suffix('.csv'))), original)
++
++    def test_lock_refuses_existing_file_without_removal(self):
++        with tempfile.TemporaryDirectory(prefix='formal-baseline-lock-') as tmp:
++            path = Path(tmp) / 'active.lock'
++            path.write_text('existing-owner', encoding='utf-8')
++            with self.assertRaises(RuntimeError):
++                with registry.exclusive_lock(path, {}):
++                    self.fail('must not acquire existing lock')
++            self.assertEqual(path.read_text(encoding='utf-8'), 'existing-owner')
++
++    def test_main_dry_run_never_calls_training_entry(self):
++        with tempfile.TemporaryDirectory(prefix='formal-baseline-dry-run-') as tmp:
++            root = Path(tmp)
++            lock = root / 'run.lock'
++            with patch.object(runner, 'WORKSPACE', root), patch.object(runner, 'RUNS', root / 'runs'), \
++                 patch.object(runner, 'RUN_LOCK', lock), patch.object(runner, 'configure_process'), \
++                 patch.object(runner, 'preflight', return_value=(None, None, None, None, {'passed': True})), \
++                 patch.object(runner, 'execute_training', side_effect=AssertionError('training entry must never be called')) as train:
++                self.assertEqual(runner.main(['--experiment-id', 'Y11-BASE-001-S42', '--dry-run']), 0)
++                train.assert_not_called()
++            self.assertFalse((root / 'runs').exists())
++            self.assertFalse(lock.exists())
++
++    def test_summary_uses_sample_std_and_retains_individuals(self):
++        rows = []
++        for index, (key, seed) in enumerate(runner.EXPERIMENTS.items(), 1):
++            rows.append({'experiment_id': key, 'seed': seed, **{f: index / 10 for f in summary.FIELDS}})
++        stats = summary.calculate_statistics(rows)
++        self.assertAlmostEqual(stats['map50_95_at_best_epoch']['mean'], .2)
++        self.assertAlmostEqual(stats['map50_95_at_best_epoch']['sample_std_ddof1'], .1)
++        self.assertEqual(len(rows), 3)
++        with self.assertRaises(RuntimeError):
++            summary.calculate_statistics(rows[:2])
++        rows[0]['broken_map50'] = 'NA'
++        with self.assertRaises(RuntimeError):
++            summary.calculate_statistics(rows)
++
++    def test_formal_summary_blocked_until_all_completed(self):
++        with self.assertRaisesRegex(RuntimeError, '缺失或未 Completed'):
++            summary.collect_completed(self.protocol)
++
++    def test_synthetic_dataset_and_source_write_guards(self):
++        runner.install_guards()
++        for path in (runner.PROTECTED_ROOT / 'synthetic-no-file.txt', runner.SOURCE / 'synthetic-no-file.txt'):
++            with self.assertRaises(PermissionError):
++                sys.audit('open', str(path), 'w', os.O_WRONLY | os.O_CREAT)
++        with self.assertRaises(PermissionError):
++            sys.audit('os.rename', str(runner.PROTECTED_ROOT / 'synthetic-no-file.txt'), 'unused', -1, -1)
++
++    def test_synthetic_test_reads_blocked_during_model_phase(self):
++        runner.install_guards()
++        path = runner.DATASET / 'images/test/synthetic-no-file.jpg'
++        with runner.forbid_test_model_reads():
++            with self.assertRaises(PermissionError):
++                sys.audit('open', str(path), 'r', os.O_RDONLY)
++            sys.audit('open', str(runner.DATASET / 'images/val/synthetic-no-file.jpg'), 'r', os.O_RDONLY)
++        # Hash-only integrity access outside the model phase remains possible.
++        sys.audit('open', str(path), 'r', os.O_RDONLY)
++
++
++if __name__ == '__main__':
++    sys.stdout.reconfigure(encoding='utf-8')
++    sys.stderr.reconfigure(encoding='utf-8')
++    unittest.main(verbosity=2)

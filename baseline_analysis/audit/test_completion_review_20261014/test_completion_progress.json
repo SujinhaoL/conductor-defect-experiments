@@ -1,0 +1,58 @@
+{
+  "updated_utc": "2026-10-17T05:28:30+00:00",
+  "fixed_queue": "D:\\小论文\\model_projects\\baseline_analysis\\audit\\test_completion_review_20261014\\fixed_test_queue.json",
+  "completed": [
+    {
+      "order": 1,
+      "experiment_id": "FRCNN-R50FPN-SCALE1280-VAL-001",
+      "epoch": 5,
+      "result_dir": "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\runs\\FRCNN-R50FPN-SCALE1280-VAL-001\\step11_31112_14115\\test_selected_epoch5\\step15_23467_7311",
+      "status": "COMPLETED_REVIEWED_REGISTERED",
+      "evaluation_ids": [
+        "EV-130728a8cb98331b",
+        "EV-f55e1b0a9e76409c"
+      ]
+    },
+    {
+      "order": 2,
+      "experiment_id": "FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001",
+      "epoch": 15,
+      "result_dir": "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\runs\\FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001\\step13_27622_23378\\test_selected_epoch15\\step16_27428_3464",
+      "status": "COMPLETED_REVIEWED_REGISTERED",
+      "evaluation_ids": [
+        "EV-5f94298ae373ff9f",
+        "EV-d19b474c5188b02f"
+      ]
+    },
+    {
+      "order": 3,
+      "experiment_id": "FRCNN-R50FPN-SCALE1600-VAL-001",
+      "epoch": 12,
+      "result_dir": "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\runs\\FRCNN-R50FPN-SCALE1600-VAL-001\\step14_3575_9657\\test_selected_epoch12\\step17_23519_12608",
+      "status": "COMPLETED_REVIEWED_REGISTERED",
+      "evaluation_ids": [
+        "EV-a748606a96200062",
+        "EV-15c135fb2e1d0e9e"
+      ]
+    }
+  ],
+  "next_order": null,
+  "workflow_status": "PAUSED_BY_USER",
+  "decision_date_asia_shanghai": "2026-10-17",
+  "decision": "用户决定暂不继续YOLO11s1600和RT-DETR-L1600补测；保留准备文件和历史结果，下次另行讨论研究方案。不得自动恢复。",
+  "status_review": "D:\\小论文\\model_projects\\baseline_analysis\\audit\\test_usage_review_20261017\\verified_status.json",
+  "remaining_not_tested": [
+    {"order": 4, "experiment_id": "Y11-SENS-IMGSZ1600-001", "epoch": 54, "status": "NOT_TESTED_PAUSED_BY_USER", "preparation_preserved": true},
+    {"order": 5, "experiment_id": "RTD-SENS-IMGSZ1600-001", "epoch": 42, "status": "NOT_TESTED_PAUSED_BY_USER", "preparation_preserved": false}
+  ],
+  "training_started": false,
+  "assistant_model_inference_performed": false,
+  "next_preparation": {
+    "order": 4,
+    "epoch": 54,
+    "status": "PAUSED_BY_USER_PREPARATION_PRESERVED_NOT_TESTED",
+    "experiment_id": "Y11-SENS-IMGSZ1600-001",
+    "command": "D:\\小论文\\model_projects\\yolo11\\workspace\\scripts\\run_step18_test_yolo1600.cmd",
+    "evidence": "D:\\小论文\\model_projects\\yolo11\\workspace\\audit\\step18_preflight\\handoff_ready.json"
+  }
+}

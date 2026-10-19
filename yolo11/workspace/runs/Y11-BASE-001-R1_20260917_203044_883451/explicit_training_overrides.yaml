@@ -1,0 +1,16 @@
+model: D:\小论文\model_projects\yolo11\workspace\weights\yolo11s.pt
+data: D:\小论文\model_projects\yolo11\workspace\configs\conductor_bl_v1.yaml
+epochs: 100
+imgsz: 1280
+batch: 4
+workers: 0
+device: '0'
+seed: 42
+deterministic: true
+pretrained: true
+cache: false
+plots: true
+project: D:\小论文\model_projects\yolo11\workspace\runs
+name: Y11-BASE-001-R1_20260917_203044_883451
+save_dir: D:\小论文\model_projects\yolo11\workspace\runs\Y11-BASE-001-R1_20260917_203044_883451
+exist_ok: false

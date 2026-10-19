@@ -1,0 +1,109 @@
+Faster R-CNN 实验：第一步，本地文件与环境核查
+核查日期：2026-10-10（Asia/Shanghai）
+
+边界
+用户在 VS Code 的 Windows cmd 中自行运行所有训练，包括小样本过拟合。
+本步骤没有安装依赖、克隆代码、下载权重、启动推理或训练，也没有生成 COCO 数据。
+未修改、覆盖、移动原始数据及前四次实验文件。
+本轮只使用 D:\anaconda3\python.exe 的隔离模式和标准库执行管理核查。
+其他环境的包版本通过 METADATA 静态读取，未加载这些环境的 torch 或模型包。
+
+目录
+项目：D:\小论文\model_projects
+Faster R-CNN：D:\小论文\model_projects\Faster R-CNN
+检查开始时 Faster R-CNN 目录为空。
+官方代码预定目录 D:\小论文\model_projects\Faster R-CNN\mmdetection 尚不存在。
+本轮新增内容仅位于 D:\小论文\model_projects\Faster R-CNN\workspace。
+源数据：D:\小论文\conductor_defect_dataset\02_yolo11_dataset
+COCO 目标 D:\小论文\conductor_defect_dataset\03_coco_dataset 尚不存在。
+
+本轮产物
+workspace\scripts\step00_probe.py：标准库核查脚本。
+workspace\scripts\run_step00_probe.cmd：cmd 入口，固定使用上述管理解释器。
+workspace\audit\step00_20261010_230312_034283\probe.json：最新完整核查结果。
+workspace\audit\step00_20261010_230312_034283\summary.txt：最新可读结果。
+workspace\audit\step00_20261010_230147_758313：初次核查记录，保留追溯。
+每次运行建立新的时间戳目录，不覆盖已有报告。
+
+硬件与系统
+Windows 版本：10.0.26200.9457
+GPU：NVIDIA GeForce RTX 5070 Ti
+驱动：591.86
+显存：16303 MiB；核查时已用约 5354 MiB（动态值）
+GPU compute capability：12.0
+物理内存：48 GiB
+D 盘剩余空间：约 409.76 GiB（动态值）
+Git：2.54.0.windows.1
+nvidia-smi 顶部 CUDA 13.1 表示驱动支持能力，不能证明本机已安装 CUDA Toolkit。
+PATH 中未找到 nvcc、cl、cmake、ninja。
+CUDA_PATH、CUDA_HOME、VSINSTALLDIR、VSCMD_VER 均为空。
+标准 CUDA Toolkit 目录未发现版本子目录；标准位置未发现 vswhere.exe。
+以上尚不能排除自定义位置的工具安装。
+wsl --status 明确报告未安装 WSL，未发现可用发行版。
+
+现有 Python 环境（读取版本及包元数据，不验证包是否能够运行）
+D:\anaconda3：Python 3.13.5；未检出 torch/MMCV/MMEngine/MMDetection 元数据。
+D:\anaconda3\envs\huawei：Python 3.10.21，torch 2.7.1+cu128。
+D:\anaconda3\envs\test：Python 3.9.24，torch 2.8.0+cu128，torchvision 0.23.0+cu128。
+D:\小论文\model_projects\yolo11\.venv：Python 3.12.13，torch 2.8.0+cu128，torchvision 0.23.0+cu128，Ultralytics 8.4.152。
+上述位置均未检出 mmcv/mmcv-lite/mmcv-full/mmengine/mmdet 的 dist-info 元数据。
+RT-DETR 目录当前只有 workspace，没有检出独立 .venv。
+后续 Faster R-CNN 创建独立环境，不能在这些已有环境内安装本实验依赖。
+
+原始 YOLO 数据重新核查
+split       images   labels   broken   loose   boxes
+train       107      107      39       129     168
+val         23       23       9        28      37
+test        23       23       8        28      36
+total       153      153      56       185     241
+原数据 data.yaml 和 yolo11\workspace\configs\conductor_bl_v1.yaml 的路径和类别映射一致。
+YOLO：0=broken，1=loose。
+重新读取每一份标签，检查格式、类别、有限坐标、正面积和归一化边界，发现错误数为 0。
+标签与图片匹配；没有空标签、孤立标签或清单外图片。
+读取图片文件头尺寸，并计算文件 SHA256，均与 split_manifest.csv 一致。
+清单中逐图类别框数与实际标签一致。
+153 张图中完全相同 SHA256 的重复组数为 0。
+138 个 split_group_id 均未跨集合。
+相同 source_folder/original_name 没有跨集合。
+scene_id 全部为空，不能用 scene_id 证明同源场景无泄漏。
+未进行完整图像解码、EXIF 方向核查、感知哈希和人工同源复核；这些仍待后续完成。
+没有重划分，没有静默修正标签。
+
+前四次实验
+已读取 D:\小论文\model_projects\baseline_analysis\09_four_experiments_summary_for_teacher.md。
+已读取四次指定运行的实际 args.yaml，路径、文件哈希及关键原文行已写入 probe.json。
+共同配置：100 epochs、batch=4、workers=0、seed=42、AMP=True、optimizer=auto、max_det=300。
+YOLO deterministic=True；RT-DETR deterministic=False；输入尺寸为 1280 或 1600。
+args 中 lr0=0.01 是配置值，不能由此断定 optimizer=auto 的实际运行学习率。
+本步骤未重新检验训练日志、权重加载记录、实际迭代数、指标实现或最终结果。
+这些将在需要精确比较及制定正式训练配置时读取对应原始证据。
+
+安装资料初查与待核实事项
+RTX 5070 Ti 属于 compute capability 12.0 的 Blackwell GPU。
+PyTorch 官方说明 2.7 引入 Blackwell 支持和 CUDA 12.8 wheel。
+MMDetection 3.3.0 官方兼容表：MMCV >=2.0.0,<2.2.0；MMEngine >=0.7.1,<1.0.0。
+v3.3.0 源码 assert 的 MMCV 下界为 2.0.0rc4，上界同为严格小于 2.2.0；正式环境应使用稳定版。
+MMCV 官方说明预编译包依赖 PyTorch/CUDA/平台组合，找不到对应包时需从源码编译。
+这些资料不能证明 Windows + sm_120 + 某一 PyTorch/MMCV 组合已能运行。
+当前尚未冻结 Python、PyTorch、MMCV、MMEngine 版本或代码 commit；未确认目标 wheel 的可用性。
+不要直接复制旧版 torch/cu118/mmcv 安装组合，也不要通过改 assert 绕过版本检查。
+下一步先核对用户 VS Code cmd 输出，再确定独立环境和可验证的安装路线。
+之后必须逐步通过 CUDA、MMCV CUDA 算子及官方 COCO 示例推理，才能准备小样本训练。
+
+官方来源（本轮已访问）
+https://developer.nvidia.com/cuda/gpus
+https://pytorch.org/blog/pytorch-2-7/
+https://github.com/open-mmlab/mmdetection/blob/main/docs/en/notes/faq.md
+https://raw.githubusercontent.com/open-mmlab/mmdetection/v3.3.0/mmdet/__init__.py
+https://mmcv.readthedocs.io/en/2.x/get_started/installation.html
+https://mmdetection.readthedocs.io/en/main/get_started.html
+https://docs.nvidia.com/deploy/nvidia-smi/index.html
+
+用户下一条命令（Windows cmd）
+cd /d "D:\小论文\model_projects\Faster R-CNN"
+call "D:\小论文\model_projects\Faster R-CNN\workspace\scripts\run_step00_probe.cmd"
+
+预期：显示 STEP00_PROBE_FINISHED 及 PROBE_EXIT_CODE=0。
+WSL 未安装、PATH_TOOLS 某项为 null 是核查结果，不是脚本崩溃。
+该完成标记仅表示核查脚本运行结束，不代表 CUDA/MMCV 已通过验收。
+用户反馈完整终端输出和 Report 路径；如报错提供完整 traceback 后再继续。

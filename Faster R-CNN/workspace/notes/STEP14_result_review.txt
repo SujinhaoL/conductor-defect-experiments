@@ -1,0 +1,5 @@
+STEP14_RESULT_REVIEW_PASS
+RUN_DIR=D:\小论文\model_projects\Faster R-CNN\workspace\runs\FRCNN-R50FPN-SCALE1600-VAL-001\step14_3575_9657
+BEST_VAL_EPOCH=12
+NOTE=D:\小论文\model_projects\Faster R-CNN\workspace\notes\FRCNN-R50FPN-SCALE1600-VAL-001.md
+Test not run; no assistant model inference/training; size experiment series stops here.

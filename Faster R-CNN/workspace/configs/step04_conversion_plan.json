@@ -1,0 +1,22 @@
+{
+  "source": "D:\\小论文\\conductor_defect_dataset\\02_yolo11_dataset",
+  "destination": "D:\\小论文\\conductor_defect_dataset\\03_coco_dataset",
+  "source_fingerprint": "6fe117b147cf4e66ad3c0657e2e43671d1fdcd380adf99cfe35d9b27a5b69f0f",
+  "source_audit": "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\audit\\step04_preflight\\source_audit.json",
+  "num_classes": 2,
+  "classes": ["broken", "loose"],
+  "yolo_to_coco": {"0": 1, "1": 2},
+  "coco_to_model": {"1": 0, "2": 1},
+  "expected": {
+    "train": {"images": 107, "broken": 39, "loose": 129, "boxes": 168},
+    "val": {"images": 23, "broken": 9, "loose": 28, "boxes": 37},
+    "test": {"images": 23, "broken": 8, "loose": 28, "boxes": 36},
+    "trainval": {"images": 130, "broken": 48, "loose": 157, "boxes": 205}
+  },
+  "image_copy": "byte-identical files in images/train, images/val, images/test",
+  "coco_file_name": "split/original_filename; use data_prefix.img=images/ for all JSON files",
+  "split_policy": "Preserve original image-level split and existing split_group_id; no new scene attribution or resplitting",
+  "anomaly_policy": "Report and stop; never clip, repair or discard a box silently",
+  "existing_destination_policy": "Stop if nonempty; never overwrite an existing dataset",
+  "training_started": false
+}

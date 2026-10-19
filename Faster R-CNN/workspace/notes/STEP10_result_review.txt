@@ -1,0 +1,70 @@
+STEP10 最终测试结果核查
+
+实验：FRCNN-R50FPN-MERGE130-001
+训练运行：step09_109_20338
+测试运行：step10_13778_21846
+状态：COMPLETED_REVIEWED
+
+原始结果完整目录：
+D:\小论文\model_projects\Faster R-CNN\workspace\runs\FRCNN-R50FPN-MERGE130-001\step09_109_20338\test_selected_epoch100\step10_13778_21846
+终端完整日志：
+D:\小论文\model_projects\Faster R-CNN\workspace\logs\step10_13778_21846\step10_console.txt
+测试命令和版本、数据、checkpoint、配置哈希见原始目录 pretest_record.json。
+
+训练与选模规则：原train107+val23共130图，205框（broken48、loose157）；无独立val。
+测试：原test23图，36框（broken8、loose28）。
+固定epoch100，来自同一官方完整COCO初始化的新训练；未接着VAL-001训练。
+checkpoint：
+D:\小论文\model_projects\Faster R-CNN\workspace\runs\FRCNN-R50FPN-MERGE130-001\step09_109_20338\epoch_100.pth
+SHA256=fccdc599d1e2bf2603b319d7f990f6e795dc8a24eef726e9a415723a409fd15a
+所有348个模型张量严格加载匹配，无缺失/多余/尺寸异常；本轮核查只检查已有加载日志，不重新运行模型。
+原selected_checkpoint.json是测试前记录，其中test_evaluated=false保留原样；当前完成状态以本核查及总登记run_status_index.json为准。
+
+核查事实：31份输出文件SHA256一致，12份运行时归档输入SHA256一致。
+23个图片ID=131..153、图像尺寸、类别0/1→COCO1/2、129个原图坐标/分数与COCO预测导出逐项一致。
+独立使用pycocotools 2.0.10对保存预测复算：整体与每类AP/AR误差<1e-12；没有模型加载、训练或推理。
+
+精确比例（0到1）：
+mAP50=0.0002828854314002829
+mAP50-95=0.00016973125884016973
+COCO AR100=0.010714285714285714
+broken AP50=0，AP50-95=0，AR100=0
+loose AP50=0.0005657708628005657，AP50-95=0.00033946251768033947，AR100=0.02142857142857143
+百分数对应mAP50=0.02828854%、mAP50-95=0.01697313%、AR100=1.07142857%。
+终端原生mAP=0.000是三位小数舍入；保留原生输出，同时另列精确复算，不改模型选择。
+普通Precision/Recall未计算，留空并说明；AR100不代替普通Recall。
+
+阈值与可视化：AP使用模型score_thr=0.001，ROI NMS IoU=0.5，max_per_img=100，COCO maxDets=1/10/100。
+显示阈值score>0.30；129个返回框中6个显示框，分布于4张图片；2张图片在0.001后无返回框。
+cond_000026 broken score=0.765492，最大同类IoU=0.183887。
+cond_000031三个loose score=0.906875、0.729720、0.711060，最大同类IoU均0。
+cond_000054 loose score=0.555975，最大同类IoU=0。
+cond_000103 loose score=0.358927，最大同类IoU=0。
+按现有标注，这6个显示框均未达到IoU0.50，不符合正确检测的匹配要求。
+36个GT仅1个有低阈值同类候选IoU≥0.50。这是候选覆盖诊断，不是普通Recall或一对一检出率。
+已查看23张GT+保存预测总览，并查看cond_000026和cond_000031的完整保存预测图。
+无显示框不能直接推断模型完全没有预测。
+
+与VAL-001相同原test的精确COCO口径：
+107图训练/val选epoch66：mAP50=0.08250825%，mAP50-95=0.04950495%，AR100=1.07142857%。
+130图训练/固定epoch100：mAP50=0.02828854%，mAP50-95=0.01697313%，AR100=1.07142857%。
+本次合并没有显示泛化提升；训练规模、更新数5400/6500和checkpoint规则不同，单seed不能推断合并数据普遍降低效果。
+与YOLO/RT-DETR仍属原生口径参考比较；输入/评估实现/后处理不同，不能当作严格单变量对照。
+
+解释边界：训练/测试流程核查通过，但泛化检测表现很差。不能以流程通过证明模型有效，也不能据低分认定代码必然错误。
+数据量、目标尺寸/缩放、anchor匹配、类别不平衡等仅是可能原因，现有证据不能确定单一原因。
+全过程遵守原计划DEBUG8→VAL-001→MERGE130-001；未根据test分数新增训练、改变epoch或调整参数。
+本轮没有要求用户额外运行模型。后续整理优先使用已有证据。
+
+核查文件完整路径：
+D:\小论文\model_projects\Faster R-CNN\workspace\audit\step10_review\acceptance.json
+D:\小论文\model_projects\Faster R-CNN\workspace\audit\step10_review\per_box_review.csv
+D:\小论文\model_projects\Faster R-CNN\workspace\audit\step10_review\independent_coco_check.txt
+D:\小论文\model_projects\Faster R-CNN\workspace\audit\step10_review\test_gt_and_visible_predictions.jpg
+单次说明：
+D:\小论文\model_projects\Faster R-CNN\workspace\notes\FRCNN-R50FPN-MERGE130-001.md
+统一登记：
+D:\小论文\model_projects\baseline_analysis\10_all_experiments_metrics.csv
+D:\小论文\model_projects\baseline_analysis\outputs\模型实验结果总表.xlsx
+D:\小论文\model_projects\baseline_analysis\11_all_experiments_summary_for_teacher.md
+登记验收以刷新后的D:\小论文\model_projects\baseline_analysis\audit\registration_acceptance.json为准。

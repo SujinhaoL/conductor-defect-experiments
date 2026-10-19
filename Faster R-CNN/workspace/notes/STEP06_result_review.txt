@@ -1,0 +1,63 @@
+STEP06 result review / 2026-10-12
+User instruction: after every experiment, check whether the next action still serves
+the original experiment and whether avoidable or invented complexity has been added.
+
+Run: D:\小论文\model_projects\Faster R-CNN\workspace\runs\FRCNN-DEBUG-OVERFIT-8\step06_24506_3904
+Log: D:\小论文\model_projects\Faster R-CNN\workspace\logs\step06_24506_3904
+Review: D:\小论文\model_projects\Faster R-CNN\workspace\audit\step06_review\review.json
+Per-box review: D:\小论文\model_projects\Faster R-CNN\workspace\audit\step06_review\per_box_review.csv
+Review script: D:\小论文\model_projects\Faster R-CNN\workspace\scripts\step06_review_debug8.py
+
+已确认
+- 用户完成 100 epoch、400 次参数更新，退出码 0；400 个总损失数值均有限。
+- 官方完整 COCO checkpoint 加载后 344 项兼容张量一致，类别输出四项尺寸变化符合预期。
+- 前 20 次平均总损失 0.440205，最后 20 次 0.051945。
+- 训练子集 mAP50=0.639321、mAP50-95=0.535113。
+- broken AP50=0.801980、AP50-95=0.732178。
+- loose AP50=0.476662、AP50-95=0.338048。
+- 在已保存低分预测中，15 个真实目标里 9 个有同类框达到 IoU>=0.5。
+- 已查看损失曲线和最终 8 图预测总览；较大目标已有准确定位，仍存在小目标漏检。
+- 用真实配置的 AnchorGenerator、MaxIoUAssigner 做 CPU 静态核对：
+  8/15 个目标在默认 RPN 分配规则下没有正 anchor，broken 1 个、loose 7 个。
+  这不是训练采样随机漏选；这些目标在采样之前正 anchor 数就为 0。
+  原配置 allowed_border=-1、min_pos_iou=0.3；核对沿用原缩放和固定 batch 补边尺寸。
+  正样本为 0 会限制对应目标在 RPN 的直接监督，不表示 ROI 完全没有监督，
+  也不表示这种目标必然无法预测：实际有两个此类目标仍被正确预测。
+- 7 个能获得 RPN 正 anchor 的目标均有同类预测 IoU>=0.5，另 2 个零正 anchor 目标也达到此标准。
+- 例：cond_000087 的一个 loose 缩放后约 19.49x3.11 像素；
+  默认 anchor 最佳 IoU 约 0.059，正 anchor 为 0，最终同类预测最佳 IoU 约 0.152。
+- 整个启动流程耗时约 171 秒（含准备、训练、记录、预测及 checkpoint 保存）。
+
+验收结论
+训练能运行，权重与类别映射证据有效，模型已学习并准确定位部分目标。
+默认配置的 8 图拟合仍不充分，不能把本次记作“所有目标过拟合成功”。
+正 anchor 缺失是已经核实的限制之一；未证明它是所有误差的唯一原因。
+指标是原 train 子集结果，不与前四次 val/test 指标直接排名。
+100 epoch 仅 400 次更新，100 轮本身也不保证充分记忆。
+
+纠正一处记录问题
+debug8_training_summary.json 原字段 peak_cuda_allocated_mib_including_snapshots=730.9443
+不是全程训练峰值。MMEngine device/utils.py 的 get_max_cuda_memory 在记录日志后
+重置 CUDA 峰值计数，训练结束再读到的是后续区间的峰值。
+现有日志 memory 列最高 3768 MiB，作为本次可核查的训练显存记录。
+保留原始摘要与本次冻结代码，使用本文件和 review.json 补充说明，不改写原始实验结果。
+workspace/scripts/frcnn_debug_hooks.py 已改为在 LoggerHook 重置前记录并累积峰值，
+这个记录修正不需要重跑本次训练，不涉及模型、数据或优化参数变化。
+
+是否走偏、是否过度复杂
+- 一次固定 8 图自检属于用户原定阶段一。发现了正样本分配限制，有直接诊断价值。
+- 安装阶段的复杂度与选用 Windows、RTX 5070 Ti、源码编译 MMCV 的环境有关；
+  当前环境已实际完成 CUDA 推理和训练，后续无需重复安装或重新编译。
+- 安装时曾把 CUDA 12.8 Update 1 的 nvcc 版本误写为 12.8.90，后校正为实际 12.8.93。
+  这属于检查脚本错误，不能把脚本的任何版本断言当作未经核实的官方事实。
+- 验收应按实际日志、配置、预测、官方源码解释，不能仅因脚本打印 PASS 就宣称科学目标达成。
+- 本次到此保留结果即可，不要求为了满分继续循环小样本调参。
+- 正式官方参考基线应保留既定的 R50-FPN 架构、官方默认 anchor/分配规则和 Resize 边界，
+  如实报告其在小目标上的局限。anchor、切片或分辨率修改应另列改进/敏感性实验。
+- 下一阶段按原计划准备 107 train / 23 val / 23 test，固定训练设置后由用户启动。
+  不把本次小样本成绩当成正式结果，也不从本次私人数据 checkpoint 继续正式训练。
+- 每次结束先说明：已确认事实；本次是否达成目的；下一步为何必要。
+  有问题优先读取已有结果；新增检查或实验须有明确待解决的问题及停止条件。
+
+本次复核由助手读取现有文件并执行静态 CPU 计算完成，没有启动新训练或检测模型前向。
+用户无需重新运行 STEP06 或重复本次复核。

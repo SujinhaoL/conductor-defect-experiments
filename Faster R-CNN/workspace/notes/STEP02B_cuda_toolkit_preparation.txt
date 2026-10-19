@@ -1,0 +1,123 @@
+STEP02B：CUDA Toolkit 12.8 Update 1 安装准备与验收（不训练）
+日期：2026-10-11，Asia/Shanghai
+
+STEP02A 验收结论
+已核对用户终端输出和本地日志：
+D:\小论文\model_projects\Faster R-CNN\workspace\logs\step02a_27559_12541
+toolchain_versions.txt、probe_output.txt、vswhere.json。
+MSVC 工具目录版本 14.29.30133，cl 19.29.30159.0，x64。
+Windows SDK 10.0.19041.0，VS Build Tools 2022 17.14.41。
+微软安装程序退出码 0；vswhere isComplete=true、isRebootRequired=false。
+实际 C++ 编译、链接 Windows API 及程序运行通过，_MSC_VER=1929。
+STEP02A_CPP_COMPILE_RUN_PASS / STEP02A_MSVC_PASS / STEP02A_EXIT_CODE=0。
+
+本阶段目的
+PyTorch 的 cu128 wheel 已包含其运行所需的 CUDA 库，但不等于安装了完整的 CUDA C++ 编译工具。
+为后续从官方源码构建 MMCV 扩展，补齐 CUDA Toolkit 的编译器、头文件、开发库。
+固定 CUDA Toolkit 12.8 Update 1（12.8.1）；其 nvcc 组件版本为 12.8.93（已按官方组件清单及本机文件纠正）。
+版本与现有 torch 2.7.1+cu128 的 CUDA 主次版本一致。
+本次通过不等于 MMCV 已可用；MMCV 构建及算子验收仍是后续独立阶段。
+不运行任何模型训练，不安装 MMCV，不转换数据，不操作其他模型的 Python 环境。
+
+官方依据
+https://developer.nvidia.com/cuda-12-8-1-download-archive
+https://docs.nvidia.com/cuda/archive/12.8.1/cuda-installation-guide-microsoft-windows/index.html
+https://docs.nvidia.com/cuda/archive/12.8.1/cuda-toolkit-release-notes/index.html
+https://developer.download.nvidia.com/compute/cuda/12.8.1/docs/sidebar/md5sum.txt
+https://developer.download.nvidia.com/compute/cuda/redist/redistrib_12.8.1.json
+NVIDIA Windows 指南支持 MSVC 192x；明确允许 -s 后列出所选子包，-n 禁止自动重启。
+归档发布说明表将 NVCC 列为 12.8.90，但官方 redistrib_12.8.1.json 明确将 cuda_nvcc 列为 12.8.93。
+Windows NVCC 压缩包名称也包含 12.8.93。本机 version.json 和 nvcc --version 均为 12.8.93。
+因此采用相互一致的官方组件清单、安装后的组件元数据及可执行程序实际版本作为验收依据。
+12.8 Update 1 对应 Windows 驱动要求 >=572.61；已有 591.86 满足，不安装包内驱动。
+本地 Windows 构建号比归档文档逐项列出的 Windows 11 版本新，因此以实际编译运行验收为准，不宣称整套组合已获官方逐项认证。
+
+离线安装包
+D:\小论文\model_projects\Faster R-CNN\workspace\installers\cuda_12.8.1_572.61_windows.exe
+来源：https://developer.download.nvidia.com/compute/cuda/12.8.1/local_installers/cuda_12.8.1_572.61_windows.exe
+大小：3,369,253,408 字节，约 3.37 GB / 3.14 GiB。
+官方 MD5：05c59d04ac6c63686c6a0498e472c1e7。
+准备脚本在文件完整下载后核对官方 MD5、Windows Authenticode NVIDIA 签名，并记录 SHA256。
+记录文件：D:\小论文\model_projects\Faster R-CNN\workspace\installers\cuda_12.8.1_572.61_windows.manifest.json
+官方校验表副本：D:\小论文\model_projects\Faster R-CNN\workspace\installers\cuda_12.8.1_official_md5sum.txt
+安装入口再次复核签名及文件哈希，未通过就停止。
+下载采用直接 HTTPS，不更改系统代理，不关闭证书验证。
+PowerShell 只用于 Windows 原生 Get-AuthenticodeSignature 只读签名检查；用户入口为 cmd。
+
+安装范围
+系统级默认目录：C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.8
+明确选入以下官方子包（实际列表同时写入当次日志）：
+nvcc_12.8 cudart_12.8 cuda_profiler_api_12.8 thrust_12.8
+nvrtc_12.8 nvrtc_dev_12.8 nvjitlink_12.8 nvtx_12.8
+cublas_12.8 cublas_dev_12.8 cufft_12.8 cufft_dev_12.8
+curand_12.8 curand_dev_12.8 cusolver_12.8 cusolver_dev_12.8
+cusparse_12.8 cusparse_dev_12.8
+不选 Display.Driver、Nsight 和 Visual Studio 图形界面集成。
+安装器可能更新系统 CUDA_PATH/PATH；此系统级开发工具不位于 Python 虚拟环境内。
+现有 YOLO11/RT-DETR 环境的 Python 包不会被安装脚本修改。
+本实验始终明确调用 Faster R-CNN\.venv\Scripts\python.exe，后续构建明确选择指定 CUDA 路径。
+
+脚本文件
+D:\小论文\model_projects\Faster R-CNN\workspace\scripts\step02b_prepare_cuda.py
+D:\小论文\model_projects\Faster R-CNN\workspace\scripts\run_step02b_install_cuda.cmd
+D:\小论文\model_projects\Faster R-CNN\workspace\scripts\step02b_cuda_probe.cu
+复用环境检查：D:\小论文\model_projects\Faster R-CNN\workspace\scripts\step01_check_cuda.py
+复用管理员身份检查：D:\小论文\model_projects\Faster R-CNN\workspace\scripts\step02a_prepare_msvc.py
+
+用户命令（以管理员身份打开 Windows cmd）
+cd /d "D:\小论文\model_projects\Faster R-CNN"
+call "D:\小论文\model_projects\Faster R-CNN\workspace\scripts\run_step02b_install_cuda.cmd"
+脚本静默安装，可能连续数分钟没有新增输出；不自动重启。
+安装器退出码和所选组件写入日志。
+如果既有 v12.8 目录存在，只做验收，不覆盖或自动修复安装。
+
+自动验收
+1. 锁定已有 MSVC 14.29、SDK 10.0.19041.0、x64。
+2. nvcc --version 必须包含 V12.8.93；检查 CUDA、CUB/Thrust 和数学库头文件/链接库。
+3. 用 nvidia-smi 比较本次操作前后的 GPU UUID、名称、驱动版本。
+4. 用 nvcc 为 sm_120 实际编译小程序：一个 kernel 计算 128 个整数，拷回 CPU 核对。
+5. 再运行已有 STEP01 的 PyTorch/torchvision 合成前向算子检查。
+以上没有模型、训练数据、反向传播或优化器。
+正常输出：GPU_DRIVER_UNCHANGED_PASS、STEP02B_NVCC_SM120_KERNEL_PASS、STEP02B_CUDA_TOOLKIT_PASS、STEP02B_EXIT_CODE=0。
+中间 STEP01_CUDA_PASS 是复用检查脚本的正常输出，不是回到了安装第一步。
+日志目录：D:\小论文\model_projects\Faster R-CNN\workspace\logs\step02b_<编号>
+用户回传完整终端输出及 LOG_DIR，确认通过后再准备 MMCV。
+
+特殊返回
+如果显示 STEP02B_REBOOT_REQUIRED / 3010：用户保存工作并重启，再执行同一入口加 --verify-only。
+其他失败不要反复重装或继续安装 MMCV，先反馈输出和日志目录。
+
+首次准备状态（安装前，后续进展见下方修正记录）
+官方完整离线包已下载，官方 MD5 一致，NVIDIA Authenticode 签名 Valid。
+SHA256：19392bbffd0ad4ee7cb295a181e87f682187f17653679c1c548c263b7e1cd9a6。
+官方网站下载重定向最终地址：
+https://developer.download.nvidia.cn/compute/cuda/12.8.1/local_installers/cuda_12.8.1_572.61_windows.exe
+下载记录中的 FileVersion/ProductVersion=1.0.14 是安装引导器自身版本，不是 CUDA Toolkit 版本。
+step02b_prepare_cuda.py 的 Python 语法检查通过。
+run_step02b_install_cuda.cmd --show-plan 预览通过，未执行安装或编译。
+本文件及安装/验收脚本由助手准备；实际 CUDA 安装和 nvcc/GPU 验收等待用户执行。
+
+2026-10-11：用户已安装；版本检查修正
+已读取 D:\小论文\model_projects\Faster R-CNN\workspace\logs\step02b_20472_29337\nvcc_version.txt 及用户完整终端输出。
+NVIDIA_INSTALLER_EXIT_CODE=0，安装器报告成功；原验收脚本错误地要求 nvcc 12.8.90，提前停止。
+这是助手的验收条件错误，不是用户操作错误，也不是安装器报告安装失败。
+已读取 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.8\version.json：cuda=12.8.1，cuda_nvcc=12.8.93。
+已检查原脚本列出的 13 个头文件/链接库，均存在。
+已重新运行 nvidia-smi：原 GPU UUID 未变，RTX 5070 Ti 驱动仍为 591.86。
+已修正安装入口的版本门槛、错误提示和计划预览为 V12.8.93。
+继续命令（普通 VS Code cmd 即可；不重复安装）：
+cd /d "D:\小论文\model_projects\Faster R-CNN"
+call "D:\小论文\model_projects\Faster R-CNN\workspace\scripts\run_step02b_install_cuda.cmd" --verify-only
+此模式跳过管理员检查和安装器，只完成 MSVC/CUDA 编译运行及独立环境的合成算子验收。
+当前尚未确认 GPU kernel 编译运行通过；等待用户运行并返回结果。
+
+2026-10-11：STEP02B 最终验收通过
+用户日志：D:\小论文\model_projects\Faster R-CNN\workspace\logs\step02b_25805_24647
+已读取用户完整输出及本地 cuda_check.json（status=PASS）。
+nvcc=12.8.93，_MSC_VER=1929，CUDA Runtime API=12080，实际 GPU compute capability=12.0。
+sm_120 kernel 编译、链接、执行及 128 个整数的结果核对通过。
+PyTorch/torchvision 五项合成前向算子复核全部通过，驱动仍为 591.86。
+STEP02B_CUDA_TOOLKIT_PASS / STEP02B_EXIT_CODE=0。
+存在 nvcc #192-D 与 MSVC C4828 警告；日志位置指向带中文源路径的预处理行号信息及生成文件字符编码。
+本次警告未阻止编译运行，不将其误报为验收失败，也不据此保证后续所有编译都会通过。
+后续 MMCV 构建入口使用临时 ASCII 盘符别名降低中文及空格路径影响，不移动原目录、不屏蔽全部警告。

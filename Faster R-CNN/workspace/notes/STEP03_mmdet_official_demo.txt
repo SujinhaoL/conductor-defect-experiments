@@ -1,0 +1,99 @@
+STEP03: MMDetection installation and official COCO demo (no training)
+Prepared: 2026-10-11
+
+Previous stage accepted
+  STEP02C log: D:\小论文\model_projects\Faster R-CNN\workspace\logs\step02c_21252_12799
+  MMCV 2.1.0 build time: 511.02 seconds; complete stage 537.94 seconds.
+  CPU/CUDA NMS, CUDA batched NMS, CPU/CUDA RoIAlign forward/backward: PASS.
+  pip check: No broken requirements found.
+  Wheel: mmcv-2.1.0-cp310-cp310-win_amd64.whl
+  Wheel SHA256: c9daf7d1ca90c665873225ae210007319728f1bb388e38fd37d8b08434b99c9d
+  The two null build_manifest fields for VCToolsVersion/WindowsSDKVersion are a
+  metadata case-lookup issue, not compiler-check failures. The batch script's
+  exact compiler/SDK checks passed; mmcv_ops_check.json reports MSVC 192930159.
+  Raw logs are preserved. No rebuild is required.
+
+Environment
+  D:\小论文\model_projects\Faster R-CNN\.venv
+  Python 3.10.20 / PyTorch 2.7.1+cu128 / torchvision 0.22.1+cu128
+  NumPy 1.26.4 / MMCV 2.1.0 / MMEngine 0.10.7
+  STEP03 checks all existing package versions against step03_base_constraints.txt.
+  All installations are restricted to this dedicated environment.
+
+Official source (tracked files remain unmodified)
+  D:\小论文\model_projects\Faster R-CNN\mmdetection
+  https://github.com/open-mmlab/mmdetection.git
+  Tag: v3.3.0
+  Commit: 44ebd17b145c2372c4b700bfb9cb20dbd28ab64a
+  Configuration: configs/faster_rcnn/faster-rcnn_r50_fpn_1x_coco.py
+  Official pairing:
+  https://github.com/open-mmlab/mmdetection/blob/v3.3.0/configs/faster_rcnn/metafile.yml
+  Installation documentation:
+  https://mmdetection.readthedocs.io/en/v3.3.0/get_started.html
+
+Official complete detector checkpoint
+  D:\小论文\model_projects\Faster R-CNN\workspace\weights\faster_rcnn_r50_fpn_1x_coco_20200130-047c8118.pth
+  https://download.openmmlab.com/mmdetection/v2.0/faster_rcnn/faster_rcnn_r50_fpn_1x_coco/faster_rcnn_r50_fpn_1x_coco_20200130-047c8118.pth
+  SHA256: 047c8118fc5ca88ba5ae1fab72f2cd6b070501fe3af2f3cba5cfa9a89b44b03e
+  Size: 167287506 bytes; also recorded in workspace/configs/step03_preparation.json
+  The v2.0 download path is the checkpoint explicitly linked by the v3.3.0
+  model metafile. It is not a different model chosen because of its URL.
+  Preparation-only torch.load(weights_only=True, map_location='cpu') passed.
+  348 state tensors include backbone, neck, rpn_head and roi_head.
+  COCO classifier output: 81 (80 targets plus background); bbox output: 320.
+  These are official COCO dimensions. No conductor 2-class config exists yet.
+
+New local dependencies, verified against official PyPI SHA256
+  pycocotools 2.0.10; scipy 1.15.3; shapely 2.1.1;
+  terminaltables 3.1.10; tqdm 4.67.1; colorama 0.4.6.
+  Wheels: D:\小论文\model_projects\Faster R-CNN\workspace\wheels\step03_dependencies
+  Lock: D:\小论文\model_projects\Faster R-CNN\workspace\configs\step03_requirements.lock.txt
+  Install offline with hashes; MMDetection editable install uses --no-deps.
+  This does not rebuild MMCV or reinstall CUDA/Visual Studio.
+
+User cmd entry
+  cd /d "D:\小论文\model_projects\Faster R-CNN"
+  call "D:\小论文\model_projects\Faster R-CNN\workspace\scripts\run_step03_mmdet_demo.cmd"
+  Normal VS Code cmd is sufficient; administrator privileges not required.
+
+Custom files
+  workspace/scripts/run_step03_mmdet_demo.cmd: single cmd entry.
+  workspace/scripts/step03_mmdet_demo.py: installation, load audit, inference and logs.
+  workspace/configs/step03_official_coco_demo.py: inherits official configuration;
+    removes LoadAnnotations only because demo.jpg has no supplied ground truth.
+  workspace/scripts/step03_prepare.py: downloads and verifies assets only.
+  workspace/scripts/step03_inspect_assets.py: reads checkpoint/config only.
+
+Inference behavior
+  Official image: D:\小论文\model_projects\Faster R-CNN\mmdetection\demo\demo.jpg
+  Uses official mmdet.apis.init_detector and inference_detector, then
+  DetLocalVisualizer. No optimizer, loss, backward or training loop is invoked.
+  Model eval mode, CUDA, FP32, one image.
+  Resize scale=(1333,800), keep_ratio=True. It preserves aspect ratio.
+  init_detector disables the backbone's separate ImageNet initialization and
+  loads the specified complete COCO detector checkpoint.
+  Checkpoint audit compares every matching tensor after load on CPU; checks
+  missing, unexpected and shape-mismatched tensors across all four modules.
+  Missing legacy BatchNorm num_batches_tracked buffers are separately reported;
+  they are not learned weights. Any other missing/mismatched tensor stops the stage.
+  No changes or unsafe fallback to torch.load are used.
+  Model score_thr=0.05, NMS IoU=0.5, max_per_img=100 (official COCO demo defaults).
+  Visualization score threshold=0.30; saved prediction JSON retains all model
+  returned boxes after model filtering/NMS/max_per_img. This is not raw logits.
+  No AP is computed in this stage; these settings do not finalize conductor evaluation.
+
+Outputs of each user run
+  D:\小论文\model_projects\Faster R-CNN\workspace\logs\step03_<random>_<random>
+  dependencies_install.txt/json, mmdet_install.txt/json, pip_check.txt,
+  requirements_freeze.txt, official_demo.txt, checkpoint_load_audit.json,
+  official_config_resolved.py, inference_config_resolved.py,
+  demo_predictions.json, demo_prediction.jpg, demo_summary.json, step03_manifest.json.
+  No original conductor data, split, or YOLO/RT-DETR environment is changed.
+
+Acceptance
+  OFFICIAL_COCO_FULL_CHECKPOINT_LOAD_PASS
+  CUDA_OFFICIAL_IMAGE_INFERENCE_PASS
+  STEP03_MMDET_DEMO_PASS
+  STEP03_EXIT_CODE=0
+  User returns terminal output + LOG_DIR; inspect the saved image and logs before
+  progressing to conductor dataset conversion. Training remains user-run only.

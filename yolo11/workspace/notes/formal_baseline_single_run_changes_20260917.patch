@@ -1,0 +1,1374 @@
+--- a/workspace/configs/formal_baseline_protocol.yaml
++++ b/workspace/configs/formal_baseline_protocol.yaml
+@@ -1,17 +1,9 @@
+-# Derived from the existing Y11-DIAG-001 args.yaml; no manual training overrides.
+-# Only the whitelisted experiment seed may change. Paths/name are output metadata.
+-protocol_version: 1
+-reference:
+-  experiment_id: Y11-DIAG-001
+-  run_directory: D:\小论文\model_projects\yolo11\workspace\runs\yolo11s_diag_1280_e30_20260916_104603
+-  args_path: D:\小论文\model_projects\yolo11\workspace\runs\yolo11s_diag_1280_e30_20260916_104603\args.yaml
+-  args_sha256: 1e5ab8721ab9de426a2fd32ff3f4a44f3acc6ac3565ec63b1b3acfcad87328b4
+-  results_sha256: 82f6f59ae92daf5d1475f183bfb33a1d338231117c69d9df3442cdbd12e88e75
+-  status_path: D:\小论文\model_projects\yolo11\workspace\logs\yolo11s_diag_1280_e30_20260916_104603_status.json
+-  status_sha256: f9a07112172cf1b1313a8311199b74b8cae49f180ebb2d1494896b08e093e181
+-  data_yaml_sha256: 58d0484354a893ba4de25078e4dcaa5561163089fa7738733144bbbede23b48a
+-  snapshot_sha256: d6cd424d54dd63aa9c07e6fca96d1a59af8027fbdc9f352b325eb9320e8a52c4
+-  registry_schema_sha256: 6b4a408626a258757ba22c1872ca085394cd5fe3530ede31624462e3c4bf3cbb
++# Single-run FormalBaseline; unspecified hyperparameters come from locked official defaults.
++protocol_version: 2
++parameter_source: Locked Ultralytics 8.4.152 defaults plus explicit user settings;
++  no DIAG template
++experiments:
++  Y11-BASE-001: 42
+ environment:
+   git_commit: 9aa41d679d121afb8b4cc512d7a162f4f36886c3
+   ultralytics: 8.4.152
+@@ -22,141 +14,28 @@
+ weights:
+   path: D:\小论文\model_projects\yolo11\workspace\weights\yolo11s.pt
+   sha256: 85a76fe86dd8afe384648546b56a7a78580c7cb7b404fc595f97969322d502d5
+-experiments:
+-  Y11-BASE-001-S42: 42
+-  Y11-BASE-002-S3407: 3407
+-  Y11-BASE-003-S2026: 2026
+-excluded_output_fields:
+-- project
+-- name
+-- save_dir
+-training_args:
+-  task: detect
+-  mode: train
+-  model: yolo11s.pt
++evidence:
++  registry_schema_sha256: 6b4a408626a258757ba22c1872ca085394cd5fe3530ede31624462e3c4bf3cbb
++  snapshot_sha256: d6cd424d54dd63aa9c07e6fca96d1a59af8027fbdc9f352b325eb9320e8a52c4
++  data_yaml_sha256: 58d0484354a893ba4de25078e4dcaa5561163089fa7738733144bbbede23b48a
++  defaults_sha256: d547b6b72895261228b42d2a203abc4fc40e875fc807d57fed6ed27efc1843f3
++  central_data_yaml_sha256: 1e996a73b0e0b44ca978915c52ce3c21b40b9dacf34054a6682ee77fd04bf39e
++training_overrides:
++  model: D:\小论文\model_projects\yolo11\workspace\weights\yolo11s.pt
+   data: D:\小论文\model_projects\yolo11\workspace\configs\conductor_bl_v1.yaml
+-  epochs: 30
+-  time: null
+-  patience: 0
++  epochs: 100
++  imgsz: 1280
+   batch: 4
+-  imgsz: 1280
+-  save: true
+-  save_period: 10
+-  cache: false
++  workers: 0
+   device: '0'
+-  workers: 0
+-  exist_ok: false
+-  pretrained: true
+-  cls_remap: true
+-  optimizer: auto
+-  verbose: true
+   seed: 42
+   deterministic: true
+-  single_cls: false
+-  rect: false
+-  cos_lr: false
+-  close_mosaic: 10
+-  resume: false
+-  amp: true
+-  fraction: 1.0
+-  profile: false
+-  freeze: null
+-  multi_scale: 0.0
+-  compile: false
+-  channels_last: null
+-  overlap_mask: true
+-  mask_ratio: 4
+-  dropout: 0.0
+-  val: true
+-  split: val
+-  save_json: false
+-  conf: null
+-  iou: 0.7
+-  max_det: 300
+-  quantize: null
+-  dnn: false
++  pretrained: true
++  cache: false
+   plots: true
+-  nms: null
+-  source: null
+-  vid_stride: 1
+-  stream_buffer: false
+-  visualize: false
+-  augment: false
+-  agnostic_nms: false
+-  classes: null
+-  retina_masks: false
+-  embed: null
+-  show: false
+-  save_frames: false
+-  save_txt: false
+-  save_conf: false
+-  save_crop: false
+-  show_labels: true
+-  show_conf: true
+-  show_boxes: true
+-  line_width: null
+-  format: torchscript
+-  keras: false
+-  optimize: false
+-  dynamic: false
+-  simplify: true
+-  opset: null
+-  workspace: null
+-  lr0: 0.01
+-  lrf: 0.01
+-  momentum: 0.937
+-  weight_decay: 0.0005
+-  warmup_epochs: 3.0
+-  warmup_momentum: 0.8
+-  warmup_bias_lr: 0.1
+-  distill_model: null
+-  dis: 6.0
+-  box: 7.5
+-  cls: 0.5
+-  cls_pw: 0.0
+-  dfl: 1.5
+-  pose: 12.0
+-  kobj: 1.0
+-  rle: 1.0
+-  angle: 1.0
+-  dlog: 1.0
+-  dgrad: 0.5
+-  dlam: 1.0
+-  nbs: 64
+-  hsv_h: 0.015
+-  hsv_s: 0.7
+-  hsv_v: 0.4
+-  degrees: 0.0
+-  translate: 0.1
+-  scale: 0.5
+-  shear: 0.0
+-  perspective: 0.0
+-  flipud: 0.0
+-  fliplr: 0.5
+-  bgr: 0.0
+-  mosaic: 1.0
+-  mixup: 0.0
+-  cutmix: 0.0
+-  copy_paste: 0.0
+-  copy_paste_mode: flip
+-  auto_augment: randaugment
+-  erasing: 0.4
+-  cfg: null
+-  tracker: tracktrack.yaml
+-validation_args:
++evaluation_overrides:
+   data: D:\小论文\model_projects\yolo11\workspace\configs\conductor_bl_v1.yaml
+-  split: val
+   imgsz: 1280
+-  batch: 8
+-  workers: 0
+   device: '0'
+-  rect: false
+-  half: true
+-  conf: 0.001
+-  iou: 0.7
+-  max_det: 300
+-  augment: false
+-  plots: false
+-  save_json: false
+-  save_txt: false
+-  verbose: true
++test_policy: Exactly one final test after 100 epochs, fixed best.pt and persisted
++  val metrics. No retry or selection from test.
+--- a/workspace/scripts/formal_baseline_registry.py
++++ b/workspace/scripts/formal_baseline_registry.py
+@@ -146,8 +146,19 @@
+                 if (old['stage'] != 'FormalBaseline' or old['status'] != 'Running'
+                         or old['run_directory'] != record['run_directory']):
+                     raise RuntimeError('只允许更新当前同一路径的 Running 行，不得改历史结果。')
+-            if record['stage'] != 'FormalBaseline' or record['test_used'] is not False:
++            if record['stage'] != 'FormalBaseline' or type(record['test_used']) is not bool:
+                 raise RuntimeError('登记阶段或 test_used 不合法。')
++            if record['test_used']:
++                if append or record['experiment_id'] != 'Y11-BASE-001' or record['status'] == 'Running':
++                    raise RuntimeError('只有本次单 run 的最终更新可以记录 test 使用。')
++                evidence = json.loads(record['notes'])
++                if evidence.get('test_attempts') != 1 or evidence.get('val') in (None, 'NA'):
++                    raise RuntimeError('缺少一次 test 前已完成 val 的证据。')
++            if record['experiment_id'] == 'Y11-BASE-001' and record['status'] == 'Completed':
++                evidence = json.loads(record['notes'])
++                if (record['epochs_completed'] != 100 or record['test_used'] is not True
++                        or evidence.get('test') in (None, 'NA')):
++                    raise RuntimeError('100 epochs / val / 一次 test 未完整完成，不得登记 Completed。')
+             if record['include_in_paper'] != 'Candidate':
+                 raise RuntimeError('FormalBaseline include_in_paper 必须为 Candidate。')
+             if record['status'] not in ('Running', 'Completed', 'Failed'):
+--- a/workspace/scripts/run_formal_baseline.py
++++ b/workspace/scripts/run_formal_baseline.py
+@@ -1,7 +1,7 @@
+-r"""One fixed official YOLO11s run. --dry-run never constructs/trains a model.
++r"""One fixed official YOLO11s run. --dry-run only inspects checkpoint metadata; no train/val/predict.
+ 
+ Usage: .venv\Scripts\python.exe -B workspace\scripts\run_formal_baseline.py
+-       --experiment-id Y11-BASE-001-S42 [--dry-run]
++       --experiment-id Y11-BASE-001 [--dry-run]
+ There are no seed/hyperparameter/override/resume CLI options.
+ """
+ from __future__ import annotations
+@@ -21,6 +21,7 @@
+ import os
+ from pathlib import Path
+ import platform
++import shutil
+ import subprocess
+ import time
+ import traceback
+@@ -35,9 +36,9 @@
+     sha256, exclusive_lock, read_registry, check_csv_pair, update_registry,
+ )
+ 
+-EXPERIMENTS = {'Y11-BASE-001-S42': 42, 'Y11-BASE-002-S3407': 3407, 'Y11-BASE-003-S2026': 2026}
++EXPERIMENTS = {'Y11-BASE-001': 42}
+ COMMIT = '9aa41d679d121afb8b4cc512d7a162f4f36886c3'
+-REFERENCE_ID = 'Y11-DIAG-001'
++WEIGHTS_SHA256 = '85a76fe86dd8afe384648546b56a7a78580c7cb7b404fc595f97969322d502d5'
+ SOURCE = PROJECT / 'ultralytics_src'
+ REGISTRY = WORKSPACE / 'experiment_tracking/experiment_registry.xlsx'
+ PROTOCOL = WORKSPACE / 'configs/formal_baseline_protocol.yaml'
+@@ -130,20 +131,19 @@
+ 
+ def assert_protocol_diff(reference, actual, experiment_id):
+     require(experiment_id in EXPERIMENTS, f'实验 ID 不在白名单：{experiment_id}')
+-    require(reference.get('seed') == 42, '母版 seed 必须为 42。')
++    require(reference.get('seed') == 42, '本次 seed 必须为 42。')
+     differences = parameter_diff(reference, actual)
+-    expected = {} if EXPERIMENTS[experiment_id] == 42 else {
+-        'seed': {'reference': 42, 'actual': EXPERIMENTS[experiment_id]}}
++    expected = {}
+     require(differences == expected, '训练参数发生未经授权的漂移：\n' + json.dumps(differences, ensure_ascii=False, indent=2))
+     return differences
+ 
+ 
+ def assert_effective_training_args(reference, actual, experiment_id):
+     # The locked official build_optimizer(auto) sets warmup_bias_lr to 0.0
+-    # (trainer.py:1146). It does this in DIAG-001 too, AFTER args.yaml is saved.
++    # (trainer.py:1146), AFTER args.yaml is saved.
+     # Keep the caller/protocol value 0.1 untouched; audit this derived runtime
+     # state separately. This is not permission for caller-side parameter drift.
+-    require(reference['optimizer'] == 'auto', '母版 optimizer 必须为 auto。')
++    require(reference['optimizer'] == 'auto', '锁定版本默认 optimizer 应为 auto。')
+     expected_runtime = deepcopy(reference)
+     expected_runtime['warmup_bias_lr'] = 0.0
+     assert_protocol_diff(expected_runtime, actual, experiment_id)
+@@ -175,55 +175,74 @@
+     return result
+ 
+ 
+-def load_reference(protocol, registry=REGISTRY):
+-    wb, header_row, headers, records, setup, schema = read_registry(registry)
++def explicit_training_args():
++    # This is the entire user-authorized training override list. No DIAG args are read.
++    return dict(model=str(WORKSPACE / 'weights/yolo11s.pt'),
++                data=str(WORKSPACE / 'configs/conductor_bl_v1.yaml'),
++                epochs=100, imgsz=1280, batch=4, workers=0, device='0', seed=42,
++                deterministic=True, pretrained=True, cache=False, plots=True)
++
++
++def load_protocol_context(protocol, registry=REGISTRY):
++    wb, _, headers, records, setup, schema = read_registry(registry)
+     wb.close()
+-    require(schema == protocol['reference']['registry_schema_sha256'], 'Runs/FieldDefinitions 与冻结 schema 不一致。')
++    require(schema == protocol['evidence']['registry_schema_sha256'], 'Runs/FieldDefinitions schema 发生变化。')
+     check_csv_pair(registry.with_suffix('.csv'), headers, records)
+-    refs = [r for _, r in records if r['experiment_id'] == REFERENCE_ID]
+-    require(len(refs) == 1, '无法唯一定位 Y11-DIAG-001。')
+-    reference = refs[0]
+-    run = Path(reference['run_directory']).resolve()
+-    require(run.is_relative_to(RUNS.resolve()), '参考 run 不在本项目 runs 内。')
+-    evidence = protocol['reference']
+-    require(evidence['experiment_id'] == REFERENCE_ID and Path(evidence['run_directory']).resolve() == run,
+-            '协议与登记表的参考运行路径不一致。')
+-    files = {'args_sha256': run / 'args.yaml', 'results_sha256': run / 'results.csv',
+-             'status_sha256': WORKSPACE / 'logs' / f'{run.name}_status.json',
+-             'snapshot_sha256': WORKSPACE / 'logs/dataset_snapshot_before.json'}
+-    require(Path(evidence['args_path']).resolve() == files['args_sha256'], '参考 args 路径被更换。')
+-    require(Path(evidence['status_path']).resolve() == files['status_sha256'].resolve(), '参考 status 路径被更换。')
++    require(protocol['protocol_version'] == 2 and protocol['experiments'] == EXPERIMENTS,
++            '只允许单次 Y11-BASE-001；旧 three-seed 方案已取消。')
++    require(protocol['training_overrides'] == explicit_training_args(), '明确设置参数发生漂移，停止；不自动修复。')
++    require(protocol['weights'] == {'path': str(WORKSPACE / 'weights/yolo11s.pt'), 'sha256': WEIGHTS_SHA256},
++            '必须使用指定官方 COCO 预训练权重。')
++    expected_val = dict(data=explicit_training_args()['data'], imgsz=1280, device='0')
++    require(protocol['evaluation_overrides'] == expected_val, 'val/test 显式参数漂移。')
++    files = {'defaults_sha256': SOURCE / 'ultralytics/cfg/default.yaml',
++             'snapshot_sha256': WORKSPACE / 'logs/dataset_snapshot_before.json',
++             'data_yaml_sha256': Path(explicit_training_args()['data']),
++             'central_data_yaml_sha256': DATASET / 'data.yaml'}
+     for key, path in files.items():
+-        require(sha256(path) == evidence[key], f'冻结证据文件发生变化：{path}')
+-    args = yaml.safe_load(files['args_sha256'].read_text(encoding='utf-8-sig'))
+-    status = json.loads(files['status_sha256'].read_text(encoding='utf-8'))
+-    require(status['success'] is True and reference['status'] == 'Completed', '母版运行不完整。')
+-    summary = result_summary(read_results(files['results_sha256'], int(args['epochs'])))
+-    for field, value in summary.items():
+-        require(reference[field] == value, f'母版登记和 CSV 不一致：{field}')
+-    for field in ('imgsz', 'batch', 'nbs', 'workers', 'seed', 'deterministic', 'mosaic', 'close_mosaic',
+-                  'patience', 'amp', 'warmup_epochs', 'mixup', 'cutmix', 'fliplr', 'translate', 'scale'):
+-        require(reference[field] == args[field], f'母版登记和 args 不一致：{field}')
+-    require(reference['epochs_planned'] == args['epochs'], '母版 epochs 不一致。')
+-    protocol_drift = parameter_diff(args, protocol['training_args'])
+-    require(not protocol_drift and not (set(protocol['training_args']) & OUTPUT_FIELDS),
+-            'formal_baseline_protocol.yaml 与母版不一致，拒绝自动修复：\n'
+-            + json.dumps(protocol_drift, ensure_ascii=False, indent=2))
+-    require(set(protocol['excluded_output_fields']) == OUTPUT_FIELDS, '输出字段豁免清单被扩大。')
+-    require(protocol['experiments'] == EXPERIMENTS, '协议实验 ID/seed 白名单被修改。')
+-    require(args['model'] == 'yolo11s.pt' and reference['model'] == 'YOLO11s', '母版不是官方 YOLO11s。')
+-    require(args['split'] == 'val' and args['val'] is True and args['resume'] is False, '验证 split 或 resume 不合法。')
+-    require(args['pretrained'] is True and args['exist_ok'] is False, '预训练或禁止覆盖配置不合法。')
+-    require(protocol['weights']['sha256'] == status['pretrained_sha256'], '预训练权重 SHA256 与母版不一致。')
+-    return args, reference, headers, records, setup
++        require(sha256(path) == protocol['evidence'][key], f'锁定证据发生变化：{path}')
++    return headers, records, setup
+ 
+ 
+ def final_arguments(protocol, experiment_id, run):
+     require(experiment_id in EXPERIMENTS, f'非法 experiment_id：{experiment_id}')
+-    params = deepcopy(protocol['training_args'])
+-    params['seed'] = EXPERIMENTS[experiment_id]
+-    params.update(project=str(RUNS), name=run.name, save_dir=str(run))
+-    return params
++    require(protocol['training_overrides'] == explicit_training_args(), '训练覆盖清单发生变化。')
++    return {**protocol['training_overrides'], 'project': str(RUNS), 'name': run.name,
++            'save_dir': str(run), 'exist_ok': False}
++
++
++def resolved_training_arguments(params):
++    from ultralytics.cfg import get_cfg
++    # Audit defaults, but do NOT pass this expanded dictionary to model.train().
++    return vars(get_cfg(overrides={**params, 'task': 'detect', 'mode': 'train'}))
++
++
++def inspect_official_weights(weights):
++    import torch
++    from ultralytics.nn.tasks import DetectionModel
++    require(weights.resolve() == (WORKSPACE / 'weights/yolo11s.pt').resolve(), '预训练路径不正确。')
++    require(sha256(weights) == WEIGHTS_SHA256, '官方 yolo11s.pt SHA256 不匹配。')
++    # Trusted, hash-verified local checkpoint. CPU metadata only, no YOLO wrapper or inference.
++    checkpoint = torch.load(weights, map_location='cpu', weights_only=False)
++    model = checkpoint.get('ema') if checkpoint.get('ema') is not None else checkpoint.get('model')
++    require(isinstance(model, DetectionModel), '预训练权重不是 DetectionModel。')
++    validate_official_structure(model, 80)
++    require(len(model.names) == 80, '预训练权重不是 COCO 80 类。')
++    info = {'type': type(model).__name__, 'classes': len(model.names), 'scale': model.yaml.get('scale'),
++            'strides': [int(x) for x in model.stride], 'official_yaml_matches': True,
++            'inspection': 'CPU checkpoint metadata only; no forward/train/val/predict'}
++    del checkpoint, model
++    return info
++
++
++def validate_official_structure(model, nc):
++    head = model.model[-1]
++    require(type(model).__name__ == 'DetectionModel' and type(head).__name__ == 'Detect'
++            and head.nl == 3 and head.nc == nc and [int(x) for x in head.stride] == [8, 16, 32],
++            '不是官方 YOLO11s P3/P4/P5 DetectionModel。')
++    official = yaml.safe_load((SOURCE / 'ultralytics/cfg/models/11/yolo11.yaml').read_text(encoding='utf-8'))
++    require(all(model.yaml[k] == official[k] for k in ('backbone', 'head'))
++            and model.yaml.get('scale') == 's', '模型结构或规模不等于官方 YOLO11s。')
+ 
+ 
+ def environment_check(protocol, setup):
+@@ -260,11 +279,13 @@
+ 
+ def dataset_check(protocol, args):
+     data_path = Path(args['data'])
+-    require(sha256(data_path) == protocol['reference']['data_yaml_sha256'], '原 data 配置内容发生变化。')
++    require(sha256(data_path) == protocol['evidence']['data_yaml_sha256'], '原 data 配置内容发生变化。')
+     data = yaml.safe_load(data_path.read_text(encoding='utf-8-sig'))
+     require(Path(data['path']).resolve() == DATASET.resolve(), 'data.path 未指向固定中央数据集。')
+     require(data['names'] == EXPECTED_NAMES, '类别必须只有 0=broken、1=loose。')
+     require(all(data[s] == f'images/{s}' for s in EXPECTED_COUNTS), 'split 路径发生变化。')
++    central = yaml.safe_load((DATASET / 'data.yaml').read_text(encoding='utf-8-sig'))
++    require(data == central, '中央 data.yaml 与项目 data YAML 不等价。')
+     current, integrity = verify_integrity()
+     with (DATASET / 'split_manifest.csv').open(encoding='utf-8-sig', newline='') as stream:
+         manifest = list(csv.DictReader(stream))
+@@ -289,7 +310,8 @@
+         require(images == {name for s, name in keys if s == split}, f'{split} 文件列表与 manifest 不同。')
+         require(len(images) == count and labels == {Path(n).stem for n in images}, f'{split} 图片/标签数量不正确。')
+         counts[split] = len(images)
+-    return {**integrity, 'split_counts': counts, 'names': data['names'],
++    return {**integrity, 'split_counts': counts, 'names': data['names'], 'data_yaml_equivalent': True,
++            'central_data_yaml': str(DATASET / 'data.yaml'), 'project_data_yaml': str(data_path),
+             'manifest_sha256': sha256(DATASET / 'split_manifest.csv'),
+             'test_access': 'file metadata and SHA256 only; no decode/model inference/evaluation'}
+ 
+@@ -303,82 +325,64 @@
+ 
+ def write_diff(path, reference, actual, experiment_id):
+     diff = parameter_diff(reference, actual)
+-    lines = [f'Experiment: {experiment_id}', f'Reference: {REFERENCE_ID}',
+-             'Ignored output fields ONLY: project, name, save_dir',
+-             'Training differences:', json.dumps(diff, ensure_ascii=False, indent=2)]
+-    try:
+-        assert_protocol_diff(reference, actual, experiment_id)
+-        lines.append('PASS: exactly the allowed seed difference; no other drift.')
+-    except RuntimeError:
+-        lines.append('FAIL: unauthorized training difference. Training must not start.')
+-        path.write_text('\n'.join(lines) + '\n', encoding='utf-8')
+-        raise
++    lines = [f'Experiment: {experiment_id}', 'Reference: locked official defaults + user explicit overrides',
++             'Y11-DIAG-001 is NOT a parameter source.', json.dumps(diff, ensure_ascii=False, indent=2)]
+     path.write_text('\n'.join(lines) + '\n', encoding='utf-8')
++    assert_protocol_diff(reference, actual, experiment_id)
+     return diff
+ 
+ 
+ def preflight(experiment_id, run, audit_dir):
+     require(experiment_id in EXPERIMENTS, '实验 ID 不在白名单。')
+     protocol = yaml.safe_load(PROTOCOL.read_text(encoding='utf-8-sig'))
+-    require(protocol['protocol_version'] == 1, '不支持的协议版本。')
+-    print('Preflight: registry, source evidence and all frozen parameters...', flush=True)
+-    reference_args, reference_row, headers, records, setup = load_reference(protocol)
++    headers, records, setup = load_protocol_context(protocol)
+     check_new_identity(experiment_id, run, records)
+-    actual = final_arguments(protocol, experiment_id, run)
+-    diff = write_diff(audit_dir / 'frozen_protocol_diff.txt', reference_args, actual, experiment_id)
+-    require(protocol['validation_args']['split'] == 'val', '复验 split 必须为 val。')
+-    expected_val = {'data': reference_args['data'], 'split': 'val', 'imgsz': 1280, 'batch': 8,
+-                    'workers': 0, 'device': '0', 'rect': False, 'half': True, 'conf': 0.001,
+-                    'iou': reference_args['iou'], 'max_det': reference_args['max_det'], 'augment': False,
+-                    'plots': False, 'save_json': False, 'save_txt': False, 'verbose': True}
+-    require(protocol['validation_args'] == expected_val, '固定 val 复验协议发生变化。')
+     environment = environment_check(protocol, setup)
+-    from ultralytics.cfg import get_cfg
+-    # Resolve defaults through the official config parser, but NEVER create a trainer.
+-    resolved = vars(get_cfg(overrides=actual))
+-    write_diff(audit_dir / 'resolved_protocol_diff.txt', reference_args, resolved, experiment_id)
+-    actual = resolved
+-    weights = Path(protocol['weights']['path']).resolve()
+-    require(weights == (WORKSPACE / 'weights/yolo11s.pt').resolve() and weights.is_file(), '官方预训练权重缺失或路径错误。')
+-    weight_hash = sha256(weights)
+-    require(weight_hash == protocol['weights']['sha256'], '预训练权重 SHA256 与 DIAG-001 不匹配。')
+-    print('Preflight: read-only dataset snapshot / manifest / split counts...', flush=True)
+-    integrity = dataset_check(protocol, actual)
+-    report = {'passed': True, 'experiment_id': experiment_id, 'seed': EXPERIMENTS[experiment_id],
+-              'reference_run': reference_row['run_directory'], 'reference_args': protocol['reference']['args_path'],
+-              'training_diff': diff, 'final_training_args': actual, 'environment': environment,
+-              'pretrained_path': str(weights), 'pretrained_sha256': weight_hash,
++    call_args = final_arguments(protocol, experiment_id, run)
++    resolved = resolved_training_arguments(call_args)
++    weights = Path(protocol['weights']['path'])
++    structure = inspect_official_weights(weights)
++    print('Preflight: read-only dataset / equivalent YAML / manifest / fixed split...', flush=True)
++    integrity = dataset_check(protocol, resolved)
++    from ultralytics.cfg import DEFAULT_CFG_DICT
++    inherited = {k: v for k, v in resolved.items() if k not in call_args and k not in ('task', 'mode')}
++    require(all(DEFAULT_CFG_DICT[k] == v for k, v in inherited.items()), '未显式设置参数没有沿用官方默认值。')
++    report = {'passed': True, 'experiment_id': experiment_id, 'seed': 42, 'parameter_source': 'locked official defaults',
++              'train_call_kwargs': call_args, 'resolved_training_args': resolved,
++              'default_inherited_parameters': inherited, 'environment': environment,
++              'pretrained_path': str(weights), 'pretrained_sha256': sha256(weights), 'structure': structure,
+               'dataset_integrity': integrity, 'git': git_state(), 'run_directory': str(run),
+               'protocol_sha256': sha256(PROTOCOL), 'test_used': False, 'model_train_called': False,
+-              'model_constructed': False, 'registry_modified': False, 'registered_experiments': len(records),
++              'model_val_called': False, 'model_predict_called': False, 'registry_modified': False,
++              'registered_experiments': len(records),
+               'execution_code_sha256': {name: sha256(WORKSPACE / 'scripts' / name) for name in
+-                                        ('run_formal_baseline.py', 'formal_baseline_registry.py', 'summarize_formal_baseline.py')},
+-              'official_auto_runtime_note': 'Frozen caller warmup_bias_lr=0.1; locked official build_optimizer(auto) derives runtime 0.0. No caller parameter is changed.'}
++                    ('run_formal_baseline.py', 'formal_baseline_registry.py', 'summarize_formal_baseline.py')},
++              'evaluation_overrides': protocol['evaluation_overrides'],
++              'test_gate': '100 epochs completed -> fix best.pt SHA256 -> save val -> consume one test token'}
+     dump_json(audit_dir / 'preflight.json', report)
+-    (audit_dir / 'final_training_args.yaml').write_text(yaml.safe_dump(actual, allow_unicode=True, sort_keys=False), encoding='utf-8')
+-    print('PREFLIGHT PASS: ' + json.dumps(diff, ensure_ascii=False), flush=True)
+-    return protocol, reference_args, reference_row, headers, report
+-
+-
+-def initial_record(experiment_id, run, reference_row, headers, params):
++    for name, values in [('train_call_kwargs.yaml', call_args), ('resolved_training_args.yaml', resolved)]:
++        (audit_dir / name).write_text(yaml.safe_dump(values, allow_unicode=True, sort_keys=False), encoding='utf-8')
++    print('PREFLIGHT PASS: Y11-BASE-001; 100 epochs; explicit overrides + official defaults; no training.', flush=True)
++    return protocol, resolved, headers, report
++
++
++def initial_record(experiment_id, run, headers, params):
+     record = {key: 'NA' for key in headers}
+-    for key in ('dataset_version', 'dataset_path', 'train_images', 'val_images', 'test_images', 'classes',
+-                'git_commit', 'ultralytics_version'):
+-        record[key] = reference_row[key]
+     for key in ('imgsz', 'batch', 'nbs', 'workers', 'seed', 'deterministic', 'warmup_epochs', 'mosaic',
+                 'close_mosaic', 'mixup', 'cutmix', 'fliplr', 'translate', 'scale', 'patience', 'amp'):
+         record[key] = params[key]
+-    seed = EXPERIMENTS[experiment_id]
+     record.update(
+         experiment_id=experiment_id, date=datetime.now().replace(hour=0, minute=0, second=0, microsecond=0),
+-        stage='FormalBaseline', status='Running', purpose='按 Y11-DIAG-001 冻结协议正式重跑；三 seed 共同汇总。',
+-        parent_experiment=REFERENCE_ID,
+-        changed_variable=('NA (formal rerun; frozen training protocol unchanged)' if seed == 42 else f'seed: 42 -> {seed}'),
+-        model='YOLO11s', pretrained_weights='yolo11s.pt', epochs_planned=params['epochs'],
++        stage='FormalBaseline', status='Running',
++        purpose='Official YOLO11s single-run FormalBaseline using COCO-pretrained yolo11s.pt and the fixed broken/loose dataset.',
++        parent_experiment='NA', changed_variable='NA', model='YOLO11s', pretrained_weights='yolo11s.pt',
++        dataset_version='02_yolo11_dataset (split_manifest controlled)', dataset_path=str(DATASET),
++        train_images=107, val_images=23, test_images=23, classes='0=broken; 1=loose',
++        git_commit=COMMIT, ultralytics_version='8.4.152', epochs_planned=100,
+         epochs_completed=0, device='cuda:0', run_directory=str(run), best_pt=str(run / 'weights/best.pt'),
+         results_csv=str(run / 'results.csv'), test_used=False, include_in_paper='Candidate',
+-        decision='待三 seed 完整后汇总；不选取最好 seed 代替总体成绩。',
+-        notes='当前 run 正在执行。失败/中断也保留该 ID；不自动重跑。',
++        decision='Single official baseline; no tuning, no second seed, no automatic retry.',
++        notes='architecture_modified=False; current run in progress; failure retains ID and all artifacts.',
+     )
+     return record
+ 
+@@ -393,12 +397,127 @@
+         require(len(loader.dataset) == EXPECTED_COUNTS[split], f'Trainer {split} 数量不正确。')
+         require(all(Path(p).resolve().is_relative_to((DATASET / 'images' / split).resolve())
+                     for p in loader.dataset.im_files), f'Trainer {split} 加载路径越界。')
+-    head = trainer.model.model[-1]
+-    require(type(head).__name__ == 'Detect' and head.nl == 3 and head.nc == 2
+-            and [int(x) for x in head.stride] == [8, 16, 32], '不是官方标准 P3/P4/P5 Detect。')
+-    official = yaml.safe_load((SOURCE / 'ultralytics/cfg/models/11/yolo11.yaml').read_text(encoding='utf-8'))
+-    require(all(trainer.model.yaml[k] == official[k] for k in ('backbone', 'head')), '模型 backbone/head 不等于官方 YAML。')
+-    require(trainer.model.yaml.get('scale') == 's', '模型规模不是 YOLO11s。')
++    validate_official_structure(trainer.model, 2)
++
++
++def check_validation_finite(validator):
++    """Fail before official NaN recovery; never retry or change precision/settings."""
++    import torch
++    losses = getattr(validator, 'loss', None)
++    if isinstance(losses, dict):
++        require(all(bool(torch.isfinite(v).all()) for v in losses.values()),
++                '验证 loss 出现 NaN/Inf；停止，不执行自动恢复或最终 test。')
++    metrics = getattr(getattr(validator, 'metrics', None), 'results_dict', {})
++    require(all(math.isfinite(float(v)) for v in metrics.values()), '验证指标出现 NaN/Inf。')
++
++
++def preserve_required_curves(run):
++    # The locked release uses BoxPR_curve.png etc. Retain these originals and
++    # provide the requested plain names as byte-identical copies, never redraw.
++    for name in ('PR_curve.png', 'F1_curve.png', 'P_curve.png', 'R_curve.png'):
++        target = run / name
++        if not target.exists():
++            original = run / ('Box' + name)
++            require(original.is_file(), f'官方曲线缺失：{original.name}')
++            with original.open('rb') as src, target.open('xb') as dst:
++                shutil.copyfileobj(src, dst)
++        require(target.is_file(), f'训练曲线缺失：{name}')
++
++
++def extract_evaluation_metrics(metrics):
++    overall = {label: float(metrics.results_dict[key]) for label, key in
++               [('precision', 'metrics/precision(B)'), ('recall', 'metrics/recall(B)'),
++                ('map50', 'metrics/mAP50(B)'), ('map50_95', 'metrics/mAP50-95(B)')]}
++    per_class = {}
++    for row in metrics.summary(decimals=10):
++        if row['Class'] not in EXPECTED_NAMES.values():
++            continue
++        per_class[row['Class']] = {
++            'precision': float(row['Box-P']) if row.get('Box-P') is not None else 'NA',
++            'recall': float(row['Box-R']) if row.get('Box-R') is not None else 'NA',
++            'map50': float(row['mAP50']), 'map50_95': float(row['mAP50-95'])}
++    require(set(per_class) == set(EXPECTED_NAMES.values()), '官方逐类别指标不完整。')
++    require(all(v == 'NA' or math.isfinite(v) for group in [overall, *per_class.values()] for v in group.values()),
++            '评价指标出现 NaN/Inf。')
++    return {'overall': overall, 'per_class': per_class}
++
++
++def evaluate_best(best, split, protocol, run, status):
++    require(split in ('val', 'test'), '只允许固定 val 或一次最终 test。')
++    path = run / 'weights/best.pt'
++    require(sha256(path) == status['fixed_best_sha256'], '已固定 best.pt 发生变化。')
++    validate_official_structure(best.model, 2)
++    if split == 'test':
++        require(status.get('val_completed') is True and status.get('test_attempts') == 1
++                and status.get('test_state') == 'Started', 'test 执行凭据未消耗，禁止读取。')
++    args = {**protocol['evaluation_overrides'], 'split': split,
++            'project': str(run), 'name': f'final_{split}', 'exist_ok': False}
++    require(not (run / args['name']).exists(), f'{split} 目录已存在，禁止覆盖或重复评价。')
++    # Freshly loaded best.pt only carries the framework's minimal checkpoint
++    # overrides. Check the expanded args, but pass only the minimal kwargs above.
++    from ultralytics.cfg import get_cfg
++    expected = vars(get_cfg(overrides={**args, 'model': str(path), 'task': 'detect', 'mode': 'val', 'rect': True}))
++    actual_input = vars(get_cfg(overrides={**best.overrides, 'rect': True, **args, 'mode': 'val'}))
++    require(not parameter_diff(expected, actual_input), 'best.pt 隐含参数偏离标准验证默认值。')
++    expected['conf'] = 0.001  # BaseValidator resolves conf=None to the detect default.
++    if split == 'test':
++        prior, current = dict(status['val_evaluation_args']), dict(expected)
++        prior.pop('split'); current.pop('split')
++        require(not parameter_diff(prior, current), 'test 参数必须在调用前与 val 一致。')
++    observed = {}
++
++    def on_start(validator):
++        require(validator.args.split == split, '评价 split 发生变化。')
++        ds = validator.dataloader.dataset
++        require(len(ds) == EXPECTED_COUNTS[split] and all(
++            Path(p).resolve().is_relative_to((DATASET / 'images' / split).resolve()) for p in ds.im_files),
++            '评价数据路径或数量不符。')
++        current = vars(validator.args).copy()
++        require(not parameter_diff(expected, current), '运行时验证参数偏离标准默认值。')
++        observed.update(current)
++
++    best.reset_callbacks()
++    best.add_callback('on_val_start', on_start)
++    best.add_callback('on_val_end', check_validation_finite)
++    evaluation = extract_evaluation_metrics(best.val(**args))
++    require(observed, '未得到实际验证参数。')
++    if split == 'test':
++        prior = dict(status['val_evaluation_args'])
++        current = dict(observed)
++        prior.pop('split'); current.pop('split')
++        require(not parameter_diff(prior, current), 'val/test 参数不一致。')
++    status[f'{split}_evaluation_args'] = observed
++    require(sha256(path) == status['fixed_best_sha256'], '评价期间 best.pt 发生变化。')
++    return evaluation
++
++
++def consume_test_token(run, audit_dir, status):
++    require(status.get('training_completed') is True and status.get('epochs_completed') == 100,
++            '完整 100 epoch 训练尚未完成，禁止 test。')
++    require(status.get('val_completed') is True and status.get('val_evaluation'), 'val 尚未记录，禁止 test。')
++    require(status.get('test_attempts', 0) == 0 and not status.get('test_used'), '最终 test 已尝试，禁止重试。')
++    read_results(run / 'results.csv', 100)
++    require(sha256(run / 'weights/best.pt') == status['fixed_best_sha256'], 'best.pt 未固定或已变化。')
++    val_path = audit_dir / 'val_metrics.json'
++    require(sha256(val_path) == status['val_metrics_sha256']
++            and json.loads(val_path.read_text(encoding='utf-8')) == status['val_evaluation'], 'val 记录未持久保存。')
++    token = audit_dir / 'final_test_started.json'
++    # Consume BEFORE any test model operation. A crash leaves evidence and cannot retry.
++    with token.open('x', encoding='utf-8') as stream:
++        json.dump({'best_sha256': status['fixed_best_sha256'], 'val_metrics_sha256': status['val_metrics_sha256'],
++                   'started': datetime.now().isoformat(), 'maximum_test_attempts': 1}, stream, indent=2)
++    status.update(test_attempts=1, test_used=True, test_state='Started')
++    dump_json(audit_dir / 'status.json', status)
++
++
++def run_final_test(best, protocol, run, audit_dir, status):
++    consume_test_token(run, audit_dir, status)
++    evaluation = evaluate_best(best, 'test', protocol, run, status)
++    dump_json(audit_dir / 'test_metrics.json', evaluation)
++    status.update(test_evaluation=evaluation, test_state='Completed', test_completed=True,
++                  test_metrics_path=str(audit_dir / 'test_metrics.json'),
++                  test_metrics_sha256=sha256(audit_dir / 'test_metrics.json'))
++    dump_json(audit_dir / 'status.json', status)
+ 
+ 
+ def execute_training(experiment_id, run, audit_dir, prepared, status):
+@@ -407,16 +526,16 @@
+     from ultralytics import YOLO
+     from ultralytics.utils.torch_utils import model_info
+ 
+-    protocol, reference, reference_row, headers, pre = prepared
+-    params = deepcopy(pre['final_training_args'])
++    protocol, reference, headers, pre = prepared
++    params = deepcopy(pre['train_call_kwargs'])
+     status_path = audit_dir / 'status.json'
+     # Recheck files after preflight and before reserving a new run/registry row.
+     require(sha256(PROTOCOL) == pre['protocol_sha256'], 'Preflight 后协议文件变化。')
+-    _, _, _, records, _ = load_reference(protocol)
++    _, records, _ = load_protocol_context(protocol)
+     check_new_identity(experiment_id, run, records)
+     run.mkdir(exist_ok=False)  # Atomically reserve an entirely new directory.
+-    (run / 'frozen_protocol_diff.txt').write_bytes((audit_dir / 'frozen_protocol_diff.txt').read_bytes())
+-    record = initial_record(experiment_id, run, reference_row, headers, params)
++    (run / 'explicit_training_overrides.yaml').write_bytes((audit_dir / 'train_call_kwargs.yaml').read_bytes())
++    record = initial_record(experiment_id, run, headers, reference)
+     registered = False
+     started = time.monotonic()
+     warm_accumulates = set()
+@@ -426,14 +545,15 @@
+     dump_json(status_path, status)
+     try:
+         status['registry_backups_start'] = update_registry(
+-            REGISTRY, record, append=True, expected_schema=protocol['reference']['registry_schema_sha256'])
++            REGISTRY, record, append=True, expected_schema=protocol['evidence']['registry_schema_sha256'])
+         registered = True
+         dump_json(status_path, status)
+         redirect_label_caches()  # Reuse the existing adapter, only after data protection is installed.
+-        os.chdir(WORKSPACE / 'weights')  # Same resolution of model=yolo11s.pt as the reference run.
+-        require(sha256(Path('yolo11s.pt')) == pre['pretrained_sha256'], '进入模型阶段前权重发生变化。')
++        weights = Path(protocol['weights']['path'])
++        require(sha256(weights) == pre['pretrained_sha256'], '进入模型阶段前权重发生变化。')
+         with forbid_test_model_reads():
+-            model = YOLO('yolo11s.pt')
++            model = YOLO(str(weights))
++            validate_official_structure(model.model, 80)
+             require(model.task == 'detect' and len(model.names) == 80, '必须从原始官方 COCO 80 类权重开始。')
+ 
+             def verify_before_dataset(trainer):
+@@ -460,11 +580,6 @@
+                     'weight_decay': next(iter(decays)) if len(decays) == 1 else ('NA' if decays else 0.0),
+                     'betas': list(defaults['betas']) if 'betas' in defaults else None,
+                 }
+-                require(status['optimizer_actual']['name'] == 'AdamW'
+-                        and status['optimizer_actual']['lr0'] == reference_row['lr0_actual']
+-                        and status['optimizer_actual']['momentum'] == reference_row['momentum_actual']
+-                        and status['optimizer_actual']['weight_decay'] == reference_row['weight_decay_actual'],
+-                        '官方 auto 实际优化器与母版可核验值不同；停止，不改参数。')
+                 status['model_parameters'] = sum(p.numel() for p in trainer.model.parameters())
+                 status['actual_training_args'] = vars(trainer.args).copy()
+                 status['train_images_loaded'] = len(trainer.train_loader.dataset)
+@@ -472,7 +587,7 @@
+                 dump_json(status_path, status)
+ 
+             def on_epoch_start(trainer):
+-                # Same project-side fail-on-OOM guard as DIAG-001. No trainer source edits.
++                # Fail on OOM instead of official automatic batch reduction. No source edits.
+                 trainer._oom_retries = 3
+                 require(trainer.batch_size == 4 and trainer.args.batch == 4, 'batch 不允许自动下调。')
+ 
+@@ -497,6 +612,11 @@
+                 require(all(Path(p).resolve().is_relative_to((DATASET / 'images/val').resolve())
+                             for p in validator.dataloader.dataset.im_files), '验证数据不是固定 val。')
+ 
++            def on_model_save(trainer):
++                if trainer.best_fitness == trainer.fitness:
++                    status['native_best_checkpoint_epoch'] = trainer.epoch + 1
++                    status['native_best_fitness'] = float(trainer.fitness)
++
+             def on_epoch_end(trainer):
+                 status['last_finished_epoch'] = trainer.epoch + 1
+                 dump_json(status_path, status)
+@@ -507,8 +627,12 @@
+             model.add_callback('on_train_batch_end', on_batch)
+             model.add_callback('on_val_start', on_val_start)
+             model.add_callback('on_fit_epoch_end', on_epoch_end)
+-            # Final diff is of the exact dictionary passed to model.train(), not a shortlist.
+-            write_diff(run / 'frozen_protocol_diff.txt', reference, params, experiment_id)
++            model.add_callback('on_model_save', on_model_save)
++            model.add_callback('on_val_batch_end', check_validation_finite)
++            model.add_callback('on_val_end', check_validation_finite)
++            # Only the explicit overrides are passed; full resolved defaults are audited separately.
++            require(params == final_arguments(protocol, experiment_id, run), '实际 train kwargs 发生漂移。')
++            write_diff(run / 'resolved_protocol_diff.txt', reference, resolved_training_arguments(params), experiment_id)
+             torch.cuda.reset_peak_memory_stats(0)
+             train_started = time.monotonic()
+             status['model_train_called'] = True
+@@ -517,17 +641,18 @@
+             status['training_runtime_seconds'] = round(time.monotonic() - train_started, 4)
+             status['peak_vram_mib'] = round(torch.cuda.max_memory_allocated(0) / 2**20, 2)
+             status['peak_reserved_mib'] = round(torch.cuda.max_memory_reserved(0) / 2**20, 2)
+-            status['training_completed'] = True
+             for name in ('weights/best.pt', 'weights/last.pt', 'results.csv', 'args.yaml', 'results.png', 'confusion_matrix.png'):
+                 require((run / name).is_file(), f'训练产物缺失：{name}')
+             saved_args = yaml.safe_load((run / 'args.yaml').read_text(encoding='utf-8-sig'))
+             assert_protocol_diff(reference, saved_args, experiment_id)
+             rows = read_results(run / 'results.csv', int(params['epochs']))
+             metrics = result_summary(rows)
++            status['training_completed'] = True
++            status['epochs_completed'] = len(rows)
++            preserve_required_curves(run)
+             status['best_epoch_metrics'] = metrics
+-            status['nonfinite_val_losses'] = [
+-                {'epoch': int(r['epoch']), 'fields': [k for k, v in r.items() if k.startswith('val/') and not math.isfinite(v)]}
+-                for r in rows if any(not math.isfinite(v) for k, v in r.items() if k.startswith('val/'))]
++            require(all(math.isfinite(v) for r in rows for k, v in r.items() if 'loss' in k),
++                    'CSV 含 NaN/Inf loss，禁止最终测试。')
+             status['steady_accumulate'] = next(iter(warm_accumulates)) if len(warm_accumulates) == 1 else 'NA'
+             status['steady_accumulate_observed_values'] = sorted(warm_accumulates)
+             best = YOLO(str(run / 'weights/best.pt'))
+@@ -541,26 +666,25 @@
+             except Exception as exc:
+                 status['gflops_1280'] = 'NA'
+                 status['gflops_note'] = str(exc)
+-            val_args = deepcopy(protocol['validation_args'])
+-            val_args.update(project=str(run), name='best_val_revalidation', exist_ok=False)
+-            require(not (run / 'best_val_revalidation').exists(), 'val 复验输出目录已存在。')
+-            best.add_callback('on_val_start', on_val_start)
+-            validation = best.val(**val_args)
+-            per_class = {row['Class']: row for row in validation.summary(decimals=10) if row['Class'] != 'all'}
+-            require(set(per_class) == {'broken', 'loose'}, '逐类别 AP 不完整，不能记为 Completed。')
+-            class_metrics = {}
+-            for cls in ('broken', 'loose'):
+-                for suffix, source_key in (('map50', 'mAP50'), ('map50_95', 'mAP50-95')):
+-                    value = float(per_class[cls][source_key])
+-                    require(math.isfinite(value), f'{cls} AP 非有限。')
+-                    class_metrics[f'{cls}_{suffix}'] = value
+-            status['per_class_metrics'] = class_metrics
+-            status['validation_args'] = val_args
+-            status['best_pt_val_metrics'] = {k: float(v) for k, v in validation.results_dict.items()}
+-            status['artifact_sha256'] = {name: sha256(run / name) for name in
+-                                         ('args.yaml', 'results.csv', 'weights/best.pt', 'weights/last.pt')}
++            status['fixed_best_sha256'] = sha256(run / 'weights/best.pt')
++            status['fixed_best_at'] = datetime.now().isoformat()
++            dump_json(status_path, status)
++            # Test remains blocked through training and the fixed-best val pass.
++            evaluation = evaluate_best(best, 'val', protocol, run, status)
++            dump_json(audit_dir / 'val_metrics.json', evaluation)
++            status['val_evaluation'] = evaluation
++            status['val_metrics_path'] = str(audit_dir / 'val_metrics.json')
++            status['val_metrics_sha256'] = sha256(audit_dir / 'val_metrics.json')
++            status['val_completed'] = True
++            dump_json(status_path, status)
++        run_final_test(best, protocol, run, audit_dir, status)
++        class_metrics = {f'{cls}_{key}': value for cls, values in status['val_evaluation']['per_class'].items()
++                         for key, value in values.items() if key in ('map50', 'map50_95')}
++        status['per_class_metrics'] = class_metrics
++        status['artifact_sha256'] = {name: sha256(run / name) for name in
++                                     ('args.yaml', 'results.csv', 'weights/best.pt', 'weights/last.pt')}
+         status['state'] = 'Completed'
+-        record.update(metrics, **class_metrics, model_parameters=status['model_parameters'],
++        record.update(metrics, **class_metrics, test_used=True, model_parameters=status['model_parameters'],
+                       gflops_1280=status['gflops_1280'], steady_accumulate=status['steady_accumulate'],
+                       peak_vram_mib=status['peak_vram_mib'])
+     except BaseException as exc:
+@@ -580,13 +704,20 @@
+         if torch.cuda.is_available():
+             status.setdefault('peak_vram_mib', round(torch.cuda.max_memory_allocated(0) / 2**20, 2))
+         optimizer = status.get('optimizer_actual') or {}
+-        record.update(status=status['state'], runtime_seconds=status['runtime_seconds'],
++        record.update(status=status['state'], test_used=bool(status.get('test_used')), runtime_seconds=status['runtime_seconds'],
+                       optimizer=(optimizer.get('name', 'NA') + ' (optimizer=auto)' if optimizer else 'NA'),
+                       lr0_actual=optimizer.get('lr0', 'NA'), momentum_actual=optimizer.get('momentum', 'NA'),
+                       weight_decay_actual=optimizer.get('weight_decay', 'NA'),
+                       peak_vram_mib=status.get('peak_vram_mib', 'NA'),
+-                      notes=f'status={status_path}; runtime includes postprocessing; test not used; '
+-                            + ('Interrupted; recorded as Failed.' if status.get('interrupted') else status['state']))
++                      notes=json.dumps({
++                          'architecture_modified': False, 'status_json': str(status_path),
++                          'args_yaml': str(run / 'args.yaml'), 'runtime_scope': 'run setup + training + val/test + postflight',
++                          'best_epoch_definition': 'existing registry CSV max AP50-95, then AP50',
++                          'native_best_checkpoint_epoch': status.get('native_best_checkpoint_epoch', 'NA'),
++                          'val': status.get('val_evaluation', 'NA'), 'test': status.get('test_evaluation', 'NA'),
++                          'test_attempts': status.get('test_attempts', 0),
++                          'interrupted': status.get('interrupted', False),
++                      }, ensure_ascii=False))
+         if status['state'] != 'Completed':
+             record['epochs_completed'] = status.get('last_finished_epoch', 0)
+             record['decision'] = '运行或后处理未完整完成；保留 ID 和产物，禁止自动重试。详见 status JSON。'
+@@ -595,7 +726,7 @@
+         if registered:
+             try:
+                 status['registry_backups_finish'] = update_registry(
+-                    REGISTRY, record, append=False, expected_schema=protocol['reference']['registry_schema_sha256'])
++                    REGISTRY, record, append=False, expected_schema=protocol['evidence']['registry_schema_sha256'])
+                 status['registry_synchronized'] = True
+             except BaseException:
+                 status['registry_synchronized'] = False
+@@ -604,6 +735,8 @@
+         status['success'] = status['state'] == 'Completed' and status.get('registry_synchronized', False)
+         dump_json(status_path, status)
+     require(status['success'], f'实验未完整成功：{status_path}。不自动重跑或改变协议。')
++    from summarize_formal_baseline import write_summary
++    write_summary()  # Read saved evidence only; no extra model evaluation.
+ 
+ 
+ class Tee:
+@@ -636,7 +769,7 @@
+ def main(argv=None):
+     parser = argparse.ArgumentParser(description='官方 YOLO11s 固定协议；每次只运行一个白名单实验。')
+     parser.add_argument('--experiment-id', required=True, choices=list(EXPERIMENTS))
+-    parser.add_argument('--dry-run', action='store_true', help='只进行 preflight；不创建模型、不训练、不写登记表。')
++    parser.add_argument('--dry-run', action='store_true', help='只核验配置和权重元数据；不调用 train/val/predict，不写登记表。')
+     args = parser.parse_args(argv)
+     configure_process()
+     stamp = datetime.now().strftime('%Y%m%d_%H%M%S_%f')
+@@ -658,7 +791,7 @@
+                     if args.dry_run:
+                         status.update(state='PreflightPassed', success=True, registry_modified=False)
+                         dump_json(status_path, status)
+-                        print(f'DRY-RUN ONLY: no model.train(), no model/val/predict. Report: {status_path}')
++                        print(f'DRY-RUN ONLY: no model.train(), val() or predict(); checkpoint metadata inspection only. Report: {status_path}')
+                     else:
+                         execute_training(args.experiment_id, run, audit_dir, prepared, status)
+                 return 0
+--- a/workspace/scripts/summarize_formal_baseline.py
++++ b/workspace/scripts/summarize_formal_baseline.py
+@@ -1,146 +1,79 @@
+-"""Summarize all three completed seeds without loading a model or using test."""
++"""Read and report the single completed baseline; never train or evaluate a model.
++
++The pre-training three-seed implementation is preserved in the plan-change backup.
++"""
+ from __future__ import annotations
+ import sys
+ sys.dont_write_bytecode = True
+-
+-import csv
+-import io
+ import json
+-import math
+ from pathlib import Path
+-import statistics
+ import yaml
+-
+-from run_formal_baseline import (
+-    EXPERIMENTS, PROTOCOL, REGISTRY, RUNS, RUN_LOCK, WORKSPACE,
+-    configure_process, load_reference, require, assert_protocol_diff,
+-    read_results, result_summary, sha256, exclusive_lock,
+-)
+-
+-FIELDS = [
+-    'precision_at_best_epoch', 'recall_at_best_epoch', 'map50_at_best_epoch', 'map50_95_at_best_epoch',
+-    'broken_map50', 'broken_map50_95', 'loose_map50', 'loose_map50_95',
+-    'best_epoch', 'runtime_seconds', 'peak_vram_mib',
+-]
++import run_formal_baseline as runner
+ 
+ 
+-def calculate_statistics(individual):
+-    require(len(individual) == 3, '必须恰有三个 individual runs。')
+-    require({r['experiment_id']: r['seed'] for r in individual} == EXPERIMENTS, '三 seed 白名单不完整或重复。')
+-    stats = {}
+-    for field in FIELDS:
+-        values = [r[field] for r in individual]
+-        require(all(isinstance(v, (int, float)) and not isinstance(v, bool) and math.isfinite(v)
+-                    for v in values), f'{field} 缺少可靠数值；不忽略缺失 seed，不用零代替 NA。')
+-        mean, std = statistics.mean(values), statistics.stdev(values)  # sample SD, ddof=1
+-        stats[field] = {'n': 3, 'mean': mean, 'sample_std_ddof1': std, 'mean_plus_minus_std': f'{mean:.6f} ± {std:.6f}'}
+-    return stats
++def collect_completed(protocol=None):
++    protocol = protocol or yaml.safe_load(runner.PROTOCOL.read_text(encoding='utf-8'))
++    _, records, _ = runner.load_protocol_context(protocol)
++    rows = [r for _, r in records if r['experiment_id'] == 'Y11-BASE-001']
++    runner.require(len(rows) == 1 and rows[0]['status'] == 'Completed', 'Y11-BASE-001 缺失或未 Completed；不生成正式结果。')
++    row = rows[0]
++    notes = json.loads(row['notes'])
++    path = Path(notes['status_json'])
++    status = json.loads(path.read_text(encoding='utf-8'))
++    runner.require(status['success'] and status['registry_synchronized'] and status['training_completed']
++                   and status['epochs_completed'] == 100 and status['test_completed']
++                   and status['test_attempts'] == 1 and row['test_used'] is True,
++                   '训练、val、一次 test 或登记不完整。')
++    run = Path(row['run_directory'])
++    for name, digest in status['artifact_sha256'].items():
++        runner.require(runner.sha256(run / name) == digest, f'产物发生变化：{name}')
++    for split in ('val', 'test'):
++        evidence = path.parent / f'{split}_metrics.json'
++        runner.require(runner.sha256(evidence) == status[f'{split}_metrics_sha256']
++                       and json.loads(evidence.read_text(encoding='utf-8')) == notes[split]
++                       and notes[split] == status[f'{split}_evaluation'], f'{split} 指标证据不一致。')
++    runner.require(status['dataset_integrity_after']['unchanged'] and status['git_after']['status'] == '',
++                   '训练后完整性检查不通过。')
++    return row, status
+ 
+ 
+-def collect_completed(protocol):
+-    reference, _, _, records, _ = load_reference(protocol)
+-    by_id = {r['experiment_id']: r for _, r in records}
+-    missing = [key for key in EXPERIMENTS if key not in by_id or by_id[key]['status'] != 'Completed']
+-    require(not missing, f'正式汇总尚不可生成；以下实验缺失或未 Completed：{missing}')
+-    individual = []
+-    for experiment_id, seed in EXPERIMENTS.items():
+-        row = by_id[experiment_id]
+-        require(row['stage'] == 'FormalBaseline' and row['seed'] == seed and row['test_used'] is False
+-                and row['include_in_paper'] == 'Candidate', f'登记身份不一致：{experiment_id}')
+-        run = Path(row['run_directory']).resolve()
+-        require(run.parent == RUNS.resolve() and run.name.startswith(experiment_id + '_'), 'run 路径不是本实验的新目录。')
+-        status_path = WORKSPACE / 'logs' / run.name / 'status.json'
+-        status = json.loads(status_path.read_text(encoding='utf-8'))
+-        require(status['experiment_id'] == experiment_id and status['seed'] == seed
+-                and status['success'] is True and status['state'] == 'Completed'
+-                and status['training_completed'] is True and status['registry_synchronized'] is True
+-                and status['test_used'] is False and status['dry_run'] is False, f'运行 status 不完整：{experiment_id}')
+-        require(status['preflight']['protocol_sha256'] == sha256(PROTOCOL), '运行使用的协议与当前冻结协议不同。')
+-        require(status['preflight']['pretrained_sha256'] == protocol['weights']['sha256'], '预训练权重不同。')
+-        require(status['preflight']['dataset_integrity']['unchanged'] is True
+-                and status['dataset_integrity_after']['unchanged'] is True
+-                and not status['blocked_dataset_writes'], '数据完整性检查未完整通过。')
+-        require(status['git_after']['commit'] == protocol['environment']['git_commit'] and not status['git_after']['status'],
+-                '训练后源码不符合协议。')
+-        for name in ('args.yaml', 'results.csv', 'weights/best.pt', 'weights/last.pt'):
+-            require(sha256(run / name) == status['artifact_sha256'][name], f'训练后产物发生变化：{run / name}')
+-        saved_args = yaml.safe_load((run / 'args.yaml').read_text(encoding='utf-8-sig'))
+-        assert_protocol_diff(reference, saved_args, experiment_id)
+-        calculated = result_summary(read_results(run / 'results.csv', reference['epochs']))
+-        for key, value in calculated.items():
+-            require(row[key] == value and status['best_epoch_metrics'][key] == value, f'登记/状态/CSV 不一致：{experiment_id}.{key}')
+-        for key in FIELDS:
+-            if key in calculated:
+-                continue
+-            evidence = status['per_class_metrics'].get(key, status.get(key))
+-            require(row[key] == evidence, f'登记/状态不一致：{experiment_id}.{key}')
+-        individual.append({'experiment_id': experiment_id, 'seed': seed,
+-                           **{key: row[key] for key in FIELDS}, 'run_directory': str(run), 'status_json': str(status_path)})
+-    return individual
+-
+-
+-def render_outputs(individual, stats, protocol):
+-    columns = ['row_type', 'experiment_id', 'seed', *FIELDS]
+-    stream = io.StringIO(newline='')
+-    writer = csv.DictWriter(stream, fieldnames=columns)
+-    writer.writeheader()
+-    for row in individual:
+-        writer.writerow({'row_type': 'individual', **{k: row[k] for k in columns[1:]}})
+-    for kind, stat_key in [('mean', 'mean'), ('sample_std_ddof1', 'sample_std_ddof1'), ('mean_plus_minus_std', 'mean_plus_minus_std')]:
+-        writer.writerow({'row_type': kind, **{k: stats[k][stat_key] for k in FIELDS}})
+-    payload = {'protocol_sha256': sha256(PROTOCOL), 'reference_experiment': 'Y11-DIAG-001',
+-               'stage': 'FormalBaseline', 'test_used': False, 'n': 3, 'ddof': 1,
+-               'metric_basis': 'overall P/R/AP from same best epoch; class AP from separate fixed val revalidation',
+-               'runtime_basis': 'new-run setup, training, val revalidation and dataset postflight; seconds',
+-               'peak_vram_basis': 'PyTorch allocated peak during model.train(); MiB, excludes separate val revalidation',
+-               'individual_runs': individual, 'statistics': stats}
+-    lines = ['# 官方 YOLO11s FormalBaseline 三 seed 汇总', '',
+-             '三个 individual runs 全部保留；总体成绩使用 mean ± sample standard deviation（ddof=1）。',
+-             '不选择最高 seed 替代正式基线成绩。test 未用于模型评价。', '',
+-             '| experiment ID | seed | best epoch | P | R | mAP50 | mAP50-95 | runtime (s) | peak VRAM (MiB) |',
+-             '|---|---:|---:|---:|---:|---:|---:|---:|---:|']
+-    for row in individual:
+-        lines.append(f"| {row['experiment_id']} | {row['seed']} | {row['best_epoch']} | "
+-                     + ' | '.join(f'{row[k]:.6f}' for k in FIELDS[:4])
+-                     + f" | {row['runtime_seconds']:.2f} | {row['peak_vram_mib']:.2f} |")
+-    lines += ['', '| metric | seed 42 | seed 3407 | seed 2026 | mean ± sample std |', '|---|---:|---:|---:|---|']
+-    for field in FIELDS:
+-        lines.append('| ' + field + ' | ' + ' | '.join(f'{r[field]:.6f}' for r in individual)
+-                     + ' | ' + stats[field]['mean_plus_minus_std'] + ' |')
+-    lines += ['', '整体 P/R/AP 取每个 run 的同一 best epoch；best 先按 mAP50-95、并列再按 mAP50，完全并列取最早轮次。',
+-              'broken/loose AP 来自该 run 的 best.pt 固定 val 复验，不能与训练期间整体 AP 混作同一次测量。',
+-              'runtime_seconds 包含新 run 设置、训练、val 复验与数据完整性后检查；peak VRAM 为 model.train() 阶段 PyTorch allocated 峰值。',
+-              'best epoch、runtime 和 VRAM 的 mean/std 仅为描述统计。所有 AP 值范围为 0–1。', '', '证据：']
+-    for row in individual:
+-        lines.append(f"- {row['experiment_id']}: `{row['run_directory']}`；status: `{row['status_json']}`")
+-    return stream.getvalue(), json.dumps(payload, ensure_ascii=False, indent=2, allow_nan=False) + '\n', '\n'.join(lines) + '\n'
+-
+-
+-def main():
+-    configure_process()
+-    try:
+-        with exclusive_lock(RUN_LOCK, {'operation': 'summary; no model calls'}):
+-            protocol = yaml.safe_load(PROTOCOL.read_text(encoding='utf-8-sig'))
+-            individual = collect_completed(protocol)
+-            stats = calculate_statistics(individual)
+-            outputs = render_outputs(individual, stats, protocol)
+-            paths = [WORKSPACE / 'analysis/formal_baseline_3seed_summary.csv',
+-                     WORKSPACE / 'analysis/formal_baseline_3seed_metrics.json',
+-                     WORKSPACE / 'notes/formal_baseline_3seed_report.md']
+-            # Validate every existing destination before writing any new output.
+-            for path, content in zip(paths, outputs):
+-                if path.exists():
+-                    require(path.read_text(encoding='utf-8-sig') == content, f'已有汇总内容不同，拒绝覆盖：{path}')
+-            for path, content in zip(paths, outputs):
+-                if not path.exists():
+-                    with path.open('x', encoding='utf-8-sig' if path.suffix == '.csv' else 'utf-8', newline='') as stream:
+-                        stream.write(content)
+-                print(path)
+-        return 0
+-    except (RuntimeError, OSError, KeyError, ValueError) as exc:
+-        print(f'停止汇总：{exc}', file=sys.stderr)
+-        return 1
++def write_summary():
++    row, status = collect_completed()
++    result = {k: row[k] for k in ('experiment_id', 'model', 'pretrained_weights', 'epochs_completed', 'seed',
++              'best_epoch', 'runtime_seconds', 'peak_vram_mib', 'model_parameters', 'best_pt', 'run_directory')}
++    result.update(native_best_checkpoint_epoch=status.get('native_best_checkpoint_epoch', 'NA'),
++                  val=status['val_evaluation'], test=status['test_evaluation'], test_attempts=1,
++                  actual_args_yaml=str(Path(row['run_directory']) / 'args.yaml'),
++                  git_clean=True, dataset_unchanged=True, registry_synchronized=True)
++    lines = ['# Y11-BASE-001 正式 YOLO11s baseline', '',
++             '单次官方 COCO 预训练 YOLO11s；100 epochs；seed=42。无多 seed 汇总，无 test 后选择或调参。', '',
++             '| split / class | Precision | Recall | mAP50 | mAP50-95 |', '|---|---:|---:|---:|---:|']
++    for split in ('val', 'test'):
++        groups = {'overall': result[split]['overall'], **result[split]['per_class']}
++        for cls, values in groups.items():
++            lines.append('| ' + split + ' / ' + cls + ' | ' + ' | '.join(str(values[k]) for k in
++                         ('precision', 'recall', 'map50', 'map50_95')) + ' |')
++    lines += ['', 'best_epoch 按原登记表 CSV 定义；native_best_checkpoint_epoch 记录官方实际保存 best.pt 的轮次，',
++              '如因四舍五入或同分覆盖而不同，保留两者，不另选权重或重测。', '', '```json',
++              json.dumps(result, ensure_ascii=False, indent=2), '```', '', '完成后停止，不自动继续其他实验。', '']
++    outputs = {
++        runner.WORKSPACE / 'analysis/formal_baseline_single_run_metrics.json': json.dumps(result, ensure_ascii=False, indent=2) + '\n',
++        runner.WORKSPACE / 'notes/formal_baseline_single_run_report.md': '\n'.join(lines),
++    }
++    for path, text in outputs.items():
++        runner.require(not path.exists() or path.read_text(encoding='utf-8') == text, f'已有不同内容，禁止覆盖：{path}')
++    for path, text in outputs.items():
++        if not path.exists():
++            with path.open('x', encoding='utf-8') as stream:
++                stream.write(text)
++        print(path)
++    return result
+ 
+ 
+ if __name__ == '__main__':
+-    raise SystemExit(main())
++    sys.stdout.reconfigure(encoding='utf-8')
++    try:
++        write_summary()
++    except Exception as exc:
++        print(f'停止：{exc}', file=sys.stderr)
++        raise SystemExit(1)
+--- a/workspace/scripts/test_formal_baseline.py
++++ b/workspace/scripts/test_formal_baseline.py
+@@ -4,6 +4,9 @@
+ sys.dont_write_bytecode = True
+ from copy import deepcopy
+ import os
++import csv
++import json
++from types import SimpleNamespace
+ from pathlib import Path
+ import shutil
+ import tempfile
+@@ -20,22 +23,25 @@
+     @classmethod
+     def setUpClass(cls):
+         cls.protocol = yaml.safe_load(runner.PROTOCOL.read_text(encoding='utf-8'))
+-        cls.reference, cls.row, cls.headers, cls.records, _ = runner.load_reference(cls.protocol)
++        runner.configure_process()
++        cls.headers, cls.records, _ = runner.load_protocol_context(cls.protocol)
++        cls.row = cls.records[0][1]
++        cls.reference = runner.resolved_training_arguments(runner.final_arguments(cls.protocol, 'Y11-BASE-001', runner.RUNS / 'Y11-BASE-001_TEST'))
+ 
+     def test_exact_seed_only_differences(self):
+         for key, seed in runner.EXPERIMENTS.items():
+             args = runner.final_arguments(self.protocol, key, runner.RUNS / f'{key}_TEST')
+-            diff = runner.assert_protocol_diff(self.reference, args, key)
++            diff = runner.assert_protocol_diff(self.reference, runner.resolved_training_arguments(args), key)
+             self.assertEqual(set(diff), set() if seed == 42 else {'seed'})
+ 
+     def test_training_drift_is_rejected_without_repair(self):
+-        for field, value in [('epochs', 100), ('nbs', 16), ('mosaic', 0), ('model', 'yolo11s_p2.yaml'),
++        for field, value in [('epochs', 30), ('nbs', 16), ('mosaic', 0), ('model', 'yolo11s_p2.yaml'),
+                              ('optimizer', 'SGD'), ('imgsz', 640), ('lr0', 0.02), ('cls', 1.0), ('split', 'test')]:
+             with self.subTest(field=field):
+                 args = deepcopy(self.reference)
+                 args[field] = value
+                 with self.assertRaises(RuntimeError):
+-                    runner.assert_protocol_diff(self.reference, args, 'Y11-BASE-001-S42')
++                    runner.assert_protocol_diff(self.reference, args, 'Y11-BASE-001')
+                 self.assertEqual(args[field], value)
+ 
+     def test_missing_extra_and_wrong_seed_are_rejected(self):
+@@ -43,7 +49,7 @@
+             args = deepcopy(self.reference)
+             mutate(args)
+             with self.assertRaises(RuntimeError):
+-                runner.assert_protocol_diff(self.reference, args, 'Y11-BASE-001-S42')
++                runner.assert_protocol_diff(self.reference, args, 'Y11-BASE-001')
+         with self.assertRaises(RuntimeError):
+             runner.final_arguments(self.protocol, 'Y11-BASE-004-S7', runner.RUNS / 'unused')
+ 
+@@ -52,18 +58,18 @@
+         actual['warmup_bias_lr'] = 0.0
+         # Never accept it as a change to the caller's frozen protocol.
+         with self.assertRaises(RuntimeError):
+-            runner.assert_protocol_diff(self.reference, actual, 'Y11-BASE-001-S42')
+-        derived = runner.assert_effective_training_args(self.reference, actual, 'Y11-BASE-001-S42')
++            runner.assert_protocol_diff(self.reference, actual, 'Y11-BASE-001')
++        derived = runner.assert_effective_training_args(self.reference, actual, 'Y11-BASE-001')
+         self.assertEqual(derived['warmup_bias_lr']['official_runtime'], 0.0)
+         self.assertEqual(self.reference['warmup_bias_lr'], .1)
+         actual['mosaic'] = 0.0
+         with self.assertRaises(RuntimeError):
+-            runner.assert_effective_training_args(self.reference, actual, 'Y11-BASE-001-S42')
++            runner.assert_effective_training_args(self.reference, actual, 'Y11-BASE-001')
+ 
+     def test_existing_id_and_directory_are_rejected(self):
+         with tempfile.TemporaryDirectory(prefix='formal-baseline-identity-') as tmp:
+             root = Path(tmp)
+-            key = 'Y11-BASE-001-S42'
++            key = 'Y11-BASE-001'
+             with patch.object(runner, 'RUNS', root):
+                 with self.assertRaises(RuntimeError):
+                     runner.check_new_identity(key, root / 'new', [(1, {'experiment_id': key})])
+@@ -97,9 +103,9 @@
+             old_tables = {name: wb['Runs'].tables[name].ref for name in wb['Runs'].tables}
+             old_views = {ws.title: (ws.freeze_panes, str(ws.views), str(ws.sheet_format), str(ws.merged_cells)) for ws in wb}
+             wb.close()
+-            key = 'Y11-BASE-001-S42'
++            key = 'Y11-BASE-001'
+             args = runner.final_arguments(self.protocol, key, Path(tmp) / key)
+-            record = runner.initial_record(key, Path(tmp) / key, self.row, headers, args)
++            record = runner.initial_record(key, Path(tmp) / key, headers, runner.resolved_training_arguments(args))
+             backups = registry.update_registry(path, record, append=True, expected_schema=schema)
+             self.assertEqual(registry.sha256(Path(backups[0])), old_hash)
+             self.assertEqual(len(backups), 2)
+@@ -113,7 +119,8 @@
+             self.assertEqual(wb['Runs'].tables['RunsTable'].ref, old_tables['RunsTable'].replace('10', '11'))
+             registry.check_csv_pair(path.with_suffix('.csv'), headers, records)
+             wb.close()
+-            record.update(status='Completed', epochs_completed=30, best_epoch=28,
++            record.update(status='Completed', epochs_completed=100, best_epoch=28, test_used=True,
++                          notes=json.dumps({'test_attempts': 1, 'val': {'synthetic': True}, 'test': {'synthetic': True}}),
+                           precision_at_best_epoch=.00731, recall_at_best_epoch=.03571,
+                           map50_at_best_epoch=.02141, map50_95_at_best_epoch=.00964)
+             registry.update_registry(path, record, append=False, expected_schema=schema)
+@@ -137,7 +144,7 @@
+             before = registry.sha256(path)
+             with self.assertRaises(RuntimeError):
+                 registry.update_registry(path, dict(self.row), append=False,
+-                                         expected_schema=self.protocol['reference']['registry_schema_sha256'])
++                                         expected_schema=self.protocol['evidence']['registry_schema_sha256'])
+             self.assertEqual(registry.sha256(path), before)
+ 
+     def test_pair_rolls_back_if_csv_replace_fails(self):
+@@ -146,7 +153,7 @@
+             shutil.copyfile(runner.REGISTRY, path)
+             shutil.copyfile(runner.REGISTRY.with_suffix('.csv'), path.with_suffix('.csv'))
+             original = (registry.sha256(path), registry.sha256(path.with_suffix('.csv')))
+-            record = runner.initial_record('Y11-BASE-001-S42', Path(tmp) / 'run', self.row, self.headers, self.reference)
++            record = runner.initial_record('Y11-BASE-001', Path(tmp) / 'run', self.headers, self.reference)
+             replace = os.replace
+             def fail_csv(src, dst):
+                 if Path(src).suffix == '.csv':
+@@ -155,7 +162,7 @@
+             with patch.object(registry.os, 'replace', side_effect=fail_csv):
+                 with self.assertRaises(PermissionError):
+                     registry.update_registry(path, record, append=True,
+-                                             expected_schema=self.protocol['reference']['registry_schema_sha256'])
++                                             expected_schema=self.protocol['evidence']['registry_schema_sha256'])
+             self.assertEqual((registry.sha256(path), registry.sha256(path.with_suffix('.csv'))), original)
+ 
+     def test_lock_refuses_existing_file_without_removal(self):
+@@ -175,24 +182,144 @@
+                  patch.object(runner, 'RUN_LOCK', lock), patch.object(runner, 'configure_process'), \
+                  patch.object(runner, 'preflight', return_value=(None, None, None, None, {'passed': True})), \
+                  patch.object(runner, 'execute_training', side_effect=AssertionError('training entry must never be called')) as train:
+-                self.assertEqual(runner.main(['--experiment-id', 'Y11-BASE-001-S42', '--dry-run']), 0)
++                self.assertEqual(runner.main(['--experiment-id', 'Y11-BASE-001', '--dry-run']), 0)
+                 train.assert_not_called()
+             self.assertFalse((root / 'runs').exists())
+             self.assertFalse(lock.exists())
+ 
+-    def test_summary_uses_sample_std_and_retains_individuals(self):
+-        rows = []
+-        for index, (key, seed) in enumerate(runner.EXPERIMENTS.items(), 1):
+-            rows.append({'experiment_id': key, 'seed': seed, **{f: index / 10 for f in summary.FIELDS}})
+-        stats = summary.calculate_statistics(rows)
+-        self.assertAlmostEqual(stats['map50_95_at_best_epoch']['mean'], .2)
+-        self.assertAlmostEqual(stats['map50_95_at_best_epoch']['sample_std_ddof1'], .1)
+-        self.assertEqual(len(rows), 3)
++    def test_only_explicit_training_overrides_and_current_id(self):
++        args = runner.final_arguments(self.protocol, 'Y11-BASE-001', runner.RUNS / 'new')
++        self.assertEqual(set(args), set(runner.explicit_training_args()) | runner.OUTPUT_FIELDS | {'exist_ok'})
++        for forbidden in ('nbs', 'mosaic', 'optimizer', 'lr0', 'momentum', 'warmup_epochs', 'box', 'cls', 'patience'):
++            self.assertNotIn(forbidden, args)
++        from ultralytics.cfg import DEFAULT_CFG_DICT
++        resolved = runner.resolved_training_arguments(args)
++        for field in set(DEFAULT_CFG_DICT) - set(args) - {'task', 'mode'}:
++            self.assertEqual(resolved[field], DEFAULT_CFG_DICT[field])
++        self.assertEqual(resolved['epochs'], 100)
++        self.assertEqual(resolved['patience'], 100)
++        self.assertEqual(resolved['save_period'], -1)
++        self.assertEqual(runner.EXPERIMENTS, {'Y11-BASE-001': 42})
++        for retired in ('Y11-BASE-001-S42', 'Y11-BASE-002-S3407', 'Y11-BASE-003-S2026', 'Y11-BASE-002'):
++            with self.assertRaises(RuntimeError):
++                runner.final_arguments(self.protocol, retired, runner.RUNS / 'unused')
++
++    def make_gate_fixture(self, root):
++        run, audit = root / 'run', root / 'audit'
++        (run / 'weights').mkdir(parents=True)
++        audit.mkdir()
++        (run / 'weights/best.pt').write_bytes(b'synthetic checkpoint; never loaded')
++        with (run / 'results.csv').open('w', newline='') as f:
++            writer = csv.DictWriter(f, fieldnames=['epoch', *runner.METRICS.values()])
++            writer.writeheader()
++            for epoch in range(1, 101):
++                writer.writerow({'epoch': epoch, **{k: 0.1 for k in runner.METRICS.values()}})
++        val = {'overall': {'map50': 0.1}, 'per_class': {}}
++        runner.dump_json(audit / 'val_metrics.json', val)
++        status = dict(training_completed=True, epochs_completed=100, val_completed=True,
++                      val_evaluation=val, fixed_best_sha256=runner.sha256(run / 'weights/best.pt'),
++                      val_metrics_sha256=runner.sha256(audit / 'val_metrics.json'), test_attempts=0, test_used=False)
++        return run, audit, status
++
++    def test_test_gate_requires_completed_training_fixed_best_and_saved_val(self):
++        with tempfile.TemporaryDirectory(prefix='formal-test-gate-') as tmp:
++            run, audit, status = self.make_gate_fixture(Path(tmp))
++            for change in ({'training_completed': False}, {'epochs_completed': 99}, {'val_completed': False},
++                           {'test_attempts': 1}, {'fixed_best_sha256': 'bad'}, {'val_metrics_sha256': 'bad'}):
++                bad = {**status, **change}
++                with self.assertRaises(RuntimeError):
++                    runner.consume_test_token(run, audit, bad)
++                self.assertFalse((audit / 'final_test_started.json').exists())
++            runner.consume_test_token(run, audit, status)
++            self.assertEqual(status['test_attempts'], 1)
++            self.assertTrue(status['test_used'])
++            with self.assertRaises(RuntimeError):
++                runner.consume_test_token(run, audit, status)
++            # Even a stale in-memory status cannot bypass the durable consumed marker.
++            stale = {**status, 'test_attempts': 0, 'test_used': False}
++            with self.assertRaises(FileExistsError):
++                runner.consume_test_token(run, audit, stale)
++
++    def test_failed_test_is_not_retried(self):
++        with tempfile.TemporaryDirectory(prefix='formal-test-failure-') as tmp:
++            run, audit, status = self.make_gate_fixture(Path(tmp))
++            with patch.object(runner, 'evaluate_best', side_effect=RuntimeError('synthetic CUDA failure')) as evaluate:
++                with self.assertRaises(RuntimeError):
++                    runner.run_final_test(None, self.protocol, run, audit, status)
++                with self.assertRaises(RuntimeError):
++                    runner.run_final_test(None, self.protocol, run, audit, status)
++                self.assertEqual(evaluate.call_count, 1)
++            self.assertEqual(status['test_attempts'], 1)
++            self.assertFalse(status.get('test_completed', False))
++
++    def test_official_per_class_precision_recall_or_na(self):
++        metrics = SimpleNamespace(results_dict={key: .25 for key in runner.METRICS.values()},
++            summary=lambda **kw: [{'Class': cls, 'mAP50': .2, 'mAP50-95': .1, **extra} for cls, extra in
++                                 [('broken', {'Box-P': .3, 'Box-R': .4}), ('loose', {})]])
++        result = runner.extract_evaluation_metrics(metrics)
++        self.assertEqual(result['per_class']['broken']['precision'], .3)
++        self.assertEqual(result['per_class']['loose']['precision'], 'NA')
++
++    def test_nan_validation_stops_immediately(self):
++        import torch
++        fake = SimpleNamespace(loss={'box_loss': torch.tensor(float('nan'))})
+         with self.assertRaises(RuntimeError):
+-            summary.calculate_statistics(rows[:2])
+-        rows[0]['broken_map50'] = 'NA'
+-        with self.assertRaises(RuntimeError):
+-            summary.calculate_statistics(rows)
++            runner.check_validation_finite(fake)
++
++    def test_final_val_test_use_same_official_defaults(self):
++        from ultralytics.cfg import get_cfg
++        with tempfile.TemporaryDirectory(prefix='formal-evaluation-defaults-') as tmp:
++            run, _, status = self.make_gate_fixture(Path(tmp))
++            class FakeBest:
++                model = None
++                overrides = {'model': str(run / 'weights/best.pt'), 'task': 'detect',
++                             'data': runner.explicit_training_args()['data'], 'imgsz': 1280, 'single_cls': False}
++                calls = []
++                def reset_callbacks(self):
++                    self.callbacks = {}
++                def add_callback(self, event, fn):
++                    self.callbacks[event] = fn
++                def val(self, **kwargs):
++                    self.calls.append(kwargs)
++                    actual = get_cfg(overrides={**self.overrides, 'rect': True, **kwargs, 'mode': 'val'})
++                    actual.conf = .001
++                    files = [str(runner.DATASET / 'images' / kwargs['split'] / f'synthetic-{i}.jpg') for i in range(23)]
++                    class FakeDataset:
++                        im_files = files
++                        def __len__(self): return 23
++                    validator = SimpleNamespace(args=actual, dataloader=SimpleNamespace(dataset=FakeDataset()))
++                    self.callbacks['on_val_start'](validator)
++                    return None
++            best = FakeBest()
++            metrics = {'overall': {'map50': .1}, 'per_class': {}}
++            with patch.object(runner, 'validate_official_structure'), patch.object(runner, 'extract_evaluation_metrics', return_value=metrics):
++                runner.evaluate_best(best, 'val', self.protocol, run, status)
++                status.update(test_attempts=1, test_state='Started')
++                runner.evaluate_best(best, 'test', self.protocol, run, status)
++                self.assertEqual(len(best.calls), 2)
++                self.assertEqual(set(best.calls[0]), {'data', 'imgsz', 'device', 'split', 'project', 'name', 'exist_ok'})
++                for field, expected in [('batch', 16), ('workers', 8), ('rect', True), ('conf', .001),
++                                        ('iou', .7), ('max_det', 300), ('quantize', None)]:
++                    self.assertEqual(status['val_evaluation_args'][field], expected)
++                    self.assertEqual(status['test_evaluation_args'][field], expected)
++                status['val_evaluation_args']['conf'] = .25
++                with self.assertRaises(RuntimeError):
++                    runner.evaluate_best(best, 'test', self.protocol, run, status)
++                self.assertEqual(len(best.calls), 2, 'parameter mismatch must stop BEFORE evaluation')
++
++    def test_completed_registry_requires_test_and_100_epochs(self):
++        with tempfile.TemporaryDirectory(prefix='formal-completion-') as tmp:
++            path = Path(tmp) / 'experiment_registry.xlsx'
++            shutil.copyfile(runner.REGISTRY, path)
++            shutil.copyfile(runner.REGISTRY.with_suffix('.csv'), path.with_suffix('.csv'))
++            record = runner.initial_record('Y11-BASE-001', Path(tmp) / 'run', self.headers, self.reference)
++            schema = self.protocol['evidence']['registry_schema_sha256']
++            registry.update_registry(path, record, append=True, expected_schema=schema)
++            before = registry.sha256(path)
++            record.update(status='Completed', epochs_completed=100, notes=json.dumps({'test': 'NA'}))
++            with self.assertRaises(RuntimeError):
++                registry.update_registry(path, record, append=False, expected_schema=schema)
++            self.assertEqual(registry.sha256(path), before)
+ 
+     def test_formal_summary_blocked_until_all_completed(self):
+         with self.assertRaisesRegex(RuntimeError, '缺失或未 Completed'):

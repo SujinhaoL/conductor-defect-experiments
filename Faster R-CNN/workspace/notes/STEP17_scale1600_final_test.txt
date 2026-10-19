@@ -1,0 +1,49 @@
+STEP17：补齐 Faster R-CNN 1600默认anchor 第12轮最终test
+准备日期：2026-10-14
+当前状态：test已由用户完成，运行step17_23519_12608，正常退出码0；保存预测/指标/哈希/类别/原图坐标/23张可视化已核查，原生和精确COCO结果已登记，教师简表已同步。
+精确test mAP50=0.05520830195125764、mAP50-95=0.018482112673997353、AR100=0.14821428571428572（0到1底值）。1981个低阈值预测，8个显示框；显示阈值诊断TP2/FP6不替代AP或普通P/R。
+验收：D:\小论文\model_projects\Faster R-CNN\workspace\audit\step17_review\acceptance.json。不要再次运行本阶段测试。下文保留准备说明，原准备版本在结果目录code中。
+准备检查已PASS：权重元数据epoch12、iter648、348项；专用环境/官方commit、冻结模型/管线/评价口径、默认anchor8、尺寸(2666,1600)、23张test图和标注哈希一致。已有第12轮val预测接口复算复现原生mAP50-95=0.013、mAP50=0.052；这些是val指标，不是新增test成绩。
+证据：D:\小论文\model_projects\Faster R-CNN\workspace\audit\step17_preflight；助手无模型创建、无前向、无训练。
+
+目的：按用户固定五项清单的第三项，评价已由val选定的第12轮在原test23图/36框上的表现，补齐最终对照资料。不是再训练或尺寸搜索；一次完整test、核查登记后结束，再准备YOLO11s1600第54轮。
+前两项固定权重test已完成并核查登记；STEP15的末尾归档错误从保存预测恢复，未重跑推理；STEP16正常完成。所有旧权重/原始日志/冻结记录保留。
+
+训练运行：D:\小论文\model_projects\Faster R-CNN\workspace\runs\FRCNN-R50FPN-SCALE1600-VAL-001\step14_3575_9657
+权重：上述目录\best_coco_bbox_mAP_epoch_12.pth
+SHA256：f2431a883b6e39ea03e906fd5546f4d7f6823d35bb8f72cb43ae5db019ab8167
+选模依据：原生val coco/bbox_mAP最大、同值保留首次，固定epoch12；不根据test重选。
+冻结训练配置：上述目录\resolved_scale1600_val_001.py
+本次直接继承冻结配置，与该模型选定val的结构/预处理/后处理相同，只把评价集合改为原test。
+Resize=(2666,1600)，keep_ratio=True；默认anchor scales=[8]；FP32单图。
+模型预测score_thr0.001、ROI NMS IoU0.5、max_per_img100；COCO maxDets[1,10,100]。
+画框阈值score>0.30，与AP使用的低阈值预测分开；无显示框不能解释为无预测。
+test仍为23图36框：broken8、loose28。COCO1/2→内部0/1，对应broken/loose。标注仅用于评价器，不传入模型。
+test标注：D:\小论文\conductor_defect_dataset\03_coco_dataset\annotations\instances_test.json
+test图片：D:\小论文\conductor_defect_dataset\03_coco_dataset\images\test
+专用解释器：D:\小论文\model_projects\Faster R-CNN\.venv\Scripts\python.exe
+
+配置：D:\小论文\model_projects\Faster R-CNN\workspace\configs\frcnn_r50fpn_scale1600_test.py
+程序：D:\小论文\model_projects\Faster R-CNN\workspace\scripts\step17_test_scale1600.py
+cmd：D:\小论文\model_projects\Faster R-CNN\workspace\scripts\run_step17_test_scale1600.cmd
+脚本使用前两次相同的测试实现，包含STEP15末尾Path错误的修复。启动前检查专用环境/官方commit、已验收的选模记录/权重/冻结配置、类别、图像/标注哈希、Resize、anchor和评价器设置。
+助手仅运行 --check-preparation 分支，以及已有第12轮val预测复算；无模型构建或前向。
+
+用户cmd命令：
+cd /d "D:\小论文\model_projects\Faster R-CNN"
+call "D:\小论文\model_projects\Faster R-CNN\workspace\scripts\run_step17_test_scale1600.cmd"
+
+正常标志：STEP17_PREPARATION_PASS、SELECTED_CHECKPOINT_FULL_LOAD_PASS: matched=348、TEST_IMAGE=23/23、STEP17_TEST_EVAL_PASS、STEP17_EXIT_CODE=0。
+分数低或真实0如实登记，PASS只表示计算流程完成。
+反馈完整终端输出，保留LOG_DIR、RESULT_DIR和退出码。异常保留文件、先核查，不覆盖/重复运行或改阈值。
+
+原始结果：上述训练目录\test_selected_epoch12\step17_<唯一编号>
+完整日志：D:\小论文\model_projects\Faster R-CNN\workspace\logs\step17_<同一编号>
+保存test_summary、MMDetection原生指标、精确COCO复算指标及每类AP/AR100、全部低阈值COCO预测和详细坐标/类别/置信度、23张可视化、实际处理尺寸、配置/环境/命令/哈希、348项权重加载核查和证据manifest。画图复用同次预测，不另跑推理；大型权重引用原路径，不重复复制。
+成功后仍为PENDING_RESULT_REVIEW，助手收到输出再核查原始文件、保存预测复算与可视化，登记CSV/现有Excel/总报告/单次说明，完成后进入第四项。
+统一CSV：D:\小论文\model_projects\baseline_analysis\10_all_experiments_metrics.csv
+现有Excel：D:\小论文\model_projects\baseline_analysis\outputs\模型实验结果总表.xlsx
+总报告：D:\小论文\model_projects\baseline_analysis\11_all_experiments_summary_for_teacher.md
+
+可提前与老师讨论现有结果。Excel展示val/test及设置/类别/证据，建议同时提供总报告说明待测项和比较限制；CSV留作数字追溯，原历史四次Excel不改写。未完成test留空/待测，不填0；Faster原生/精确复算是同一次预测的两种记录，不是两个独立实验。
+保留单seed、23张val多轮开发、旧test已经被查看、跨框架评价未统一的限制；本次不根据test决定新的尺寸/anchor或模型参数。

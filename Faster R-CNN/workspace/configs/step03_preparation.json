@@ -1,0 +1,71 @@
+{
+  "prepared_utc": "2026-10-11T15:50:22.513870+00:00",
+  "mmdet_version": "3.3.0",
+  "mmdet_commit": "44ebd17b145c2372c4b700bfb9cb20dbd28ab64a",
+  "remote": "https://github.com/open-mmlab/mmdetection.git",
+  "source": "D:\\小论文\\model_projects\\Faster R-CNN\\mmdetection",
+  "config": "D:\\小论文\\model_projects\\Faster R-CNN\\mmdetection\\configs\\faster_rcnn\\faster-rcnn_r50_fpn_1x_coco.py",
+  "config_sha256": "0a6f25c90df0393e48f4a4749b54df4ec3c01b26ecf9bb882d13cb0d92b338f4",
+  "demo_image": "D:\\小论文\\model_projects\\Faster R-CNN\\mmdetection\\demo\\demo.jpg",
+  "demo_image_sha256": "8e9ab135da7eacabdeeeee11ba4b7bcdd1bfac128cf92a9de9c79f984060ae1e",
+  "checkpoint": {
+    "path": "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\weights\\faster_rcnn_r50_fpn_1x_coco_20200130-047c8118.pth",
+    "url": "https://download.openmmlab.com/mmdetection/v2.0/faster_rcnn/faster_rcnn_r50_fpn_1x_coco/faster_rcnn_r50_fpn_1x_coco_20200130-047c8118.pth",
+    "sha256": "047c8118fc5ca88ba5ae1fab72f2cd6b070501fe3af2f3cba5cfa9a89b44b03e",
+    "size_bytes": 167287506,
+    "published_filename_sha256_prefix_match": true
+  },
+  "dependency_wheels": [
+    {
+      "name": "pycocotools",
+      "version": "2.0.10",
+      "filename": "pycocotools-2.0.10-cp310-cp310-win_amd64.whl",
+      "url": "https://files.pythonhosted.org/packages/4e/84/1832144e8effe700660489d6e2a7687c99d14c3ea29fa0142dac0e7322d6/pycocotools-2.0.10-cp310-cp310-win_amd64.whl",
+      "sha256": "8b4f26d44dde3e0b1e3df3ddcc7e27560e52dfe53db708c26af22a57e8ea3d47",
+      "size_bytes": 80166
+    },
+    {
+      "name": "scipy",
+      "version": "1.15.3",
+      "filename": "scipy-1.15.3-cp310-cp310-win_amd64.whl",
+      "url": "https://files.pythonhosted.org/packages/d1/84/55bc4881973d3f79b479a5a2e2df61c8c9a04fcb986a213ac9c02cfb659b/scipy-1.15.3-cp310-cp310-win_amd64.whl",
+      "sha256": "9d61e97b186a57350f6d6fd72640f9e99d5a4a2b8fbf4b9ee9a841eab327dc13",
+      "size_bytes": 41259201
+    },
+    {
+      "name": "shapely",
+      "version": "2.1.1",
+      "filename": "shapely-2.1.1-cp310-cp310-win_amd64.whl",
+      "url": "https://files.pythonhosted.org/packages/50/fc/a7187e6dadb10b91e66a9e715d28105cde6489e1017cce476876185a43da/shapely-2.1.1-cp310-cp310-win_amd64.whl",
+      "sha256": "2c7b2b6143abf4fa77851cef8ef690e03feade9a0d48acd6dc41d9e0e78d7ca6",
+      "size_bytes": 1703061
+    },
+    {
+      "name": "terminaltables",
+      "version": "3.1.10",
+      "filename": "terminaltables-3.1.10-py2.py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/c4/fb/ea621e0a19733e01fe4005d46087d383693c0f4a8f824b47d8d4122c87e0/terminaltables-3.1.10-py2.py3-none-any.whl",
+      "sha256": "e4fdc4179c9e4aab5f674d80f09d76fa436b96fdc698a8505e0a36bf0804a874",
+      "size_bytes": 15155
+    },
+    {
+      "name": "tqdm",
+      "version": "4.67.1",
+      "filename": "tqdm-4.67.1-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/d0/30/dc54f88dd4a2b5dc8a0279bdd7270e735851848b762aeb1c1184ed1f6b14/tqdm-4.67.1-py3-none-any.whl",
+      "sha256": "26445eca388f82e72884e0d580d5464cd801a3ea01e63e5601bdff9ba6a48de2",
+      "size_bytes": 78540
+    },
+    {
+      "name": "colorama",
+      "version": "0.4.6",
+      "filename": "colorama-0.4.6-py2.py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/d1/d6/3965ed04c63042e047cb6a3e6ed1a63a35087b6a609aa3a15ed8ac56c221/colorama-0.4.6-py2.py3-none-any.whl",
+      "sha256": "4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6",
+      "size_bytes": 25335
+    }
+  ],
+  "lock_sha256": "659aa5f5e0f2ceefe737a2d1c4b942358272d9af51bca8eb6d2f3666d1febf66",
+  "base_constraints_sha256": "79bee482a67e02784493582e9066a20e22b5cfecfe8d5281cb1500ae620a172b",
+  "training_started": false
+}

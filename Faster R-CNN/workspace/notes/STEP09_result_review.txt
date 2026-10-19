@@ -1,0 +1,26 @@
+STEP09 / FRCNN-R50FPN-MERGE130-001 / training acceptance
+Run: step09_109_20338. Review reads saved evidence only, no training or model inference.
+
+100epochs/6500updates（每轮65）；130图/205框（broken48、loose157）；无独立val，没有运行test。
+冻结的model、optimizer、scheduler、Resize、flip、seed和环境设置与VAL-001一致。
+从同一官方完整COCO checkpoint重新初始化，344个兼容张量确实加载；类别4个输出层80→2重新初始化。
+未继续使用VAL-001私人数据checkpoint。所有冻结code/文件哈希与训练前记录一致。
+6500条总损失、RPN/ROI损失及学习率均有限；完整iteration/epoch序列核对通过。
+首100次loss均值0.361302，末100次0.012629；warmup后学习率0.0025，epoch68起0.00025，epoch93起0.000025，与预定调度一致。
+训练含保存/快照耗时2153.535秒（35分53.5秒）；含启动准备等完整流程2171.386秒（36分11.4秒）。
+allocated峰值3771.712MiB，不等同于reserved或Windows系统显卡总占用。
+保存epoch0/25/50/75/100固定train8预测；最终train8拟合mAP50=60.396040%，mAP50-95=59.777228%。
+这些只是固定8张原训练图片的诊断结果，不是130图整体或独立val/test指标，不参与选模。
+终端ROI分类acc接近100%不能解释成缺陷检测Recall接近100%。
+
+已查看损失/LR曲线和epoch100固定训练图总览：loss总体下降，部分训练图有高置信框，也有0.30下无可见框的图片。
+不能根据训练拟合或低loss预先断言泛化性能提高。现有核查支持训练流程按计划完成，不支持确定性能低的单一原因。
+本次没有走到test调参、挑epoch、重复训练或修改网络结构。下一步仅测试预先固定的epoch100。
+
+选定权重：D:\小论文\model_projects\Faster R-CNN\workspace\runs\FRCNN-R50FPN-MERGE130-001\step09_109_20338\epoch_100.pth
+SHA256：fccdc599d1e2bf2603b319d7f990f6e795dc8a24eef726e9a415723a409fd15a
+核查JSON：D:\小论文\model_projects\Faster R-CNN\workspace\audit\step09_review\acceptance.json
+原始结果：D:\小论文\model_projects\Faster R-CNN\workspace\runs\FRCNN-R50FPN-MERGE130-001\step09_109_20338
+完整日志：D:\小论文\model_projects\Faster R-CNN\workspace\logs\step09_109_20338
+损失曲线：D:\小论文\model_projects\Faster R-CNN\workspace\runs\FRCNN-R50FPN-MERGE130-001\step09_109_20338\artifacts\loss_curves.png
+固定train8快照总览：D:\小论文\model_projects\Faster R-CNN\workspace\runs\FRCNN-R50FPN-MERGE130-001\step09_109_20338\artifacts\epoch_100\predictions_contact_sheet.jpg

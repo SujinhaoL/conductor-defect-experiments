@@ -1,0 +1,101 @@
+{
+  "status": "SELECTED_VAL_REVIEW_PENDING",
+  "criterion": "coco/bbox_mAP",
+  "selected_epoch": 5,
+  "best_checkpoint": "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\runs\\FRCNN-R50FPN-SCALE1280-VAL-001\\step11_31112_14115\\best_coco_bbox_mAP_epoch_5.pth",
+  "best_checkpoint_sha256": "c8ff3af83efeec7cf3f126f49833da6e42489d9f022809d6237b94d9efdb08d3",
+  "last_checkpoint": "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\runs\\FRCNN-R50FPN-SCALE1280-VAL-001\\step11_31112_14115\\epoch_100.pth",
+  "last_checkpoint_sha256": "7031e53e49689327b3d238855ba0a84f9356fb2b405018238b7f85b25ce4d6dd",
+  "validation_predictions": "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\runs\\FRCNN-R50FPN-SCALE1280-VAL-001\\step11_31112_14115\\artifacts\\validation\\epoch_005\\predictions.bbox.json",
+  "validation_metrics": {
+    "scope": "original 23-image validation set; selected by validation mAP50-95; NOT test",
+    "mAP50_95": 0.014877891782027844,
+    "mAP50": 0.03189324821274552,
+    "AR100": 0.11607142857142856,
+    "per_class": {
+      "broken": {
+        "AP50_95": 0.0,
+        "AP50": 0.0,
+        "AR100": 0.0
+      },
+      "loose": {
+        "AP50_95": 0.029755783564055695,
+        "AP50": 0.06378649642549106,
+        "AR100": 0.23214285714285712
+      }
+    },
+    "image_ids": [
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120,
+      121,
+      122,
+      123,
+      124,
+      125,
+      126,
+      127,
+      128,
+      129,
+      130
+    ],
+    "prediction_count": 2300,
+    "coco_max_dets": [
+      1,
+      10,
+      100
+    ],
+    "iou_thresholds": [
+      0.5,
+      0.55,
+      0.6,
+      0.65,
+      0.7,
+      0.75,
+      0.8,
+      0.85,
+      0.8999999999999999,
+      0.95
+    ],
+    "area_ranges": [
+      [
+        0,
+        10000000000.0
+      ],
+      [
+        0,
+        1024
+      ],
+      [
+        1024,
+        9216
+      ],
+      [
+        9216,
+        10000000000.0
+      ]
+    ],
+    "use_categories": true
+  },
+  "test_evaluated": false,
+  "native_coco_selection_metrics": {
+    "coco/broken_precision": 0.0,
+    "coco/loose_precision": 0.03,
+    "coco/bbox_mAP": 0.015,
+    "coco/bbox_mAP_50": 0.032,
+    "coco/bbox_mAP_75": 0.0,
+    "coco/bbox_mAP_s": 0.0,
+    "coco/bbox_mAP_m": 0.003,
+    "coco/bbox_mAP_l": 0.032
+  }
+}

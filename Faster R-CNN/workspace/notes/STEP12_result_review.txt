@@ -1,0 +1,4 @@
+STEP12_RESULT_REVIEW_PASS
+RUN_DIR=D:\小论文\model_projects\Faster R-CNN\workspace\runs\FRCNN-DIAG-RPNROI-TRAIN8\step12_24867_6686
+NOTE=D:\小论文\model_projects\Faster R-CNN\workspace\notes\FRCNN-DIAG-RPNROI-TRAIN8.md
+Diagnostic only; formal 16 evaluation rows unchanged.

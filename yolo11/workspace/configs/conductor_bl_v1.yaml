@@ -1,0 +1,7 @@
+path: D:/小论文/conductor_defect_dataset/02_yolo11_dataset
+train: images/train
+val: images/val
+test: images/test
+names:
+  0: broken
+  1: loose

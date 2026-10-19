@@ -1,0 +1,126 @@
+STEP01：Faster R-CNN 独立基础环境与 CUDA 验收
+准备日期：2026-10-11（Asia/Shanghai）
+
+上一步结果
+已读取用户提供的完整终端输出。
+报告：D:\小论文\model_projects\Faster R-CNN\workspace\audit\step00_20261011_013003_539906\probe.json
+PROBE_EXIT_CODE=0；153 张图、241 个框；数据检查错误 0；已登记分组没有跨集合。
+wsl --status 报告未安装；wsl -l -v 的 30 秒查询超时不影响数据检查。
+用户补充：当初已经进行相似图筛查及人工审核，再填写 split_group_id。
+138 个分组包含 127 个单图组和 11 个多图组（26 张）。它们不是 138 个确认拍摄地点。
+不补猜 scene_id，不要求重新全面同源筛查，不改原划分。
+后续只进行转换所需的图像解码、尺寸/方向及标注一致性核查；发现新证据再说明。
+
+当前仅准备文件，未实际执行安装，也没有 CUDA 验收结果。
+用户执行安装入口后，必须收到结果并验收，再推进 MMCV 安装。
+
+本阶段固定版本
+Python 3.10.20（uv 列表已确认可下载的 Windows x86_64 CPython）
+torch 2.7.1+cu128
+torchvision 0.22.1+cu128
+numpy 1.26.4
+pip 25.1.1
+setuptools 80.9.0
+wheel 0.45.1
+选择 Python 3.10 和较早支持 Blackwell 的稳定 PyTorch，为旧版 OpenMMLab 扩展保留兼容空间。
+此阶段固定基础组件，不表示整个 MMDetection/MMCV 组合已经验收。
+
+本阶段目录
+独立虚拟环境：D:\小论文\model_projects\Faster R-CNN\.venv
+独立 Python 运行时：D:\小论文\model_projects\Faster R-CNN\workspace\runtimes\python
+下载缓存：D:\小论文\model_projects\Faster R-CNN\workspace\cache
+本次日志：D:\小论文\model_projects\Faster R-CNN\workspace\logs\step01_<随机编号>
+不修改 Conda base、huawei、test 或 YOLO11 环境，不更改驱动、系统 PATH 或系统 CUDA。
+虚拟环境使用明确路径，不依赖终端当前激活的环境。
+
+新增文件
+D:\小论文\model_projects\Faster R-CNN\workspace\scripts\run_step01_setup_torch.cmd
+D:\小论文\model_projects\Faster R-CNN\workspace\scripts\step01_check_cuda.py
+D:\小论文\model_projects\Faster R-CNN\workspace\configs\step01_base_requirements.txt
+本笔记文件。
+
+用户执行（Windows cmd）
+cd /d "D:\小论文\model_projects\Faster R-CNN"
+call "D:\小论文\model_projects\Faster R-CNN\workspace\scripts\run_step01_setup_torch.cmd"
+
+安装入口的动作
+1. 用现有 uv 下载独立 CPython 并建立本项目 .venv。
+2. 安装固定基础包；PyTorch/torchvision 使用官方 CUDA 12.8 索引。
+3. 执行 pip check、保存 requirements_freeze.txt。
+4. 校验实际解释器和模块路径，执行少量合成数据 CUDA 前向运算。
+5. 保存结果后结束，不进入下一阶段。
+下载可能较大，持续时间取决于网络；失败时脚本停止，不自动换镜像或改版本。
+已安装过其他内容的 .venv 若无本脚本创建标记，则拒绝修改。
+
+本阶段验收
+环境路径必须为上述 .venv，且不共享 system/user site-packages。
+torch、torchvision、NumPy 实际导入版本及路径必须符合本阶段要求。
+CUDA available=True；设备计算能力=(12,0)。
+CUDA 张量运算、矩阵乘法、卷积前向结果与 CPU 参照一致。
+torchvision CUDA NMS 与预期保留索引一致。
+torchvision CUDA RoIAlign 与 CPU 参照一致。
+这些都是基础算子验收，没有数据集、网络训练、优化器、反向传播或参数更新。
+torchvision 算子通过不能替代随后必须执行的 MMCV CUDA 算子验收。
+
+成功标记
+STEP01_CUDA_PASS
+STEP01_BASE_ENV_PASS
+STEP01_EXIT_CODE=0
+
+保存内容
+uv_version.txt
+pip_install.log
+base_install_report.json、torch_install_report.json（包含本次下载来源与包哈希）
+pip_check.txt
+requirements_freeze.txt
+cuda_check.json、cuda_check.txt（失败时也尽可能记录 traceback）
+
+资料依据
+PyTorch 官方 Windows/Linux 版本配对：2.7.1 / torchvision 0.22.1 / cu128。
+https://pytorch.org/get-started/previous-versions/#v271
+官方包索引已核实有 CPython 3.10 Windows x86_64 对应 wheel：
+https://download.pytorch.org/whl/cu128/torch/
+https://download.pytorch.org/whl/cu128/torchvision/
+Blackwell 支持：
+https://pytorch.org/blog/pytorch-2-7/
+uv venv 参数已核对本机 uv 0.12.0 帮助。
+https://docs.astral.sh/uv/reference/cli/#uv-venv
+
+MMCV 后续路线（本轮不执行）
+MMDetection 3.3.0 / MMCV 2.1.0 / MMEngine 0.7.1 至低于 1.0.0 是待进一步冻结及验收的方向。
+官方源码仍要求 MMCV <2.2.0，不绕过此断言。
+https://raw.githubusercontent.com/open-mmlab/mmdetection/main/mmdet/__init__.py
+官方文档说明：编译 CUDA ops 需要 CUDA Toolkit 及 C++ 编译器。
+https://mmcv.readthedocs.io/en/2.x/get_started/build.html
+本轮浏览工具不能访问 cu128/torch2.7.0 和 cu128/torch2.8.0 的 MMCV 索引；这不构成不存在 wheel 的证明。
+尚未确认对应官方预编译 MMCV wheel，因此当前按后续可能需要源码编译来准备。
+官方仓库 issue #3335 有贡献者在 Windows、RTX 5060 Ti、Python 3.10.20、torch 2.7.1+cu128、MMCV 2.1.0 的成功构建记录。
+https://github.com/open-mmlab/mmcv/issues/3335
+该记录是贡献者的一手经验，不是维护者提供的完整兼容保证；不据此宣称本机已可运行。
+后续在固定官方 commit 后验证本机编译、MMCV CUDA ops 与 COCO 示例推理。
+
+文件验证
+已通过 cmd --show-plan 预览入口及 Python 语法编译检查。
+尚未运行真实安装入口及本实验 CUDA 检查，需要用户执行并反馈。
+
+2026-10-11 STEP01 代理故障修复
+用户运行日志：workspace\logs\step01_4893_20589\pip_install.log。
+独立 Python 3.10.20 环境和 pip 25.1.1 已建立，环境身份检查通过。
+随后访问 PyPI 时出现 ProxyError，未进入 PyTorch 安装及 CUDA 验收。
+末尾的 No matching distribution 由索引请求失败引起，不是已证明该版本不存在。
+读取真实用户设置发现 Windows 代理已开启，地址为 127.0.0.1:7890。
+代理发现模式在本轮实测返回 SSLError；禁止环境/系统代理的直连请求返回 HTTP 200。
+成功目标包括 setuptools 80.9.0 的官方发布 JSON、PyPI 索引及 PyTorch cu128 索引。
+沙箱中的第一次网络探测全部失败且看不到真实注册表代理，不能作为用户网络结论；以随后真实用户上下文测试为准。
+详细证据：workspace\logs\step01_network_20261011_105108_621824.json。
+
+修复：run_step01_setup_torch.cmd 在 setlocal 内清空 HTTP_PROXY/HTTPS_PROXY/ALL_PROXY 并设置 NO_PROXY=*。
+作用范围仅为本脚本和子进程，退出后还原调用终端环境；不修改注册表、系统代理、全局 pip 配置或 SSL 证书校验。
+复用现有 .venv，不更改 Python 和依赖版本，不涉及训练。
+新增 step01_network_probe.py，只用于读取公开索引的网络诊断，隐藏代理凭据，不修改代理配置。
+
+修复验收：已执行入口的 --check-downloads 分支，使用原 .venv 的 pip --isolated install --dry-run --ignore-installed --no-deps。
+官方 setuptools 80.9.0 的元数据和 1.2 MB wheel 均下载成功；输出 STEP01_DOWNLOAD_CHECK_PASS，退出码 0。
+该测试只下载和解析，没有安装包，也未执行 CUDA 检查。
+证据目录：workspace\logs\step01_6036_14211。
+用户现在重新执行同一个安装入口，完成 STEP01 后反馈完整输出及 LOG_DIR。

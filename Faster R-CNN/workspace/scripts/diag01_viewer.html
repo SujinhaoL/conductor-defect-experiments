@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>1280默认anchor｜已有预测诊断</title>
+<style>
+body{margin:0;background:#f1f5f9;color:#172b3a;font:16px/1.65 "Microsoft YaHei",sans-serif}main{max-width:1280px;margin:auto;padding:26px}h1{font-size:27px;margin:8px 0}h2{font-size:21px}p{margin:10px 0}.box{background:white;padding:20px;border-radius:12px;margin:18px 0;border:1px solid #d8e2e9}.note{border-left:5px solid #c58310;background:#fff8e7;padding:12px}table{border-collapse:collapse;width:100%;font-size:14px}th,td{padding:8px;border-bottom:1px solid #dbe3e9;text-align:left}th{background:#eef3f6}select,input,button{font:inherit;padding:6px;margin:5px;border:1px solid #acbdca;border-radius:5px}button{cursor:pointer;background:#e8f1f6}.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center}canvas{width:100%;height:auto;background:#dde6ec}.scroll{max-height:420px;overflow:auto}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(410px,1fr));gap:18px}.card img{width:100%;height:auto}.green{color:#008a46}.orange{color:#c45000}small{color:#42596c}code{background:#e9eff3;padding:2px 5px}a{color:#116a9a}.selected{background:#fff0c5}
+</style>
+<main><small>DIAG01 · 已有结果的离线解释 · 无训练 / 无新推理 / 无test</small>
+<h1>1280默认anchor：模型输出在哪里？</h1>
+<p>先看第100轮对训练8图与验证23图的差别，再看用于正式验证成绩的第5轮。训练8图属于训练过的107图中的子集，不能代表泛化成绩或全部训练图。</p>
+<p class="note"><b>“显示阈值0”只是不再筛掉已经保存的预测。</b>原结果已经过分数&gt;0.001、NMS（重叠框去重，IoU阈值0.5）及每图最多100框。这里无法恢复更早被丢弃的框。画框阈值不改变已记录的AP。</p>
+<section class="box"><h2>1. 先读总体差别</h2><div id="summary"></div>
+<small>同类候选覆盖：每个人工框分别寻找同类重合框。一个预测可能被多个GT选中；这不是一对一正确检出数，也不是普通召回率。AP引用历史已验收结果。</small></section>
+<section class="box"><h2>2. 自己筛选已保存的框</h2>
+<div class="toolbar"><label>结果 <select id="case"></select></label><label>图片 <select id="pic"></select></label></div>
+<div class="toolbar"><label>显示分数严格大于 <input id="threshold" type="number" min="0" max="1" step="0.001" value="0" style="width:90px"></label>
+<label>最多画 <select id="limit"><option>10</option><option>30</option><option value="100">全部（最多100）</option></select> 个</label>
+<button id="low">看低分框：0</button><button id="old">旧绘图阈值：0.30</button><button id="clear">取消单框聚焦</button></div>
+<p><span class="green">绿色＝人工标注GT</span>；<span class="orange">橙色＝预测，#数字为该图原始分数排名</span>。原图很大，可先看下方局部图；也可点表格某行只突出该预测。</p>
+<p id="counts"></p><canvas id="canvas"></canvas><p id="selected"></p>
+<details><summary>查看该图全部保存框（按分数从高到低，点击某行聚焦）</summary><div class="scroll"><table><thead><tr><th>排名</th><th>预测类别</th><th>置信度</th><th>原图 x,y,宽,高</th><th>与同类GT最大IoU</th></tr></thead><tbody id="rows"></tbody></table></div></details>
+</section>
+<section class="box"><h2>3. 围绕人工标注看局部定位</h2><p>每张局部图选“同类最大IoU框”，因此不一定是分数最高的框。绿色与橙色越贴合，位置越准。局部图固定，不随上面的显示阈值变化，便于检查低分框。</p><div class="cards" id="cards"></div></section>
+<section class="box"><h2>4. 这些数字能说明什么</h2><p>置信度低会让旧可视化不画框；IoU低说明位置重合不足。AP还受到类别、分数排序、误检、重复框及多个IoU门槛影响。因此不能把“调低显示阈值后出现框”当成AP已经改善。</p>
+<p>训练子集表现好、验证表现差，支持模型对已见图与未参与训练图的表现有明显差别；尚不能单凭它定位为样本量、标注或某段代码的唯一问题。下一阶段才检查实际数据管线。</p>
+<p><a href="all_saved_predictions_sorted.csv">完整分数排序CSV</a> · <a href="per_gt_localization.csv">逐人工框定位CSV</a> · <a href="summary.json">统计及适用边界</a> · <a href="manifest.json">来源路径与哈希</a></p></section>
+</main>
+<script id="data" type="application/json">__DIAG_DATA__</script>
+<script>
+const data=JSON.parse(document.getElementById('data').textContent), $=id=>document.getElementById(id);
+const names={1:'broken（断股）',2:'loose（松股）'};
+let current, bitmap, focus=null, generation=0;
+const fmt=n=>(n*100).toFixed(4)+'%';
+$('summary').innerHTML='<table><thead><tr><th>结果</th><th>GT数</th><th>保存框</th><th>分数&gt;0.30</th><th>同类IoU≥0.50覆盖</th><th>mAP50</th><th>mAP50–95</th></tr></thead><tbody>'+data.summary.cases.map(s=>`<tr><td>${s.title}</td><td>${s.gt}</td><td>${s.saved_predictions}</td><td>${s.above_030}</td><td>${s.gt_same_class_iou50}/${s.gt}</td><td>${fmt(s.mAP50)}</td><td>${fmt(s.mAP50_95)}</td></tr>`).join('')+'</tbody></table>';
+data.summary.cases.forEach(s=>$('case').add(new Option(s.title,s.key)));
+function overlap(a,b){const w=Math.max(0,Math.min(a[0]+a[2],b[0]+b[2])-Math.max(a[0],b[0])),h=Math.max(0,Math.min(a[1]+a[3],b[1]+b[3])-Math.max(a[1],b[1]));return w*h/(a[2]*a[3]+b[2]*b[3]-w*h);}
+function changeCase(){const records=data.records.filter(r=>r.case===$('case').value);$('pic').replaceChildren();records.forEach(r=>$('pic').add(new Option(r.image.file_name,r.image.id)));changeImage();}
+function changeImage(){focus=null;current=data.records.find(r=>r.case===$('case').value&&r.image.id==+$('pic').value);const ticket=++generation;bitmap=new Image();bitmap.onload=()=>{if(ticket===generation)draw();};bitmap.src=current.thumbnail;
+ $('rows').innerHTML=current.predictions.map(p=>{const gt=current.gt.filter(g=>g.category_id===p.category_id);const value=gt.length?Math.max(...gt.map(g=>overlap(p.bbox,g.bbox))).toFixed(6):'无同类GT';return `<tr data-rank="${p.rank}"><td>${p.rank}</td><td>${names[p.category_id]}</td><td>${p.score.toFixed(6)}</td><td>${p.bbox.map(v=>v.toFixed(2)).join(', ')}</td><td>${value}</td></tr>`;}).join('');
+ for(const row of $('rows').children)row.onclick=()=>{focus=+row.dataset.rank;draw();};
+ $('cards').innerHTML=current.cards.map(c=>`<article class="card"><b>GT ${c.gt_id} · ${c.gt_class}</b><p>${c.finding}</p><a href="${c.crop}" target="_blank"><img src="${c.crop}" loading="lazy" alt="GT${c.gt_id}局部对照"></a><small>同类最大IoU=${c.best_same_iou.toFixed(6)}；该框分数=${c.best_same_score===null?'无':c.best_same_score.toFixed(6)}；排名=${c.best_same_rank??'无'}。<br>不限制类别的最大IoU=${c.best_any_iou.toFixed(6)}，对应类别=${c.best_any_class??'无'}。</small></article>`).join('');
+}
+function draw(){if(!bitmap?.complete||!bitmap.naturalWidth)return;const canvas=$('canvas');canvas.width=bitmap.naturalWidth;canvas.height=bitmap.naturalHeight;const ctx=canvas.getContext('2d');ctx.drawImage(bitmap,0,0);const sx=canvas.width/current.image.width,sy=canvas.height/current.image.height;
+ function box(b,color,text){const [x,y,w,h]=b;ctx.strokeStyle=color;ctx.lineWidth=2;ctx.strokeRect(x*sx,y*sy,w*sx,h*sy);ctx.font='14px "Microsoft YaHei"';const tx=Math.max(0,Math.min(x*sx,canvas.width-ctx.measureText(text).width-8)),ty=Math.max(18,y*sy);ctx.fillStyle='rgba(255,255,255,.9)';ctx.fillRect(tx,ty-18,ctx.measureText(text).width+8,19);ctx.fillStyle=color;ctx.fillText(text,tx+3,ty-3);}
+ const threshold=Math.min(1,Math.max(0,Number($('threshold').value)||0)),allowed=current.predictions.filter(p=>p.score>threshold),normal=allowed.slice(0,+$('limit').value);const shown=focus?current.predictions.filter(p=>p.rank===focus):normal;
+ shown.forEach(p=>box(p.bbox,'#c45000',`#${p.rank} ${names[p.category_id]} ${p.score.toFixed(4)}`));current.gt.forEach(g=>box(g.bbox,'#008a46',`GT${g.id} ${names[g.category_id]}`));
+ $('counts').textContent=`该图已保存 ${current.predictions.length} 框；超过当前阈值 ${allowed.length} 框；当前画出 ${shown.length} 框。人工标注 ${current.gt.length} 框。`;
+ $('selected').textContent=focus?`单框聚焦 #${focus}：此模式忽略上方显示阈值和数量限制。点击“取消单框聚焦”恢复。`:'默认仅画前10个以保持可读；可选全部，完整表格始终保留所有保存框。';
+ for(const row of $('rows').children)row.classList.toggle('selected',+row.dataset.rank===focus);
+}
+$('case').onchange=changeCase;$('pic').onchange=changeImage;for(const id of ['threshold','limit'])$(id).oninput=()=>{focus=null;draw();};$('low').onclick=()=>{$('threshold').value=0;focus=null;draw();};$('old').onclick=()=>{$('threshold').value=.30;focus=null;draw();};$('clear').onclick=()=>{focus=null;draw();};changeCase();
+</script></html>

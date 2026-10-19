@@ -1,0 +1,7 @@
+STEP11_RESULT_REVIEW_PASS
+Run: D:\小论文\model_projects\Faster R-CNN\workspace\runs\FRCNN-R50FPN-SCALE1280-VAL-001\step11_31112_14115
+Selected epoch: 5
+Val mAP50: 0.03189324821274552
+Val mAP50-95: 0.014877891782027844
+Full note: D:\小论文\model_projects\Faster R-CNN\workspace\notes\FRCNN-R50FPN-SCALE1280-VAL-001.md
+No training or model inference performed during review. Test not run.

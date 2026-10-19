@@ -1,0 +1,5 @@
+STEP13_RESULT_REVIEW_PASS
+RUN_DIR=D:\小论文\model_projects\Faster R-CNN\workspace\runs\FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001\step13_27622_23378
+BEST_VAL_EPOCH=15
+NOTE=D:\小论文\model_projects\Faster R-CNN\workspace\notes\FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001.md
+No model inference or training during review; test not run.

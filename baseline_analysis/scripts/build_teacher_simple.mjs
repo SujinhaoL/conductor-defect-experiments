@@ -1,0 +1,60 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {Workbook,SpreadsheetFile} from '@oai/artifact-tool';
+const base=path.dirname(path.dirname(fileURLToPath(import.meta.url)));
+const plan=JSON.parse(await fs.readFile(path.join(base,'audit/teacher_simple_plan.json'),'utf8'));
+const wb=Workbook.create();
+await fs.mkdir(plan.preview_dir,{recursive:true});
+const blue='#1F4E78',light='#E7F0F7',body='#263647';
+const headers=['序号','模型','输入与实验设置','训练图片数','选定epoch\n（轮次）','mAP50\n（平均精度）\n交并比0.50','mAP50-95\n（平均精度）\n交并比0.50～0.95','Precision\n（精确率）','Recall\n（召回率）','AR100\n（平均召回）\n最多100框','评价状态'];
+const classHeaders=['序号','模型','输入与实验设置','broken\n（断股）\nAP50\n（平均精度）','broken\n（断股）\nAP50-95\n（平均精度）','loose\n（松股）\nAP50\n（平均精度）','loose\n（松股）\nAP50-95\n（平均精度）','评价状态'];
+const column=n=>String.fromCharCode(65+n);
+for(const spec of plan.sheets) {
+  const sheet=wb.worksheets.add(spec.name);sheet.showGridLines=false;
+  sheet.getRange('A1:K34').format.font={name:'Microsoft YaHei',size:10,color:body};
+  sheet.getRange('A1:K34').format.verticalAlignment='center';
+  sheet.getRange('A1:K34').format.rowHeight=22;
+  sheet.getRange('A2').values=[['输电导线缺陷检测实验简表：'+spec.name]];
+  sheet.getRange('A2').format.font={name:'Microsoft YaHei',size:16,bold:true,color:blue};
+  sheet.getRange('A2:K2').format.rowHeight=30;
+  sheet.mergeCells('A3:K3');sheet.getRange('A3').values=[[spec.counts+'。100轮训练；单随机种子；指标按百分数显示。']];
+  sheet.getRange('A3:K3').format={fill:light,wrapText:true,rowHeight:32};
+  sheet.getRange('A5:K5').values=[headers];
+  sheet.getRange('A5:K5').format={fill:blue,font:{name:'Microsoft YaHei',size:10,bold:true,color:'#FFFFFF'},wrapText:true,horizontalAlignment:'center',rowHeight:60};
+  sheet.getRange('A6:K14').values=spec.rows;
+  sheet.getRange('A6:K14').format.wrapText=true;sheet.getRange('A6:K14').format.rowHeight=48;
+  sheet.getRange('D6:J14').format.horizontalAlignment='right';sheet.getRange('A6:A14').format.horizontalAlignment='center';
+  sheet.getRange('K6:K14').format.horizontalAlignment='center';
+  sheet.getRange('F6:J14').setNumberFormat('0.00%');
+  const widths=[7,31,34,13,14,19,22,18,18,20,24];
+  for(let c=0;c<widths.length;c++)sheet.getRange(`${column(c)}1:${column(c)}34`).format.columnWidth=widths[c];
+  for(let row=6;row<=14;row++)if(row%2===0)sheet.getRange(`A${row}:K${row}`).format.fill='#F2F6FA';
+  sheet.mergeCells('A16:K16');sheet.getRange('A16').values=[[spec.note]];sheet.getRange('A16:K16').format={wrapText:true,rowHeight:32,font:{name:'Microsoft YaHei',size:10,color:'#526273'}};
+  sheet.getRange('A18').values=[['分类别AP（平均精度）']];sheet.getRange('A18:H18').format={fill:light,rowHeight:26,font:{name:'Microsoft YaHei',size:11,bold:true,color:blue}};
+  sheet.getRange('A19:H19').values=[classHeaders];sheet.getRange('A19:H19').format={fill:blue,font:{name:'Microsoft YaHei',size:10,bold:true,color:'#FFFFFF'},wrapText:true,horizontalAlignment:'center',rowHeight:60};
+  sheet.getRange('A20:H28').values=spec.class_rows;sheet.getRange('A20:H28').format={wrapText:true,rowHeight:48};
+  sheet.getRange('D20:G28').setNumberFormat('0.00%');sheet.getRange('D20:G28').format.horizontalAlignment='right';
+  sheet.getRange('H20:H28').format.horizontalAlignment='center';
+  for(let row=20;row<=28;row++)if(row%2===0)sheet.getRange(`A${row}:H${row}`).format.fill='#F2F6FA';
+  // Keep the concise discussion view separate from detailed evidence paths.
+  sheet.mergeCells('A30:K30');sheet.getRange('A30').values=[[spec.source_note]];sheet.getRange('A30:K30').format={wrapText:true,rowHeight:34,font:{name:'Microsoft YaHei',size:10,color:'#526273'}};
+  sheet.mergeCells('A31:K31');sheet.getRange('A31').values=[['比较限制：输入缩放、推理精度、评价实现和后处理不同，属于参考对照。val（验证集）用于选模，test（测试集）用于最终评价；合并130张训练没有独立val（验证集）。']];
+  sheet.getRange('A31:K31').format={wrapText:true,rowHeight:34,font:{name:'Microsoft YaHei',size:10,color:'#526273'}};
+  sheet.mergeCells('A32:K32');sheet.getRange('A32').values=[['详细配置、来源与核查记录见《模型实验结果总表》和《11_all_experiments_summary_for_teacher（给老师的总报告）》。']];sheet.getRange('A32:K32').format={wrapText:true,rowHeight:30,font:{name:'Microsoft YaHei',size:10,color:'#526273'}};
+  sheet.freezePanes.freezeRows(5);sheet.freezePanes.freezeColumns(1);
+}
+wb.recalculate();
+const checks=[];
+for(const spec of plan.sheets) {
+  const sheet=wb.worksheets.getItem(spec.name);
+  if(JSON.stringify(sheet.getRange('A6:K14').values)!==JSON.stringify(spec.rows))throw new Error('Main table values differ from canonical projection');
+  if(JSON.stringify(sheet.getRange('A20:H28').values)!==JSON.stringify(spec.class_rows))throw new Error('Class table values differ');
+  checks.push((await wb.inspect({kind:'table',range:`'${spec.name}'!A5:K14`,include:'values,formulas',tableMaxRows:10,tableMaxCols:11,maxChars:1600})).ndjson);
+  const preview=await wb.render({sheetName:spec.name,range:'A1:K32',scale:1,format:'png'});
+  await fs.writeFile(path.join(plan.preview_dir,spec.split+'.png'),new Uint8Array(await preview.arrayBuffer()));
+}
+const errors=await wb.inspect({kind:'match',searchTerm:'#REF!|#DIV/0!|#VALUE!|#NAME\\?|#N/A|#NUM!|#NULL!',options:{useRegex:true,maxResults:20},maxChars:1000});
+await fs.writeFile(path.join(base,'audit/teacher_simple_inspection.json'),JSON.stringify({checks,errors:errors.ndjson},null,2));
+const file=await SpreadsheetFile.exportXlsx(wb);await file.save(plan.output_path);
+console.log('TEACHER_SIMPLE_EXPORTED='+plan.output_path);

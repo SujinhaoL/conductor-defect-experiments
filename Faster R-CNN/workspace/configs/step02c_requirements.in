@@ -1,0 +1,14 @@
+# Runtime and build dependencies for official MMCV 2.1.0.
+# Exact transitive versions and wheel hashes are recorded in the generated lock.
+mmengine==0.10.7
+opencv-python==4.11.0.86
+ninja==1.11.1.4
+psutil==7.0.0
+addict==2.4.0
+packaging==25.0
+PyYAML==6.0.2
+regex==2024.11.6
+yapf==0.43.0
+matplotlib==3.10.3
+rich==14.0.0
+termcolor==3.1.0

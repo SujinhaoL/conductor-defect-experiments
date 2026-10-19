@@ -1,0 +1,61 @@
+{
+  "purpose": "User requested final comparison test completion in this fixed order",
+  "prior_test_results_already_seen": true,
+  "selection_not_changed_using_new_test": true,
+  "only_first_entry_prepared": true,
+  "no_training": true,
+  "assistant_inference_performed": false,
+  "items": [
+    {
+      "order": 1,
+      "experiment_id": "FRCNN-R50FPN-SCALE1280-VAL-001",
+      "training_run_id": "step11_31112_14115",
+      "epoch": 5,
+      "checkpoint": "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\runs\\FRCNN-R50FPN-SCALE1280-VAL-001\\step11_31112_14115\\best_coco_bbox_mAP_epoch_5.pth",
+      "checkpoint_sha256": "c8ff3af83efeec7cf3f126f49833da6e42489d9f022809d6237b94d9efdb08d3",
+      "selection_record": "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\runs\\FRCNN-R50FPN-SCALE1280-VAL-001\\step11_31112_14115\\selected_checkpoint.json",
+      "selection_record_sha256": "90c00307029c42b7cf2c12d28a15e6727c64606dbf289a7ef868adb6324e1613",
+      "status_at_freeze": "TEST_PENDING"
+    },
+    {
+      "order": 2,
+      "experiment_id": "FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001",
+      "training_run_id": "step13_27622_23378",
+      "epoch": 15,
+      "checkpoint": "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\runs\\FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001\\step13_27622_23378\\best_coco_bbox_mAP_epoch_15.pth",
+      "checkpoint_sha256": "080c27214809847dce4e2d1b5e760a3e8b868bdb0d0f2941e5e43f219ffb548a",
+      "selection_record": "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\runs\\FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001\\step13_27622_23378\\selected_checkpoint.json",
+      "selection_record_sha256": "cacc1dbe7e74d9e2ed19aa9b4b88ec32e9f68e9dcb37a32cd0c0be72bd1f9841",
+      "status_at_freeze": "TEST_PENDING"
+    },
+    {
+      "order": 3,
+      "experiment_id": "FRCNN-R50FPN-SCALE1600-VAL-001",
+      "training_run_id": "step14_3575_9657",
+      "epoch": 12,
+      "checkpoint": "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\runs\\FRCNN-R50FPN-SCALE1600-VAL-001\\step14_3575_9657\\best_coco_bbox_mAP_epoch_12.pth",
+      "checkpoint_sha256": "f2431a883b6e39ea03e906fd5546f4d7f6823d35bb8f72cb43ae5db019ab8167",
+      "selection_record": "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\runs\\FRCNN-R50FPN-SCALE1600-VAL-001\\step14_3575_9657\\selected_checkpoint.json",
+      "selection_record_sha256": "b5c34f171685c88cc2039e4ce334ded8475bf64c0677b2cfcbc0f7ef2fd3df4c",
+      "status_at_freeze": "TEST_PENDING"
+    },
+    {
+      "order": 4,
+      "experiment_id": "Y11-SENS-IMGSZ1600-001",
+      "training_run_id": "Y11-SENS-IMGSZ1600-001",
+      "epoch": 54,
+      "checkpoint": "D:\\小论文\\model_projects\\yolo11\\workspace\\runs\\Y11-SENS-IMGSZ1600-001\\weights\\best.pt",
+      "checkpoint_sha256": "2cc998a09da3eb36d717df79dfa28adf2a41cebb1121ecd43d984ff32ea4c92e",
+      "status_at_freeze": "TEST_PENDING"
+    },
+    {
+      "order": 5,
+      "experiment_id": "RTD-SENS-IMGSZ1600-001",
+      "training_run_id": "RTD-SENS-IMGSZ1600-001",
+      "epoch": 42,
+      "checkpoint": "D:\\小论文\\model_projects\\RT-DETR\\workspace\\runs\\RTD-SENS-IMGSZ1600-001\\weights\\best.pt",
+      "checkpoint_sha256": "29d23c8bb93bd650800ea439c9f43755b81f1763d0550ce4e14119dee4121a13",
+      "status_at_freeze": "TEST_PENDING"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+STEP08_RESULT_REVIEW / FRCNN-R50FPN-VAL-001 / original test23
+Reviewed2026-10-12. This review reads saved outputs; no detector inference or training.
+
+结果已核查
+运行：step07_235_27043；测试评价：step08_31489_5707。
+选中epoch66，checkpoint SHA256=7d80317d4f291fd8f7954423123af8e8154ad2dd4dad366353b05123ba326b39。
+test23图片/36框（broken8、loose28），23张预测图片及全部JSON存在。
+31个原始证据文件哈希核对一致；checkpoint和选模记录未改变。
+图片ID顺序131~153一致；COCO1/2与内部0/1类别映射正确。
+predictions_details与COCO导出框坐标、类别及置信度逐项一致；原图尺寸和框有限/合法。
+读取保存预测独立复算COCO，mAP50/mAP50-95/AR100与原记录数值一致。
+原生指标三位小数下mAP50-95=0.000是舍入显示；精确值并非0。
+
+精确test结果（百分数）
+总体mAP50=0.0825082508%，mAP50-95=0.0495049505%，COCO AR100=1.0714285714%。
+broken AP50=0%，AP50-95=0%，AR100=0%。
+loose AP50=0.1650165017%，AP50-95=0.0990099010%，AR100=2.1428571429%。
+普通Precision/Recall未计算，留空；不能用AR100替代。
+选中权重的原val结果mAP50=3.773949%，mAP50-95=1.273413%，与test分别记录。
+
+可视化事实
+模型score过滤0.001，返回123框；score>0.30展示仅1框。
+原test23图中4图没有返回预测，其余19图有低分候选。
+唯一高置信框位于cond_000031.jpg，类别loose，score=0.675603；与同类标注最大IoU=0。
+按本次标注和评价规则属于误检；不据此判断其他未标注位置是否真的有缺陷。
+36个GT中1个存在同类别候选IoU≥0.50。这是候选覆盖诊断，不是普通Recall或一对一匹配指标。
+已经查看覆盖23图的GT（绿色）与已保存可见预测总览。
+没有显示框不能解释为模型完全没有预测。
+
+结果解释和是否走偏
+VAL-001的107/23/23、按val固定epoch66、原test一次评价流程已完成。
+初始化、选模、数据ID、类别、坐标和COCO复算检查通过；但正式泛化性能仍非常低，性能目标未达到。
+不能从一次低分确定数据量、缩放、小目标anchor、增强等哪一项是唯一原因，也不能宣称排除了所有可能问题。
+未根据test调参、挑其他checkpoint、重新训练或重测。
+下一步仅执行原计划阶段三MERGE130，从同一官方COCO初始checkpoint开始，固定100epoch，选epoch100。
+这是老师提出的合并训练方案，不是依据本次test分数新加的补救实验；不能保证成绩提高。
+
+完整路径
+原始结果：D:\小论文\model_projects\Faster R-CNN\workspace\runs\FRCNN-R50FPN-VAL-001\step07_235_27043\test_selected_epoch66\step08_31489_5707
+原始日志：D:\小论文\model_projects\Faster R-CNN\workspace\logs\step08_31489_5707
+核查JSON：D:\小论文\model_projects\Faster R-CNN\workspace\audit\step08_review\acceptance.json
+逐框核查：D:\小论文\model_projects\Faster R-CNN\workspace\audit\step08_review\per_box_review.csv
+复算日志：D:\小论文\model_projects\Faster R-CNN\workspace\audit\step08_review\independent_coco_check.txt
+23图总览：D:\小论文\model_projects\Faster R-CNN\workspace\audit\step08_review\test_gt_and_visible_predictions.jpg
+单实验说明：D:\小论文\model_projects\Faster R-CNN\workspace\notes\FRCNN-R50FPN-VAL-001.md
+统一指标：D:\小论文\model_projects\baseline_analysis\10_all_experiments_metrics.csv
+总Excel：D:\小论文\model_projects\baseline_analysis\outputs\模型实验结果总表.xlsx
+教师汇总：D:\小论文\model_projects\baseline_analysis\11_all_experiments_summary_for_teacher.md

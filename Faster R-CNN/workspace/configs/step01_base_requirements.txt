@@ -1,0 +1,5 @@
+# Step 01 only. PyTorch wheels are installed separately from the official cu128 index.
+pip==25.1.1
+setuptools==80.9.0
+wheel==0.45.1
+numpy==1.26.4

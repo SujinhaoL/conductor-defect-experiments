@@ -1,0 +1,45 @@
+{
+  "status": "PASS",
+  "experiment": "FRCNN-DEBUG-OVERFIT-8",
+  "training_started": false,
+  "detector_forward_performed": false,
+  "versions": {
+    "torch": "2.7.1+cu128",
+    "torchvision": "0.22.1+cu128",
+    "mmcv": "2.1.0",
+    "mmengine": "0.10.7",
+    "mmdet": "3.3.0",
+    "numpy": "1.26.4",
+    "pycocotools": "2.0.10"
+  },
+  "mmdet_commit": "44ebd17b145c2372c4b700bfb9cb20dbd28ab64a",
+  "gpu": "NVIDIA GeForce RTX 5070 Ti",
+  "gpu_total_bytes": 17094475776,
+  "epochs": 100,
+  "iterations_per_epoch": 4,
+  "optimizer_updates": 400,
+  "batch_size": 2,
+  "workers": 0,
+  "amp": false,
+  "seed": 42,
+  "base_lr": 0.0025,
+  "checkpoint": {
+    "path": "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\weights\\faster_rcnn_r50_fpn_1x_coco_20200130-047c8118.pth",
+    "url": "https://download.openmmlab.com/mmdetection/v2.0/faster_rcnn/faster_rcnn_r50_fpn_1x_coco/faster_rcnn_r50_fpn_1x_coco_20200130-047c8118.pth",
+    "sha256": "047c8118fc5ca88ba5ae1fab72f2cd6b070501fe3af2f3cba5cfa9a89b44b03e",
+    "size_bytes": 167287506,
+    "published_filename_sha256_prefix_match": true
+  },
+  "prior_static_check": "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\logs\\step05_20493_32385\\step05_summary.json",
+  "debug_annotation_sha256": "3470758428dab44a2f9dfc9d468275ee71254fc985f6d9f08c6cb1ef774d1edb",
+  "selection_sha256": "a7ca9ef26aec26519b83b72a741140e184b5aeb1e911026efa8632ccb25c7eed",
+  "saved_inputs_sha256": {
+    "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\configs\\frcnn_debug_overfit8.py": "84e92ddaa5d595692d58b939a6a497754571abff4208534864e1add25f737efb",
+    "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\configs\\frcnn_debug8_pipeline_check.py": "b7d70f63f293390a10cd31833c08574532bae7f2fcf7ba9948a3df848386b90f",
+    "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\configs\\frcnn_debug8_selection.json": "a7ca9ef26aec26519b83b72a741140e184b5aeb1e911026efa8632ccb25c7eed",
+    "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\scripts\\frcnn_debug_hooks.py": "a60320ffee315d899eee627c414108d8d98d7dcee0a94ec2da0536dce5094438",
+    "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\scripts\\step06_run_debug8.py": "f5c387acc6467f2227c587197010bda03e2d5c6e703efee24bf94359c59a42f8",
+    "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\scripts\\run_step06_train_debug8.cmd": "62d56878efbd4456c16a1a9763b443a987b373994cc53c59cb2fcb2aa0421438",
+    "D:\\小论文\\conductor_defect_dataset\\03_coco_dataset\\annotations\\instances_debug8.json": "3470758428dab44a2f9dfc9d468275ee71254fc985f6d9f08c6cb1ef774d1edb"
+  }
+}

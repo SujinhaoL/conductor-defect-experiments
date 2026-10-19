@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-19",
+  "status": "USER_VERIFY_AND_VIEW_PASS",
+  "evidence": "User pasted terminal DIAG01_VERIFY_PASS and a browser screenshot in this conversation.",
+  "reported_counts": {
+    "train8_epoch100": {
+      "saved": 33,
+      "above_030": 11,
+      "covered": 11,
+      "gt": 15
+    },
+    "val23_epoch100": {
+      "saved": 78,
+      "above_030": 8,
+      "covered": 4,
+      "gt": 37
+    },
+    "val23_epoch005": {
+      "saved": 2300,
+      "above_030": 0,
+      "covered": 16,
+      "gt": 37
+    }
+  },
+  "gt177": {
+    "same_class_iou": 0.615528871485244,
+    "score": 0.051651936024427414,
+    "interpretation": "Retained in saved predictions and AP evaluation; hidden only by the old drawing threshold 0.30."
+  },
+  "limits": [
+    "User has not claimed all 89 crops were manually inspected.",
+    "Screenshot is evidence of local page rendering, not exhaustive interaction testing.",
+    "Coverage is not one-to-one TP, AP or ordinary Recall."
+  ],
+  "no_new_training_or_inference": true,
+  "next": "Version-control handoff, then stage2 real preprocessing audit; not started."
+}

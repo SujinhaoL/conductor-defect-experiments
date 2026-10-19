@@ -1,0 +1,1851 @@
+{
+  "date": "2026-10-19",
+  "scope": "Initial version-controlled snapshot; excludes this manifest itself. Git commit is authoritative for subsequent revisions.",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 86,
+      "sha256": "7e098060d1935fc1d0f9ab8274788d5cf0b1b350cc5912775e27a107ca7ebbef"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 18140,
+      "sha256": "71af0e48f08b63342d801b9161ccd3c3d57435514e521a07ae6b1814ff8d5ce4"
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 40027,
+      "sha256": "273c6c608cc25539958c1d8446f031b945896e08d2ebc65a3cee01240468d851"
+    },
+    {
+      "path": "Faster R-CNN/workspace/audit/FRCNN-DIAG-SAVED1280-001/diag01_20261019_010031_868401/manifest.json",
+      "bytes": 36609,
+      "sha256": "da72a1ae071028fe5380753ae4679ddebd3134914655d227e0c27789d08d7783"
+    },
+    {
+      "path": "Faster R-CNN/workspace/audit/FRCNN-DIAG-SAVED1280-001/diag01_20261019_010031_868401/review/acceptance.json",
+      "bytes": 4079,
+      "sha256": "fc3bbaf6bade4d9db31bfb8e4ed9ef1623c1cbc465439e658b3f59352f8200d4"
+    },
+    {
+      "path": "Faster R-CNN/workspace/audit/FRCNN-DIAG-SAVED1280-001/diag01_20261019_010031_868401/review/user_acceptance_20261019.json",
+      "bytes": 1105,
+      "sha256": "63daacd7e7b9f961c1015467f04cefde7742dcfee36b8ecc48bf525d3163b31f"
+    },
+    {
+      "path": "Faster R-CNN/workspace/audit/FRCNN-DIAG-SAVED1280-001/diag01_20261019_010031_868401/review/visual_review.md",
+      "bytes": 907,
+      "sha256": "853a823773dbeb35bc0fa245c026cb27d47ff64956b1241855d2e0658debf82f"
+    },
+    {
+      "path": "Faster R-CNN/workspace/audit/FRCNN-DIAG-SAVED1280-001/diag01_20261019_010031_868401/summary.json",
+      "bytes": 2893,
+      "sha256": "b7f68abdbd96c13f3ff6f572507313973008820da52209b464378f1479928c21"
+    },
+    {
+      "path": "Faster R-CNN/workspace/configs/frcnn_debug8_pipeline_check.py",
+      "bytes": 1688,
+      "sha256": "b7d70f63f293390a10cd31833c08574532bae7f2fcf7ba9948a3df848386b90f"
+    },
+    {
+      "path": "Faster R-CNN/workspace/configs/frcnn_debug8_selection.json",
+      "bytes": 3418,
+      "sha256": "a7ca9ef26aec26519b83b72a741140e184b5aeb1e911026efa8632ccb25c7eed"
+    },
+    {
+      "path": "Faster R-CNN/workspace/configs/frcnn_debug_overfit8.py",
+      "bytes": 1648,
+      "sha256": "84e92ddaa5d595692d58b939a6a497754571abff4208534864e1add25f737efb"
+    },
+    {
+      "path": "Faster R-CNN/workspace/configs/frcnn_r50fpn_anchor4_test.py",
+      "bytes": 1942,
+      "sha256": "ff2d8771f91a8a60a47907af6895afe37e96d82eecda3340afbb3a035b63d2bc"
+    },
+    {
+      "path": "Faster R-CNN/workspace/configs/frcnn_r50fpn_merge130_001.py",
+      "bytes": 1154,
+      "sha256": "d1b8048f8696036e0a27b7126bad1591d0e8e7cea407a41eb2aab9d73979143a"
+    },
+    {
+      "path": "Faster R-CNN/workspace/configs/frcnn_r50fpn_merge130_test.py",
+      "bytes": 1836,
+      "sha256": "43d18beffbc3bf01ea329cf1310b3d9fcfabd519c3dfb47475093964990e035f"
+    },
+    {
+      "path": "Faster R-CNN/workspace/configs/frcnn_r50fpn_scale1280_anchor4_val_001.py",
+      "bytes": 610,
+      "sha256": "065289590b7c4a95e1f1f0e68fd66ba55638a9bf94c33a259a5c0b1bac0f8750"
+    },
+    {
+      "path": "Faster R-CNN/workspace/configs/frcnn_r50fpn_scale1280_test.py",
+      "bytes": 1882,
+      "sha256": "4b4068fdb0551e68d35e0943cbd6cd847d4013b3cbc6d949f03bed10f1a6cb2c"
+    },
+    {
+      "path": "Faster R-CNN/workspace/configs/frcnn_r50fpn_scale1280_val_001.py",
+      "bytes": 1224,
+      "sha256": "695bfec8ccba8b64b466bf2817de139e3baf8c4c78c4d15b0f27edeaed818951"
+    },
+    {
+      "path": "Faster R-CNN/workspace/configs/frcnn_r50fpn_scale1600_test.py",
+      "bytes": 1914,
+      "sha256": "426fcb75f04e3a1c725ca036b6edeba3ce0d74138885a341b7928f64d9b546f9"
+    },
+    {
+      "path": "Faster R-CNN/workspace/configs/frcnn_r50fpn_scale1600_val_001.py",
+      "bytes": 1239,
+      "sha256": "33b09edc338318f6f579c8519804b346637644602f3a61c569d46952e4cfe15c"
+    },
+    {
+      "path": "Faster R-CNN/workspace/configs/frcnn_r50fpn_val001_test.py",
+      "bytes": 1787,
+      "sha256": "60bb50c3626607ea96047d37248db689df357fa79d7e65ec6f16e22069717278"
+    },
+    {
+      "path": "Faster R-CNN/workspace/configs/frcnn_r50fpn_val_001.py",
+      "bytes": 2953,
+      "sha256": "17495e9cbbb77f77843d2fa51406cf9864c81318ab6e3fa11d0c3b6a1ebb431c"
+    },
+    {
+      "path": "Faster R-CNN/workspace/configs/step01_base_requirements.txt",
+      "bytes": 146,
+      "sha256": "438c71f196e854479876f11eb51eb9670ff5804c007bd57918b40f72a54c31bc"
+    },
+    {
+      "path": "Faster R-CNN/workspace/configs/step02c_base_constraints.txt",
+      "bytes": 270,
+      "sha256": "0fe4502db7fb268df4ed13c42f9d05d4cb3f18a4346167e91ca9b13d1aaa1b0e"
+    },
+    {
+      "path": "Faster R-CNN/workspace/configs/step02c_preparation.json",
+      "bytes": 11414,
+      "sha256": "c3df108a941efe112e94882ba1f804399491cb6d66bc47fe73afabbc56658874"
+    },
+    {
+      "path": "Faster R-CNN/workspace/configs/step02c_requirements.in",
+      "bytes": 334,
+      "sha256": "5f2008337dbe117fbfb3e98cb4006423fa805f8102f3050d544f40bc79ecad1a"
+    },
+    {
+      "path": "Faster R-CNN/workspace/configs/step02c_requirements.lock.txt",
+      "bytes": 2693,
+      "sha256": "4d47eaaba9c4867e4b58676cc20e782b49dd08ca60130b1dd94d67b9067850fa"
+    },
+    {
+      "path": "Faster R-CNN/workspace/configs/step03_base_constraints.txt",
+      "bytes": 714,
+      "sha256": "79bee482a67e02784493582e9066a20e22b5cfecfe8d5281cb1500ae620a172b"
+    },
+    {
+      "path": "Faster R-CNN/workspace/configs/step03_official_coco_demo.py",
+      "bytes": 619,
+      "sha256": "e763c6862f03998337795b175aa5bb5645ac7fd31705700aa0fd3b81a6f56af8"
+    },
+    {
+      "path": "Faster R-CNN/workspace/configs/step03_preparation.json",
+      "bytes": 3840,
+      "sha256": "d9b0809c5d94a6a2e6a434a6fddff6edf5d7968f292116e5853fd8415414a14c"
+    },
+    {
+      "path": "Faster R-CNN/workspace/configs/step03_requirements.lock.txt",
+      "bytes": 640,
+      "sha256": "659aa5f5e0f2ceefe737a2d1c4b942358272d9af51bca8eb6d2f3666d1febf66"
+    },
+    {
+      "path": "Faster R-CNN/workspace/configs/step04_conversion_plan.json",
+      "bytes": 1299,
+      "sha256": "5d4960416a754b4f78bf8013ceff3383c1036c1bf63c01e323e1f4958560d4b9"
+    },
+    {
+      "path": "Faster R-CNN/workspace/notes/DIAG01_低分预测排查与代码导读.md",
+      "bytes": 12795,
+      "sha256": "a43630009d68b8e1c7e212020cd905a30286e5eba885a360437d7f8b66c3e480"
+    },
+    {
+      "path": "Faster R-CNN/workspace/notes/EXPERIMENT_RECORDING_RULES.md",
+      "bytes": 3548,
+      "sha256": "e19998eb4f17f316c7056dc1d00ddbbd64eaedb2690d86fc415c0e8dd34f689a"
+    },
+    {
+      "path": "Faster R-CNN/workspace/notes/FRCNN-DIAG-RPNROI-TRAIN8.md",
+      "bytes": 5616,
+      "sha256": "5706d0f8afc3d28a4a0d9e23eef88318a3d440d8013f2b37639b6ac7dc8f4618"
+    },
+    {
+      "path": "Faster R-CNN/workspace/notes/FRCNN-R50FPN-MERGE130-001.md",
+      "bytes": 8917,
+      "sha256": "c0d7f818734af390ac7303f099bb5cced811756ac50c8e59878a9e5a8657d1d6"
+    },
+    {
+      "path": "Faster R-CNN/workspace/notes/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001.md",
+      "bytes": 11393,
+      "sha256": "69e4c4d96d07658fdeeae8a2cbf42ffea9f200adc22b4cc980eb35c16d968c6c"
+    },
+    {
+      "path": "Faster R-CNN/workspace/notes/FRCNN-R50FPN-SCALE1280-VAL-001.md",
+      "bytes": 10383,
+      "sha256": "ab725512df6ec8059b0d9d3a2bcff004a18421dab55e7ae1c07c7f8e853dfd99"
+    },
+    {
+      "path": "Faster R-CNN/workspace/notes/FRCNN-R50FPN-SCALE1600-VAL-001.md",
+      "bytes": 12317,
+      "sha256": "dbf54f15b3fe0e4d9a6bb90f4fd6911054902ee92eadfb8310b5d2914521a206"
+    },
+    {
+      "path": "Faster R-CNN/workspace/notes/FRCNN-R50FPN-VAL-001.md",
+      "bytes": 6232,
+      "sha256": "10081d41b1139bf722567c973f6586fff53b2366090c417427bc5ccd193b99e0"
+    },
+    {
+      "path": "Faster R-CNN/workspace/notes/FRCNN1280_排查路线.md",
+      "bytes": 5965,
+      "sha256": "b1be7045265d88ae69889ee468aeacff4ab3df1c3228f4a4f25769c4e57a088d"
+    },
+    {
+      "path": "Faster R-CNN/workspace/notes/STEP00_local_inspection.txt",
+      "bytes": 6779,
+      "sha256": "ee5eedeb68ed71e8e1aaaff1c7e40765ac2d52ef4e1e1b550cc9cf5213c96993"
+    },
+    {
+      "path": "Faster R-CNN/workspace/notes/STEP01_base_environment.txt",
+      "bytes": 7461,
+      "sha256": "7a5ce622b22181c3f135b3e5cf534ccb1a75080fb00280badb9696663fe9cd8b"
+    },
+    {
+      "path": "Faster R-CNN/workspace/notes/STEP02A_msvc_preparation.txt",
+      "bytes": 5494,
+      "sha256": "e9adf932fce5c82b316bc5db64b08bd66e08f52e635e20c531b62bd97b329558"
+    },
+    {
+      "path": "Faster R-CNN/workspace/notes/STEP02B_cuda_toolkit_preparation.txt",
+      "bytes": 9022,
+      "sha256": "157cccbe46a744a44ecd3cc9ce20a70b46ea9d623c6cee916a8d2f49ffec25ab"
+    },
+    {
+      "path": "Faster R-CNN/workspace/notes/STEP02C_mmcv_build_preparation.txt",
+      "bytes": 7593,
+      "sha256": "850b600f2156403c63d1d028f1f9a3218945e19255fe3ed8e944763be060421b"
+    },
+    {
+      "path": "Faster R-CNN/workspace/notes/STEP03_mmdet_official_demo.txt",
+      "bytes": 5712,
+      "sha256": "585705691d96f5d5246cdd41af35a8ad82cd81aa9e5bfe1f3c930919df26f5ed"
+    },
+    {
+      "path": "Faster R-CNN/workspace/notes/STEP04_coco_conversion.txt",
+      "bytes": 6204,
+      "sha256": "fb0445d04bb2531f40c7f00ec97380c593fd79b3d13af8f97d9a2f4eadaac5e1"
+    },
+    {
+      "path": "Faster R-CNN/workspace/notes/STEP05_debug8_static_check.txt",
+      "bytes": 6324,
+      "sha256": "9231eb8deb9fade0d50e741e0ea8f09aaabadd9dc90244f72691d5f7f0c6a7f4"
+    },
+    {
+      "path": "Faster R-CNN/workspace/notes/STEP06_debug8_overfit.txt",
+      "bytes": 6566,
+      "sha256": "76df583adaa4be72ec822546f72c60deb62e73b184c9d9cbac1581ea0ae2782f"
+    },
+    {
+      "path": "Faster R-CNN/workspace/notes/STEP06_result_review.txt",
+      "bytes": 5016,
+      "sha256": "e4b701553372fff039e40e3dc18497eb42933edfbf089228cab061b04f812a4e"
+    },
+    {
+      "path": "Faster R-CNN/workspace/notes/STEP07_formal_val_baseline.txt",
+      "bytes": 10639,
+      "sha256": "cfe0f11b4b8e313f87a8ff414121ab7690deb805bab4adeb18c012314c82a398"
+    },
+    {
+      "path": "Faster R-CNN/workspace/notes/STEP08_result_review.txt",
+      "bytes": 3637,
+      "sha256": "d3a258a8c2a8fc9fe7677f437901eafa9cfec6aa74d0bb8e4dc1f86b64f9f698"
+    },
+    {
+      "path": "Faster R-CNN/workspace/notes/STEP08_selected_checkpoint_test.txt",
+      "bytes": 8716,
+      "sha256": "59f326a42ac3d597458262c474ffc2a8266a9f00b672955805ad222ecb0ac147"
+    },
+    {
+      "path": "Faster R-CNN/workspace/notes/STEP09_merge130_training.txt",
+      "bytes": 4169,
+      "sha256": "a1691fa273ca89ba4b68de1f4eabf759654f4e7338799de18da859d2ee4bdeb5"
+    },
+    {
+      "path": "Faster R-CNN/workspace/notes/STEP09_result_review.txt",
+      "bytes": 2592,
+      "sha256": "47392ccceeaa50499c05b495ce4de430132b55fd73a2e92ff9e83e50a8cd03dc"
+    },
+    {
+      "path": "Faster R-CNN/workspace/notes/STEP10_merge130_final_test.txt",
+      "bytes": 5048,
+      "sha256": "766dc0b709a6f6f926acd50e084e82347a60f3217bddaabcf705319ec3e0659f"
+    },
+    {
+      "path": "Faster R-CNN/workspace/notes/STEP10_result_review.txt",
+      "bytes": 4949,
+      "sha256": "005e549e7427708f0ffee57b60325f44132d001b054bc39ab7bb9f683616988f"
+    },
+    {
+      "path": "Faster R-CNN/workspace/notes/STEP11_resolution1280_plan.md",
+      "bytes": 12084,
+      "sha256": "bafc6f0a7d5e2f444427e6c7fed7fb8b7ef6c46096c5e1ada8c64c9c93fc318d"
+    },
+    {
+      "path": "Faster R-CNN/workspace/notes/STEP11_result_review.txt",
+      "bytes": 400,
+      "sha256": "c68a20436a23a8ba176aa6faeba5e29cac3c43b7b8d96c38976579b110079be7"
+    },
+    {
+      "path": "Faster R-CNN/workspace/notes/STEP12_result_review.txt",
+      "bytes": 281,
+      "sha256": "7ef9494f921e1e92a2c57751ab66ba627fc93a746f09a5468661b8cd0805db08"
+    },
+    {
+      "path": "Faster R-CNN/workspace/notes/STEP12_rpn_roi_diagnostic_plan.md",
+      "bytes": 2976,
+      "sha256": "e78e5d30a2d9b32b63bfef5a2d893f501ac4b8fab9c8e89f9a32f464ec3e23bd"
+    },
+    {
+      "path": "Faster R-CNN/workspace/notes/STEP13_anchor4_plan.md",
+      "bytes": 6610,
+      "sha256": "17a1a729ea52e297094a34f2edbb43e10f5228ad000a11cc411ccb4e3dedda57"
+    },
+    {
+      "path": "Faster R-CNN/workspace/notes/STEP13_result_review.txt",
+      "bytes": 335,
+      "sha256": "7a8120a9c0ec1c1f760d5124f16292bad226bcc3a774d1899663d2f950e7d492"
+    },
+    {
+      "path": "Faster R-CNN/workspace/notes/STEP14_resolution1600_plan.md",
+      "bytes": 8763,
+      "sha256": "3c5cb56dbe36143f9fb237365e6942502b9345b740c938fad1524c6848af008a"
+    },
+    {
+      "path": "Faster R-CNN/workspace/notes/STEP14_result_review.txt",
+      "bytes": 345,
+      "sha256": "910bc2845abba2bb169cff110dfcb8bc8063cbfd6455aa580e22fbafaa5f9189"
+    },
+    {
+      "path": "Faster R-CNN/workspace/notes/STEP15_scale1280_final_test.txt",
+      "bytes": 6463,
+      "sha256": "0de27c32edaff35b964837a0af40c834d8f18175293949d5a096c51b8315d407"
+    },
+    {
+      "path": "Faster R-CNN/workspace/notes/STEP16_anchor4_final_test.txt",
+      "bytes": 5239,
+      "sha256": "e79898bed4b6c2acfc22409db23ef65a21b4b55ac09c5afafa188396b82de370"
+    },
+    {
+      "path": "Faster R-CNN/workspace/notes/STEP17_scale1600_final_test.txt",
+      "bytes": 5509,
+      "sha256": "24c4f0db27833b4a99e36efb7423505efe71de841a346fd1793478e91b9d822b"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-DEBUG-OVERFIT-8/step06_24506_3904/code/frcnn_debug8_pipeline_check.py",
+      "bytes": 1688,
+      "sha256": "b7d70f63f293390a10cd31833c08574532bae7f2fcf7ba9948a3df848386b90f"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-DEBUG-OVERFIT-8/step06_24506_3904/code/frcnn_debug8_selection.json",
+      "bytes": 3418,
+      "sha256": "a7ca9ef26aec26519b83b72a741140e184b5aeb1e911026efa8632ccb25c7eed"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-DEBUG-OVERFIT-8/step06_24506_3904/code/frcnn_debug_hooks.py",
+      "bytes": 15325,
+      "sha256": "a60320ffee315d899eee627c414108d8d98d7dcee0a94ec2da0536dce5094438"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-DEBUG-OVERFIT-8/step06_24506_3904/code/frcnn_debug_overfit8.py",
+      "bytes": 1648,
+      "sha256": "84e92ddaa5d595692d58b939a6a497754571abff4208534864e1add25f737efb"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-DEBUG-OVERFIT-8/step06_24506_3904/code/instances_debug8.json",
+      "bytes": 4961,
+      "sha256": "3470758428dab44a2f9dfc9d468275ee71254fc985f6d9f08c6cb1ef774d1edb"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-DEBUG-OVERFIT-8/step06_24506_3904/code/run_step06_train_debug8.cmd",
+      "bytes": 669,
+      "sha256": "62d56878efbd4456c16a1a9763b443a987b373994cc53c59cb2fcb2aa0421438"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-DEBUG-OVERFIT-8/step06_24506_3904/code/step06_run_debug8.py",
+      "bytes": 10369,
+      "sha256": "f5c387acc6467f2227c587197010bda03e2d5c6e703efee24bf94359c59a42f8"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-DEBUG-OVERFIT-8/step06_24506_3904/pretraining_record.json",
+      "bytes": 2606,
+      "sha256": "844dbc606f5701ee1c8577da01a22a217d2bcd09fc97de26c4fa0859f8d9c3a2"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-DEBUG-OVERFIT-8/step06_24506_3904/requirements_freeze.txt",
+      "bytes": 1141,
+      "sha256": "927fc403bd11f6a5a28d84391141a5fdc6a9181667d665af825f181a676da2a3"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-DEBUG-OVERFIT-8/step06_24506_3904/resolved_debug8.py",
+      "bytes": 9144,
+      "sha256": "066c0a3e051634849997d692ce447cc3453165aef269860ee0a7d0bce1109d02"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-DIAG-RPNROI-TRAIN8/step12_24867_6686/code/STEP12_rpn_roi_diagnostic_plan.md",
+      "bytes": 2976,
+      "sha256": "e78e5d30a2d9b32b63bfef5a2d893f501ac4b8fab9c8e89f9a32f464ec3e23bd"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-DIAG-RPNROI-TRAIN8/step12_24867_6686/code/instances_debug8.json",
+      "bytes": 4961,
+      "sha256": "3470758428dab44a2f9dfc9d468275ee71254fc985f6d9f08c6cb1ef774d1edb"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-DIAG-RPNROI-TRAIN8/step12_24867_6686/code/run_step12_diagnose_rpn_roi.cmd",
+      "bytes": 758,
+      "sha256": "ae4f7bc2a5da2e4f767acc0195567609b3b39afb23364a47b0dc42ce661cff75"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-DIAG-RPNROI-TRAIN8/step12_24867_6686/code/step12_diagnose_rpn_roi.py",
+      "bytes": 15331,
+      "sha256": "1a0c749aa60daa272a06e12dd6950b80f8cabfb38f089ec1412eaced1beaf730"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-MERGE130-001/step09_109_20338/code/EXPERIMENT_RECORDING_RULES.md",
+      "bytes": 3548,
+      "sha256": "e19998eb4f17f316c7056dc1d00ddbbd64eaedb2690d86fc415c0e8dd34f689a"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-MERGE130-001/step09_109_20338/code/STEP09_merge130_training.txt",
+      "bytes": 4169,
+      "sha256": "a1691fa273ca89ba4b68de1f4eabf759654f4e7338799de18da859d2ee4bdeb5"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-MERGE130-001/step09_109_20338/code/build_experiment_workbook.mjs",
+      "bytes": 4246,
+      "sha256": "101674d6bd1fedcab0e4c20120ecc75ad2c1dd09a9c26253e187f7a175b72864"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-MERGE130-001/step09_109_20338/code/frcnn_debug_hooks.py",
+      "bytes": 15942,
+      "sha256": "8231aa071f115c841b0d34a9698193af88eb206ea424f77d102bf155f053e9bc"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-MERGE130-001/step09_109_20338/code/frcnn_merge130_hooks.py",
+      "bytes": 5472,
+      "sha256": "43cb40b74d1307cae29f7b710e4c5969edcaa5bdcd56c78b7b235c133bb7708f"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-MERGE130-001/step09_109_20338/code/frcnn_r50fpn_merge130_001.py",
+      "bytes": 1154,
+      "sha256": "d1b8048f8696036e0a27b7126bad1591d0e8e7cea407a41eb2aab9d73979143a"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-MERGE130-001/step09_109_20338/code/instances_debug8.json",
+      "bytes": 4961,
+      "sha256": "3470758428dab44a2f9dfc9d468275ee71254fc985f6d9f08c6cb1ef774d1edb"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-MERGE130-001/step09_109_20338/code/instances_trainval.json",
+      "bytes": 65630,
+      "sha256": "e2d13393d4fc56eaf52a8f9428f770301a8b05cbf619baf30b3abf62ff7343e6"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-MERGE130-001/step09_109_20338/code/pretraining_record.json",
+      "bytes": 7026,
+      "sha256": "c283a29c3d8a4a3637f0ca245d527cab43b93fc5041f4893397d86b6fc0f90a6"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-MERGE130-001/step09_109_20338/code/refresh_experiment_records.py",
+      "bytes": 55186,
+      "sha256": "689a6bb547ac2055cde2d01f30ed34aba5b16dd5187829f04a42e4132aa9d964"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-MERGE130-001/step09_109_20338/code/resolved_val_001.py",
+      "bytes": 11002,
+      "sha256": "e3ae36a800bb65a15f5ab29a4f4edf662464dabbe5db1ce4d02451bd17b28134"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-MERGE130-001/step09_109_20338/code/run_step09_train_merge130.cmd",
+      "bytes": 675,
+      "sha256": "e6577b535cf8ba3941c360b1aa4ac053d3f2e9ee3a834416b56e69ec67aac4ff"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-MERGE130-001/step09_109_20338/code/step09_run_merge130.py",
+      "bytes": 15173,
+      "sha256": "543e0994984699a5044e3a851569cc7f66e22c378ac2f60d21d467252e17b151"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-MERGE130-001/step09_109_20338/pretraining_record.json",
+      "bytes": 18477,
+      "sha256": "fc665bfa201a92aba86bce69feda82c37d0c5860419e01287dd760bfb3b836f3"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-MERGE130-001/step09_109_20338/requirements_freeze.txt",
+      "bytes": 1141,
+      "sha256": "927fc403bd11f6a5a28d84391141a5fdc6a9181667d665af825f181a676da2a3"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-MERGE130-001/step09_109_20338/resolved_merge130_001.py",
+      "bytes": 9117,
+      "sha256": "d3d90581f3da1bc4eaaec79a997e9301d5d99b1344208315803cd56222b21cb7"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-MERGE130-001/step09_109_20338/selected_checkpoint.json",
+      "bytes": 609,
+      "sha256": "ac7f354ba1c156cf2d2a5a7a430bb14d788afed2e35451bf9e929bbb731dfee4"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/step13_27622_23378/code/AGENTS.md",
+      "bytes": 13594,
+      "sha256": "fc78526c1c20d2705a9d965859581edfada41797ac04fec922081e25657d7857"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/step13_27622_23378/code/STEP13_anchor4_plan.md",
+      "bytes": 6610,
+      "sha256": "17a1a729ea52e297094a34f2edbb43e10f5228ad000a11cc411ccb4e3dedda57"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/step13_27622_23378/code/acceptance.json",
+      "bytes": 14416,
+      "sha256": "328c224c9b5b57784a8e99f6c0c6393d1750d9b6061e8d7d92321c9bd32bb2b8"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/step13_27622_23378/code/anchor_geometry.json",
+      "bytes": 10921,
+      "sha256": "850ccd425ce987c3aa5a83fc4270075d8ac01517248ab545e62c9812b0da9afb"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/step13_27622_23378/code/frcnn_debug8_selection.json",
+      "bytes": 3418,
+      "sha256": "a7ca9ef26aec26519b83b72a741140e184b5aeb1e911026efa8632ccb25c7eed"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/step13_27622_23378/code/frcnn_debug_hooks.py",
+      "bytes": 16088,
+      "sha256": "33dbf9d9ef4634ae972037a35ad94515858cb780be5895654797d4ec26c8ae52"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/step13_27622_23378/code/frcnn_formal_hooks.py",
+      "bytes": 7784,
+      "sha256": "b10f43e85b72bea2bd318d9fbc722a39369ddec677fc055d477f769d8b36b20d"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/step13_27622_23378/code/frcnn_r50fpn_scale1280_anchor4_val_001.py",
+      "bytes": 610,
+      "sha256": "065289590b7c4a95e1f1f0e68fd66ba55638a9bf94c33a259a5c0b1bac0f8750"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/step13_27622_23378/code/instances_debug8.json",
+      "bytes": 4961,
+      "sha256": "3470758428dab44a2f9dfc9d468275ee71254fc985f6d9f08c6cb1ef774d1edb"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/step13_27622_23378/code/instances_train.json",
+      "bytes": 53883,
+      "sha256": "c2d34925a87a7720d822a8c816c0da467a2c0d7081a8c654c2fdb69673deb665"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/step13_27622_23378/code/instances_val.json",
+      "bytes": 12134,
+      "sha256": "5c524ebdcf7de3099ef34cab1825323db34a7729e5aac2199b4ab1aa0a6a8c01"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/step13_27622_23378/code/run_step13_train_anchor4.cmd",
+      "bytes": 724,
+      "sha256": "37d7ef975ee3fcf08e51fc86a77b2fa8f6e5955066351872443b8f74da856e91"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/step13_27622_23378/code/step13_anchor_geometry_audit.py",
+      "bytes": 7641,
+      "sha256": "42c8a625e641f9219b4cb383dcf75915732c1083b863f489c2ea2458cbba6e2e"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/step13_27622_23378/code/step13_run_anchor4.py",
+      "bytes": 20232,
+      "sha256": "c6c41e83a44a6b7af95490fcc8c5d00fa3f41cada423817ddd30b3861db27a3b"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/step13_27622_23378/pretraining_record.json",
+      "bytes": 8416,
+      "sha256": "49f2bdfff4d9cca0d12fe8ccb7ede5be14250f472b9023595de0a7e61149080a"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/step13_27622_23378/requirements_freeze.txt",
+      "bytes": 1141,
+      "sha256": "927fc403bd11f6a5a28d84391141a5fdc6a9181667d665af825f181a676da2a3"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/step13_27622_23378/resolved_scale1280_anchor4_val_001.py",
+      "bytes": 11129,
+      "sha256": "cd8d92c2ee84727c1a901dd2344993d17b21ae3de7f2f9b505a41e42090abab6"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001/step13_27622_23378/selected_checkpoint.json",
+      "bytes": 2397,
+      "sha256": "cacc1dbe7e74d9e2ed19aa9b4b88ec32e9f68e9dcb37a32cd0c0be72bd1f9841"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/code/AGENTS.md",
+      "bytes": 10149,
+      "sha256": "faee40eda3263f193722dfec6cf798468d79b3236746029510cd1d55a59e963e"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/code/STEP11_resolution1280_plan.md",
+      "bytes": 12084,
+      "sha256": "bafc6f0a7d5e2f444427e6c7fed7fb8b7ef6c46096c5e1ada8c64c9c93fc318d"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/code/frcnn_debug8_selection.json",
+      "bytes": 3418,
+      "sha256": "a7ca9ef26aec26519b83b72a741140e184b5aeb1e911026efa8632ccb25c7eed"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/code/frcnn_debug_hooks.py",
+      "bytes": 16088,
+      "sha256": "33dbf9d9ef4634ae972037a35ad94515858cb780be5895654797d4ec26c8ae52"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/code/frcnn_formal_hooks.py",
+      "bytes": 7784,
+      "sha256": "b10f43e85b72bea2bd318d9fbc722a39369ddec677fc055d477f769d8b36b20d"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/code/frcnn_r50fpn_scale1280_val_001.py",
+      "bytes": 1224,
+      "sha256": "695bfec8ccba8b64b466bf2817de139e3baf8c4c78c4d15b0f27edeaed818951"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/code/instances_debug8.json",
+      "bytes": 4961,
+      "sha256": "3470758428dab44a2f9dfc9d468275ee71254fc985f6d9f08c6cb1ef774d1edb"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/code/instances_train.json",
+      "bytes": 53883,
+      "sha256": "c2d34925a87a7720d822a8c816c0da467a2c0d7081a8c654c2fdb69673deb665"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/code/instances_val.json",
+      "bytes": 12134,
+      "sha256": "5c524ebdcf7de3099ef34cab1825323db34a7729e5aac2199b4ab1aa0a6a8c01"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/code/resolution_audit.json",
+      "bytes": 7347,
+      "sha256": "1ee195f26698bd812dade2ff0fee9e311f4b4d84ba3f9618caaf964606ca0106"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/code/run_step11_train_scale1280.cmd",
+      "bytes": 720,
+      "sha256": "7fc55e66f1a52f2d2430821bcdcca73e8505f6e76a18852a3ad1849b4bdcd174"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/code/step11_run_scale1280.py",
+      "bytes": 18839,
+      "sha256": "5c0c02c19078d854f8e613eff12d49013dd51e2e3bdb9c50dfcd8418618851a4"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/pretraining_record.json",
+      "bytes": 7772,
+      "sha256": "2f4c4fb296f26443371bcad2aa6c4c77de3c93929a0f4db36b565437a68537fa"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/requirements_freeze.txt",
+      "bytes": 1141,
+      "sha256": "927fc403bd11f6a5a28d84391141a5fdc6a9181667d665af825f181a676da2a3"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/resolved_scale1280_val_001.py",
+      "bytes": 11113,
+      "sha256": "0d11394ad9ddaf97683ed90b1380ffc22cad454aa29997685225e145d30979f3"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/selected_checkpoint.json",
+      "bytes": 2384,
+      "sha256": "90c00307029c42b7cf2c12d28a15e6727c64606dbf289a7ef868adb6324e1613"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/step14_3575_9657/code/AGENTS.md",
+      "bytes": 16946,
+      "sha256": "4579bf68b945a812990df33f291521207e55e1d0c76812b13bd0c06d801e21d4"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/step14_3575_9657/code/STEP14_resolution1600_plan.md",
+      "bytes": 8763,
+      "sha256": "3c5cb56dbe36143f9fb237365e6942502b9345b740c938fad1524c6848af008a"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/step14_3575_9657/code/frcnn_debug8_selection.json",
+      "bytes": 3418,
+      "sha256": "a7ca9ef26aec26519b83b72a741140e184b5aeb1e911026efa8632ccb25c7eed"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/step14_3575_9657/code/frcnn_debug_hooks.py",
+      "bytes": 16088,
+      "sha256": "33dbf9d9ef4634ae972037a35ad94515858cb780be5895654797d4ec26c8ae52"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/step14_3575_9657/code/frcnn_formal_hooks.py",
+      "bytes": 7784,
+      "sha256": "b10f43e85b72bea2bd318d9fbc722a39369ddec677fc055d477f769d8b36b20d"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/step14_3575_9657/code/frcnn_r50fpn_scale1600_val_001.py",
+      "bytes": 1239,
+      "sha256": "33b09edc338318f6f579c8519804b346637644602f3a61c569d46952e4cfe15c"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/step14_3575_9657/code/instances_debug8.json",
+      "bytes": 4961,
+      "sha256": "3470758428dab44a2f9dfc9d468275ee71254fc985f6d9f08c6cb1ef774d1edb"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/step14_3575_9657/code/instances_train.json",
+      "bytes": 53883,
+      "sha256": "c2d34925a87a7720d822a8c816c0da467a2c0d7081a8c654c2fdb69673deb665"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/step14_3575_9657/code/instances_val.json",
+      "bytes": 12134,
+      "sha256": "5c524ebdcf7de3099ef34cab1825323db34a7729e5aac2199b4ab1aa0a6a8c01"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/step14_3575_9657/code/resolution_audit.json",
+      "bytes": 13375,
+      "sha256": "c35c45c5bee445dd296c6fb07fc4dac0765e8f3826fb60ca0908728f9a6d7d4e"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/step14_3575_9657/code/resolved_scale1280_val_001.py",
+      "bytes": 11113,
+      "sha256": "0d11394ad9ddaf97683ed90b1380ffc22cad454aa29997685225e145d30979f3"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/step14_3575_9657/code/run_step14_train_scale1600.cmd",
+      "bytes": 700,
+      "sha256": "b0c5588f75166d4082a70a09d9d1dfc7a52bef929ecbac1fa8390bf951a01617"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/step14_3575_9657/code/step14_resolution_audit.py",
+      "bytes": 8250,
+      "sha256": "319b40360b4373749b24f134ad29dd0e0aa62095436bee992fcee6573b1c7cc1"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/step14_3575_9657/code/step14_run_scale1600.py",
+      "bytes": 21386,
+      "sha256": "1013182ec0a400ea6eb6d23b387a34f5f7cd9470b3acd8addc72b1d523873553"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/step14_3575_9657/pretraining_record.json",
+      "bytes": 9013,
+      "sha256": "8737a6e1b1f785bae140cb9f95ff52ba09fe9de614091ba0891d8e7c518cc35c"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/step14_3575_9657/requirements_freeze.txt",
+      "bytes": 1141,
+      "sha256": "927fc403bd11f6a5a28d84391141a5fdc6a9181667d665af825f181a676da2a3"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/step14_3575_9657/resolved_scale1600_val_001.py",
+      "bytes": 11111,
+      "sha256": "c1e8838a3103d9fc46c75078b8cb9ba35811698ee49f4e18932fb624f0cbc389"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1600-VAL-001/step14_3575_9657/selected_checkpoint.json",
+      "bytes": 2433,
+      "sha256": "b5c34f171685c88cc2039e4ce334ded8475bf64c0677b2cfcbc0f7ef2fd3df4c"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-VAL-001/step07_235_27043/code/STEP07_formal_val_baseline.txt",
+      "bytes": 10639,
+      "sha256": "cfe0f11b4b8e313f87a8ff414121ab7690deb805bab4adeb18c012314c82a398"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-VAL-001/step07_235_27043/code/frcnn_debug8_selection.json",
+      "bytes": 3418,
+      "sha256": "a7ca9ef26aec26519b83b72a741140e184b5aeb1e911026efa8632ccb25c7eed"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-VAL-001/step07_235_27043/code/frcnn_debug_hooks.py",
+      "bytes": 15942,
+      "sha256": "8231aa071f115c841b0d34a9698193af88eb206ea424f77d102bf155f053e9bc"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-VAL-001/step07_235_27043/code/frcnn_formal_hooks.py",
+      "bytes": 7502,
+      "sha256": "524947af93979ee31afd6b406b8cebaec25565a0e88521e6bf9b385364570de9"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-VAL-001/step07_235_27043/code/frcnn_r50fpn_val_001.py",
+      "bytes": 2953,
+      "sha256": "17495e9cbbb77f77843d2fa51406cf9864c81318ab6e3fa11d0c3b6a1ebb431c"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-VAL-001/step07_235_27043/code/instances_debug8.json",
+      "bytes": 4961,
+      "sha256": "3470758428dab44a2f9dfc9d468275ee71254fc985f6d9f08c6cb1ef774d1edb"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-VAL-001/step07_235_27043/code/instances_train.json",
+      "bytes": 53883,
+      "sha256": "c2d34925a87a7720d822a8c816c0da467a2c0d7081a8c654c2fdb69673deb665"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-VAL-001/step07_235_27043/code/instances_val.json",
+      "bytes": 12134,
+      "sha256": "5c524ebdcf7de3099ef34cab1825323db34a7729e5aac2199b4ab1aa0a6a8c01"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-VAL-001/step07_235_27043/code/run_step07_train_val_baseline.cmd",
+      "bytes": 695,
+      "sha256": "cd2099aea02527f04a5fb9682b906fe515b2a87117331a4af9ef34bc47500b06"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-VAL-001/step07_235_27043/code/step07_run_val_baseline.py",
+      "bytes": 15595,
+      "sha256": "a1708a3bf9896573a0fffcaad965367201d4d697b3834bff52dc34f726ce5195"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-VAL-001/step07_235_27043/pretraining_record.json",
+      "bytes": 7026,
+      "sha256": "c283a29c3d8a4a3637f0ca245d527cab43b93fc5041f4893397d86b6fc0f90a6"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-VAL-001/step07_235_27043/requirements_freeze.txt",
+      "bytes": 1141,
+      "sha256": "927fc403bd11f6a5a28d84391141a5fdc6a9181667d665af825f181a676da2a3"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-VAL-001/step07_235_27043/resolved_val_001.py",
+      "bytes": 11002,
+      "sha256": "e3ae36a800bb65a15f5ab29a4f4edf662464dabbe5db1ce4d02451bd17b28134"
+    },
+    {
+      "path": "Faster R-CNN/workspace/runs/FRCNN-R50FPN-VAL-001/step07_235_27043/selected_checkpoint.json",
+      "bytes": 2393,
+      "sha256": "a8bf020203a0663838afc64e41bef47202e077d736d3fd344fd708a6d5400034"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/diag01_saved_predictions.py",
+      "bytes": 16456,
+      "sha256": "e508c7c6073b2d8c2a460a6e5795002edc2dec62a2a73f07e80e8e4d0302fc15"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/diag01_viewer.html",
+      "bytes": 9090,
+      "sha256": "32601a7a04297b4355b65ce61e0724286e4e084d8da9f3605cec1e03583815f1"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/frcnn_debug_hooks.py",
+      "bytes": 16088,
+      "sha256": "33dbf9d9ef4634ae972037a35ad94515858cb780be5895654797d4ec26c8ae52"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/frcnn_formal_hooks.py",
+      "bytes": 7784,
+      "sha256": "b10f43e85b72bea2bd318d9fbc722a39369ddec677fc055d477f769d8b36b20d"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/frcnn_merge130_hooks.py",
+      "bytes": 5472,
+      "sha256": "43cb40b74d1307cae29f7b710e4c5969edcaa5bdcd56c78b7b235c133bb7708f"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/review_frcnn_saved_test.py",
+      "bytes": 13895,
+      "sha256": "a8073705fa7c05b36b2dc24317ab7580968daa6846281efa27c17337ae5a737e"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/run_step00_probe.cmd",
+      "bytes": 491,
+      "sha256": "2e3f3ff02865422f2859b2a3436e08545cb085c734eb8f5b45ebf49d22b98731"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/run_step01_setup_torch.cmd",
+      "bytes": 4942,
+      "sha256": "f12f6fedfee4a00618751d10080dd0fa9c616f64ae3bfab29f662c5541bc05cc"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/run_step02a_install_msvc.cmd",
+      "bytes": 5016,
+      "sha256": "e6945611ae81c1989d4533979b5c3a3d124fd49145ada041f6a1827d4cc436bc"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/run_step02b_install_cuda.cmd",
+      "bytes": 6769,
+      "sha256": "9638548e86969e6e3642544e2a806a2cff2558551bc9e885751bccd362a697fc"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/run_step02c_build_mmcv.cmd",
+      "bytes": 2430,
+      "sha256": "236c7a01bf4625b30b33b0e4e2e1aabf785688ad350e0ffa0c3d91e060ebb870"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/run_step03_mmdet_demo.cmd",
+      "bytes": 1258,
+      "sha256": "539fe4d137feb03d3a046fab7aa5b38e83385f5d164f9247b300f8f988350bca"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/run_step04_convert_coco.cmd",
+      "bytes": 608,
+      "sha256": "e5b48cd7fd016444bdd3cb130ddd6a0520788a0e74afd539a3e4c199a36eb8c4"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/run_step05_check_debug8.cmd",
+      "bytes": 680,
+      "sha256": "4874c3f52295a507f104cb37d4a7709886b5c358b706374ea86845cea7c5f0e8"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/run_step06_train_debug8.cmd",
+      "bytes": 669,
+      "sha256": "62d56878efbd4456c16a1a9763b443a987b373994cc53c59cb2fcb2aa0421438"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/run_step07_train_val_baseline.cmd",
+      "bytes": 695,
+      "sha256": "cd2099aea02527f04a5fb9682b906fe515b2a87117331a4af9ef34bc47500b06"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/run_step08_test_val_baseline.cmd",
+      "bytes": 695,
+      "sha256": "f03ef9df8d562a3384da383380201c2f6c4994b8e9167e34e0ac606b671b3bcc"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/run_step09_train_merge130.cmd",
+      "bytes": 675,
+      "sha256": "e6577b535cf8ba3941c360b1aa4ac053d3f2e9ee3a834416b56e69ec67aac4ff"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/run_step10_test_merge130.cmd",
+      "bytes": 703,
+      "sha256": "1ad5b7686c8604c2ca17724565ffc469ca651cd86c0bc3f5069240d9b498d347"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/run_step11_train_scale1280.cmd",
+      "bytes": 720,
+      "sha256": "7fc55e66f1a52f2d2430821bcdcca73e8505f6e76a18852a3ad1849b4bdcd174"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/run_step12_diagnose_rpn_roi.cmd",
+      "bytes": 758,
+      "sha256": "ae4f7bc2a5da2e4f767acc0195567609b3b39afb23364a47b0dc42ce661cff75"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/run_step13_train_anchor4.cmd",
+      "bytes": 724,
+      "sha256": "37d7ef975ee3fcf08e51fc86a77b2fa8f6e5955066351872443b8f74da856e91"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/run_step14_train_scale1600.cmd",
+      "bytes": 700,
+      "sha256": "b0c5588f75166d4082a70a09d9d1dfc7a52bef929ecbac1fa8390bf951a01617"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/run_step15_test_scale1280.cmd",
+      "bytes": 683,
+      "sha256": "5efa22b00b488e59810918d3836ab5f20af8502b21e6f444bb24e34454ecba29"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/run_step16_test_anchor4.cmd",
+      "bytes": 699,
+      "sha256": "15c564fbc9002471a2847e10947913210caa1f996c96754fa8d7c1256e15abcd"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/run_step17_test_scale1600.cmd",
+      "bytes": 705,
+      "sha256": "ff1ab6ab5976116d5657728beff419c74044e6199bf45c2e986468c6949d06c7"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step00_probe.py",
+      "bytes": 16599,
+      "sha256": "a38beb8010111f5e7840411606f07f41af6c76b1c6befb32796998171412acf3"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step01_check_cuda.py",
+      "bytes": 7380,
+      "sha256": "422d443311eb9ec01140fc110e08bdf8f531eac1acfadd3d9a9f10222de28014"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step01_network_probe.py",
+      "bytes": 3508,
+      "sha256": "867966a12a14d6567a623d0341942852e58753f1d808c5f0216997e9652ae9db"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step02a_msvc_probe.cpp",
+      "bytes": 400,
+      "sha256": "f169cb9ed1d5c039ecb28e048f0f3c891abcf687d2038f9ab7f5809896a13307"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step02a_prepare_msvc.py",
+      "bytes": 5094,
+      "sha256": "8d7497547fffcdae633a444fc9515e576b921d6a67b08ecc71d5498bbc0dd070"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step02b_cuda_probe.cu",
+      "bytes": 2478,
+      "sha256": "98c6be0c66497b7a53728e4d78f3c92efad6efcca996c159ae31e746bfadfb82"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step02b_prepare_cuda.py",
+      "bytes": 6795,
+      "sha256": "b61673a3d2c0bb3d6b518d9561fa7ac5bd78d3a5563102f9f83eaeff5807640b"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step02c_build_mmcv.py",
+      "bytes": 12755,
+      "sha256": "2ed2ce3358c84c388d232321cd7ed0f934824dad59913b932c941cf2251d5086"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step02c_check_mmcv.py",
+      "bytes": 5815,
+      "sha256": "5b28efaae14179cf9bc27c43d564184388ea96635c6ecd49dc652626979ffca9"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step02c_prepare.py",
+      "bytes": 4952,
+      "sha256": "c44030dd6a8333ba5cb4e84f23be0e520839d2ce180869d5d4fb14abd54259c5"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step03_inspect_assets.py",
+      "bytes": 1358,
+      "sha256": "e572ffde4ab824fa71e38dc27f8e1e7f0f6f51766c5eb1600a07ef7dad6ddb57"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step03_mmdet_demo.py",
+      "bytes": 12780,
+      "sha256": "bbfca237c18cff2ed4037e7eaf341af62f36c529d7bc3df6f3abefd86b17f763"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step03_prepare.py",
+      "bytes": 8795,
+      "sha256": "12957a6e1c384667c492c0032a3aee4e638afbc05c66c5437e8d2d3c42a33b93"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step04_convert_coco.py",
+      "bytes": 26402,
+      "sha256": "c5884f57a92195727d3c50da3b92a708f44153ceede3a6dafec599556968dded"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step04_validate_preparation.py",
+      "bytes": 3533,
+      "sha256": "ec2ea21e1c90a1f763b72fa19a7d9635ba9070518318acac1ff15cebff4046db"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step05_check_debug8.py",
+      "bytes": 16859,
+      "sha256": "ff3ae77c1113ae2b927fd94bfa2cae7ff5350a6e46f624f0f3004747362346e1"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step05_prepare_debug8.py",
+      "bytes": 5081,
+      "sha256": "ab7ea9fd246b854a61cf0706fbb47158216a598c35007d29cbb02fcc359a6392"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step05_validate_preparation.py",
+      "bytes": 2850,
+      "sha256": "298ad17eae1cd2c840de7d0964137d51c8734539931a43fb35a765db1a8e1820"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step06_review_debug8.py",
+      "bytes": 5800,
+      "sha256": "e827fa256f7240326ed40866b911d26434f0ee6014c7312212a78baeed5ca662"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step06_run_debug8.py",
+      "bytes": 10369,
+      "sha256": "f5c387acc6467f2227c587197010bda03e2d5c6e703efee24bf94359c59a42f8"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step06_validate_preparation.py",
+      "bytes": 4326,
+      "sha256": "3099097417f085c9b7656b55f054b2e3c412a0f233c2f0cdcb3e0230a6b93e04"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step07_review_val_results.py",
+      "bytes": 2975,
+      "sha256": "b72947ca75a7b5d5f9bd8b7f0ae7ba95d511de08d7a4a682d5e46a995ae29de2"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step07_run_val_baseline.py",
+      "bytes": 15595,
+      "sha256": "a1708a3bf9896573a0fffcaad965367201d4d697b3834bff52dc34f726ce5195"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step07_validate_preparation.py",
+      "bytes": 4591,
+      "sha256": "42cbe137d9966ac2b55bf030dd991ebdc1522d540565f80fe249b0c1a49e4fe6"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step08_review_test_results.py",
+      "bytes": 8334,
+      "sha256": "7eadd5f29dbc6155c6b1b8891d6e9a4984f1dd772fc3ecbef9eebb3efde04bd3"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step08_test_val_baseline.py",
+      "bytes": 19957,
+      "sha256": "1a1bdc3033862d7926d423303d1984c596e79218a9d144594c1021f8aaa50c43"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step08_validate_metric_handoff.py",
+      "bytes": 2843,
+      "sha256": "ce48526fe86a3b8669f3c8db0470984fb385f82ded38e72d3dd9631231050db5"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step09_review_merge130.py",
+      "bytes": 5596,
+      "sha256": "1ef9a598aa8a4fb04c47377650d832ef3867a1ef93ba8b9b90de8c3b02c06a19"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step09_run_merge130.py",
+      "bytes": 15173,
+      "sha256": "543e0994984699a5044e3a851569cc7f66e22c378ac2f60d21d467252e17b151"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step10_prepare_files.py",
+      "bytes": 4854,
+      "sha256": "0ea851ba11daee1010bbfad7f63b262c5f2840fb8258e040c2fea7c05f9d1363"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step10_review_test_results.py",
+      "bytes": 10509,
+      "sha256": "b261252b6e16f12cad0b1c0bc52fb76def144e0871a7e6bab544971a884f3397"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step10_test_merge130.py",
+      "bytes": 21056,
+      "sha256": "5d64b659d8a44da11bad822a3ab2c8ed9f20365ace37a2e598467224d1b2b7a0"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step11_prepare_launcher.py",
+      "bytes": 4759,
+      "sha256": "446730d95c318bd4612a207d983a24d0145c07ac0baf7589a2393e1f919c24a1"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step11_record_review.py",
+      "bytes": 6991,
+      "sha256": "b889d4f9fb5b974db2a2dd6b96f3c5bd919a806f0acf93345ba75334bc5f63c0"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step11_resolution_audit.py",
+      "bytes": 10486,
+      "sha256": "d15ba83651d42330d0831719810abf150dfb5f58c431130cbf20ca98adaa0cb7"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step11_review_results.py",
+      "bytes": 13716,
+      "sha256": "18a79de7b7f7d950e5ab6d4f0fedc7562538c42eec997600eb3aeaaa60376f94"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step11_run_scale1280.py",
+      "bytes": 18839,
+      "sha256": "5c0c02c19078d854f8e613eff12d49013dd51e2e3bdb9c50dfcd8418618851a4"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step11_validate_preparation.py",
+      "bytes": 5958,
+      "sha256": "ae1cdd746dc80e44dc4f65b0b58d4d090f82afbb160d97eef722c13a7a4a6714"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step11_verify_registration.py",
+      "bytes": 2640,
+      "sha256": "57960f3eaf5d83fd187b25bb561a2a728028903f37ea6a38a29b6542ab7355c9"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step12_diagnose_rpn_roi.py",
+      "bytes": 15331,
+      "sha256": "1a0c749aa60daa272a06e12dd6950b80f8cabfb38f089ec1412eaced1beaf730"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step12_record_review.py",
+      "bytes": 9699,
+      "sha256": "455df191cf96b6a044d28006dda501495534e850198bab34c6f1a4a20bf0bd23"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step12_review_results.py",
+      "bytes": 9079,
+      "sha256": "2fbc23c5c890418b1936c848a9db67ad58488fbfcfc638ab0e9037ac6719509b"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step13_anchor_geometry_audit.py",
+      "bytes": 7641,
+      "sha256": "42c8a625e641f9219b4cb383dcf75915732c1083b863f489c2ea2458cbba6e2e"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step13_prepare_launcher.py",
+      "bytes": 5688,
+      "sha256": "5952e47cd935ec894e1a46506eccc7dc2d363c79e70d32fb0f6b0b373b3aa84c"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step13_prepare_review.py",
+      "bytes": 2431,
+      "sha256": "3ca55ac938b230fb8b2d3cf680ea613eaf390ad187bdd3654146bf477c8b9ad7"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step13_record_review.py",
+      "bytes": 13136,
+      "sha256": "d1aaf0061502c3d81ce3cd68ad57485341f83c5fc85277212aeef206bddcef57"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step13_review_results.py",
+      "bytes": 13904,
+      "sha256": "8522b8708fb85741e7ed05d07dedc3dbfb5dfda7f98e87c381ff9b6bc559134e"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step13_run_anchor4.py",
+      "bytes": 20232,
+      "sha256": "c6c41e83a44a6b7af95490fcc8c5d00fa3f41cada423817ddd30b3861db27a3b"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step13_verify_handoff.py",
+      "bytes": 4889,
+      "sha256": "b8bb4324f56a38f8a7e64975e8d6948701b4d6c5678b0f21c9e5bfa46e5da73b"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step13_verify_registration.py",
+      "bytes": 3758,
+      "sha256": "600634c6da8bdda7232e38e072d97862bdafbbd12b2a80302d4fada1c7bca9b4"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step14_record_review.py",
+      "bytes": 12213,
+      "sha256": "3bc4309138d2fbe17a3dc93714f42be1ac69233336dc5974bff5db25bf0200db"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step14_resolution_audit.py",
+      "bytes": 8250,
+      "sha256": "319b40360b4373749b24f134ad29dd0e0aa62095436bee992fcee6573b1c7cc1"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step14_review_results.py",
+      "bytes": 13741,
+      "sha256": "968470dcdaefb13c2c5421eb891cf32cfaba47c6cfe20e6174a1610e0443fecf"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step14_run_scale1600.py",
+      "bytes": 21386,
+      "sha256": "1013182ec0a400ea6eb6d23b387a34f5f7cd9470b3acd8addc72b1d523873553"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step14_verify_handoff.py",
+      "bytes": 2374,
+      "sha256": "b593a6333a34f98e3dd262dc120816047b8c3091aa19694bf3ba2fee3c8cd3ef"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step14_verify_registration.py",
+      "bytes": 4191,
+      "sha256": "83bf6d0ebbd086f4ceaea8f5f2b17a45b02738a3d47e519078addc0a569575b0"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step15_finalize_review.py",
+      "bytes": 6358,
+      "sha256": "3110fd4ecd4770426954bfd7ff469b556b8fcdefb358a1e42eb71e620082e34b"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step15_prepare_files.py",
+      "bytes": 7276,
+      "sha256": "44ad39d072cefb040bb298e58b444abe0ff713a6f0201d4fdb311788066fe26f"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step15_recover_saved_results.py",
+      "bytes": 13665,
+      "sha256": "481c448fff00f9649d84e2432bf74d68fb4e50e6ead138f720c1f3b655af2eec"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step15_test_scale1280.py",
+      "bytes": 22927,
+      "sha256": "5360770088b5c85a97fa2a01abde828246e33806423de3150a5679ad18dfc7fa"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step15_validate_metric_handoff.py",
+      "bytes": 3372,
+      "sha256": "5c9b359e8af23d04cbcaef59408271c5ba7af0b6beadd5670b8682b7c5119a7c"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step16_finalize_review.py",
+      "bytes": 5893,
+      "sha256": "11669dc4d072683f4e0e3527d3c93c9e57609b074c4b413024372f0fbc5bb022"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step16_prepare_files.py",
+      "bytes": 3633,
+      "sha256": "4f0b725aeb75651e648bf56b01f03a902560e2a1a5d75bae1b56db31932f4aa2"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step16_record_preparation.py",
+      "bytes": 2108,
+      "sha256": "2a1b74a970038dea4d121baaf067c7c458daf51514f6f3e7216a8775c3e41016"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step16_test_anchor4.py",
+      "bytes": 23335,
+      "sha256": "112d41085e8275f39f34921c2440a9577e15be88bca15661296312e17f09072e"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step16_validate_metric_handoff.py",
+      "bytes": 3430,
+      "sha256": "8492c515c180876f928e675ca96b6ec81d32b0dc5276af9a07aaa94573391110"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step17_finalize_review.py",
+      "bytes": 5120,
+      "sha256": "780e4a69f026b9347a8eb2ca9ceeab2c5502faeb0de79a5722d712362000b324"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step17_prepare_files.py",
+      "bytes": 3432,
+      "sha256": "7da1fb472cdc38f169707293bed556c6651049556f34b8c657e7bbd121a82893"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step17_record_preparation.py",
+      "bytes": 2133,
+      "sha256": "5b7216f0dd1206848bdd7f26e1459123fdd97aa7ad585375bec40528cf4b97dc"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step17_test_scale1600.py",
+      "bytes": 23301,
+      "sha256": "8936cb9c0a59625b1094015b6b1ecd85c4dd9fb8e89f408f1b4eb44a27d75e0e"
+    },
+    {
+      "path": "Faster R-CNN/workspace/scripts/step17_validate_metric_handoff.py",
+      "bytes": 3432,
+      "sha256": "cb6939f14a22c994355531123b71db732a3a2a4a1ba30df2f31f07d0196901e2"
+    },
+    {
+      "path": "README.md",
+      "bytes": 3375,
+      "sha256": "49336784e3f7671243490ec5217c3882f070dde310594ba0e827ed80c34e7e8d"
+    },
+    {
+      "path": "RT-DETR/workspace/configs/conductor_bl_v1.yaml",
+      "bytes": 146,
+      "sha256": "58d0484354a893ba4de25078e4dcaa5561163089fa7738733144bbbede23b48a"
+    },
+    {
+      "path": "RT-DETR/workspace/notes/RTD-BASE-001_failure_20260918_155319.md",
+      "bytes": 2571,
+      "sha256": "99b0fb912aaf5a656e4b929cd7b3911f676252eaf91ede114f3fd0a5a31df2a3"
+    },
+    {
+      "path": "RT-DETR/workspace/notes/RTD-SENS-IMGSZ1600-001.md",
+      "bytes": 4697,
+      "sha256": "c3451c1ac9777bc61cc4fbdfc11ea00d137eb49da8b17d5ca0a7187ff9354587"
+    },
+    {
+      "path": "RT-DETR/workspace/notes/rtdetr_single_run_report.md",
+      "bytes": 1754,
+      "sha256": "dd955dc691fb25dc6930a5eb58ddb464b2f96f5cd641c3381307cc4386b15024"
+    },
+    {
+      "path": "RT-DETR/workspace/runs/RTD-BASE-001-R1_20260918_172120/args.yaml",
+      "bytes": 2008,
+      "sha256": "7f269dfc643c4c859766f1c104f90ce76eeeb5bddfd148f94ddf14f4aef3564c"
+    },
+    {
+      "path": "RT-DETR/workspace/runs/RTD-BASE-001-R1_20260918_172120/formal_test_metrics.json",
+      "bytes": 664,
+      "sha256": "3074d18a4be53628d377c1188c5710f7d812dd560ebe37625ce828c0fdda3e86"
+    },
+    {
+      "path": "RT-DETR/workspace/runs/RTD-BASE-001-R1_20260918_172120/formal_val_metrics.json",
+      "bytes": 794,
+      "sha256": "655813e93a82be0d6afb1c86a7b555bc9098125628c3d8dc3fcc1683f9efaf7a"
+    },
+    {
+      "path": "RT-DETR/workspace/runs/RTD-BASE-001-R1_20260918_172120/results.csv",
+      "bytes": 11731,
+      "sha256": "438ad0973add06e05b52821e87bbf9e88dd3300d62318f0680bd75fe46d384bf"
+    },
+    {
+      "path": "RT-DETR/workspace/runs/RTD-SENS-IMGSZ1600-001/args.yaml",
+      "bytes": 1990,
+      "sha256": "aec4c20524b4c6dcd5e64e254b4fbfe0bbf86fbed70a426010ef452eceb16120"
+    },
+    {
+      "path": "RT-DETR/workspace/runs/RTD-SENS-IMGSZ1600-001/results.csv",
+      "bytes": 12468,
+      "sha256": "6e1abf48b95ff2877db18ba2afcd54ad3d3a572e842c9738c885f193e543f321"
+    },
+    {
+      "path": "RT-DETR/workspace/scripts/append_rtdetr_registry.mjs",
+      "bytes": 8929,
+      "sha256": "9b95278bc19ff0cd8b86b0c97abed1315b54e913eae97846a504fbafed028f4a"
+    },
+    {
+      "path": "RT-DETR/workspace/scripts/inspect_experiment_registry.mjs",
+      "bytes": 1225,
+      "sha256": "ba4802b6b8e8f4f255ef9cb78dc774c6f3610bfa3e7fc5a19fc6add2f3ff76de"
+    },
+    {
+      "path": "RT-DETR/workspace/scripts/inspect_registry_table.mjs",
+      "bytes": 511,
+      "sha256": "7720c4f473e86d53f0bc6b780caaae8b1019af74de24d1c5d9a517d88c754b55"
+    },
+    {
+      "path": "RT-DETR/workspace/scripts/train_rtdetr_formal_baseline.py",
+      "bytes": 37384,
+      "sha256": "2afbd1413e0f27179608bed4d171a5c8f988c616e16ed6d71c52685f717a728e"
+    },
+    {
+      "path": "baseline_analysis/01_baseline_comparison_report.md",
+      "bytes": 8380,
+      "sha256": "91a1c8a39978c7ab6ea734a4a72ca8978eaa182b821cc58c78b9c882cf960f61"
+    },
+    {
+      "path": "baseline_analysis/02_baseline_metrics_comparison.csv",
+      "bytes": 1889,
+      "sha256": "69cd95d3e0daddadbf22d445f2fe4fee10316f690a30212def33a2dcae116708"
+    },
+    {
+      "path": "baseline_analysis/03_bbox_size_summary.md",
+      "bytes": 23551,
+      "sha256": "7110aa1b2b67bef1e54cdb2a7a1b2d857649d5d86ab60135d72f97bb4419edb4"
+    },
+    {
+      "path": "baseline_analysis/07_environment_summary.md",
+      "bytes": 1159,
+      "sha256": "1cd5ba8cd7d016902578549b2be896c99984d8a7ae531a8b2524ecfa0badac5b"
+    },
+    {
+      "path": "baseline_analysis/08_teacher_package_file_list.md",
+      "bytes": 14468,
+      "sha256": "bead3ade6a21f00421083fc8bec942a4ce8ea9c8e10c47559178e953412c2301"
+    },
+    {
+      "path": "baseline_analysis/09_four_experiments_summary_for_teacher.md",
+      "bytes": 12928,
+      "sha256": "ca76d0b94a3e7e75a765b1052e10f7bd66193d3bf6f2fd41e33a27b30dd460d9"
+    },
+    {
+      "path": "baseline_analysis/10_all_experiments_metrics.csv",
+      "bytes": 114987,
+      "sha256": "ff192ba870910b83a455a9d648f384144f2a9af6bcf2cf00896846b4e9f4f657"
+    },
+    {
+      "path": "baseline_analysis/11_all_experiments_summary_for_teacher.md",
+      "bytes": 46671,
+      "sha256": "763d1c18127e5fd9080b366270b7505f2687cfab31668425f9521669257a7d81"
+    },
+    {
+      "path": "baseline_analysis/audit/registration_acceptance.json",
+      "bytes": 886,
+      "sha256": "ed410d4b2218f25a3a3008e927f31c19532adb7e0521614cc9eb8a5a765f62d5"
+    },
+    {
+      "path": "baseline_analysis/audit/run_status_index.json",
+      "bytes": 10450,
+      "sha256": "45078e02d222789abcf17cbb57af344108f9b9ae2d4b8e3f1e28ebe4403011ee"
+    },
+    {
+      "path": "baseline_analysis/audit/test_completion_review_20261014/fixed_test_queue.json",
+      "bytes": 3369,
+      "sha256": "8798495cca10d30e7d24c8fa157e1aad1fda00d6af97502064a5c0a13158ffe3"
+    },
+    {
+      "path": "baseline_analysis/audit/test_completion_review_20261014/test_completion_progress.json",
+      "bytes": 2754,
+      "sha256": "7913f777ecfafd540481826320a90419cf2f0602102b88ca0014dc88343b9dd8"
+    },
+    {
+      "path": "baseline_analysis/audit/test_usage_review_20261017/verified_status.json",
+      "bytes": 10408,
+      "sha256": "07ec14b574634d8e98d7c1c5c45a240a6ec321235244f23d663ab872aad0b9e9"
+    },
+    {
+      "path": "baseline_analysis/scripts/audit_test_usage_status.py",
+      "bytes": 2973,
+      "sha256": "2992715b6a707d208df0d9c4312df2434f7517413996ec8d9928d6836efc4307"
+    },
+    {
+      "path": "baseline_analysis/scripts/build_experiment_workbook.mjs",
+      "bytes": 10097,
+      "sha256": "6e22f836fef5418182efed04a9c37654f6d859f6b069cf69ec154594482bcd96"
+    },
+    {
+      "path": "baseline_analysis/scripts/build_teacher_simple.mjs",
+      "bytes": 5959,
+      "sha256": "04aeabf894c0b6b9ac2d78fd317bd7044636b7f7917629dcfa4986110e39d10f"
+    },
+    {
+      "path": "baseline_analysis/scripts/prepare_teacher_simple.py",
+      "bytes": 4488,
+      "sha256": "2edb19c981db0958db46ebe6fc704da471dff12c2d4a17c657357f8cb9f8adb1"
+    },
+    {
+      "path": "baseline_analysis/scripts/refresh_experiment_records.py",
+      "bytes": 92151,
+      "sha256": "5aa82b0a4e1f6760231c9fcecba6d1fa795d0212491d4967f515cfc5d783575a"
+    },
+    {
+      "path": "baseline_analysis/scripts/verify_teacher_simple.py",
+      "bytes": 3682,
+      "sha256": "2d1a4f612da2c832198c95aa69173bb884aa35e08c42bc9b1c3991f64a1294a7"
+    },
+    {
+      "path": "docs/版本管理入门.md",
+      "bytes": 5445,
+      "sha256": "eed76aa7a44470bf7c159fb69033120ffbc1db74ae8485d730a6f7d1add5484a"
+    },
+    {
+      "path": "provenance/local_dependencies.json",
+      "bytes": 2051,
+      "sha256": "21eed5a25f2efe0cc76e236518e58073a4f0173642651deb833fc33fe80781d0"
+    },
+    {
+      "path": "yolo11/workspace/configs/conductor_bl_v1.yaml",
+      "bytes": 146,
+      "sha256": "58d0484354a893ba4de25078e4dcaa5561163089fa7738733144bbbede23b48a"
+    },
+    {
+      "path": "yolo11/workspace/configs/formal_baseline_protocol.yaml",
+      "bytes": 2025,
+      "sha256": "76a529823c2ed5b585ce972daf6bb0f7c6030371ed9e81c145f87c01fdd4e1c5"
+    },
+    {
+      "path": "yolo11/workspace/configs/step18_yolo1600_test.yaml",
+      "bytes": 383,
+      "sha256": "d98f628336df52b201cd86f308a6e2ad169d4e3e2850f3c0c27e3e6d4a9a98ba"
+    },
+    {
+      "path": "yolo11/workspace/configs/torch_constraints.txt",
+      "bytes": 45,
+      "sha256": "8aa3e5db4c49e3198501f1197de716a8d07b0c24e652bd58dda2940901960502"
+    },
+    {
+      "path": "yolo11/workspace/configs/yolo11s_p2.yaml",
+      "bytes": 2196,
+      "sha256": "6f39edc431bc0453404a74bfefe0cb63b7fa252fb766a9d94767d870d192d1b9"
+    },
+    {
+      "path": "yolo11/workspace/notes/STEP18_yolo1600_final_test.txt",
+      "bytes": 5180,
+      "sha256": "437ec547ec93b27411619b5af98b4c9ff5d55a0cb871e52877d570fbf6667069"
+    },
+    {
+      "path": "yolo11/workspace/notes/Y11-ARCH-001_architecture_preflight.md",
+      "bytes": 12324,
+      "sha256": "77229281cb50749cc0884d219b1edba5f24bd246a6cf4c3b5827b1b03977c18f"
+    },
+    {
+      "path": "yolo11/workspace/notes/Y11-ARCH-001_preflight_diff.md",
+      "bytes": 2011,
+      "sha256": "d3738a5562fb5d05ee8078ee0a28c0e8e7d634e1018fad7e3dcaec8ad5356dfb"
+    },
+    {
+      "path": "yolo11/workspace/notes/Y11-BASE-001_failed_report_20260917.md",
+      "bytes": 3044,
+      "sha256": "8ffbea9fa6b491524bd1954b5761b21e3e13188a1f2ebb7610eb95ae9696e4aa"
+    },
+    {
+      "path": "yolo11/workspace/notes/Y11-DIAG-002_handoff_to_gpt.md",
+      "bytes": 1225,
+      "sha256": "ee5de1cc3d47af814edf67612cfef1edff3230a1ebd713ff3465ceece12e88a6"
+    },
+    {
+      "path": "yolo11/workspace/notes/Y11-SENS-IMGSZ1600-001.md",
+      "bytes": 4116,
+      "sha256": "2691de0a3533c86c23661ffa24f225dd27debd7d9823b68c7a7a4af644c5f205"
+    },
+    {
+      "path": "yolo11/workspace/notes/Y11-TUNE-001_preflight_diff.md",
+      "bytes": 2026,
+      "sha256": "281a27496754f1de5cc55b328cdd74e46feaf50886f2aeb1935a27bfe2327c45"
+    },
+    {
+      "path": "yolo11/workspace/notes/Y11-TUNE-002_preflight_diff.md",
+      "bytes": 1873,
+      "sha256": "90188aeeb851a4bf84ee16b3b449b955d828639320d1e9d050f65eee807aab0d"
+    },
+    {
+      "path": "yolo11/workspace/notes/bbox_size_audit.md",
+      "bytes": 2425,
+      "sha256": "55717c159f4718ef3681e8be595620910f713c623064440d7230daf3c8801e96"
+    },
+    {
+      "path": "yolo11/workspace/notes/e30_vs_e100_convergence_report.md",
+      "bytes": 5621,
+      "sha256": "9d6b15b657ed3561efdeb8ee7a7713f430bec1c7e6b650087cfe8a7c2b9b7307"
+    },
+    {
+      "path": "yolo11/workspace/notes/formal_baseline_changes.patch",
+      "bytes": 79556,
+      "sha256": "c05016cb9f505e91e9f3671e0c504bd66f3466117c2608a0196e6e2eed45516c"
+    },
+    {
+      "path": "yolo11/workspace/notes/formal_baseline_plan_change_20260917.md",
+      "bytes": 1860,
+      "sha256": "7e3da6bccb64807a6ea6237c216c2ac70c34dbca3385f4f5f769b7db4ae19f78"
+    },
+    {
+      "path": "yolo11/workspace/notes/formal_baseline_preparation_report.md",
+      "bytes": 15831,
+      "sha256": "a4b08c0d0cb7a14e852819764d458cabeabdafa1d8796fc7c98db90e19eaef0d"
+    },
+    {
+      "path": "yolo11/workspace/notes/formal_baseline_single_run_changes_20260917.patch",
+      "bytes": 84339,
+      "sha256": "33421da8c8ee7da7a91b578fd210a279ba793d76371a26cbd4875d5f284587ff"
+    },
+    {
+      "path": "yolo11/workspace/notes/formal_baseline_single_run_preparation_20260917.md",
+      "bytes": 9762,
+      "sha256": "30950cd8709540f7705b74627cd5a574f155f23397b943e26e356a47f5df4fed"
+    },
+    {
+      "path": "yolo11/workspace/notes/formal_baseline_single_run_report.md",
+      "bytes": 3182,
+      "sha256": "a23ed92d7b616f57ccf8abf15bf0a824c91b5639ed885be5969adbca626a86c4"
+    },
+    {
+      "path": "yolo11/workspace/notes/mosaic1_vs_mosaic0_training_report.md",
+      "bytes": 4440,
+      "sha256": "b16613258b3ecddf71204695b64310b0f5a91d748754dc4fc34750ab7e16d7ad"
+    },
+    {
+      "path": "yolo11/workspace/notes/mosaic_ablation_plan.md",
+      "bytes": 2210,
+      "sha256": "a4468cd5e6083ea703d4631191bcd540fd2c29126b143d645e05684f7f69ff32"
+    },
+    {
+      "path": "yolo11/workspace/notes/mosaic_effect_audit.md",
+      "bytes": 3884,
+      "sha256": "e993bd303753236658531a45f0cfd505d4eed27248cf014ec8141a4678d3acfe"
+    },
+    {
+      "path": "yolo11/workspace/notes/mosaic_pipeline_notes.md",
+      "bytes": 4473,
+      "sha256": "5f0f6460ec408f44cdbe81b3aa9ba706e3f1f7bece803a0f4f84322661ac6611"
+    },
+    {
+      "path": "yolo11/workspace/notes/nbs64_vs_nbs16_report.md",
+      "bytes": 6579,
+      "sha256": "8d7e17fa07da880c4dd205fb25293e7c4a84ea547d36ce256180192f03cd3371"
+    },
+    {
+      "path": "yolo11/workspace/notes/p3_vs_p2_structure_report.md",
+      "bytes": 4420,
+      "sha256": "b3f303a1545a5bb7305af590fec43df4de3af23d02c713fb2ec6be819305f299"
+    },
+    {
+      "path": "yolo11/workspace/notes/setup_decisions.md",
+      "bytes": 3018,
+      "sha256": "80939bb0932849f8098f8b29f57980af65671b920684cd9cfbd62293a7df1c73"
+    },
+    {
+      "path": "yolo11/workspace/notes/smoke_test_report.md",
+      "bytes": 12286,
+      "sha256": "c1789b3707f5ec6613219e58c9977de25a704190638faf2847ea6f5e3330b0b9"
+    },
+    {
+      "path": "yolo11/workspace/notes/yolo11s_diagnostic_report.md",
+      "bytes": 8320,
+      "sha256": "0815338579ebaabaf7b46cb0f7d54dd12ae93ac8a10719beb133ede0ad045c06"
+    },
+    {
+      "path": "yolo11/workspace/runs/Y11-BASE-001-R1_20260917_203044_883451/args.yaml",
+      "bytes": 2016,
+      "sha256": "d858c0ed8e0d37b5dc7aa73e8f5a6aed64fd98c8948b11a9cfc0fd60630f0ce5"
+    },
+    {
+      "path": "yolo11/workspace/runs/Y11-BASE-001-R1_20260917_203044_883451/explicit_training_overrides.yaml",
+      "bytes": 513,
+      "sha256": "bae818fa6733cc97a323c0a3385a6a2c79a22a4e169aeff41cf0d5ca82077311"
+    },
+    {
+      "path": "yolo11/workspace/runs/Y11-BASE-001-R1_20260917_203044_883451/resolved_protocol_diff.txt",
+      "bytes": 189,
+      "sha256": "a22955c11e4afce85ab022a734fbeda00a0e66b0aa4fd4807f5932058dd937f8"
+    },
+    {
+      "path": "yolo11/workspace/runs/Y11-BASE-001-R1_20260917_203044_883451/results.csv",
+      "bytes": 12459,
+      "sha256": "b4e45b3fc77ed4f2c7fe552950221fe141f3535ee3a5fde47a5a819238e4def2"
+    },
+    {
+      "path": "yolo11/workspace/runs/Y11-SENS-IMGSZ1600-001/args.yaml",
+      "bytes": 1984,
+      "sha256": "25414a26e106610f6775fd33feb4ccdbabe887b6dba7ce4dbbca5f2dd2162c78"
+    },
+    {
+      "path": "yolo11/workspace/runs/Y11-SENS-IMGSZ1600-001/results.csv",
+      "bytes": 12568,
+      "sha256": "fe1622d4a461202930eb55e1fbe5d19019c543f06bbbdd2f504001e35c5b1178"
+    },
+    {
+      "path": "yolo11/workspace/scripts/analyze_mosaic_training_comparison.py",
+      "bytes": 18222,
+      "sha256": "f286f78948cc8881782405cc9f6ede0b48560a1218ee746232c8a1dfa8c36e79"
+    },
+    {
+      "path": "yolo11/workspace/scripts/analyze_nbs16_comparison.py",
+      "bytes": 27362,
+      "sha256": "7a2b9283974c369ab7d258031d93cdfb12a555f7027b77fcacce280e78909da0"
+    },
+    {
+      "path": "yolo11/workspace/scripts/analyze_y11_arch_001.py",
+      "bytes": 23062,
+      "sha256": "498827bf342637cde1d2689b96285120192cbfd5ada2201eabed52202dd83933"
+    },
+    {
+      "path": "yolo11/workspace/scripts/analyze_y11_tune_002_convergence.py",
+      "bytes": 23055,
+      "sha256": "b7965277cf969a1d97a616ad1563cf025bf3c3b520133124c01bdcdb450a01b1"
+    },
+    {
+      "path": "yolo11/workspace/scripts/analyze_yolo11s_diagnostic.py",
+      "bytes": 20302,
+      "sha256": "a1414916f3b8327158b3b5b30487b4a963dea83abc230eda8749147e4f662ce6"
+    },
+    {
+      "path": "yolo11/workspace/scripts/audit_bbox_sizes.py",
+      "bytes": 14971,
+      "sha256": "bb2498a467a483d01f7381bffd6d4c863a1d5be130b833914328c31461ac6bb2"
+    },
+    {
+      "path": "yolo11/workspace/scripts/audit_mosaic_effect.py",
+      "bytes": 31357,
+      "sha256": "85fe9820b22ab23174ccab5875e5bc950b73a0fcad9e1fc1412cd3496e676ab6"
+    },
+    {
+      "path": "yolo11/workspace/scripts/build_experiment_registry.mjs",
+      "bytes": 32240,
+      "sha256": "84cdb862fa57ee587e67b2ea9a6f170512c63625641a23ac291be2e09e5ff309"
+    },
+    {
+      "path": "yolo11/workspace/scripts/build_gpt_handoff.py",
+      "bytes": 11815,
+      "sha256": "e8f2005f788e1121176d5cacbed6ec5400a29bada64a289a5afa18f6d79a62ed"
+    },
+    {
+      "path": "yolo11/workspace/scripts/check_dataset.py",
+      "bytes": 8915,
+      "sha256": "1e24ce88a669337bcc783e2a8a356fadad1521d9f19b64e82ffeb88ed3b79bdc"
+    },
+    {
+      "path": "yolo11/workspace/scripts/configure_settings.py",
+      "bytes": 740,
+      "sha256": "2865658c287a8eeae65406565896b748aa4a1d72d02673a91896547d0b44cc0f"
+    },
+    {
+      "path": "yolo11/workspace/scripts/finalize_smoke_report.py",
+      "bytes": 4151,
+      "sha256": "f21c0e7d650e26d2da77b510b368d03ad19720dfccbfc8ac0b5220cea23d547f"
+    },
+    {
+      "path": "yolo11/workspace/scripts/formal_baseline_registry.py",
+      "bytes": 11488,
+      "sha256": "fb53498160784728fb7f78d5c2940509c98123d9c78f3dbcd25a75e5ecbe8e2a"
+    },
+    {
+      "path": "yolo11/workspace/scripts/inspect_environment.py",
+      "bytes": 3807,
+      "sha256": "d43c0354314d40472e29ba327a808b48d5cd7a1f487d60b4758a7dc4d913cb8e"
+    },
+    {
+      "path": "yolo11/workspace/scripts/prepare_source.py",
+      "bytes": 2236,
+      "sha256": "b8ff4f16b91c85d63ee53978ff20dc47672f0cdaaab80643db5708c354175572"
+    },
+    {
+      "path": "yolo11/workspace/scripts/readonly_dataset.py",
+      "bytes": 2735,
+      "sha256": "dd43d568453e058e530b051d756bb8a8ff7f0e3c2ebc5ab5ffbf58fd29a25aca"
+    },
+    {
+      "path": "yolo11/workspace/scripts/run_formal_baseline.py",
+      "bytes": 53737,
+      "sha256": "60864b4380407b6193f379cd765f09cef0028f77e5e2a47f196ef8b3a0e45253"
+    },
+    {
+      "path": "yolo11/workspace/scripts/run_smoke.py",
+      "bytes": 1173,
+      "sha256": "ea442889e3ba1b51f16c6ee643ff3b4caa2b023d8360500427da0caa00dd5c23"
+    },
+    {
+      "path": "yolo11/workspace/scripts/run_step18_test_yolo1600.cmd",
+      "bytes": 683,
+      "sha256": "3755dc5eb0ed453834bd6a45795820d471d0441a1429fe1fea26f96feee05ee0"
+    },
+    {
+      "path": "yolo11/workspace/scripts/run_yolo11s_diagnostic.py",
+      "bytes": 1280,
+      "sha256": "b6d9e2ba0fa330dc13eee33142c3458c382997c6acca63c9f3d349b47cd06be9"
+    },
+    {
+      "path": "yolo11/workspace/scripts/run_yolo11s_nbs16_diagnostic.py",
+      "bytes": 1344,
+      "sha256": "7021894e7662f88490a3da37b57efb3353abc8a15b69ca643c7fd510eb56fef7"
+    },
+    {
+      "path": "yolo11/workspace/scripts/step18_probe_env.py",
+      "bytes": 1750,
+      "sha256": "87e3235e62e7c4ecd341f6948924c8b6ee7749807eac5d86adfd91afc01f66cd"
+    },
+    {
+      "path": "yolo11/workspace/scripts/step18_record_preparation.py",
+      "bytes": 2016,
+      "sha256": "8bd85892ba48b7369f3a4fc5d2255228ed54c1f982ba1ee08bbad2e943de5525"
+    },
+    {
+      "path": "yolo11/workspace/scripts/step18_test_yolo1600.py",
+      "bytes": 17419,
+      "sha256": "d985eb113ce8a799efc3e46c8d67cba4c94c8acc228c90432c51d24900de98cb"
+    },
+    {
+      "path": "yolo11/workspace/scripts/step18_validate_export_api.py",
+      "bytes": 2225,
+      "sha256": "8d0e6f75e94ce811454b813bce6c40d3f7152061a2c44164fe068a395630acdd"
+    },
+    {
+      "path": "yolo11/workspace/scripts/step18_yolo1600_evidence.py",
+      "bytes": 4198,
+      "sha256": "0df6d3487b294ae2d46ce12a29ec9c007b5992fc8428c666671340b8a5a259d8"
+    },
+    {
+      "path": "yolo11/workspace/scripts/summarize_formal_baseline.py",
+      "bytes": 5253,
+      "sha256": "629a4a7f5897cbacc2116f89631af9cc4d419ad7048b0a268ae88b0f17747dcc"
+    },
+    {
+      "path": "yolo11/workspace/scripts/test_formal_baseline.py",
+      "bytes": 24249,
+      "sha256": "01c49dd5cbf86ae692b24e27e75d7e73dea92a6c38960d07a6e04e33def5db21"
+    },
+    {
+      "path": "yolo11/workspace/scripts/train_yolo11.py",
+      "bytes": 8001,
+      "sha256": "5e82f053943bc5ee0b5511f15f9beac27382100d278f336afa56ddd706881f3e"
+    },
+    {
+      "path": "yolo11/workspace/scripts/train_yolo11_diagnostic.py",
+      "bytes": 11957,
+      "sha256": "f740cfee3ec3cd74e76c5c9e2747956658207f1038c695f40917287e6bd0431b"
+    },
+    {
+      "path": "yolo11/workspace/scripts/train_yolo11_e100_convergence.py",
+      "bytes": 13966,
+      "sha256": "22f214e1c73c1b90a5e18a7579df4a2580194dff63d3e3065c0bb51485cf066b"
+    },
+    {
+      "path": "yolo11/workspace/scripts/train_yolo11_mosaic0_diagnostic.py",
+      "bytes": 11093,
+      "sha256": "0823aa4b8899dcf3e0979e8209b74b8485cfcf98b170328428b6d0b66e9e0bef"
+    },
+    {
+      "path": "yolo11/workspace/scripts/train_yolo11_nbs16_diagnostic.py",
+      "bytes": 15563,
+      "sha256": "77a863073cf20a1068261e4f6b143d78d2afcdf39e0865f5f3740b17b1ba61b2"
+    },
+    {
+      "path": "yolo11/workspace/scripts/train_yolo11_p2_diagnostic.py",
+      "bytes": 28400,
+      "sha256": "cb5e22095f00e25fb6303e3b26570359a5d28ff069635cc19d040f0dd7e41a8f"
+    },
+    {
+      "path": "yolo11/workspace/scripts/verify_write_guard.py",
+      "bytes": 1314,
+      "sha256": "821ded00e78d4fc05938117369e2162020d971a1d7030d289294b0fa8e924bd0"
+    }
+  ]
+}

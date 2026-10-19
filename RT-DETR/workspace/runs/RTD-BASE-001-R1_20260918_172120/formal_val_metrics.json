@@ -1,0 +1,29 @@
+{
+  "overall": {
+    "precision": 0.5082738564873307,
+    "recall": 0.017857142857142856,
+    "map50": 0.01819850931887037,
+    "map50_95": 0.005387516172454418
+  },
+  "classes": {
+    "broken": {
+      "precision": 1.0,
+      "recall": 0.0,
+      "map50": 0.0,
+      "map50_95": 0.0
+    },
+    "loose": {
+      "precision": 0.016547712974661455,
+      "recall": 0.03571428571428571,
+      "map50": 0.03639701863774074,
+      "map50_95": 0.010775032344908836
+    }
+  },
+  "speed_ms_per_image": {
+    "preprocess": 4.336573913663059,
+    "inference": 31.508969565671265,
+    "loss": 0.0005304350254490323,
+    "postprocess": 0.2216173895209542
+  },
+  "save_dir": "D:\\小论文\\model_projects\\RT-DETR\\workspace\\runs\\RTD-BASE-001-R1_20260918_172120\\formal_val"
+}

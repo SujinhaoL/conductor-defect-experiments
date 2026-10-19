@@ -1,0 +1,277 @@
+{
+  "review_date_asia_shanghai": "2026-10-17",
+  "scope": "Nine recorded formal experiments; original test split: 23 images / 36 boxes",
+  "completed_test_experiments": 7,
+  "not_tested_experiments": 2,
+  "diagnostic_experiments": [
+    {
+      "experiment_id": "FRCNN-DEBUG-OVERFIT-8",
+      "status": "DIAGNOSTIC_ONLY",
+      "source": "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\runs\\FRCNN-DEBUG-OVERFIT-8\\step06_24506_3904"
+    },
+    {
+      "experiment_id": "FRCNN-DIAG-RPNROI-TRAIN8",
+      "status": "DIAGNOSTIC_REVIEWED",
+      "run_id": "step12_24867_6686",
+      "source": "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\runs\\FRCNN-DIAG-RPNROI-TRAIN8\\step12_24867_6686",
+      "acceptance": "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\audit\\step12_review\\acceptance.json",
+      "note": "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\notes\\FRCNN-DIAG-RPNROI-TRAIN8.md",
+      "evaluation_scope": "original train8 / 15 GT; epoch100 fit diagnosis, not val/test",
+      "models": [
+        {
+          "label": "baseline800",
+          "rpn_covered": 8,
+          "roi_before_score_covered": 8,
+          "final_covered": 8,
+          "flags": {
+            "NO_RPN_IOU50": 7,
+            "FINAL_COVERED": 8
+          },
+          "missing_ids": [
+            6,
+            18,
+            87,
+            122,
+            123,
+            124,
+            160
+          ],
+          "zero_positive_anchor_ids": [
+            6,
+            18,
+            87,
+            88,
+            122,
+            123,
+            124,
+            160
+          ]
+        },
+        {
+          "label": "scale1280",
+          "rpn_covered": 11,
+          "roi_before_score_covered": 11,
+          "final_covered": 11,
+          "flags": {
+            "FINAL_COVERED": 11,
+            "NO_RPN_IOU50": 4
+          },
+          "missing_ids": [
+            87,
+            123,
+            124,
+            160
+          ],
+          "zero_positive_anchor_ids": [
+            87,
+            123,
+            124,
+            160
+          ]
+        }
+      ]
+    }
+  ],
+  "sources": {
+    "D:\\小论文\\model_projects\\baseline_analysis\\audit\\run_status_index.json": "45078e02d222789abcf17cbb57af344108f9b9ae2d4b8e3f1e28ebe4403011ee",
+    "D:\\小论文\\model_projects\\baseline_analysis\\audit\\teacher_simple_plan.json": "fceba6de350dd4c0b3a66b57396df03a3c006777741e74d4b333d1d8c9ed5f54"
+  },
+  "runs": [
+    {
+      "experiment_id": "Y11-BASE-001-R1",
+      "run_id": "Y11-BASE-001-R1_20260917_203044_883451",
+      "model": "YOLO11s",
+      "input_size": "1280",
+      "train_images": 107,
+      "selected_epoch": 15,
+      "test_status": "COMPLETED_ONCE",
+      "source": "D:\\小论文\\model_projects\\yolo11\\workspace\\runs\\Y11-BASE-001-R1_20260917_203044_883451",
+      "evaluation_id": "EV-62e95ae48182ad81",
+      "metric_source": "D:\\小论文\\model_projects\\yolo11\\workspace\\logs\\Y11-BASE-001-R1_20260917_203044_883451\\test_metrics.json",
+      "metric_sha256": "1bc959ad5f1ed06379b2fb7fe2acee799343600fdade3738f662aeba62f08281",
+      "saved_metric_keys": [
+        "overall",
+        "per_class"
+      ]
+    },
+    {
+      "experiment_id": "RTD-BASE-001-R1",
+      "run_id": "RTD-BASE-001-R1_20260918_172120",
+      "model": "RT-DETR-L",
+      "input_size": "1280",
+      "train_images": 107,
+      "selected_epoch": 71,
+      "test_status": "COMPLETED_ONCE",
+      "source": "D:\\小论文\\model_projects\\RT-DETR\\workspace\\runs\\RTD-BASE-001-R1_20260918_172120",
+      "evaluation_id": "EV-c228a7b3cccdebdd",
+      "metric_source": "D:\\小论文\\model_projects\\RT-DETR\\workspace\\runs\\RTD-BASE-001-R1_20260918_172120\\formal_test_metrics.json",
+      "metric_sha256": "3074d18a4be53628d377c1188c5710f7d812dd560ebe37625ce828c0fdda3e86",
+      "saved_metric_keys": [
+        "overall",
+        "classes",
+        "speed_ms_per_image",
+        "save_dir"
+      ]
+    },
+    {
+      "experiment_id": "Y11-SENS-IMGSZ1600-001",
+      "run_id": "Y11-SENS-IMGSZ1600-001",
+      "model": "YOLO11s",
+      "input_size": "1600",
+      "train_images": 107,
+      "selected_epoch": 54,
+      "test_status": "NOT_EVALUATED_BY_DESIGN",
+      "source": "D:\\小论文\\model_projects\\yolo11\\workspace\\runs\\Y11-SENS-IMGSZ1600-001",
+      "evaluation_id": null,
+      "metric_source": null,
+      "test_named_paths_in_run": [],
+      "supplemental_runtime_logs": []
+    },
+    {
+      "experiment_id": "RTD-SENS-IMGSZ1600-001",
+      "run_id": "RTD-SENS-IMGSZ1600-001",
+      "model": "RT-DETR-L",
+      "input_size": "1600",
+      "train_images": 107,
+      "selected_epoch": 42,
+      "test_status": "NOT_EVALUATED_BY_DESIGN",
+      "source": "D:\\小论文\\model_projects\\RT-DETR\\workspace\\runs\\RTD-SENS-IMGSZ1600-001",
+      "evaluation_id": null,
+      "metric_source": null,
+      "test_named_paths_in_run": [],
+      "supplemental_runtime_logs": []
+    },
+    {
+      "experiment_id": "FRCNN-R50FPN-VAL-001",
+      "run_id": "step07_235_27043",
+      "model": "Faster R-CNN R50-FPN",
+      "input_size": "1333x800 bounds",
+      "train_images": 107,
+      "selected_epoch": 66,
+      "test_status": "COMPLETED_REVIEWED",
+      "source": "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\runs\\FRCNN-R50FPN-VAL-001\\step07_235_27043",
+      "evaluation_id": "EV-0949e68c6341c66c",
+      "metric_source": "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\runs\\FRCNN-R50FPN-VAL-001\\step07_235_27043\\test_selected_epoch66\\step08_31489_5707\\test_metrics.json",
+      "metric_sha256": "5dac98074b0ef47c04a8876df2ae757403b6096e07fc4a33fdaf4e2da8b430f2",
+      "saved_metric_keys": [
+        "scope",
+        "mAP50_95",
+        "mAP50",
+        "AR100",
+        "per_class",
+        "image_ids",
+        "prediction_count",
+        "coco_max_dets",
+        "iou_thresholds",
+        "area_ranges",
+        "use_categories"
+      ]
+    },
+    {
+      "experiment_id": "FRCNN-R50FPN-MERGE130-001",
+      "run_id": "step09_109_20338",
+      "model": "Faster R-CNN R50-FPN",
+      "input_size": "1333x800 bounds",
+      "train_images": 130,
+      "selected_epoch": 100,
+      "test_status": "COMPLETED_REVIEWED",
+      "source": "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\runs\\FRCNN-R50FPN-MERGE130-001\\step09_109_20338",
+      "evaluation_id": "EV-be4f62d04282ccb5",
+      "metric_source": "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\runs\\FRCNN-R50FPN-MERGE130-001\\step09_109_20338\\test_selected_epoch100\\step10_13778_21846\\test_metrics.json",
+      "metric_sha256": "79792faa8468ee44346eab5f4671ee4d3601277d4e473b29804a0a32c95f26e7",
+      "saved_metric_keys": [
+        "scope",
+        "mAP50_95",
+        "mAP50",
+        "AR100",
+        "per_class",
+        "image_ids",
+        "prediction_count",
+        "coco_max_dets",
+        "iou_thresholds",
+        "area_ranges",
+        "use_categories"
+      ]
+    },
+    {
+      "experiment_id": "FRCNN-R50FPN-SCALE1280-VAL-001",
+      "run_id": "step11_31112_14115",
+      "model": "Faster R-CNN R50-FPN",
+      "input_size": "2133x1280 bounds",
+      "train_images": 107,
+      "selected_epoch": 5,
+      "test_status": "COMPLETED_REVIEWED",
+      "source": "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\runs\\FRCNN-R50FPN-SCALE1280-VAL-001\\step11_31112_14115",
+      "evaluation_id": "EV-f55e1b0a9e76409c",
+      "metric_source": "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\runs\\FRCNN-R50FPN-SCALE1280-VAL-001\\step11_31112_14115\\test_selected_epoch5\\step15_23467_7311\\test_metrics.json",
+      "metric_sha256": "47bb9e7323706f72d1d6d16e9da5a17672c501f6de71ed14ae8520bc7ce34a06",
+      "saved_metric_keys": [
+        "scope",
+        "mAP50_95",
+        "mAP50",
+        "AR100",
+        "per_class",
+        "image_ids",
+        "prediction_count",
+        "coco_max_dets",
+        "iou_thresholds",
+        "area_ranges",
+        "use_categories"
+      ]
+    },
+    {
+      "experiment_id": "FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001",
+      "run_id": "step13_27622_23378",
+      "model": "Faster R-CNN R50-FPN",
+      "input_size": "2133x1280 bounds",
+      "train_images": 107,
+      "selected_epoch": 15,
+      "test_status": "COMPLETED_REVIEWED",
+      "source": "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\runs\\FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001\\step13_27622_23378",
+      "evaluation_id": "EV-d19b474c5188b02f",
+      "metric_source": "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\runs\\FRCNN-R50FPN-SCALE1280-ANCHOR4-VAL-001\\step13_27622_23378\\test_selected_epoch15\\step16_27428_3464\\test_metrics.json",
+      "metric_sha256": "bbaa97e361351feb84c291e8acd0b89530ea944c8f35a474387f7123fff0b5a4",
+      "saved_metric_keys": [
+        "scope",
+        "mAP50_95",
+        "mAP50",
+        "AR100",
+        "per_class",
+        "image_ids",
+        "prediction_count",
+        "coco_max_dets",
+        "iou_thresholds",
+        "area_ranges",
+        "use_categories"
+      ]
+    },
+    {
+      "experiment_id": "FRCNN-R50FPN-SCALE1600-VAL-001",
+      "run_id": "step14_3575_9657",
+      "model": "Faster R-CNN R50-FPN",
+      "input_size": "2666x1600 bounds",
+      "train_images": 107,
+      "selected_epoch": 12,
+      "test_status": "COMPLETED_REVIEWED",
+      "source": "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\runs\\FRCNN-R50FPN-SCALE1600-VAL-001\\step14_3575_9657",
+      "evaluation_id": "EV-15c135fb2e1d0e9e",
+      "metric_source": "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\runs\\FRCNN-R50FPN-SCALE1600-VAL-001\\step14_3575_9657\\test_selected_epoch12\\step17_23519_12608\\test_metrics.json",
+      "metric_sha256": "7b458f42874b7f43a558fc9456788d15540f86d7ae3bd81fde2ae510f7518b04",
+      "saved_metric_keys": [
+        "scope",
+        "mAP50_95",
+        "mAP50",
+        "AR100",
+        "per_class",
+        "image_ids",
+        "prediction_count",
+        "coco_max_dets",
+        "iou_thresholds",
+        "area_ranges",
+        "use_categories"
+      ]
+    }
+  ],
+  "model_inference_started": false,
+  "training_started": false
+}

@@ -1,0 +1,56 @@
+STEP09 / FRCNN-R50FPN-MERGE130-001 / user-run training only
+Prepared2026-10-12. Agent does not start training, overfit or test inference.
+
+目的
+执行原计划阶段三：原train107与val23合并为130图训练，原test23保留。
+这不是根据VAL-001 test低分新增的调参实验。训练设置在STEP07训练前的pretraining_record中已固定。
+与VAL-001对照时训练规模改变，不能当成严格同规模比较。
+原val已用于训练，val字段为不适用，不报告它的独立验证成绩。
+
+数据
+D:\小论文\conductor_defect_dataset\03_coco_dataset\annotations\instances_trainval.json
+130图片，205框（broken48、loose157），严格等于原train+val，不重划、不新增trainval图片副本。
+JSON引用images/train及images/val。COCO1/2→模型0/1（broken/loose）；num_classes=2。
+原test23图/36框（broken8、loose28）不进入本次训练、预测或选模。
+
+固定设置
+从同一官方完整COCO detector checkpoint重新初始化，不接着VAL-001 epoch66/epoch100继续训练，不resume。
+Faster R-CNN R50-FPN；Resize边界(1333,800)、keep_ratio=True、flip0.5；官方anchor和后处理沿用。
+100epoch、batch2、workers0、FP32、seed42、deterministic=True。
+SGD lr0.0025、momentum0.9、weight_decay0.0001；warmup500iter/start_factor0.001；milestones67/92/gamma0.1。
+130图/batch2，每轮65次更新，合计6500；VAL-001为5400，100轮计算量并不相同。
+禁用val/test dataloader、loop、evaluator；不创建best验证checkpoint。完成后只选epoch_100.pth。
+保存epoch0/25/50/75/100固定train8预测，仅作过程观察，不用其拟合分数挑epoch。
+保存总损失、RPN/ROI损失、实际学习率、更新数、时间和显存。非有限训练损失会停止并保留证据。
+80→2类仍有四个输出层尺寸变化；before_train审计344个兼容权重，确认完整COCO预训练确实加载。
+
+完整路径
+配置：D:\小论文\model_projects\Faster R-CNN\workspace\configs\frcnn_r50fpn_merge130_001.py
+训练入口：D:\小论文\model_projects\Faster R-CNN\workspace\scripts\run_step09_train_merge130.cmd
+脚本：D:\小论文\model_projects\Faster R-CNN\workspace\scripts\step09_run_merge130.py
+记录Hook：D:\小论文\model_projects\Faster R-CNN\workspace\scripts\frcnn_merge130_hooks.py
+独立Python：D:\小论文\model_projects\Faster R-CNN\.venv\Scripts\python.exe
+原始结果：D:\小论文\model_projects\Faster R-CNN\workspace\runs\FRCNN-R50FPN-MERGE130-001\step09_<随机运行编号>
+完整终端日志：D:\小论文\model_projects\Faster R-CNN\workspace\logs\step09_<同一随机编号>\step09_console.txt
+训练子进程日志同目录train_console.log；状态step09_manifest.json保留失败/中断。
+模型/data/代码/环境/命令/哈希：运行目录pretraining_record.json、resolved_merge130_001.py、code/、requirements_freeze.txt。
+训练结束后刷新CSV/Excel/教师报告/本实验说明；原始权重和图片不为整理重复复制。
+单实验说明：D:\小论文\model_projects\Faster R-CNN\workspace\notes\FRCNN-R50FPN-MERGE130-001.md
+
+用户cmd命令（关闭总Excel避免登记写入占用）
+cd /d "D:\小论文\model_projects\Faster R-CNN"
+call "D:\小论文\model_projects\Faster R-CNN\workspace\scripts\run_step09_train_merge130.cmd"
+
+预期
+STEP09_PREPARATION_PASS: train=130 ... val=NONE test_reserved=23 ... updates=6500
+MERGE130_OFFICIAL_COCO_WEIGHT_LOAD_PASS: matched=344 expected_new_outputs=4; fresh initialization
+Epoch(train)[1] ... -> Epoch(train)[100] ...
+MERGE130_100_EPOCHS_6500_UPDATES_COMPLETED
+FINAL_CHECKPOINT=...\epoch_100.pth
+STEP09_MERGE130_TRAIN_COMPLETED; TEST_NOT_RUN
+STEP09_RECORDS_PASS
+STEP09_EXIT_CODE=0
+训练过程中没有独立val的mAP输出，这是设计要求；固定train8快照不是val结果。
+epoch100训练结束即可停，不自动执行test。用户发最后约50行、RUN_DIR、LOG_DIR、退出码。
+收到后核查训练完整性和epoch100，再准备该权重的一次固定test评价。
+失败/中断/登记失败时发完整错误，不自动重跑或resume。登记失败且训练成功时原始权重已保留，退出码2，仅需整理恢复。

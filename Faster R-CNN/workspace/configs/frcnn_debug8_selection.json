@@ -1,0 +1,108 @@
+{
+  "experiment": "FRCNN-DEBUG-OVERFIT-8",
+  "purpose": "Pipeline and memorization diagnostic, not generalization performance",
+  "selection_seed": 42,
+  "selection_method": "2 both-class + 3 broken-only + 3 loose-only; distinct existing split_group_id",
+  "source_split": "train",
+  "source_annotations_sha256": "c2d34925a87a7720d822a8c816c0da467a2c0d7081a8c654c2fdb69673deb665",
+  "all_coco_hashes": {
+    "train": "c2d34925a87a7720d822a8c816c0da467a2c0d7081a8c654c2fdb69673deb665",
+    "val": "5c524ebdcf7de3099ef34cab1825323db34a7729e5aac2199b4ab1aa0a6a8c01",
+    "test": "42081faac0bb2fd36adec5e41669239e9e8fb39226b40bdf85a1822fe2ac9baa",
+    "trainval": "e2d13393d4fc56eaf52a8f9428f770301a8b05cbf619baf30b3abf62ff7343e6"
+  },
+  "samples": [
+    {
+      "image_id": 6,
+      "file_name": "train/cond_000006.jpg",
+      "split_group_id": "G0006",
+      "stratum": "broken_only",
+      "image_sha256": "f1cb27110fbee30bd91b08bd0fabf888499b43078ba722b48be2777589280b2d",
+      "width": 5472,
+      "height": 3078,
+      "broken": 1,
+      "loose": 0
+    },
+    {
+      "image_id": 8,
+      "file_name": "train/cond_000008.jpg",
+      "split_group_id": "G0008",
+      "stratum": "both",
+      "image_sha256": "5d5f78b17f533c28391efa40b0f1af12ade427b6eb8e585653d5173055363aec",
+      "width": 5472,
+      "height": 3648,
+      "broken": 1,
+      "loose": 1
+    },
+    {
+      "image_id": 12,
+      "file_name": "train/cond_000013.jpg",
+      "split_group_id": "G0013",
+      "stratum": "broken_only",
+      "image_sha256": "3b4da86622c68f6a0fb97931049e7c6f5e20ffc3ef5ec3ad3dcd9380c2b666bf",
+      "width": 2683,
+      "height": 1047,
+      "broken": 1,
+      "loose": 0
+    },
+    {
+      "image_id": 14,
+      "file_name": "train/cond_000016.jpg",
+      "split_group_id": "G0016",
+      "stratum": "both",
+      "image_sha256": "59055b1646fcc236635e34d152aae53ba1f91f853195e5584339308183a47ddd",
+      "width": 4000,
+      "height": 3000,
+      "broken": 1,
+      "loose": 1
+    },
+    {
+      "image_id": 16,
+      "file_name": "train/cond_000019.jpg",
+      "split_group_id": "G0019",
+      "stratum": "broken_only",
+      "image_sha256": "4e43b745bfc2638bbcead9a3a1b6509add1320dfb690cae76df2daa39786d63a",
+      "width": 6000,
+      "height": 4000,
+      "broken": 1,
+      "loose": 0
+    },
+    {
+      "image_id": 62,
+      "file_name": "train/cond_000087.jpg",
+      "split_group_id": "G0055",
+      "stratum": "loose_only",
+      "image_sha256": "12fb228f88f934502baa56890fc07c928c8fe54e7bf1204374058ca523a69d00",
+      "width": 5472,
+      "height": 3648,
+      "broken": 0,
+      "loose": 3
+    },
+    {
+      "image_id": 78,
+      "file_name": "train/cond_000108.jpg",
+      "split_group_id": "G0096",
+      "stratum": "loose_only",
+      "image_sha256": "0ff8429eb31cca3c93bfffd8bae3bb792f3fb894b2655f6718d9f47c9ee4ae59",
+      "width": 5472,
+      "height": 3078,
+      "broken": 0,
+      "loose": 3
+    },
+    {
+      "image_id": 102,
+      "file_name": "train/cond_000143.jpg",
+      "split_group_id": "G0130",
+      "stratum": "loose_only",
+      "image_sha256": "b8f71e4edd81eff978fde37f76965d187e35b5837e9683732a1256e949cf31ea",
+      "width": 5760,
+      "height": 3840,
+      "broken": 0,
+      "loose": 2
+    }
+  ],
+  "images": 8,
+  "broken": 5,
+  "loose": 10,
+  "training_started": false
+}

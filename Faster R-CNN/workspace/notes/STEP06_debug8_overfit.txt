@@ -1,0 +1,94 @@
+STEP06 / FRCNN-DEBUG-OVERFIT-8
+Prepared 2026-10-12. Training is started only by the user's normal batch command.
+
+前一步验收
+STEP05 日志：D:\小论文\model_projects\Faster R-CNN\workspace\logs\step05_20493_32385
+STEP05 检查通过：8 张图片、15 个框（broken 5，loose 10）；缩放、归一化、补边正常。
+官方 COCO 检测 checkpoint 的 344 个兼容张量加载相同，4 个类别输出张量尺寸变化符合预期。
+框缩放后部分较小，本次先保持官方 Resize 边界，结合实际拟合情况再判断。
+
+本次仅为训练流程和记忆能力自检；不作为独立验证/测试的泛化性能。
+使用原 train 中已固定的 8 张图片；不读取原 val/test 图片进行训练或指标计算。
+原划分、原标签、原图不修改。现有 COCO 文件仅核对哈希，不重新转换。
+
+配置：D:\小论文\model_projects\Faster R-CNN\workspace\configs\frcnn_debug_overfit8.py
+继承：D:\小论文\model_projects\Faster R-CNN\workspace\configs\frcnn_debug8_pipeline_check.py
+官方基础配置：D:\小论文\model_projects\Faster R-CNN\mmdetection\configs\faster_rcnn\faster-rcnn_r50_fpn_1x_coco.py
+环境：D:\小论文\model_projects\Faster R-CNN\.venv\Scripts\python.exe
+固定数据：D:\小论文\conductor_defect_dataset\03_coco_dataset\annotations\instances_debug8.json
+入口：D:\小论文\model_projects\Faster R-CNN\workspace\scripts\run_step06_train_debug8.cmd
+启动/记录脚本：D:\小论文\model_projects\Faster R-CNN\workspace\scripts\step06_run_debug8.py
+记录钩子：D:\小论文\model_projects\Faster R-CNN\workspace\scripts\frcnn_debug_hooks.py
+
+本次参数
+- 单 GPU，8 图，batch=2，workers=0，100 epoch，4 iteration/epoch，共 400 次更新，无梯度累积。
+- FP32（不启用 AMP）。SGD lr=0.0025，momentum=0.9，weight_decay=0.0001。
+- lr 按官方 0.02、全局 batch 16 线性缩放到 batch 2：0.02*2/16=0.0025。
+- 前 20 iteration 从 0.1 倍 LR 线性预热到基准 LR，此后恒定；不继承 12 轮 COCO 调度。
+- Resize(scale=(1333,800), keep_ratio=True)，按 batch 补边至 32 的倍数。
+- 无随机图像增强、不打乱 8 图顺序；官方 RPN/ROI 的正负样本随机抽样保留。
+- seed=42，deterministic=True，cudnn_benchmark=False，CUBLAS_WORKSPACE_CONFIG=:4096:8。
+  CUDA 自定义算子仍可能存在数值差异，不承诺跨设备/软件版本逐位相同。
+- backbone frozen_stages=1、norm_eval=True，保持官方设置。
+- 从完整官方 COCO checkpoint 新开始，resume=False，不加载私人数据 checkpoint。
+- 原 val/test 的 dataloader/evaluator/loop 全部 None；不选 best checkpoint。
+- 本次设置仅用于自检，正式 107/130 图实验的参数将在之后另行确定和记录。
+
+权重
+文件：D:\小论文\model_projects\Faster R-CNN\workspace\weights\faster_rcnn_r50_fpn_1x_coco_20200130-047c8118.pth
+SHA256：047c8118fc5ca88ba5ae1fab72f2cd6b070501fe3af2f3cba5cfa9a89b44b03e
+80 类改为 2 类时预期四项尺寸不匹配：
+roi_head.bbox_head.fc_cls.weight [81,1024] -> [3,1024]
+roi_head.bbox_head.fc_cls.bias [81] -> [3]
+roi_head.bbox_head.fc_reg.weight [320,1024] -> [8,1024]
+roi_head.bbox_head.fc_reg.bias [320] -> [8]
+分类输出 3 包含 2 个目标类别和背景；模型 num_classes 仍为 2。
+这四项保留新初始化，其余 344 个 COCO 张量在第一次参数更新前逐项比对。
+
+预测和指标
+训练前（epoch 0）、25、50、75、100 轮，对固定 8 张训练图预测并保存原分辨率画框图。
+指标：pycocotools COCO bbox mAP50、mAP50-95、每类 AP50/AP50-95、AR100。
+这些均是 train-fit（训练集拟合）诊断，不称为 val/test 成绩。
+模型预测 score_thr=0.001，RCNN NMS IoU=0.5，max_per_img=100。
+COCO maxDets=[1,10,100]。所有返回框用于指标并保存 JSON。
+画框阈值另设 score>0.30；未画出框不能等同于没有低分预测。
+原始 JSON 是经过模型低分过滤/NMS/数量限制后的结果，不是 NMS 之前的所有候选框。
+预测前后恢复模型各模块模式及 Python/NumPy/Torch CPU/CUDA 随机状态。
+
+输出
+每次新建：D:\小论文\model_projects\Faster R-CNN\workspace\runs\FRCNN-DEBUG-OVERFIT-8\step06_<随机编号>
+日志：D:\小论文\model_projects\Faster R-CNN\workspace\logs\step06_<同一随机编号>
+代码及配置副本、完整解析配置、环境包版本、输入和最终 checkpoint SHA256 都保留。
+epoch_25/50/75/100.pth：保存优化器状态，保留四个 checkpoint，不自动挑最佳。
+diagnostics\losses.csv / losses.jsonl：逐 iteration 原始损失和实际使用的 LR。
+diagnostics\loss_curves.png：总损失、RPN、ROI、LR 四个面板。
+diagnostics\epoch_000/025/050/075/100：8 张预测图、拼图、预测 JSON、train-fit 指标。
+diagnostics\actual_training_weight_load.json：实际训练模型的加载比对。
+diagnostics\debug8_training_summary.json：总更新数、耗时、显存、前后损失和指标。
+日志包含完整官方模型初始化/加载信息。首次初始化前输出较多属正常现象。
+保存预测和 checkpoint 时控制台可能短暂停顿；不要因此重复启动。
+有错误则保留全部输出和 LOG_DIR；不自动重试、不自动 resume。
+
+Windows cmd 用户命令（普通终端即可）
+cd /d "D:\小论文\model_projects\Faster R-CNN"
+call "D:\小论文\model_projects\Faster R-CNN\workspace\scripts\run_step06_train_debug8.cmd"
+
+只检查准备状态、不训练的命令：
+call "D:\小论文\model_projects\Faster R-CNN\workspace\scripts\run_step06_train_debug8.cmd" --check-preparation
+
+预期关键行
+DEBUG8_ACTUAL_WEIGHT_LOAD_PASS: matched=344 expected_new_outputs=4
+DEBUG8_SNAPSHOT epoch=0 ...（初始类别输出未学习，指标低属于可能的正常现象）
+Epoch(train) [1][1/4] ... -> Epoch(train) [100][4/4] ...
+DEBUG8_100_EPOCHS_400_UPDATES_COMPLETED
+STEP06_DEBUG_TRAIN_COMPLETED
+STEP06_EXIT_CODE=0
+完成只代表运行结束，是否充分过拟合由损失、定位/类别/置信度及 train-fit 指标共同判断。
+
+官方来源（固定版本）
+https://github.com/open-mmlab/mmdetection/blob/v3.3.0/configs/faster_rcnn/faster-rcnn_r50_fpn_1x_coco.py
+https://github.com/open-mmlab/mmdetection/blob/v3.3.0/configs/_base_/schedules/schedule_1x.py
+https://mmdetection.readthedocs.io/en/v3.3.0/user_guides/config.html
+官方源码 commit：44ebd17b145c2372c4b700bfb9cb20dbd28ab64a
+
+准备校验只解析配置、核对版本/文件、测试合成数据的指标计算和绘图，不实例化检测模型、不执行训练。

@@ -1,0 +1,190 @@
+{
+  "status": "PASS",
+  "experiment": "FRCNN-R50FPN-SCALE1280-VAL-001",
+  "training_started": false,
+  "detector_forward_performed": false,
+  "versions": {
+    "torch": "2.7.1+cu128",
+    "torchvision": "0.22.1+cu128",
+    "mmcv": "2.1.0",
+    "mmengine": "0.10.7",
+    "mmdet": "3.3.0",
+    "numpy": "1.26.4",
+    "pycocotools": "2.0.10"
+  },
+  "mmdet_commit": "44ebd17b145c2372c4b700bfb9cb20dbd28ab64a",
+  "gpu": "NVIDIA GeForce RTX 5070 Ti",
+  "gpu_total_bytes": 17094475776,
+  "dataset_counts": {
+    "train": {
+      "images": 107,
+      "boxes": 168
+    },
+    "val": {
+      "images": 23,
+      "boxes": 37
+    },
+    "test": {
+      "images": 23,
+      "boxes": 36
+    },
+    "trainval": {
+      "images": 130,
+      "boxes": 205
+    }
+  },
+  "annotation_hashes": {
+    "train": "c2d34925a87a7720d822a8c816c0da467a2c0d7081a8c654c2fdb69673deb665",
+    "val": "5c524ebdcf7de3099ef34cab1825323db34a7729e5aac2199b4ab1aa0a6a8c01",
+    "test": "42081faac0bb2fd36adec5e41669239e9e8fb39226b40bdf85a1822fe2ac9baa",
+    "trainval": "e2d13393d4fc56eaf52a8f9428f770301a8b05cbf619baf30b3abf62ff7343e6"
+  },
+  "checkpoint": {
+    "path": "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\weights\\faster_rcnn_r50_fpn_1x_coco_20200130-047c8118.pth",
+    "url": "https://download.openmmlab.com/mmdetection/v2.0/faster_rcnn/faster_rcnn_r50_fpn_1x_coco/faster_rcnn_r50_fpn_1x_coco_20200130-047c8118.pth",
+    "sha256": "047c8118fc5ca88ba5ae1fab72f2cd6b070501fe3af2f3cba5cfa9a89b44b03e",
+    "size_bytes": 167287506,
+    "published_filename_sha256_prefix_match": true
+  },
+  "epochs": 100,
+  "iterations_per_epoch": 54,
+  "optimizer_updates": 5400,
+  "batch_size": 2,
+  "amp": false,
+  "workers": 0,
+  "seed": 42,
+  "lr": 0.0025,
+  "momentum": 0.9,
+  "weight_decay": 0.0001,
+  "warmup_iterations": 500,
+  "warmup_start_factor": 0.001,
+  "epoch_lr_milestones": [
+    67,
+    92
+  ],
+  "gamma": 0.1,
+  "resize_scale": [
+    2133,
+    1280
+  ],
+  "keep_ratio": true,
+  "horizontal_flip_probability": 0.5,
+  "model_prediction_score_threshold": 0.001,
+  "visualization_score_threshold": 0.3,
+  "rcnn_nms_iou": 0.5,
+  "max_predictions_per_image": 100,
+  "coco_max_dets": [
+    1,
+    10,
+    100
+  ],
+  "best_selection_metric": "coco/bbox_mAP",
+  "previous_experiments_args": [
+    {
+      "path": "D:\\小论文\\model_projects\\yolo11\\workspace\\runs\\Y11-BASE-001-R1_20260917_203044_883451\\args.yaml",
+      "sha256": "d858c0ed8e0d37b5dc7aa73e8f5a6aed64fd98c8948b11a9cfc0fd60630f0ce5",
+      "configured_args": {
+        "epochs": 100,
+        "batch": 4,
+        "imgsz": 1280,
+        "workers": 0,
+        "optimizer": "auto",
+        "lr0": 0.01,
+        "lrf": 0.01,
+        "nbs": 64,
+        "warmup_epochs": 3.0,
+        "amp": true,
+        "seed": 42,
+        "deterministic": true,
+        "conf": null,
+        "iou": 0.7,
+        "max_det": 300
+      },
+      "optimizer_note": "optimizer=auto; lr0 is the requested field, not proof of actual optimizer learning rate"
+    },
+    {
+      "path": "D:\\小论文\\model_projects\\RT-DETR\\workspace\\runs\\RTD-BASE-001-R1_20260918_172120\\args.yaml",
+      "sha256": "7f269dfc643c4c859766f1c104f90ce76eeeb5bddfd148f94ddf14f4aef3564c",
+      "configured_args": {
+        "epochs": 100,
+        "batch": 4,
+        "imgsz": 1280,
+        "workers": 0,
+        "optimizer": "auto",
+        "lr0": 0.01,
+        "lrf": 0.01,
+        "nbs": 64,
+        "warmup_epochs": 3.0,
+        "amp": true,
+        "seed": 42,
+        "deterministic": false,
+        "conf": null,
+        "iou": 0.7,
+        "max_det": 300
+      },
+      "optimizer_note": "optimizer=auto; lr0 is the requested field, not proof of actual optimizer learning rate"
+    },
+    {
+      "path": "D:\\小论文\\model_projects\\yolo11\\workspace\\runs\\Y11-SENS-IMGSZ1600-001\\args.yaml",
+      "sha256": "25414a26e106610f6775fd33feb4ccdbabe887b6dba7ce4dbbca5f2dd2162c78",
+      "configured_args": {
+        "epochs": 100,
+        "batch": 4,
+        "imgsz": 1600,
+        "workers": 0,
+        "optimizer": "auto",
+        "lr0": 0.01,
+        "lrf": 0.01,
+        "nbs": 64,
+        "warmup_epochs": 3.0,
+        "amp": true,
+        "seed": 42,
+        "deterministic": true,
+        "conf": null,
+        "iou": 0.7,
+        "max_det": 300
+      },
+      "optimizer_note": "optimizer=auto; lr0 is the requested field, not proof of actual optimizer learning rate"
+    },
+    {
+      "path": "D:\\小论文\\model_projects\\RT-DETR\\workspace\\runs\\RTD-SENS-IMGSZ1600-001\\args.yaml",
+      "sha256": "aec4c20524b4c6dcd5e64e254b4fbfe0bbf86fbed70a426010ef452eceb16120",
+      "configured_args": {
+        "epochs": 100,
+        "batch": 4,
+        "imgsz": 1600,
+        "workers": 0,
+        "optimizer": "auto",
+        "lr0": 0.01,
+        "lrf": 0.01,
+        "nbs": 64,
+        "warmup_epochs": 3.0,
+        "amp": true,
+        "seed": 42,
+        "deterministic": false,
+        "conf": null,
+        "iou": 0.7,
+        "max_det": 300
+      },
+      "optimizer_note": "optimizer=auto; lr0 is the requested field, not proof of actual optimizer learning rate"
+    }
+  ],
+  "comparison_scope": "Resolution sensitivity versus frozen VAL-001: same train107/val23, batch/steps/optimizer/seed; only resize changed; no test-driven tuning.",
+  "baseline_config_sha256": "e3ae36a800bb65a15f5ab29a4f4edf662464dabbe5db1ce4d02451bd17b28134",
+  "launch_cmd": "call \"D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\scripts\\run_step11_train_scale1280.cmd\"",
+  "command_line": "\"D:\\小论文\\model_projects\\Faster R-CNN\\.venv\\Scripts\\python.exe\" -I -X utf8 \"D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\scripts\\step11_run_scale1280.py\" --log-dir \"D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\logs\\step11_31112_14115\"",
+  "saved_inputs_sha256": {
+    "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\configs\\frcnn_r50fpn_scale1280_val_001.py": "695bfec8ccba8b64b466bf2817de139e3baf8c4c78c4d15b0f27edeaed818951",
+    "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\scripts\\frcnn_formal_hooks.py": "b10f43e85b72bea2bd318d9fbc722a39369ddec677fc055d477f769d8b36b20d",
+    "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\scripts\\frcnn_debug_hooks.py": "33dbf9d9ef4634ae972037a35ad94515858cb780be5895654797d4ec26c8ae52",
+    "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\scripts\\step11_run_scale1280.py": "5c0c02c19078d854f8e613eff12d49013dd51e2e3bdb9c50dfcd8418618851a4",
+    "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\scripts\\run_step11_train_scale1280.cmd": "7fc55e66f1a52f2d2430821bcdcca73e8505f6e76a18852a3ad1849b4bdcd174",
+    "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\configs\\frcnn_debug8_selection.json": "a7ca9ef26aec26519b83b72a741140e184b5aeb1e911026efa8632ccb25c7eed",
+    "D:\\小论文\\model_projects\\AGENTS.md": "faee40eda3263f193722dfec6cf798468d79b3236746029510cd1d55a59e963e",
+    "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\audit\\step11_resolution\\resolution_audit.json": "1ee195f26698bd812dade2ff0fee9e311f4b4d84ba3f9618caaf964606ca0106",
+    "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\notes\\STEP11_resolution1280_plan.md": "bafc6f0a7d5e2f444427e6c7fed7fb8b7ef6c46096c5e1ada8c64c9c93fc318d",
+    "D:\\小论文\\conductor_defect_dataset\\03_coco_dataset\\annotations\\instances_train.json": "c2d34925a87a7720d822a8c816c0da467a2c0d7081a8c654c2fdb69673deb665",
+    "D:\\小论文\\conductor_defect_dataset\\03_coco_dataset\\annotations\\instances_val.json": "5c524ebdcf7de3099ef34cab1825323db34a7729e5aac2199b4ab1aa0a6a8c01",
+    "D:\\小论文\\conductor_defect_dataset\\03_coco_dataset\\annotations\\instances_debug8.json": "3470758428dab44a2f9dfc9d468275ee71254fc985f6d9f08c6cb1ef774d1edb"
+  }
+}

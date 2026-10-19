@@ -1,0 +1,110 @@
+STEP02C：官方 MMCV 2.1.0 构建、安装与算子验收
+日期：2026-10-11，Asia/Shanghai
+
+阶段边界
+STEP02B 已验收，证据目录：
+D:\小论文\model_projects\Faster R-CNN\workspace\logs\step02b_25805_24647
+本阶段只处理 MMCV 及其构建/运行依赖，不安装 MMDetection，不读取数据集，不启动任何训练。
+用户在普通 VS Code cmd 中执行。无需管理员身份，不修改驱动或安装新的系统工具。
+官方 MMDetection 代码、COCO 检测 checkpoint 和官方示例推理留到本阶段输出核对后。
+
+固定的官方源码
+仓库：https://github.com/open-mmlab/mmcv.git
+版本标签：v2.1.0
+实际 commit：57c4e25e06e2d4f8a9357c84bcd24089a284dc88
+路径：D:\小论文\model_projects\Faster R-CNN\workspace\src\mmcv
+通过 git clone --depth 1 --branch v2.1.0 获取；core.autocrlf=false；原始源码保持未修改。
+构建前后检查 git diff HEAD，拒绝未经记录的 tracked 文件改动。
+生成的 build、egg-info 等编译产物可以出现在该源码目录，均在 workspace 内。
+
+版本依据与范围
+MMDetection v3.3.0 源码允许 MMCV >=2.0.0rc4 且 <2.2.0，MMEngine >=0.7.1 且 <1.0.0：
+https://github.com/open-mmlab/mmdetection/blob/v3.3.0/mmdet/__init__.py
+选定 MMCV 2.1.0 和 MMEngine 0.10.7，满足上述版本约束，不绕过官方断言。
+Windows 构建资料：
+https://github.com/open-mmlab/mmcv/blob/v2.1.0/docs/en/get_started/build.md
+构建脚本实际行为：
+https://github.com/open-mmlab/mmcv/blob/v2.1.0/setup.py
+官方仓库 issue #3335 有相近环境的使用者构建记录，仅作为实践参考，不是维护者对本机组合的认证：
+https://github.com/open-mmlab/mmcv/issues/3335
+实际是否兼容，以本机 wheel 构建及 CUDA 算子运行结果为准。
+
+Python 环境
+D:\小论文\model_projects\Faster R-CNN\.venv\Scripts\python.exe
+保持 Python 3.10.20、torch 2.7.1+cu128、torchvision 0.22.1+cu128、NumPy 1.26.4。
+之前验收的所有包版本保存成 constraints，并在构建前后检查是否保持一致。
+新增依赖选定 MMEngine 0.10.7、OpenCV 4.11.0.86、ninja 1.11.1.4、psutil 7.0.0 等。
+OpenCV 4.11 的依赖允许已有 NumPy 1.26.4。
+所有传递依赖的确切版本及 wheel SHA256 写入 lock，下载源为官方 PyPI。
+用户运行时从本地 wheels 安装，使用 --no-index 和 --require-hashes，不访问其他模型环境。
+
+准备文件
+D:\小论文\model_projects\Faster R-CNN\workspace\scripts\step02c_prepare.py
+D:\小论文\model_projects\Faster R-CNN\workspace\scripts\run_step02c_build_mmcv.cmd
+D:\小论文\model_projects\Faster R-CNN\workspace\scripts\step02c_build_mmcv.py
+D:\小论文\model_projects\Faster R-CNN\workspace\scripts\step02c_check_mmcv.py
+D:\小论文\model_projects\Faster R-CNN\workspace\configs\step02c_requirements.in
+D:\小论文\model_projects\Faster R-CNN\workspace\configs\step02c_base_constraints.txt
+D:\小论文\model_projects\Faster R-CNN\workspace\configs\step02c_requirements.lock.txt
+D:\小论文\model_projects\Faster R-CNN\workspace\configs\step02c_preparation.json
+依赖安装包：D:\小论文\model_projects\Faster R-CNN\workspace\wheels\step02c_dependencies
+下载日志：D:\小论文\model_projects\Faster R-CNN\workspace\logs\step02c_dependency_download.log
+
+构建选择
+MSVC v142 14.29，Windows SDK 10.0.19041.0，x64。
+CUDA Toolkit 12.8.1 / nvcc 12.8.93。
+TORCH_CUDA_ARCH_LIST=12.0：明确为本机 RTX 5070 Ti 的 sm_120 编译。
+MAX_JOBS=4：限制并行编译任务数；这是编译参数，不是训练 batch。
+MMCV_WITH_OPS=1、FORCE_CUDA=1；不安装缺少 CUDA 算子的 mmcv-lite。
+DISTUTILS_USE_SDK=1，复用显式选择的 MSVC 环境。
+pip wheel --use-pep517 --no-build-isolation --no-deps --no-index。
+--no-build-isolation 使构建使用已锁定的本实验 PyTorch 和构建工具，不新建一个缺少正确 PyTorch 的临时构建环境。
+先生成 wheel、记录 SHA256，再用 --no-deps 安装该 wheel。
+本地源码不做功能补丁，也不向其他环境安装包。
+
+路径编码处理
+STEP02B 已出现中文路径相关编译警告。构建时用 subst 选择空闲盘符 R: 至 Z:，必要时 Q:/P:。
+映射目标严格是 D:\小论文\model_projects\Faster R-CNN，不复制、不移动、不改名。
+例如 R:\workspace\src\mmcv 与原源码目录是同一批文件。
+先核对别名解析结果及 Python 环境身份，再启动安装和构建。
+临时编译目录映射到原项目 workspace\cache\mmcv_build_temp。
+正常结束或 Python 捕获到错误时撤销本次创建的映射；不会撤销原有磁盘或其他映射。
+强制关闭终端可能跳过清理；如出现这种情况，反馈日志中的 TEMPORARY_BUILD_ALIAS，核对后再处理。
+
+用户唯一入口命令
+cd /d "D:\小论文\model_projects\Faster R-CNN"
+call "D:\小论文\model_projects\Faster R-CNN\workspace\scripts\run_step02c_build_mmcv.cmd"
+不需要手动激活环境，不需要管理员身份。
+构建可能需要数十分钟，实际取决于 CPU、磁盘、杀毒扫描等因素。
+终端可能出现编译警告；是否成功看最终验收标记及退出码，不仅看是否出现 warning。
+若失败，停止在本阶段，不自行改版本或反复重装，先回传完整输出和 LOG_DIR。
+
+验收内容
+pip check，保存安装包完整版本列表。
+mmcv=2.1.0、mmengine=0.10.7、mmcv._ext 必须来自本项目 .venv。
+扩展记录的编译 CUDA 必须为 12.8 系列；保存编译器信息。
+CPU 与 GPU NMS：使用已知框和得分，核对固定预期保留索引与数值。
+GPU 分类别 batched_nms：同类重叠框抑制、不同类别相同位置框保留。
+CPU/GPU RoIAlign：与 torchvision CPU 参考结果比较前向输出和输入梯度。
+梯度检查只是一次小型算子测试：没有模型、数据集、优化器或训练迭代。
+这些检查覆盖 Faster R-CNN 的关键算子，不宣称测试了 MMCV 的每一个算子。
+成功标记：STEP02C_MMCV_OPS_PASS、STEP02C_MMCV_PASS、STEP02C_EXIT_CODE=0。
+
+输出
+D:\小论文\model_projects\Faster R-CNN\workspace\logs\step02c_<编号>
+该目录保存 vcvarsall.txt、dependencies_install.json/txt、mmcv_build.txt、mmcv_install.json/txt、
+pip_check.txt、requirements_freeze.txt、mmcv_ops_check.json/txt、build_manifest.json。
+构建出的 wheel 存在同一日志目录的 wheels 子目录，其完整路径与 SHA256 写入 build_manifest.json。
+本轮只准备源码、安装包和脚本；助手不运行 MMCV 构建或任何训练，用户执行上述入口后回传输出。
+
+准备验收记录
+27 个依赖 wheel 已下载到上述目录，逐一匹配官方 PyPI JSON 发布的 SHA256。
+step02c_preparation.json 记录各文件的版本、官方 URL、大小及 SHA256。
+--check-preparation 已通过源码 commit/未修改检查、所有依赖哈希检查、原环境版本检查。
+实际创建并撤销临时盘符，使用别名路径运行环境身份检查，确认仍为原 .venv。
+Git 核对使用单条命令限定到这一源码目录的 safe.directory，处理管理员下载和普通用户运行时的所有者差异；不修改全局 Git 设置。
+Python 语法检查、cmd --show-plan 预览已通过。
+离线 pip install --dry-run --require-hashes 解析通过，将新增 24 个包，另外 3 个已存在且版本匹配。
+dry-run 未安装任何包；结果保存于：
+D:\小论文\model_projects\Faster R-CNN\workspace\audit\step02c_dependency_dry_run.json
+实际 MMCV 构建、安装和 GPU 算子验收等待用户执行；不能把准备检查通过当作 MMCV 已可用。

@@ -1,0 +1,76 @@
+{
+  "status": "OFFLINE_GENERATION_PASS",
+  "experiment": "FRCNN-DIAG-SAVED1280-001",
+  "training_run": "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\runs\\FRCNN-R50FPN-SCALE1280-VAL-001\\step11_31112_14115",
+  "cases": [
+    {
+      "key": "train8_epoch100",
+      "title": "第100轮 · 训练子集8图",
+      "images": 8,
+      "gt": 15,
+      "saved_predictions": 33,
+      "above_030": 11,
+      "images_empty": 0,
+      "images_at_100": 0,
+      "min_score": 0.0010031014680862427,
+      "max_score": 0.9996945858001709,
+      "gt_same_class_iou50": 11,
+      "gt_same_class_iou50_above030": 11,
+      "states": {
+        "有超过0.30的同类重合候选": 11,
+        "保存框中无IoU0.50同类候选": 4
+      },
+      "mAP50": 0.801980198019802,
+      "mAP50_95": 0.801980198019802,
+      "metrics_source": "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\audit\\step11_review\\acceptance.json"
+    },
+    {
+      "key": "val23_epoch100",
+      "title": "第100轮 · 验证集23图",
+      "images": 23,
+      "gt": 37,
+      "saved_predictions": 78,
+      "above_030": 8,
+      "images_empty": 3,
+      "images_at_100": 0,
+      "min_score": 0.0010086391121149063,
+      "max_score": 0.9978827834129333,
+      "gt_same_class_iou50": 4,
+      "gt_same_class_iou50_above030": 0,
+      "states": {
+        "保存框中无IoU0.50同类候选": 33,
+        "仅低分同类候选达到IoU0.50": 4
+      },
+      "mAP50": 0.0059405940594059415,
+      "mAP50_95": 0.0016279627962796277,
+      "metrics_source": "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\audit\\step11_review\\acceptance.json"
+    },
+    {
+      "key": "val23_epoch005",
+      "title": "第5轮 · 验证集23图（已固定最佳轮）",
+      "images": 23,
+      "gt": 37,
+      "saved_predictions": 2300,
+      "above_030": 0,
+      "images_empty": 0,
+      "images_at_100": 23,
+      "min_score": 0.0061533511616289616,
+      "max_score": 0.17057058215141296,
+      "gt_same_class_iou50": 16,
+      "gt_same_class_iou50_above030": 0,
+      "states": {
+        "保存框中无IoU0.50同类候选": 21,
+        "仅低分同类候选达到IoU0.50": 16
+      },
+      "mAP50": 0.03189324821274552,
+      "mAP50_95": 0.014877891782027844,
+      "metrics_source": "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\audit\\step11_review\\acceptance.json"
+    }
+  ],
+  "detector_forward": false,
+  "training": false,
+  "test_accessed": false,
+  "coverage_definition": "逐GT独立寻找同类最大IoU，不做一对一匹配；不是普通Recall或AP。",
+  "metric_note": "AP引用已验收历史精确结果，不重新选checkpoint。所有新统计只使用保存预测。",
+  "boundary": "保存结果已过score>0.001、NMS0.5、每图最多100；显示阈值0不能恢复之前丢弃的框。"
+}

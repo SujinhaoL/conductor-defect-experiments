@@ -1,0 +1,5 @@
+Experiment: Y11-BASE-001-R1
+Reference: retained Y11-BASE-001 Failed run actual args.yaml
+Ignored output identity fields only: project, name, save_dir
+Training protocol differences:
+{}
