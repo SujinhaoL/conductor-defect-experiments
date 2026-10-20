@@ -1,0 +1,60 @@
+{
+  "experiment": "FRCNN-DIAG-TRACE1280-001",
+  "purpose": "Fixed epoch5 val3 RPN handoff / ROI / score / NMS / top100 trace; no training, new AP, or test.",
+  "epoch": 5,
+  "expected_iteration": 270,
+  "training_run": "D:/小论文/model_projects/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115",
+  "config": "D:/小论文/model_projects/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/resolved_scale1280_val_001.py",
+  "checkpoint": "D:/小论文/model_projects/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/best_coco_bbox_mAP_epoch_5.pth",
+  "selected_checkpoint_record": "D:/小论文/model_projects/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/selected_checkpoint.json",
+  "annotation": "D:/小论文/conductor_defect_dataset/03_coco_dataset/annotations/instances_val.json",
+  "image_root": "D:/小论文/conductor_defect_dataset/03_coco_dataset/images",
+  "saved_predictions": "D:/小论文/model_projects/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/artifacts/validation/epoch_005/predictions.bbox.json",
+  "target_gt_ids": [
+    172,
+    194,
+    171
+  ],
+  "image_ids": [
+    110,
+    124,
+    109
+  ],
+  "incidental_gt_ids": [
+    195
+  ],
+  "versions": {
+    "torch": "2.7.1+cu128",
+    "torchvision": "0.22.1+cu128",
+    "mmcv": "2.1.0",
+    "mmengine": "0.10.7",
+    "mmdet": "3.3.0",
+    "numpy": "1.26.4",
+    "pycocotools": "2.0.10"
+  },
+  "mmdet_commit": "44ebd17b145c2372c4b700bfb9cb20dbd28ab64a",
+  "source_sha256": {
+    "D:/小论文/model_projects/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/resolved_scale1280_val_001.py": "0d11394ad9ddaf97683ed90b1380ffc22cad454aa29997685225e145d30979f3",
+    "D:/小论文/model_projects/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/best_coco_bbox_mAP_epoch_5.pth": "c8ff3af83efeec7cf3f126f49833da6e42489d9f022809d6237b94d9efdb08d3",
+    "D:/小论文/model_projects/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/selected_checkpoint.json": "90c00307029c42b7cf2c12d28a15e6727c64606dbf289a7ef868adb6324e1613",
+    "D:/小论文/model_projects/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/pretraining_record.json": "2f4c4fb296f26443371bcad2aa6c4c77de3c93929a0f4db36b565437a68537fa",
+    "D:/小论文/conductor_defect_dataset/03_coco_dataset/annotations/instances_val.json": "5c524ebdcf7de3099ef34cab1825323db34a7729e5aac2199b4ab1aa0a6a8c01",
+    "D:/小论文/model_projects/Faster R-CNN/workspace/runs/FRCNN-R50FPN-SCALE1280-VAL-001/step11_31112_14115/artifacts/validation/epoch_005/predictions.bbox.json": "6197b42a11b9c28e7e6ebfeedd87e2f4c5bc1a1ac3de429efe305baec9e631b8",
+    "D:/小论文/model_projects/Faster R-CNN/workspace/audit/FRCNN-DIAG-SAVED1280-001/diag01_20261019_010031_868401/review/val_epoch005_20261020/analysis.json": "4840b4c859100dc17bf300c814d3922eb0ce106a7e938e7069f670d3530abb83",
+    "D:/小论文/model_projects/Faster R-CNN/workspace/audit/FRCNN-DIAG-SAVED1280-001/diag01_20261019_010031_868401/review/val_epoch005_20261020/user_observation_20261021.json": "5e6b4f54ea2df015060d3134c92342822bdd097ecfbed0f485a447229797ab8c",
+    "D:/小论文/model_projects/Faster R-CNN/mmdetection/mmdet/models/layers/bbox_nms.py": "029f067b915ba52e4098e0e4e6629a44c646bc4e0e3cf43f990fff3172d8baff",
+    "D:/小论文/model_projects/Faster R-CNN/mmdetection/mmdet/models/roi_heads/bbox_heads/bbox_head.py": "87d415b95124a101d3d442d9b4b06307768cd6b5116830074cbbb51fb16a7c9b",
+    "D:/小论文/model_projects/Faster R-CNN/mmdetection/mmdet/models/roi_heads/standard_roi_head.py": "4ab8cc6ac1999d97875b6f890e3881b4046f8cdba42fd928e3e07180296e699d",
+    "D:/小论文/model_projects/Faster R-CNN/mmdetection/mmdet/models/detectors/two_stage.py": "b0a8982ec602510836300d79dab22a44f981fd396d6d5ab6c315a27cd788a9f8",
+    "D:/小论文/conductor_defect_dataset/03_coco_dataset/images/val/cond_000027.jpg": "26f553b0211c4f638014f45b60d942c9c4d3a9e0911caf33c95cf1b8e0cc0536",
+    "D:/小论文/conductor_defect_dataset/03_coco_dataset/images/val/cond_000125.jpg": "a3c300d45cc86e5427a060d27e9923c21caaa267ff62a249494aa36266312e08",
+    "D:/小论文/conductor_defect_dataset/03_coco_dataset/images/val/cond_000015.jpg": "6ad529e5f2199ce5d3302d7588ea04e89bc5ee5bf0d7c6ee23621ac14f298ed5"
+  },
+  "scope_notes": [
+    "Only three model forwards, one for each existing val image.",
+    "GT195 is on the GT194 image; no additional image is added.",
+    "Native validation pipeline and model settings are unchanged.",
+    "NMS without final top100 is an auxiliary replay of captured tensors, not another model run or revised AP.",
+    "RPN proposals are after RPN filtering; no claim to export all raw RPN candidates."
+  ]
+}
