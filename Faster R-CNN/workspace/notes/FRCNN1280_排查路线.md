@@ -49,4 +49,4 @@
 
 第三步：助手只读冻结配置/训练入口/钩子与官方更新和评价实现，复核既有权重哈希、5400条有限loss/一致LR、100轮val选模，无新前向或训练。代码导读DIAG03_训练与评价代码导读.md已备好；证据workspace/audit/FRCNN-DIAG-CODE1280-001/diag03_20261020_review/review.json。限定范围核查已完成，用户阅读是可选学习，不要求用户证明代码正确。没有逐层历史梯度证据，不宣称所有框架内部已证明无错。
 
-2026-10-20总览更新：持续记录见 [FRCNN1280_诊断全流程总览_教师讨论版.md](<D:/小论文/model_projects/Faster R-CNN/workspace/notes/FRCNN1280_诊断全流程总览_教师讨论版.md>)，同内容单文件HTML及来源哈希在 `D:\小论文\model_projects\Faster R-CNN\workspace\audit\FRCNN-DIAG-OVERVIEW1280-001\discussion_20261020_v1`。当前第四步先解释旧STEP12：已重新核对引用的28份保存文件哈希；第100轮train8的候选不足不能直接解释第5轮val。没有追加模型运行。若进一步核查第5轮val失败类型，先用DIAG01保存结果，再依据具体缺口判断是否需要用户启动新诊断。
+2026-10-20总览更新：持续记录见 [FRCNN1280_诊断全流程总览_讨论版.md](<D:/小论文/model_projects/Faster R-CNN/workspace/notes/FRCNN1280_诊断全流程总览_讨论版.md>)，同内容单文件HTML及来源哈希在 `D:\小论文\model_projects\Faster R-CNN\workspace\audit\FRCNN-DIAG-OVERVIEW1280-001\discussion_20261020_v1`。当前第四步先解释旧STEP12：已重新核对引用的28份保存文件哈希；第100轮train8的候选不足不能直接解释第5轮val。没有追加模型运行。若进一步核查第5轮val失败类型，先用DIAG01保存结果，再依据具体缺口判断是否需要用户启动新诊断。

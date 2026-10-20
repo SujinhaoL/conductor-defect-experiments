@@ -142,4 +142,4 @@ metrics = evaluate_train_fit(self.dataset.ann_file, coco_predictions, ids, desti
 
 如想学习，优先看上述①②④三处关键代码，不必通读框架源码。有不明白的行可以提出，但无需反馈“是否读完”或证明整个程序正确。技术核查由助手负责；本步没有需要用户运行的新实验，也没有必须提交的学习反馈。
 
-本步到代码与已有证据核查为止。下一步先解释旧STEP12的RPN/ROI（候选生成/候选区域分类定位）证据，再判断是否有具体缺口；不自动安排新的推理、过拟合训练、扩数据或恢复STEP18补测。总进度与给老师看的结论见 [诊断全流程总览](<D:/小论文/model_projects/Faster R-CNN/workspace/notes/FRCNN1280_诊断全流程总览_教师讨论版.md>)。原核查JSON的USER_READING_PENDING是当时记录，予以保留，当前不作为阻塞条件。
+本步到代码与已有证据核查为止。下一步先解释旧STEP12的RPN/ROI（候选生成/候选区域分类定位）证据，再判断是否有具体缺口；不自动安排新的推理、过拟合训练、扩数据或恢复STEP18补测。总进度与给老师看的结论见 [诊断全流程总览](<D:/小论文/model_projects/Faster R-CNN/workspace/notes/FRCNN1280_诊断全流程总览_讨论版.md>)。原核查JSON的USER_READING_PENDING是当时记录，予以保留，当前不作为阻塞条件。
