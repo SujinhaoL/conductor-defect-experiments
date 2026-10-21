@@ -191,9 +191,9 @@ GT是人工标注；177是标注编号，不是图片编号。绿色为GT，橙�
 
 用户已完成全部当前必需反馈，DIAG04无需重跑。start命令只打开已有网页，可选观看GT171从NMS后有框到最终无框、GT194从过滤前贴合到去重后范围变化的过程。无需重复确认类别，也不要求读懂代码才算验收。下一步是带本总览讨论具体研究假设；尚未启动新训练、参数搜索或数据扩充。
 
-若老师还需要九次正式实验的val/test成绩，另附已有“模型实验简表_教师讨论版.xlsx”。它是成绩表，本报告是诊断过程；本次未修改成绩表。
+若老师还需要九次正式实验的val/test成绩，另附已有“模型实验简表_讨论版.xlsx”。它是成绩表，本报告是诊断过程；本次未修改成绩表。
 
-今晚主材料只有两份：本总览HTML，加已有正式实验成绩简表Excel。前者先看第0节对应表与第5b节案例，后者分别看val/test；YOLO11s1600和RT-DETR-L1600尚未test，留空不等于0，MERGE130没有独立val。Excel原历史文件名保留，本文没有新增带“教师”后缀的文件。详细DIAG01/02/04网页仅作本机演示备查，不必逐份通读。
+今晚主材料只有两份：本总览HTML，加已有正式实验成绩简表Excel。前者先看第0节对应表与第5b节案例，后者分别看val/test；YOLO11s1600和RT-DETR-L1600尚未test，留空不等于0，MERGE130没有独立val。简表现统一命名为“模型实验简表_讨论版.xlsx”；此次仅改名，表内数据和格式保持不变。详细DIAG01/02/04网页仅作本机演示备查，不必逐份通读。
 
 ## 8a. DIAG04准备与运行记录（现已验收）
 
@@ -221,7 +221,7 @@ GT是人工标注；177是标注编号，不是图片编号。绿色为GT，橙�
 - [旧STEP12诊断验收](<D:/小论文/model_projects/Faster R-CNN/workspace/audit/step12_review/acceptance.json>)
 - [旧STEP12固定1280训练8图中间数组目录](<D:/小论文/model_projects/Faster R-CNN/workspace/runs/FRCNN-DIAG-RPNROI-TRAIN8/step12_24867_6686/scale1280>)
 - [历史anchor4对照验收（仅作补充边界）](<D:/小论文/model_projects/Faster R-CNN/workspace/audit/step13_review/acceptance.json>)
-- [正式实验成绩简表（本次未修改）](<D:/小论文/model_projects/baseline_analysis/outputs/模型实验简表_教师讨论版.xlsx>)
+- [正式实验成绩简表（本次未修改）](<D:/小论文/model_projects/baseline_analysis/outputs/模型实验简表_讨论版.xlsx>)
 - [固定8图选择记录（流程自检用，非网页临时抽图）](<D:/小论文/model_projects/Faster R-CNN/workspace/configs/frcnn_debug8_selection.json>)
 - [固定8图选择实现（第46—76行）](<D:/小论文/model_projects/Faster R-CNN/workspace/scripts/step05_prepare_debug8.py>)
 - [DIAG01完整网页数据（54个图片×权重记录）](<D:/小论文/model_projects/Faster R-CNN/workspace/audit/FRCNN-DIAG-SAVED1280-001/diag01_20261019_010031_868401/viewer_data.json>)

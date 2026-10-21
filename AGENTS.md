@@ -2,6 +2,10 @@
 
 本文件只服务于 `D:\小论文\model_projects` 内的本项目，不是用户全局配置。首次整理日期：2026-10-13。内容根据实际文件核对；实验状态可能变化，继续前应查最新日志和记录，不把本文件中的阶段状态视为永久事实。
 
+## 2026-10-21 讨论材料命名规则与简表改名
+
+用户明确要求：本次及以后用于讨论的交付文件名统一使用“讨论版”，不附加“教师”二字。现行简表为 `D:\小论文\model_projects\baseline_analysis\outputs\模型实验简表_讨论版.xlsx`；改名时工作簿字节与原验收哈希保持一致，数据和格式未改。生成入口prepare_teacher_simple.py、当前生成计划和报告引用已更新，后续刷新沿用新名称。历史冻结备份保留原记录，内部teacher_simple工具名无需为此改动。改名核查见 `baseline_analysis/audit/discussion_filename_rename_20261021.json`。
+
 ## 2026-10-21 晚间讨论材料与“阈值0”范围澄清
 
 诊断总览已更新到修订7，在同一主MD/HTML最前增加“录音要求—实际工作—结论—剩余边界”对应表、阈值0说明及阅读指南；内嵌输入示例，今晚主材料为此总览与既有val/test成绩简表。没有修改训练/诊断.py、配置或正式指标，没有新模型前向。
@@ -274,7 +278,7 @@ STEP14已完成并验收，不要重跑：用户明确要求的最后一次增�
 
 `refresh_experiment_records.py`已支持三项尺寸/anchor实验的已验收補测读取，必须有该测试的acceptance、visual_review及证据哈希才能登记。当前26个唯一评价记录，STEP15/16/17各原生/精确test两行；更新前24行指标及源文件字段保持不变，1448个CSV/Excel相关单元格一致。登记证据baseline_analysis/audit/step17_registration_verification.json。Excel结果页标注anchor4以区分同1280尺寸；原生/精确复算为同次预测的不同精度记录，不是两个实验。旧四次Excel保留历史版本，val/test分别展示。每完成一项就登记；补测进度baseline_analysis/audit/test_completion_review_20261014/test_completion_progress.json，固定权重清单保留冻结状态。
 
-用户2026-10-14要求更简约、英文附中文解释的教师表，已新增`D:\小论文\model_projects\baseline_analysis\outputs\模型实验简表_教师讨论版.xlsx`；原详细总表作为证据索引保留，旧四次Excel不改写。给老师主文件改用简表，建议配11_all_experiments_summary_for_teacher.md。仅两页val（验证集）/test（测试集），各九次正式实验，一次实验只展示一行，主要指标在上、断股/松股AP在下；未测/未算留空，合并130训练val不适用。Faster取精确COCO保存预测复算；Ultralytics取固定权重的原生独立评价，1600的val统一采用训练结束best.pt重验证（与训练内CSV选中轮次可能略有不同，不能混用同一行总体与类别来源）。单次来源映射在audit/teacher_simple_plan.json。342个保存XLSX单元格、百分比/空值/类别核查通过，证据audit/teacher_simple_acceptance.json；无新增模型推理。独立脚本prepare_teacher_simple.py/build_teacher_simple.mjs/verify_teacher_simple.py生成，已接入refresh_experiment_records.py登记后自动刷新，数字从同一CSV派生，不手工维护第二套数值。原详细总表的英文机器标识继续保留；教师简表提供中文状态/指标解释。
+用户2026-10-14要求更简约、英文附中文解释的教师表，已新增`D:\小论文\model_projects\baseline_analysis\outputs\模型实验简表_讨论版.xlsx`；原详细总表作为证据索引保留，旧四次Excel不改写。给老师主文件改用简表，建议配11_all_experiments_summary_for_teacher.md。仅两页val（验证集）/test（测试集），各九次正式实验，一次实验只展示一行，主要指标在上、断股/松股AP在下；未测/未算留空，合并130训练val不适用。Faster取精确COCO保存预测复算；Ultralytics取固定权重的原生独立评价，1600的val统一采用训练结束best.pt重验证（与训练内CSV选中轮次可能略有不同，不能混用同一行总体与类别来源）。单次来源映射在audit/teacher_simple_plan.json。342个保存XLSX单元格、百分比/空值/类别核查通过，证据audit/teacher_simple_acceptance.json；无新增模型推理。独立脚本prepare_teacher_simple.py/build_teacher_simple.mjs/verify_teacher_simple.py生成，已接入refresh_experiment_records.py登记后自动刷新，数字从同一CSV派生，不手工维护第二套数值。原详细总表的英文机器标识继续保留；教师简表提供中文状态/指标解释。
 
 后续新实验统一执行文首“后续每次实验由助手主动执行”的隔离规则，无需用户再次粘贴隔离提示词。
 

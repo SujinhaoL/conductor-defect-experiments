@@ -42,7 +42,7 @@ call "D:\小论文\model_projects\yolo11\workspace\scripts\run_step18_test_yolo1
 如OOM或异常，保留目录和日志并停止，不自动重试、更改batch/精度或尺寸。
 反馈完整终端输出，保留LOG_DIR、RESULT_DIR和退出码。助手收到后先核查保存文件和原生统计复算，再扩展登记读取器、更新详细总表/CSV/总报告及教师简表，完成后进入RT-DETR-L1600第42轮。
 
-给老师主文件：D:\小论文\model_projects\baseline_analysis\outputs\模型实验简表_教师讨论版.xlsx
+给老师主文件：D:\小论文\model_projects\baseline_analysis\outputs\模型实验简表_讨论版.xlsx
 说明报告：D:\小论文\model_projects\baseline_analysis\11_all_experiments_summary_for_teacher.md
 详细证据：D:\小论文\model_projects\baseline_analysis\outputs\模型实验结果总表.xlsx
 数字依据：D:\小论文\model_projects\baseline_analysis\10_all_experiments_metrics.csv

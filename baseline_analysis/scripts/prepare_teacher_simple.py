@@ -35,7 +35,7 @@ def choose(experiment,split):
     return max(rows,key=lambda row:priority.get(row['evaluation_protocol'],priority.get(row['evaluation_event'],0)))
 
 
-plan=dict(output_path=str(BASE/'outputs/模型实验简表_教师讨论版.xlsx'),
+plan=dict(output_path=str(BASE/'outputs/模型实验简表_讨论版.xlsx'),
     preview_dir=str(BASE/'audit/teacher_simple_previews'),source_csv=str(CSV),
     source_csv_sha256=hashlib.sha256(CSV.read_bytes()).hexdigest(),sheets=[])
 for split,name,counts in [('val','val（验证集）','23张图片，37个框：broken（断股）9个、loose（松股）28个'),
