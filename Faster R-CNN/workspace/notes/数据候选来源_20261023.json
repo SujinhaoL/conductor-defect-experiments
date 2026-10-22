@@ -1,0 +1,129 @@
+{
+  "date": "2026-10-23",
+  "stage": 1,
+  "scope": "候选盘点；未批准纳入任何新增样本",
+  "candidates": [
+    {
+      "id": "C1",
+      "name": "MPCD / 本地 MulticableData",
+      "priority": "优先核验现有副本",
+      "source_url": "https://github.com/phd-benel/PowerLine-MTYOLO",
+      "extra_urls": [
+        "https://doi.org/10.3390/drones9070505",
+        "https://drive.google.com/file/d/1ipKGaDK4-8_SjzC-XMNmWoAaYQEhqfY5/view"
+      ],
+      "availability": "本地已有1871张图片及检测/分割TXT；作者仓库可读，当前README的数据超链接实际指向1ipKGa…，显示文字仍是旧1Kyci…链接。两个Drive页面本轮工具均未能读取，未重下载。",
+      "license": "仓库声明AGPL-3.0；五个上游Roboflow来源的具体数据版本及许可尚未逐一核实，不能仅用代码项目许可证代替完整数据来源核验。",
+      "count_annotations": "作者公布1871图、1906个Broken Cable框、2501个导线分割实例。本地另存MulticableData实查1497+374=1871图，均为640×640；检测TXT均5字段、类别ID仅0，共1906框；分割2501条，图像与两套TXT全部同名配对。与公开统计一致，但未核对官方包哈希，不能据此直接并入当前153图。",
+      "meaning": "论文的Broken Cable是单类断股区域；需要逐图判断是否混有本项目的松股。seg_cable是整根导线分割，不能映射为缺陷框。",
+      "sample": "已查看本地images/train2017/02.jpg：640×640，存在局部股线异常；只看这一例，未验收全部1871张。对应检测框约为[255,244,430,291]像素。",
+      "crop_synthetic": "论文说明来自五个公开UAV来源并缩放至640×640；不是本轮生成的合成图。原来源裁剪/增强历史未全部核实。",
+      "overlap": "与DAKNONGGD3等五个上游集合有明确来源重叠；不可把MPCD与其上游图数直接相加。与旧153图的近重复尚未核验。",
+      "next": "先确认这份本地副本是否就是此前下载的MPCD，再审查类别含义、框范围及同源关系；不必先重新下载。"
+    },
+    {
+      "id": "C2",
+      "name": "Power Equipment Image Dataset",
+      "priority": "优先查两类语义，但有坐标问题",
+      "source_url": "https://github.com/xiongsiheng/Power-equipment-image-dataset",
+      "extra_urls": [
+        "https://huggingface.co/datasets/sxiong/Power-equipment-image-dataset/tree/main",
+        "https://github.com/xiongsiheng/Power-equipment-image-dataset/tree/main/transmission%20line%20object%20detection/dx_sg_cz20221229"
+      ],
+      "availability": "原发布仓库、目录和一份XML可直接读取；HF提供530 MB的目标检测ZIP目录项，未下载。所查子目录194 JPG、181 XML，181对同名匹配，13张无同名XML；不等于全库统计。",
+      "license": "GitHub LICENSE为MIT，作者HF数据卡同标MIT；保留作者和原始发布信息。",
+      "count_annotations": "README称目标检测子集总10348图、28类；不能当10348张断股/松股图。dx_sg_cz20221229子目录已核对文件名配对；缺陷类别总图数/框数仍未知。VOC XML矩形框。",
+      "meaning": "dx_dg明确指断股，dx_sg明确指松股；dx_jypps是绝缘皮破损，不并入。不能只按目录名筛选，样例XML在松股目录同时标了两类。",
+      "sample": "20221229_dx_sg_cz1：XML含1个dx_sg、2个dx_dg；XML尺寸4608×3456，但下载的单张GitHub JPG实际1152×864。坐标不能原样使用；比例为1/4仅是该例的尺寸关系，未自动修复。",
+      "crop_synthetic": "样例为实际设备图；GitHub样例被缩小。HF压缩包是否保留原分辨率、全库是否一致尚未核实。未发现可据以宣称全库无增强的材料。",
+      "overlap": "与旧图、其他电力数据包的重复关系未知；先核查原尺寸版本与缺陷边界，不把181配对文件直接计作新增。",
+      "next": "优先核对原尺寸数据包及坐标来源，再抽查dx_dg/dx_sg语义；未核清前不转换标注或纳入训练。"
+    },
+    {
+      "id": "C3",
+      "name": "RF100 cable-damage / 原作者kanaaat",
+      "priority": "第二梯队，待看图",
+      "source_url": "https://universe.roboflow.com/roboflow-100/cable-damage",
+      "extra_urls": [
+        "https://universe.roboflow.com/st-hedgehog-yusupov-gmail-com/kanaaat",
+        "https://universe.roboflow.com/roboflow-100/cable-damage/dataset/2"
+      ],
+      "availability": "发布页和版本页可读，提供下载入口及YOLO/COCO/VOC格式；未验证登录后的实际导出，也未下载数据。",
+      "license": "RF100和原作者发布页均标CC BY 4.0；原始拍摄出处仍需核对。",
+      "count_annotations": "RF100显示1318图、break/thunderbolt两类；原作者当前页4317图、break/thunderbolt/wear三类。没有每类图数或确认可纳入数。",
+      "meaning": "break仅是断裂线索，不能直接等同本项目断股；thunderbolt雷击与wear磨损不能自动并类；没有明确独立松股类。",
+      "sample": "页面有样例入口；本轮未逐图查看这些样例或核对实际框。RF100页明确链接回kanaaat原项目。",
+      "crop_synthetic": "RF100 v1拉伸640×640；v2页面声明无预处理和增强。上游是否裁剪或增强仍未证实，不能把v2声明推广为整个来源历史。",
+      "overlap": "RF100是原作者项目的派生子集，二者不得当独立数据叠加；与旧153图的重复关系尚未核验。",
+      "next": "若进入核验，先取原作者/无额外缩放版本的少量样例，确认break是否符合断股定义、细节是否可辨。"
+    },
+    {
+      "id": "C4",
+      "name": "CableInspect-AD",
+      "priority": "保留，获取受限且场景不同",
+      "source_url": "https://mila-iqia.github.io/cableinspect-ad/",
+      "extra_urls": [
+        "https://www.hydroquebec.com/documents-data/open-data/images-defects-electrical-conductor/",
+        "https://proceedings.neurips.cc/paper_files/paper/2024/hash/76d9dd096d9469d6b7e732f0cddb51b3-Abstract.html",
+        "https://drive.google.com/file/d/126i30i7dRkcf4E5k7x8yysay3Snv6NXv/view"
+      ],
+      "availability": "作者项目页和论文可读；Hydro-Québec官方Data链接跳转境外访问受限页。作者另提供Google Drive备份，本轮读取返回401；尚未验证用户浏览器能否下载，不能据此断言数据不可获取。未拿到原始包。",
+      "license": "作者项目页明确数据为CC BY-NC-SA 4.0；网站模板的CC BY-SA不能当数据许可。第三方Roboflow转存声称CC BY 4.0，不能覆盖原始许可。",
+      "count_annotations": "作者公布4798图、6023个异常标注、3种电缆、7种异常；含正常图和非目标缺陷，不能算4798张可新增断股/松股图。COCO框、像素掩码及图像级标注。",
+      "meaning": "broken strand可作断股候选；spaced strand是股间分离，须与本项目松股边界比对；其他异常不自动纳入。",
+      "sample": "作者页含异常图示和装置说明，作为样例依据；本轮未取得并逐图核查原始文件。",
+      "crop_synthetic": "真实电缆在受控装置拍摄，部分缺陷由专家人工制造；不是本轮数字合成，亦不等同自然航拍缺陷。",
+      "overlap": "第三方CableInspect-AD-YOLO是同源转存，不能再算一个独立来源；同电缆、多视角和连续采集要保留分组。",
+      "next": "先确认是否接受这种采集场景，再核验作者给出的Drive备份获取方式及缺陷语义。"
+    },
+    {
+      "id": "C5",
+      "name": "DAKNONGGD3 等MPCD上游",
+      "priority": "追溯用，避免重复计数",
+      "source_url": "https://universe.roboflow.com/daknongpc-giai-doan-3/daknonggd3",
+      "extra_urls": [
+        "https://universe.roboflow.com/daydantuacaothe/daydantuacaothe1",
+        "https://universe.roboflow.com/tthpcgd2/110_daydan_tua-prtw4"
+      ],
+      "availability": "DAKNONGGD3页面可读；另两个上游页面本轮工具不可读。MPCD论文说明合并了五个公开来源。未导出图像。",
+      "license": "已打开的DAKNONGGD3页面标CC BY 4.0；其余来源/版本未核实。",
+      "count_annotations": "当前DAKNONGGD3页面3264图、45类；MPCD论文表中使用其中58图，不能把3264全算缺陷图或全算独立新增。矩形目标检测。",
+      "meaning": "ddan_ct_tua、ddan_tt_tua为需核验的导线异常标签线索；ddan_ct、ddan_tran_tt等普通导线标签不能仅凭拼写归为断股/松股。",
+      "sample": "已读页面类名和MPCD来源表；尚未查看特定tua标注样例，暂不做中文类别定案。",
+      "crop_synthetic": "裁剪、缩放、增强及同一现场连续拍摄信息未核实。",
+      "overlap": "与C1明确同源，优先补来源映射，只有证明确有未纳入的合格独立图才可能增加样本。",
+      "next": "先完成C1的来源核对；若有明确缺口，再向上游寻找额外原图。"
+    },
+    {
+      "id": "C6",
+      "name": "2026配网断股论文自建集",
+      "priority": "需申请，当前不可直接获取",
+      "source_url": "https://link.springer.com/article/10.1007/s10791-026-10121-0",
+      "extra_urls": [],
+      "availability": "论文明确数据不公开，合理请求后可向通讯作者申请；本轮没有联系作者。",
+      "license": "未见数据使用许可；文章开放许可不等于数据可自由使用。",
+      "count_annotations": "论文报告1364图，LabelImg框住断股区域；未得到文件清单，不作为已核实可用数量。",
+      "meaning": "目标断股语义贴近；无证据显示独立松股类。",
+      "sample": "论文给出数据示例；本轮只核查数据说明及可获取声明，未验收原图和标注。",
+      "crop_synthetic": "论文讨论数据增强；独立原始图与增强图的数量关系待作者说明。",
+      "overlap": "与已有公开数据及旧153图的关系未知。",
+      "next": "若前两项仍不足，再由用户决定是否申请；不把该论文实验规模列入可下载数据总量。"
+    },
+    {
+      "id": "X1",
+      "name": "TTPLA / 本地data_original_size_v1",
+      "priority": "排除为本轮缺陷扩充源",
+      "source_url": "https://github.com/R3ab/ttpla_dataset",
+      "extra_urls": [],
+      "availability": "本地1242 JPG+1242 JSON；许可作者和类名与TTPLA相符，原始包版本尚未逐文件比对。官方仓库有发布入口。",
+      "license": "本地License.txt为Apache-2.0，署名Rabab Abdelfattah。",
+      "count_annotations": "本地11467个polygon：cable 10075、Cable 28、tower_wooden 333、tower_lattice 404、tower_tucohy 231、void 396。不是断股/松股框统计。",
+      "meaning": "cable/Cable标普通导线，tower_*标塔，void为忽略区域；没有发现断股/松股类别。",
+      "sample": "已解析全部JSON类名和shape_type；04_2220.json示例是cable多边形，未因此把它判成缺陷。",
+      "crop_synthetic": "是否需用于后续其他任务另议，本轮不转换为缺陷样本或负样本。",
+      "overlap": "不得用1242张普通导线图撑大当前缺陷集规模。",
+      "next": "本轮停止核验该来源；不添加正常图，不修改其标注。"
+    }
+  ],
+  "user_clarification": "用户于2026-10-23确认finalized_labelme为本人标注的原始版本，其他格式由此转换；取消本地原始XML追溯要求，当前只做公开导线缺陷数据候选检索。"
+}

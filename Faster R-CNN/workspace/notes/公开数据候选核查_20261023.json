@@ -1,0 +1,223 @@
+{
+  "date": "2026-10-23",
+  "scope": "Stage 1 inventory only; no training, inference, bulk download, merge, split or annotation edits.",
+  "local_verification": {
+    "status": "PASS_INVENTORY_SCOPE",
+    "date": "2026-10-23",
+    "final_images": 153,
+    "coco": {
+      "train": {
+        "images": 107,
+        "boxes": 168,
+        "class_ids": {
+          "1": 39,
+          "2": 129
+        },
+        "sha256": "c2d34925a87a7720d822a8c816c0da467a2c0d7081a8c654c2fdb69673deb665"
+      },
+      "val": {
+        "images": 23,
+        "boxes": 37,
+        "class_ids": {
+          "1": 9,
+          "2": 28
+        },
+        "sha256": "5c524ebdcf7de3099ef34cab1825323db34a7729e5aac2199b4ab1aa0a6a8c01"
+      },
+      "test": {
+        "images": 23,
+        "boxes": 36,
+        "class_ids": {
+          "1": 8,
+          "2": 28
+        },
+        "sha256": "42081faac0bb2fd36adec5e41669239e9e8fb39226b40bdf85a1822fe2ac9baa"
+      }
+    },
+    "multicable": {
+      "dimensions": {
+        "(640, 640)": 1871
+      },
+      "segmentation_instances_by_id": {
+        "1": 2501
+      },
+      "missing_label_pairs": []
+    },
+    "old_data_changed": false,
+    "model_run": false,
+    "full_image_semantic_review": false
+  },
+  "ttpla_local_labels": {
+    "labels": {
+      "cable": 10075,
+      "tower_wooden": 333,
+      "Cable": 28,
+      "tower_lattice": 404,
+      "void": 396,
+      "tower_tucohy": 231
+    },
+    "shapes": {
+      "polygon": 11467
+    },
+    "sample": {
+      "path": "D:\\小论文\\数据集\\data_original_size_v1\\data_original_size\\04_2220.json",
+      "keys": [
+        "version",
+        "flags",
+        "shapes",
+        "lineColor",
+        "fillColor",
+        "imagePath",
+        "imageData",
+        "imageHeight",
+        "imageWidth"
+      ],
+      "labels": [
+        "cable",
+        "cable",
+        "cable",
+        "cable",
+        "cable"
+      ]
+    }
+  },
+  "multicable_detection": {
+    "files": 1871,
+    "empty_files": 0,
+    "class_id_box_counts": {
+      "0": 1906
+    },
+    "field_counts": {
+      "5": 1906
+    },
+    "examples": [
+      {
+        "path": "D:\\小论文\\数据集\\MulticableData\\detection_brokencable\\labels\\train2017\\02.txt",
+        "lines": [
+          "0 0.53515625 0.41796875 0.2734375 0.0734375"
+        ]
+      },
+      {
+        "path": "D:\\小论文\\数据集\\MulticableData\\detection_brokencable\\labels\\train2017\\04.txt",
+        "lines": [
+          "0 0.52734375 0.44453125 0.2046875 0.07109375"
+        ]
+      },
+      {
+        "path": "D:\\小论文\\数据集\\MulticableData\\detection_brokencable\\labels\\train2017\\05.txt",
+        "lines": [
+          "0 0.5546875 0.76796875 0.7921875 0.2859375"
+        ]
+      }
+    ]
+  },
+  "public_xiong_directory": {
+    "xml": 181,
+    "images": 194,
+    "paired": 181,
+    "unpaired_xml": [],
+    "image_only": [
+      "20221229_dx_sg_cz162",
+      "20221229_dx_sg_cz175",
+      "20221229_dx_sg_cz176",
+      "20221229_dx_sg_cz177",
+      "20221229_dx_sg_cz178",
+      "20221229_dx_sg_cz179",
+      "20221229_dx_sg_cz180",
+      "20221229_dx_sg_cz184",
+      "20221229_dx_sg_cz24",
+      "20221229_dx_sg_cz25",
+      "20221229_dx_sg_cz26",
+      "20221229_dx_sg_cz65",
+      "20221229_dx_sg_cz66"
+    ]
+  },
+  "public_xiong_sample": {
+    "image": {
+      "url": "https://raw.githubusercontent.com/xiongsiheng/Power-equipment-image-dataset/main/transmission%20line%20object%20detection/dx_sg_cz20221229/JPEGImages/20221229_dx_sg_cz1.jpg",
+      "bytes": 60227,
+      "sha256": "a7e71da7a10eb7d5c724ed777ac35138429c414c96e4294a1fd4831bdf358cae",
+      "dimensions": [
+        1152,
+        864
+      ]
+    },
+    "annotation": {
+      "url": "https://raw.githubusercontent.com/xiongsiheng/Power-equipment-image-dataset/main/transmission%20line%20object%20detection/dx_sg_cz20221229/Annotations/20221229_dx_sg_cz1.xml",
+      "bytes": 1034,
+      "sha256": "8ca32182f6923789b671f2eb50b460f756f4fb84ada63ab6c0cbc5a13ae72cb0"
+    }
+  },
+  "public_xiong_xml_declared_size": [
+    4608,
+    3456
+  ],
+  "public_xiong_sample_classes": {
+    "dx_sg": 1,
+    "dx_dg": 2
+  },
+  "scratch_evidence_dir": "D:\\小论文\\model_projects\\.local\\data_inventory_20261023",
+  "git_old_commits_sync": {
+    "previous_remote": "c0ce90292211ec87ea0c2d59f13894a986634dc6",
+    "pushed": [
+      "0266336",
+      "f4ccf1e"
+    ],
+    "method": "git -c http.proxy=http://127.0.0.1:7890 push origin main",
+    "result": "success",
+    "user_changed_visibility_to_public": true,
+    "permanent_proxy_config_changed": false
+  },
+  "limits": [
+    "No full candidate semantic review",
+    "No approved new sample count",
+    "Public release-page counts are not target-class counts"
+  ],
+  "audit_helpers": [
+    {
+      "path": "D:\\小论文\\model_projects\\.local\\data_inventory_20261023\\build_report.py",
+      "sha256": "64bd709657a60b2f3a280d903f78c8395ef8ccea7c99793ae1709e28ce4d2b25"
+    },
+    {
+      "path": "D:\\小论文\\model_projects\\.local\\data_inventory_20261023\\finalize_docs.py",
+      "sha256": "776b6e637e72414ea6d9da9dfa3f7c6c50030965c5b40a815e4d069b361bc84d"
+    },
+    {
+      "path": "D:\\小论文\\model_projects\\.local\\data_inventory_20261023\\inspect_local.py",
+      "sha256": "c27f11941630510c7b3b4c96f3accc2593540e378748cc5dc5c246e3e472a08e"
+    },
+    {
+      "path": "D:\\小论文\\model_projects\\.local\\data_inventory_20261023\\probe_sample.py",
+      "sha256": "9c6bf3848d548addd80fe0ec1139f0be16f46de9f90cd2667ef763dd0e0bc922"
+    },
+    {
+      "path": "D:\\小论文\\model_projects\\.local\\data_inventory_20261023\\trace_sources.py",
+      "sha256": "fa6ff99d7097a37c263a6f26dcfaf13a050fdda558737ab32737d65b93d86bb6"
+    },
+    {
+      "path": "D:\\小论文\\model_projects\\.local\\data_inventory_20261023\\verify_inventory.py",
+      "sha256": "b697b0e2b6a750c4f8551f0682fb7657f771d8a3f0ea86160ef4e7f179d6638b"
+    }
+  ],
+  "user_clarification": "用户于2026-10-23确认finalized_labelme为本人标注的原始版本，其他格式由此转换；取消本地原始XML追溯要求，当前只做公开导线缺陷数据候选检索。",
+  "local_original_xml_tracing": "Stopped at user direction; no further path request. Earlier exploratory evidence retained in scratch directory only.",
+  "document_review": {
+    "status": "PASS_DOCUMENT_SCOPE",
+    "candidate_rows": 7,
+    "columns": 6,
+    "local_links_checked": [
+      "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\notes\\公开数据候选核查_20261023.json",
+      "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\notes\\数据候选来源_20261023.json",
+      "D:\\小论文\\model_projects\\.local\\data_inventory_20261023\\public_xiong_sample1.jpg"
+    ],
+    "source_links_consistent": true,
+    "no_scripts_or_iframes": true,
+    "browser_visual_review": false,
+    "documents_sha256": {
+      "公开导线缺陷数据候选_20261023_讨论版.md": "0afe33c9632a5398c6754490d0256b54d13908ce0b6a828aaa4e5c94a9c3e345",
+      "公开导线缺陷数据候选_20261023_讨论版.html": "2f64c58e9bddc6eeafd73cedd36d10f3dc5a2df40552b10972bdc8f015626656",
+      "数据候选来源_20261023.json": "c07d2ca13f49d2a97b3065baa8e4b199c3a53a9243c452e723380d6b55a1cd4c"
+    },
+    "limitations": "Structure, local links and recorded evidence checked; no full candidate semantic acceptance, model execution or new data admission."
+  }
+}
