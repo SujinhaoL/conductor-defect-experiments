@@ -1,0 +1,234 @@
+{
+  "date": "2026-10-23",
+  "scope": "C1 small sample visual feedback preparation; no data admission or model call",
+  "selection": {
+    "selection_method": "4 single-box area quantiles plus first multi-box record; purposive technical coverage, not prevalence or representative sampling",
+    "label_files_scanned": 1871,
+    "single_box_files": 1839,
+    "multiple_box_files": 32
+  },
+  "samples": [
+    {
+      "review_id": "C1-01",
+      "subset": "train2017",
+      "filename": "486.jpg",
+      "selection_reason": "单框图按框面积排序，约第10百分位，用于观察不同标注尺度",
+      "image_path": "D:\\小论文\\数据集\\MulticableData\\images\\train2017\\486.jpg",
+      "label_path": "D:\\小论文\\数据集\\MulticableData\\detection_brokencable\\labels\\train2017\\486.txt",
+      "image_sha256": "ef40c5df4f0bea4167cf8de79e26368b29e86d57d894a47bf39c8e6c7cda4247",
+      "label_sha256": "04c5d614c2601f80de7c0f6e3b4515fba04d1690bb77f316381bf410b720500b",
+      "image_size": [
+        640,
+        640
+      ],
+      "boxes": [
+        {
+          "id": "A",
+          "source_yolo": [
+            0.0,
+            0.86875,
+            0.61328125,
+            0.25,
+            0.0765625
+          ],
+          "xyxy": [
+            476.0,
+            368.0,
+            636.0,
+            417.0
+          ],
+          "size_px": [
+            160.0,
+            49.0
+          ]
+        }
+      ],
+      "semantic_review": "pending_user_feedback"
+    },
+    {
+      "review_id": "C1-02",
+      "subset": "train2017",
+      "filename": "1627.jpg",
+      "selection_reason": "单框图按框面积排序，约第35百分位，用于观察不同标注尺度",
+      "image_path": "D:\\小论文\\数据集\\MulticableData\\images\\train2017\\1627.jpg",
+      "label_path": "D:\\小论文\\数据集\\MulticableData\\detection_brokencable\\labels\\train2017\\1627.txt",
+      "image_sha256": "04d2cd65bc8f655c33be179d3e081d17c2cb791957090d17468d5522def587fe",
+      "label_sha256": "df52371c220a4a195a0df06d845efef7ab629a9910116493ec3ea49eec5c15f9",
+      "image_size": [
+        640,
+        640
+      ],
+      "boxes": [
+        {
+          "id": "A",
+          "source_yolo": [
+            0.0,
+            0.490625,
+            0.53671875,
+            0.11875,
+            0.609375
+          ],
+          "xyxy": [
+            276.0,
+            148.5,
+            351.99999999999994,
+            538.5
+          ],
+          "size_px": [
+            75.99999999999994,
+            390.0
+          ]
+        }
+      ],
+      "semantic_review": "pending_user_feedback"
+    },
+    {
+      "review_id": "C1-03",
+      "subset": "train2017",
+      "filename": "1609.jpg",
+      "selection_reason": "单框图按框面积排序，约第65百分位，用于观察不同标注尺度",
+      "image_path": "D:\\小论文\\数据集\\MulticableData\\images\\train2017\\1609.jpg",
+      "label_path": "D:\\小论文\\数据集\\MulticableData\\detection_brokencable\\labels\\train2017\\1609.txt",
+      "image_sha256": "c0fc7298c6e7c70faa11e59e6072c765254df0951317a0ef82f0028a507af0ed",
+      "label_sha256": "dd735ce959c705c802a9871324df545f824e006abaab72f0aa02cd6efef43a00",
+      "image_size": [
+        640,
+        640
+      ],
+      "boxes": [
+        {
+          "id": "A",
+          "source_yolo": [
+            0.0,
+            0.43359375,
+            0.35390625,
+            0.2296875,
+            0.7078125
+          ],
+          "xyxy": [
+            204.0,
+            0.0,
+            351.0,
+            453.0
+          ],
+          "size_px": [
+            147.0,
+            453.0
+          ]
+        }
+      ],
+      "semantic_review": "pending_user_feedback"
+    },
+    {
+      "review_id": "C1-04",
+      "subset": "train2017",
+      "filename": "171.jpg",
+      "selection_reason": "单框图按框面积排序，约第90百分位，用于观察不同标注尺度",
+      "image_path": "D:\\小论文\\数据集\\MulticableData\\images\\train2017\\171.jpg",
+      "label_path": "D:\\小论文\\数据集\\MulticableData\\detection_brokencable\\labels\\train2017\\171.txt",
+      "image_sha256": "f72f2d5dccaf3bb42949e53ae669613780bfa303493009e6c3565004c3991eb7",
+      "label_sha256": "c22385787c55092ebbd84e76435a444b7a67adfd3ed1bf1fcb407af8b9d31c74",
+      "image_size": [
+        640,
+        640
+      ],
+      "boxes": [
+        {
+          "id": "A",
+          "source_yolo": [
+            0.0,
+            0.5125,
+            0.4421875,
+            0.8703125,
+            0.36953125
+          ],
+          "xyxy": [
+            49.49999999999996,
+            164.75,
+            606.5,
+            401.25
+          ],
+          "size_px": [
+            557.0,
+            236.5
+          ]
+        }
+      ],
+      "semantic_review": "pending_user_feedback"
+    },
+    {
+      "review_id": "C1-05",
+      "subset": "train2017",
+      "filename": "1090.jpg",
+      "selection_reason": "按框数量、子目录、文件名排序的首张多框图，用于检查同图多个标注",
+      "image_path": "D:\\小论文\\数据集\\MulticableData\\images\\train2017\\1090.jpg",
+      "label_path": "D:\\小论文\\数据集\\MulticableData\\detection_brokencable\\labels\\train2017\\1090.txt",
+      "image_sha256": "e5493d3d01bfef2ebae6aace97ec1c52bbfff2714c3591271691bf7a9f1a9376",
+      "label_sha256": "fe733b5dda57a6084b6b7922e1bc9655e86251194806eef747ba6e99b9681826",
+      "image_size": [
+        640,
+        640
+      ],
+      "boxes": [
+        {
+          "id": "A",
+          "source_yolo": [
+            0.0,
+            0.5859375,
+            0.525,
+            0.00625,
+            0.0078125
+          ],
+          "xyxy": [
+            373.0,
+            333.5,
+            377.0,
+            338.5
+          ],
+          "size_px": [
+            4.0,
+            5.0
+          ]
+        },
+        {
+          "id": "B",
+          "source_yolo": [
+            0.0,
+            0.59609375,
+            0.5,
+            0.1171875,
+            1.0
+          ],
+          "xyxy": [
+            344.0,
+            0.0,
+            419.0,
+            640.0
+          ],
+          "size_px": [
+            75.0,
+            640.0
+          ]
+        }
+      ],
+      "semantic_review": "pending_user_feedback"
+    }
+  ],
+  "checks": {
+    "decoded_images": 5,
+    "source_boxes": 6,
+    "in_bounds": true,
+    "inverse_yolo_check": true,
+    "source_hashes_unchanged": true,
+    "html_image_views": 11,
+    "links_exist": true,
+    "raw_images_viewed_by_assistant": true,
+    "browser_interaction_checked": false
+  },
+  "pending": [
+    "user class and box extent feedback",
+    "broader source usability and duplicate checks"
+  ],
+  "page": "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\notes\\C1公开缺陷样例核验_20261023_讨论版.html",
+  "page_sha256": "30a621e7ff904cc159ab05096a5a415ca3b12b702db3ec0aa9d9668bd5cb2541"
+}
