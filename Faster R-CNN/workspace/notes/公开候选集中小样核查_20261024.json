@@ -1,0 +1,357 @@
+{
+  "date": "2026-10-24",
+  "c2": [
+    {
+      "id": "C2-01",
+      "name": "20221229_dx_sg_cz1",
+      "files": {
+        "image": {
+          "url": "https://raw.githubusercontent.com/xiongsiheng/Power-equipment-image-dataset/main/transmission%20line%20object%20detection/dx_sg_cz20221229/JPEGImages/20221229_dx_sg_cz1.jpg",
+          "path": "D:\\小论文\\model_projects\\.local\\data_inventory_20261024\\samples\\20221229_dx_sg_cz1.jpg",
+          "sha256": "a7e71da7a10eb7d5c724ed777ac35138429c414c96e4294a1fd4831bdf358cae"
+        },
+        "label": {
+          "url": "https://raw.githubusercontent.com/xiongsiheng/Power-equipment-image-dataset/main/transmission%20line%20object%20detection/dx_sg_cz20221229/Annotations/20221229_dx_sg_cz1.xml",
+          "path": "D:\\小论文\\model_projects\\.local\\data_inventory_20261024\\samples\\20221229_dx_sg_cz1.xml",
+          "sha256": "8ca32182f6923789b671f2eb50b460f756f4fb84ada63ab6c0cbc5a13ae72cb0"
+        }
+      },
+      "image_size": [
+        1152,
+        864
+      ],
+      "xml_size": [
+        4608,
+        3456
+      ],
+      "display_scale": [
+        0.25,
+        0.25
+      ],
+      "boxes": [
+        {
+          "id": "A",
+          "source_class": "dx_sg",
+          "xml_xyxy": [
+            3687.0,
+            1276.0,
+            3891.0,
+            1432.0
+          ],
+          "preview_xyxy": [
+            921.75,
+            319.0,
+            972.75,
+            358.0
+          ]
+        },
+        {
+          "id": "B",
+          "source_class": "dx_dg",
+          "xml_xyxy": [
+            3895.0,
+            1343.0,
+            3958.0,
+            1406.0
+          ],
+          "preview_xyxy": [
+            973.75,
+            335.75,
+            989.5,
+            351.5
+          ]
+        },
+        {
+          "id": "C",
+          "source_class": "dx_dg",
+          "xml_xyxy": [
+            676.0,
+            1432.0,
+            835.0,
+            1528.0
+          ],
+          "preview_xyxy": [
+            169.0,
+            358.0,
+            208.75,
+            382.0
+          ]
+        }
+      ],
+      "coordinate_status": "temporary full-frame resize assumption for visual review; not accepted conversion"
+    },
+    {
+      "id": "C2-02",
+      "name": "20221229_dx_sg_cz50",
+      "files": {
+        "image": {
+          "url": "https://raw.githubusercontent.com/xiongsiheng/Power-equipment-image-dataset/main/transmission%20line%20object%20detection/dx_sg_cz20221229/JPEGImages/20221229_dx_sg_cz50.jpg",
+          "path": "D:\\小论文\\model_projects\\.local\\data_inventory_20261024\\samples\\20221229_dx_sg_cz50.jpg",
+          "sha256": "0aedfcfc5b9a765024c79d4fce1c96788397f6a448fe816af9215c68b20b4b60"
+        },
+        "label": {
+          "url": "https://raw.githubusercontent.com/xiongsiheng/Power-equipment-image-dataset/main/transmission%20line%20object%20detection/dx_sg_cz20221229/Annotations/20221229_dx_sg_cz50.xml",
+          "path": "D:\\小论文\\model_projects\\.local\\data_inventory_20261024\\samples\\20221229_dx_sg_cz50.xml",
+          "sha256": "bd5678585be26702cd5c07322bb06e11b06c071785b4c7ff0ff2fffb10b01735"
+        }
+      },
+      "image_size": [
+        1152,
+        864
+      ],
+      "xml_size": [
+        4608,
+        3456
+      ],
+      "display_scale": [
+        0.25,
+        0.25
+      ],
+      "boxes": [
+        {
+          "id": "A",
+          "source_class": "dx_sg",
+          "xml_xyxy": [
+            2050.0,
+            1590.0,
+            2661.0,
+            2660.0
+          ],
+          "preview_xyxy": [
+            512.5,
+            397.5,
+            665.25,
+            665.0
+          ]
+        },
+        {
+          "id": "B",
+          "source_class": "dx_sg",
+          "xml_xyxy": [
+            2213.0,
+            961.0,
+            2961.0,
+            1576.0
+          ],
+          "preview_xyxy": [
+            553.25,
+            240.25,
+            740.25,
+            394.0
+          ]
+        },
+        {
+          "id": "C",
+          "source_class": "dx_dg",
+          "xml_xyxy": [
+            2780.0,
+            2009.0,
+            3250.0,
+            2221.0
+          ],
+          "preview_xyxy": [
+            695.0,
+            502.25,
+            812.5,
+            555.25
+          ]
+        },
+        {
+          "id": "D",
+          "source_class": "dx_dg",
+          "xml_xyxy": [
+            2521.0,
+            2706.0,
+            3043.0,
+            2946.0
+          ],
+          "preview_xyxy": [
+            630.25,
+            676.5,
+            760.75,
+            736.5
+          ]
+        },
+        {
+          "id": "E",
+          "source_class": "dx_dg",
+          "xml_xyxy": [
+            2339.0,
+            1298.0,
+            2598.0,
+            1558.0
+          ],
+          "preview_xyxy": [
+            584.75,
+            324.5,
+            649.5,
+            389.5
+          ]
+        }
+      ],
+      "coordinate_status": "temporary full-frame resize assumption for visual review; not accepted conversion"
+    },
+    {
+      "id": "C2-03",
+      "name": "20221229_dx_sg_cz100",
+      "files": {
+        "image": {
+          "url": "https://raw.githubusercontent.com/xiongsiheng/Power-equipment-image-dataset/main/transmission%20line%20object%20detection/dx_sg_cz20221229/JPEGImages/20221229_dx_sg_cz100.jpg",
+          "path": "D:\\小论文\\model_projects\\.local\\data_inventory_20261024\\samples\\20221229_dx_sg_cz100.jpg",
+          "sha256": "09a84aa751d6940308c624ff56ae9b5c0f422879d092c41d7af77cfc31f825a0"
+        },
+        "label": {
+          "url": "https://raw.githubusercontent.com/xiongsiheng/Power-equipment-image-dataset/main/transmission%20line%20object%20detection/dx_sg_cz20221229/Annotations/20221229_dx_sg_cz100.xml",
+          "path": "D:\\小论文\\model_projects\\.local\\data_inventory_20261024\\samples\\20221229_dx_sg_cz100.xml",
+          "sha256": "7188ba3d56a4f1fe80c04a4ef37c8047a1353b1d193daa8b68ed4e6bde2f8a7b"
+        }
+      },
+      "image_size": [
+        1152,
+        864
+      ],
+      "xml_size": [
+        4608,
+        3456
+      ],
+      "display_scale": [
+        0.25,
+        0.25
+      ],
+      "boxes": [
+        {
+          "id": "A",
+          "source_class": "dx_sg",
+          "xml_xyxy": [
+            1813.0,
+            1039.0,
+            2435.0,
+            2106.0
+          ],
+          "preview_xyxy": [
+            453.25,
+            259.75,
+            608.75,
+            526.5
+          ]
+        },
+        {
+          "id": "B",
+          "source_class": "dx_sg",
+          "xml_xyxy": [
+            2554.0,
+            2450.0,
+            3091.0,
+            2891.0
+          ],
+          "preview_xyxy": [
+            638.5,
+            612.5,
+            772.75,
+            722.75
+          ]
+        },
+        {
+          "id": "C",
+          "source_class": "dx_dg",
+          "xml_xyxy": [
+            2631.0,
+            2088.0,
+            2801.0,
+            2310.0
+          ],
+          "preview_xyxy": [
+            657.75,
+            522.0,
+            700.25,
+            577.5
+          ]
+        }
+      ],
+      "coordinate_status": "temporary full-frame resize assumption for visual review; not accepted conversion"
+    }
+  ],
+  "preview_assets": [
+    {
+      "id": "C3-01",
+      "url": "https://source.roboflow.com/pwYAXv9BTpqLyFfgQoPZ/01tEUGo571TQwKwaZSdQ/thumb.jpg",
+      "path": "D:\\小论文\\model_projects\\.local\\data_inventory_20261024\\samples\\C3-01.jpg",
+      "dimensions": [
+        200,
+        152
+      ],
+      "bytes": 11757,
+      "sha256": "0272f2d00796cbe9809a99db49cc4d5abdd71e20465864b2a94b1786f8154149",
+      "kind": "publisher preview thumbnail; no coordinate annotation obtained"
+    },
+    {
+      "id": "C3-02",
+      "url": "https://source.roboflow.com/pwYAXv9BTpqLyFfgQoPZ/06aY5uq3RQHLH2fzJk4E/thumb.jpg",
+      "path": "D:\\小论文\\model_projects\\.local\\data_inventory_20261024\\samples\\C3-02.jpg",
+      "dimensions": [
+        200,
+        152
+      ],
+      "bytes": 12564,
+      "sha256": "d25398ddb9242bd53ff7239cc8c780fdfd18f39ddd99db2943a9dda0492a9346",
+      "kind": "publisher preview thumbnail; no coordinate annotation obtained"
+    },
+    {
+      "id": "C3-03",
+      "url": "https://source.roboflow.com/pwYAXv9BTpqLyFfgQoPZ/0ClwBa31mZ8nDv4MFK13/thumb.jpg",
+      "path": "D:\\小论文\\model_projects\\.local\\data_inventory_20261024\\samples\\C3-03.jpg",
+      "dimensions": [
+        200,
+        113
+      ],
+      "bytes": 5703,
+      "sha256": "e3cea3047157384b2d98269654f17feea1245cb8d1a65c1f750691fe3c610323",
+      "kind": "publisher preview thumbnail; no coordinate annotation obtained"
+    },
+    {
+      "id": "C4-01",
+      "url": "https://mila-iqia.github.io/cableinspect-ad/static/images/defect_with_multiple_anomaly_type.png",
+      "path": "D:\\小论文\\model_projects\\.local\\data_inventory_20261024\\samples\\C4-01.png",
+      "dimensions": [
+        2850,
+        1048
+      ],
+      "bytes": 3409179,
+      "sha256": "d816c782123e0f7f3de2d734b8877c5546e4232b8fffe5f4de38196f69c01fbe",
+      "kind": "author website annotation illustration, not a raw dataset image"
+    },
+    {
+      "id": "C4-02",
+      "url": "https://mila-iqia.github.io/cableinspect-ad/static/images/defect_with_multiple_anomaly_type2.png",
+      "path": "D:\\小论文\\model_projects\\.local\\data_inventory_20261024\\samples\\C4-02.png",
+      "dimensions": [
+        2850,
+        1048
+      ],
+      "bytes": 4215418,
+      "sha256": "a5c80cb1649500ace4c0be5c0d020272f4c6e734c54da4278d3f984ef4d15c83",
+      "kind": "author website annotation illustration, not a raw dataset image"
+    }
+  ],
+  "checks": {
+    "source_hashes_match": true,
+    "decoded_images": 8,
+    "c2_boxes": 11,
+    "coordinate_projection_inverse_check": true,
+    "page_local_links_exist": true,
+    "svg_views": 14,
+    "browser_report_visual_review": false
+  },
+  "limitations": [
+    "C2 projection assumes full-frame resizing; not accepted for dataset conversion",
+    "C3 only publisher thumbnails; no annotation coordinates retrieved",
+    "C4 author illustrations; raw dataset package not acquired",
+    "No full-source semantic acceptance or data admission"
+  ],
+  "c3_access_note": "Public browse page read in browser; subsequent detail access timed out; direct public HTML returned HTTP403. Public release preview thumbnails used without invoking inference.",
+  "page": "D:\\小论文\\model_projects\\Faster R-CNN\\workspace\\notes\\公开候选集中看图_20261024_讨论版.html",
+  "page_sha256": "b057b453516be1e023860a4b0045356707c36a67dcad9543e66173926c7a8469",
+  "sources_unchanged": true,
+  "model_run": false,
+  "bulk_download": false
+}

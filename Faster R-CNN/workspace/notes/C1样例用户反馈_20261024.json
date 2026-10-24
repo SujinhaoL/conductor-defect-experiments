@@ -1,0 +1,86 @@
+{
+  "date": "2026-10-24",
+  "source": "user direct feedback in this conversation",
+  "samples": [
+    {
+      "review_id": "C1-01",
+      "filename": "486.jpg",
+      "image_sha256": "ef40c5df4f0bea4167cf8de79e26368b29e86d57d894a47bf39c8e6c7cda4247",
+      "label_sha256": "04c5d614c2601f80de7c0f6e3b4515fba04d1690bb77f316381bf410b720500b",
+      "image_class_feedback": "断股",
+      "boxes": [
+        {
+          "box_id": "A",
+          "class_feedback": "断股",
+          "extent_feedback": "覆盖断股缺陷"
+        }
+      ]
+    },
+    {
+      "review_id": "C1-02",
+      "filename": "1627.jpg",
+      "image_sha256": "04d2cd65bc8f655c33be179d3e081d17c2cb791957090d17468d5522def587fe",
+      "label_sha256": "df52371c220a4a195a0df06d845efef7ab629a9910116493ec3ea49eec5c15f9",
+      "image_class_feedback": "断股",
+      "boxes": [
+        {
+          "box_id": "A",
+          "class_feedback": "断股",
+          "extent_feedback": "覆盖断股缺陷"
+        }
+      ]
+    },
+    {
+      "review_id": "C1-03",
+      "filename": "1609.jpg",
+      "image_sha256": "c0fc7298c6e7c70faa11e59e6072c765254df0951317a0ef82f0028a507af0ed",
+      "label_sha256": "dd735ce959c705c802a9871324df545f824e006abaab72f0aa02cd6efef43a00",
+      "image_class_feedback": "断股",
+      "boxes": [
+        {
+          "box_id": "A",
+          "class_feedback": "断股",
+          "extent_feedback": "覆盖断股缺陷"
+        }
+      ]
+    },
+    {
+      "review_id": "C1-04",
+      "filename": "171.jpg",
+      "image_sha256": "f72f2d5dccaf3bb42949e53ae669613780bfa303493009e6c3565004c3991eb7",
+      "label_sha256": "c22385787c55092ebbd84e76435a444b7a67adfd3ed1bf1fcb407af8b9d31c74",
+      "image_class_feedback": "断股",
+      "boxes": [
+        {
+          "box_id": "A",
+          "class_feedback": "断股",
+          "extent_feedback": "覆盖断股缺陷"
+        }
+      ]
+    },
+    {
+      "review_id": "C1-05",
+      "filename": "1090.jpg",
+      "image_sha256": "e5493d3d01bfef2ebae6aace97ec1c52bbfff2714c3591271691bf7a9f1a9376",
+      "label_sha256": "fe733b5dda57a6084b6b7922e1bc9655e86251194806eef747ba6e99b9681826",
+      "image_class_feedback": "断股",
+      "boxes": [
+        {
+          "box_id": "A",
+          "class_feedback": "未确认为有效缺陷框",
+          "extent_feedback": "像素仅4×5且范围非常不合理，框住的地方没有用",
+          "future_action": "新版整理时作为不合理标注处理；未改原TXT"
+        },
+        {
+          "box_id": "B",
+          "class_feedback": "断股",
+          "extent_feedback": "覆盖断股缺陷"
+        }
+      ]
+    }
+  ],
+  "conclusion": "C1 worth further screening; not full dataset acceptance or data admission",
+  "source_annotation_modified": false,
+  "old153_modified": false,
+  "verbatim": "C1-01的缺陷类别是断股，原框覆盖了断股缺陷；C1-02的缺陷类别是断股，原框覆盖了断股缺陷；C1-03的缺陷类别是断股，原框覆盖了断股缺陷；C1-04的缺陷类别是断股，原框覆盖了断股缺陷；C1-05的缺陷类别是断股，B原框覆盖了断股缺陷，但A框像素仅4×5且范围非常不合理，A框框住的地方没有用；"
+}
