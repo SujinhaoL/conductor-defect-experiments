@@ -1,0 +1,91 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>公开导线缺陷数据集链接导航 · 讨论版</title><style>body{margin:0;background:#f5f7fa;color:#1c2b3b;font:16px/1.7 "Microsoft YaHei",sans-serif}main{max-width:1280px;margin:auto;padding:36px 24px 60px}h1{font-size:30px;margin-bottom:6px}h2{margin-top:36px;font-size:23px}p{max-width:1100px}a{color:#0759a0;text-underline-offset:3px}nav{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0}nav a,.links a{display:inline-block;background:#edf5ff;border:1px solid #c7daed;border-radius:6px;padding:6px 11px;margin:3px 5px 3px 0;text-decoration:none}.box{background:#fff;border:1px solid #d7e0e8;border-radius:10px;padding:18px 24px}.entry{display:grid;grid-template-columns:300px 1fr;gap:20px;background:white;border:1px solid #d7e0e8;border-radius:9px;padding:20px;margin:12px 0}.id{font-size:14px;color:#687b90}h3{margin:0;font-size:19px}.entry p{margin:6px 0}.note{font-size:14px;color:#526477}.muted{color:#607286}@media(max-width:800px){.entry{grid-template-columns:1fr;gap:6px}main{padding:20px 14px}h1{font-size:25px}}@media print{body{background:white}.entry{break-inside:avoid}nav{display:none}}</style></head><body><main>
+<h1>公开导线缺陷数据集链接导航</h1><p class="muted">2026-10-25 · 讨论版 · 直接回原站浏览</p><div class="box">
+<p>检索与整理日期：2026-10-25。按你的新安排，你直接去原站浏览，我负责整理入口；不再要求逐图反馈类别和框范围。</p>
+<p>本页整理15个公开项目/上游/派生入口，另附2个需要申请的论文数据线索。它们不是17套独立、已验收的数据集；页面图数也不是可新增缺陷图数。</p>
+<p>建议先看L01、L02、L03；其余按兴趣浏览。之前的《公开样例反馈与标注口径》保留为讨论记录，目前没有必须补交的反馈，也不作为浏览链接的前提。</p>
+<p>Roboflow先点Images看图库、点击具体图片查看细节，再看Dataset版本。部分导出需要登录；只浏览不需要运行网页上的模型/API。主页面可读不代表下载成功，本轮没有批量下载数据。</p>
+<p>不要求写逐图反馈表。遇到值得保留的来源或疑问，直接把链接和一句话发来即可；正式采用时再处理图片/标注、格式、重复与使用条件。</p>
+</div><nav>
+<a href="#g0">先看这些来源</a>
+<a href="#g1">MPCD上游及相关入口</a>
+<a href="#g2">仅论文公开、数据需要申请</a>
+</nav>
+<section id="g0"><h2>先看这些来源</h2>
+<article class="entry" id="L01"><div><span class="id">L01</span><h3>Power Equipment Image Dataset（原C2）</h3></div><div><p>作者类别表明确列出 dx_dg（断股）、dx_sg（松股）；同时包含大量其他电力设备类别。</p><div class="links">
+<a href="https://github.com/xiongsiheng/Power-equipment-image-dataset" target="_blank" rel="noopener noreferrer">作者主页 ↗</a>
+<a href="https://github.com/xiongsiheng/Power-equipment-image-dataset/tree/main/transmission%20line%20object%20detection/dx_sg_cz20221229" target="_blank" rel="noopener noreferrer">相关图片/标注目录 ↗</a>
+<a href="https://huggingface.co/datasets/sxiong/Power-equipment-image-dataset/blob/main/transmission%20line%20object%20detection.zip" target="_blank" rel="noopener noreferrer">检测数据ZIP页面 ↗</a>
+</div><p class="note">优先查看。ZIP页面显示约530 MB，指目标检测包；同库20.1 GB的无人机图片包不是此入口。既有样例的图/XML尺寸不一致，真正采用时再处理。</p></div></article>
+<article class="entry" id="L02"><div><span class="id">L02</span><h3>MPCD / MulticableData（原C1）</h3></div><div><p>1871张，提供 Broken Cable 检测框和导线分割；你已看过的C1来自本地候选副本。</p><div class="links">
+<a href="https://github.com/phd-benel/PowerLine-MTYOLO" target="_blank" rel="noopener noreferrer">作者主页 ↗</a>
+<a href="https://drive.google.com/file/d/1ipKGaDK4-8_SjzC-XMNmWoAaYQEhqfY5/view?usp=sharing" target="_blank" rel="noopener noreferrer">MulticableData.rar ↗</a>
+<a href="https://doi.org/10.3390/drones9070505" target="_blank" rel="noopener noreferrer">论文与示例 ↗</a>
+</div><p class="note">优先查看。网盘链接采用作者README实际跳转地址，文件页可打开；未下载整包。下方L09—L13是论文列出的上游，不能重复加总。</p></div></article>
+<article class="entry" id="L03"><div><span class="id">L03</span><h3>bts-conductor-breakage / Daos Workspace（新增）</h3></div><div><p>项目页3642张，7类，含 dut、tua、burnt wire 等。</p><div class="links">
+<a href="https://universe.roboflow.com/daos-workspace-zmhz3/bts-conductor-breakage" target="_blank" rel="noopener noreferrer">项目原页 ↗</a>
+<a href="https://universe.roboflow.com/daos-workspace-zmhz3/bts-conductor-breakage/browse" target="_blank" rel="noopener noreferrer">Images图库 ↗</a>
+<a href="https://universe.roboflow.com/daos-workspace-zmhz3/bts-conductor-breakage/dataset/1" target="_blank" rel="noopener noreferrer">Dataset入口 ↗</a>
+</div><p class="note">值得浏览的新增线索。主页面可读，标为CC BY 4.0；没有发布来源说明，未确认与MPCD等是否重复，也未完成类别映射。图库/版本入口来自页面链接，工具未展开。</p></div></article>
+<article class="entry" id="L04"><div><span class="id">L04</span><h3>CableInspect-AD（原C4）</h3></div><div><p>4798张近景导线图，多种异常，包含 broken strand、spaced strand；有框和像素标注。</p><div class="links">
+<a href="https://mila-iqia.github.io/cableinspect-ad/" target="_blank" rel="noopener noreferrer">作者项目与示例 ↗</a>
+<a href="https://www.hydroquebec.com/documents-data/open-data/images-defects-electrical-conductor/" target="_blank" rel="noopener noreferrer">官方数据页面 ↗</a>
+<a href="https://drive.google.com/file/d/126i30i7dRkcf4E5k7x8yysay3Snv6NXv/view" target="_blank" rel="noopener noreferrer">作者提供的Drive备份 ↗</a>
+</div><p class="note">近景、受控缺陷场景，与你的航拍图可能不同，可自行取舍。作者项目页可读；官方数据页本次跳到临时不可用提示，Drive工具返回401，未验证下载。数据许可CC BY-NC-SA 4.0。</p></div></article>
+<article class="entry" id="L05"><div><span class="id">L05</span><h3>RF100 cable-damage（原C3）</h3></div><div><p>项目页1318张，类别 break、thunderbolt。</p><div class="links">
+<a href="https://universe.roboflow.com/roboflow-100/cable-damage" target="_blank" rel="noopener noreferrer">项目原页 ↗</a>
+<a href="https://universe.roboflow.com/roboflow-100/cable-damage/browse" target="_blank" rel="noopener noreferrer">Images图库 ↗</a>
+<a href="https://universe.roboflow.com/roboflow-100/cable-damage/dataset/2" target="_blank" rel="noopener noreferrer">版本2 ↗</a>
+</div><p class="note">与你已看的低清缩略图同一候选。可以自行查看原站图片后决定是否保留；此前200像素预览不能证明原图库都低清。与L06同源，不重复计数。</p></div></article>
+<article class="entry" id="L06"><div><span class="id">L06</span><h3>kanaaat（RF100的原始来源）</h3></div><div><p>项目页4317张，break、thunderbolt、wear三类；页面没有详细采集说明。</p><div class="links">
+<a href="https://universe.roboflow.com/st-hedgehog-yusupov-gmail-com/kanaaat" target="_blank" rel="noopener noreferrer">发布页与Images入口 ↗</a>
+</div><p class="note">可优先于RF100查看较大的原项目。页面可读、标CC BY 4.0；4317不是可新增断股数量，不把wear/雷击直接算松股。</p></div></article>
+<article class="entry" id="L07"><div><span class="id">L07</span><h3>Power line fault detection / Solar Test（新增）</h3></div><div><p>项目页5420张，含 broken power lines，另有覆冰、异物、other。</p><div class="links">
+<a href="https://universe.roboflow.com/solar-test-tieq1/power-line-fault-detection" target="_blank" rel="noopener noreferrer">项目原页 ↗</a>
+<a href="https://universe.roboflow.com/solar-test-tieq1/power-line-fault-detection/browse" target="_blank" rel="noopener noreferrer">Images图库 ↗</a>
+<a href="https://universe.roboflow.com/solar-test-tieq1/power-line-fault-detection/dataset/1" target="_blank" rel="noopener noreferrer">Dataset入口 ↗</a>
+</div><p class="note">扩展浏览线索，不保证broken power lines对应局部断股。主页面/版本1可读，页面标MIT；版本1有4058张且预处理拉伸到640×640，项目总数与各导出版本不同。未说明采集来源。</p></div></article>
+<article class="entry" id="L08"><div><span class="id">L08</span><h3>Power Line Defect Detection / Cansus（新增）</h3></div><div><p>项目页79张，含 broken_wire，另有 broken_insulator、tangled_wire、wire_sagging。</p><div class="links">
+<a href="https://universe.roboflow.com/cansus-workspace-8aesg/power-line-defect-detection-e48ji" target="_blank" rel="noopener noreferrer">项目原页 ↗</a>
+<a href="https://universe.roboflow.com/cansus-workspace-8aesg/power-line-defect-detection-e48ji/browse" target="_blank" rel="noopener noreferrer">Images图库 ↗</a>
+<a href="https://universe.roboflow.com/cansus-workspace-8aesg/power-line-defect-detection-e48ji/dataset/1" target="_blank" rel="noopener noreferrer">Dataset入口 ↗</a>
+</div><p class="note">低优先浏览线索，可能包含整线断裂而非断股；wire_sagging不等于松股。主页面可读、标CC BY 4.0，无来源描述；图库/版本链接未在工具中展开。</p></div></article>
+</section>
+<section id="g1"><h2>MPCD上游及相关入口</h2>
+<article class="entry" id="L09"><div><span class="id">L09</span><h3>daydantuacaothe1</h3></div><div><p>MPCD论文Table 1及参考文献列出的五个上游之一。</p><div class="links">
+<a href="https://universe.roboflow.com/daydantuacaothe/daydantuacaothe1" target="_blank" rel="noopener noreferrer">原始项目 ↗</a>
+</div><p class="note">本次工具未打开该项目；链接来自MPCD论文，保留供浏览器尝试。 与L02存在来源关系，适合回原站浏览，不应当作五批全新独立数据。</p></div></article>
+<article class="entry" id="L10"><div><span class="id">L10</span><h3>DAKNONGGD3</h3></div><div><p>MPCD论文Table 1及参考文献列出的五个上游之一。</p><div class="links">
+<a href="https://universe.roboflow.com/daknongpc-giai-doan-3/daknonggd3" target="_blank" rel="noopener noreferrer">原始项目 ↗</a>
+<a href="https://universe.roboflow.com/daknongpc-giai-doan-3/daknonggd3/browse" target="_blank" rel="noopener noreferrer">Images图库 ↗</a>
+<a href="https://universe.roboflow.com/daknongpc-giai-doan-3/daknonggd3/dataset/1" target="_blank" rel="noopener noreferrer">Dataset入口 ↗</a>
+</div><p class="note">项目介绍可读，图库/版本子页未在工具中展开。 与L02存在来源关系，适合回原站浏览，不应当作五批全新独立数据。</p></div></article>
+<article class="entry" id="L11"><div><span class="id">L11</span><h3>110_daydan_tua / tthpcgd2</h3></div><div><p>MPCD论文Table 1及参考文献列出的五个上游之一。</p><div class="links">
+<a href="https://universe.roboflow.com/tthpcgd2/110_daydan_tua-prtw4" target="_blank" rel="noopener noreferrer">原始项目 ↗</a>
+</div><p class="note">本次工具未打开该项目；链接来自MPCD论文。 与L02存在来源关系，适合回原站浏览，不应当作五批全新独立数据。</p></div></article>
+<article class="entry" id="L12"><div><span class="id">L12</span><h3>ddan_ct_tua</h3></div><div><p>MPCD论文Table 1及参考文献列出的五个上游之一。</p><div class="links">
+<a href="https://universe.roboflow.com/doi-110kv-gd-3/ddan_ct_tua-nodks" target="_blank" rel="noopener noreferrer">原始项目 ↗</a>
+<a href="https://universe.roboflow.com/doi-110kv-gd-3/ddan_ct_tua-nodks/browse" target="_blank" rel="noopener noreferrer">Images图库 ↗</a>
+<a href="https://universe.roboflow.com/doi-110kv-gd-3/ddan_ct_tua-nodks/dataset/1" target="_blank" rel="noopener noreferrer">Dataset入口 ↗</a>
+</div><p class="note">项目介绍可读，图库/版本子页未在工具中展开。 与L02存在来源关系，适合回原站浏览，不应当作五批全新独立数据。</p></div></article>
+<article class="entry" id="L13"><div><span class="id">L13</span><h3>110_daydan_tua / tthpc</h3></div><div><p>MPCD论文Table 1及参考文献列出的五个上游之一。</p><div class="links">
+<a href="https://universe.roboflow.com/tthpc/110_daydan_tua" target="_blank" rel="noopener noreferrer">原始项目 ↗</a>
+</div><p class="note">本次工具未打开该项目；链接来自MPCD论文。 与L02存在来源关系，适合回原站浏览，不应当作五批全新独立数据。</p></div></article>
+<article class="entry" id="L14"><div><span class="id">L14</span><h3>TA_DAYDANTRAN_TUA / tthpcgd2（新增线索）</h3></div><div><p>检索索引显示100张、单类dd_tt_tua，与上述发布工作区相关。</p><div class="links">
+<a href="https://universe.roboflow.com/tthpcgd2/ta_daydantran_tua" target="_blank" rel="noopener noreferrer">发布页 ↗</a>
+</div><p class="note">仅检索索引可见，本次页面抓取失败；索引显示Dataset versions 0，未确认可导出。仅留作自行浏览线索，未证明独立于MPCD。</p></div></article>
+<article class="entry" id="L15"><div><span class="id">L15</span><h3>TL-DETR / CableInspect-ADs（派生组合）</h3></div><div><p>论文说明由CableInspect-AD的4798图加MulticableData选出的202图组成。</p><div class="links">
+<a href="https://github.com/mieshen777/TL-DETR" target="_blank" rel="noopener noreferrer">作者仓库 ↗</a>
+<a href="https://pan.baidu.com/s/1tH_p8_LlnjhS1idVa3BMQQ?pwd=a76c" target="_blank" rel="noopener noreferrer">百度网盘，提取码a76c ↗</a>
+<a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0351470" target="_blank" rel="noopener noreferrer">论文数据说明 ↗</a>
+</div><p class="note">国内下载备查入口，属于L04+L02的组合，不是新的独立图像来源。仓库与论文可读，网盘内容/包完整性未验证；仓库同时列出其他金具数据，不要混算。</p></div></article>
+</section>
+<section id="g2"><h2>仅论文公开、数据需要申请</h2>
+<article class="entry" id="L16"><div><span class="id">L16</span><h3>PowerStrand-YOLO使用的数据</h3></div><div><p>直接针对高压输电导线缺陷的研究，可看论文图片和数据说明。</p><div class="links">
+<a href="https://www.mdpi.com/2227-7390/13/17/2859" target="_blank" rel="noopener noreferrer">论文原页 ↗</a>
+</div><p class="note">Data Availability写明联系通讯作者申请，因限制未放公开仓库。不是可直接下载的公开数据；本轮未联系作者。</p></div></article>
+<article class="entry" id="L17"><div><span class="id">L17</span><h3>Break-ID-1632 / SL-YOLOv8</h3></div><div><p>论文描述巡检机器人拍摄的导线断股数据，含正常/损伤及断股数量类别。</p><div class="links">
+<a href="https://doi.org/10.3390/app14177469" target="_blank" rel="noopener noreferrer">论文原页 ↗</a>
+</div><p class="note">Data Availability写明从通讯作者获取；没有核实到直接下载包。论文另用的cable damage不能当作另一套新增源。本轮未联系作者。</p></div></article>
+</section>
+<section class="box"><h2>你现在需要反馈什么</h2><p>没有必须补交的标注口径反馈。自行浏览即可；之后有感兴趣的数据或疑问，把链接发来讨论，不必逐图填表。</p><p>Undermind附件已读，暂存为文献初筛参考，本轮没有开展论文代码复现或模型选型。</p><p>页面数量不是可新增数量；本轮未批量下载、修改标注或划分、合并数据、运行训练或推理。</p><p>更完整的状态说明见同名MD文件。</p></section></main></body></html>
